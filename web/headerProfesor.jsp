@@ -23,7 +23,7 @@
                     <a href="observador.jsp"  class="nav-link"><i class="nc-icon nc-paper"></i> Observador</a>
                 </li>  
                 <li class="nav-item">
-                    <a href="..."  class="nav-link"><i class="nc-icon nc-bullet-list-67"></i> Gestion Tema</a>
+                    <a href="actividad.jsp"  class="nav-link"><i class="nc-icon nc-bullet-list-67"></i> Gestion Actividad</a>
                 </li> 
                 <li class="nav-item">
                     <a href="retroalimentacionEstudiante.jsp"  class="nav-link"><i class="nc-icon nc-chart-bar-32"></i> Retroalimentacion</a>
