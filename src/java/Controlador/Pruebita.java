@@ -61,20 +61,10 @@ public class Pruebita extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-         try {
-            int documento = Integer.parseInt(request.getParameter("documento"));
-             System.out.println("Legue");
-            System.out.println(documento);
-            EstudianteDAO o = new EstudianteDAO();
-            o.eliminarEstudiante(documento);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(EstudianteS.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(EstudianteS.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(EstudianteS.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String fecha = request.getParameter("fecha");
+        String[] aux=fecha.split(" ");
+        System.out.println("Llegue");
+        System.out.println(aux[0]);
     }
 
     /**
