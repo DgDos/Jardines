@@ -51,9 +51,8 @@
 
 
                     <div class="container">
-                       
+
                         <br>
-                       
 
 
 
@@ -66,13 +65,13 @@
                             <option value="" selected disabled>Seleccione la cedula</option>
                         </select> 
                     </div>
-                    <br>
+
                     <p id="pa">
-                        
+
                     </p>
 
 
-                    
+
 
 
 

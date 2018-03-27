@@ -21,7 +21,7 @@
     </head>
 
 
-    <body style="background-color:black">
+    <body style="background-color:white">
         <%@include file="headerAdmin.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -36,17 +36,17 @@
                     <br>
 
 
-                    <form id="formulario" class="form-inline" >
+                    <form id="formulario" >
                         <SELECT  id="cursos" class="form-control">
                             <OPTION></OPTION>
 
                         </SELECT>
 
-                        
                         <br>
                         <br>
-                        <br>
-                        <table class="table table-striped" id="tabla" style="color: white"  >
+
+
+                        <table class="table " id="tabla" >
                             <thead>
                                 <tr>
                                     <th>Documento Estudiante</th>
@@ -56,12 +56,11 @@
                             </thead>
 
                             <tbody>
-
                                 <tr>
 
                                     <td id="idEstudiante" ></td>
                                     <td id="nombreEstudiante"></td>
-                    
+
                                 </tr>
 
 
@@ -79,7 +78,23 @@
             </div>
         </div>
 
-        <script src="js/jquery-1.7.1.min.js"></script>
+        <script src="assets/js/jquery-3.2.1.js" type="text/javascript"></script>
+        <script src="assets/js/jquery-ui-1.12.1.custom.min.js" type="text/javascript"></script>
+        <script src="assets/js/popper.js" type="text/javascript"></script>
+        <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <!-- Switches -->
+        <script src="assets/js/bootstrap-switch.min.js"></script>
+
+        <!--  Plugins for Slider -->
+        <script src="assets/js/nouislider.js"></script>
+
+        <!--  Plugins for DateTimePicker -->
+        <script src="assets/js/moment.min.js"></script>
+        <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+
+        <!--  Paper Kit Initialization and functons -->
+        <script src="assets/js/paper-kit.js?v=2.1.0"></script>
         <script src="js/app/verCurso.js"></script>
     </body>
 </html>

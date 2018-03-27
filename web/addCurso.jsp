@@ -36,7 +36,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
 
     </head>
-    <body style="background-color:black">
+    <body style="background-color:white">
         <%@include file="headerAdmin.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -48,28 +48,24 @@
                     <br>
                     <br>
                     <br>
+                    <br>
                     <div class="container">
+                    </div>
+                    <form id="formulario" >
+                        <div class="form-group">
+                            <label >Nombre del curso:</label>
+                            <input  class="form-control form-control-success" id="nombreCurso" required >
                         </div>
-                        <form id="formulario" class="form-inline" >
-                            <div class="form-group">
-                                <label style="color:white">Nombre del curso:</label>
-                                <input  class="form-control form-control-success" id="nombreCurso" required >
-                            </div>
-                            <br>
-                            <br>
-                            <br>
-                            <div class="form-group">
-                                <label style="color:white">Numero de Estudiantes:</label>
-                                <input  class="form-control form-control-success" id="numeroEstudiantes" required >
-                            </div>
-                            <br>
-                            <br>
-                            <button type="submit" id="guardarCurso" class="btn btn-default btn-round" >Guardar</button> 
+
+                        
 
 
-                        </form>
+                        <button type="submit" id="guardarCurso" class="btn btn-default btn-round" >Guardar</button> 
 
-                    
+
+                    </form>
+
+
                     <br>
 
 

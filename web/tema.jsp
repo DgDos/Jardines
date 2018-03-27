@@ -36,7 +36,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
 
     </head>
-    <body style="background-color:black">
+    <body style="background-color:white">
         <%@include file="headerAdmin.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -53,7 +53,7 @@
                         <br>
                         <form id="SelectCM" style="display: none;">                                
                             <div>
-                                <label style="color:white">Curso y Materia: </label>
+                                <label >Curso y Materia: </label>
                                 <select class="form-control" required name="cm" id="cm">
                                     <option value="" selected disabled>Seleccione uno</option>
                                 </select> 
@@ -61,10 +61,10 @@
                                 <p id="temas">
 
                                 </p>
-                                <label style="color:white" for="detalle">Nombre: </label>
+                                <label  for="detalle">Nombre: </label>
                                 <input type="text" class="form-control form-control-success" name="nombre" id="nombre"> 
                                 <br>
-                                <button type="submit" class="btn btn-neutral" id="botonsito" name="Enviar" style="display: none;">Agregar</button>
+                                <button type="submit" class="btn btn-default" id="botonsito" name="Enviar" style="display: none;">Agregar</button>
                             </div>  
                         </form>
                         <table id="tablaCM" class="table table-hover" style="display: none;">
@@ -81,7 +81,17 @@
     <script src="assets/js/popper.js" type="text/javascript"></script>
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
+    <!-- Switches -->
+    <script src="assets/js/bootstrap-switch.min.js"></script>
+
     <!--  Plugins for Slider -->
     <script src="assets/js/nouislider.js"></script>
+
+    <!--  Plugins for DateTimePicker -->
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!--  Paper Kit Initialization and functons -->
+    <script src="assets/js/paper-kit.js?v=2.1.0"></script>
     <script src="js/app/tema.js"></script>
 </html>

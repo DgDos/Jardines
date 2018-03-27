@@ -18,7 +18,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-        <title>Gestion Curso</title>
+        <title>Curso Materia</title>
 
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
@@ -50,36 +50,19 @@
                     <br>
                     <br>
                     <div class="container">
+                        
                     </div>
-                    <form id="formulario">
+                        
+                      
+                       
+                        
+                        <table id="tablaCM" class="table table-hover" style="display: none;">
 
-                        <div class="form-group">
-                            <label >Nombre del la Materia:</label>
-                            <input  class="form-control form-control-success" id="nombreMateria" required >
-                        </div>
-
-
-
-                        <button type="submit"  id="guardarMateria" class="btn btn-default btn-round"   >Guardar</button> 
-
-
-                    </form>
-
-
-                    <br>
-
-
-
-
-
-
-
-
+                        </table>                                                           
+                    </div>
                 </div>
+
             </div>
-
-        </div>
-
 
     </body>
     <script src="assets/js/jquery-3.2.1.js" type="text/javascript"></script>
@@ -99,5 +82,5 @@
 
     <!--  Paper Kit Initialization and functons -->
     <script src="assets/js/paper-kit.js?v=2.1.0"></script>
-    <script src="js/app/addMateria.js"></script>
+    <script src="js/app/cursoMateria.js"></script>
 </html>

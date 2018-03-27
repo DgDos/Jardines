@@ -36,7 +36,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
 
     </head>
-    <body style="background-color:black">
+    <body style="background-color:white">
         <%@include file="headerAdmin.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -49,40 +49,35 @@
                     <br>
                     <br>
                     <div class="container">
-                        <a>
-                            <button type="button"  type="text" name="crearCursoMateria" class="btn btn-default btn-round" id="crearCursoMateria">Crear Curso Materia</button>
-                        </a>
-                        <a>
-                            <button type="button"  type="text" name="verCursosMateria" class="btn btn-default btn-round" id="verCursosMateria">Ver Cursos Materias</button>
-                        </a>
+                        
                     </div>
                         <br>
                       
                        
-                        <form id="SelectCM" style="display: none;">                                
+                        <form id="SelectCM" >                                
                             <div class="form-group">
-                                <label style="color:white">Curso: </label>
+                                <label >Curso: </label>
                                 <select class="form-control" required name="curso" id="curso">
                                     <option value="" selected disabled>Seleccione un curso</option>
                                 </select> 
                             </div>
 
                             <div class="form-group">
-                                <label style="color:white" >Materia: </label>
+                                <label  >Materia: </label>
                                 <select required name="materia" id="materia" class="form-control">
                                     <option value="" selected  disabled>Seleccione una materia</option>
                                 </select> 
                             </div>
 
                             <div class="form-group">
-                                <label style="color:white" >Profesor: </label>
+                                <label  >Profesor: </label>
                                 <select required name="profesor" id="profesor" class="form-control">
                                     <option value="" selected  disabled>Seleccione un profesor</option>
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <label style="color:white">Fecha de Inicio:</label>
+                                <label >Fecha de Inicio:</label>
                                 <div class="col-md-6">
                                     <div class="row">
                                         <div class='col-sm-6'>
@@ -100,12 +95,10 @@
                             </div> 
 
 
-                            <button type="submit" class="btn btn-neutral" name="Enviar">Ubicar</button>
+                            <button type="submit" class="btn btn-default" name="Enviar">Ubicar</button>
 
                         </form>
-                        <table id="tablaCM" class="table table-hover" style="display: none;">
-
-                        </table>                                                           
+                                                                                
                     </div>
                 </div>
 
