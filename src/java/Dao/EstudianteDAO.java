@@ -102,5 +102,11 @@ public class EstudianteDAO {
         return estudiantes;
     }
     
+    public void updateCursoEstudiante(int documento,int idCurso) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update estudiante set idcurso=?" + " where documento=" + documento);
+        preparedStatement.setInt(1, idCurso);
+        preparedStatement.executeUpdate();
+    }
+    
     
 }
