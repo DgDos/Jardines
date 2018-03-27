@@ -1,5 +1,28 @@
 $(document).ready(function () {
+    $.ajax({
+        type: 'GET',
+        url: "EstudianteS",
+        //force to handle it as text
+        data: {
+            'var': "0"
+        },
+        dataType: "text",
+        success: function (data) {
+            $('#SelectCM').removeAttr('style');
+            var selectForm = $('#curso');
+            selectForm.empty();
+            selectForm.append('<option selected  value="" disabled>Seleccione un estudiante</option>');
+            var json = $.parseJSON(data);
+            console.log(json);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<option value=\"" + json[i].idCurso + "\">" + json[i].nombre + "</option>";
+                selectForm.append(opcion);
+            }
 
+        },
+        async: false
+    });
     $('#EliminarE').on('submit', function () {
         $.ajax({
             type: 'GET',

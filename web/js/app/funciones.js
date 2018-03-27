@@ -33,12 +33,10 @@ $(document).ready(function () {
             data: {
                 'documento': $('#documento').val(),
                 'nombre': $('#nombre').val(),
-                'idcurso': $('#idcurso').val(),
                 'fechanacimiento': $('#fechanacimiento').val(),
                 'direccion': $('#direccion').val(),
                 'celularcontacto': $('#celularcontacto').val(),
-                'tiposangre': $('#tiposangre').val(),
-                'rh': $('#rh').val()
+                'tiposangre': $('#tiposangre').val()
             },
             dataType: "text",
             success: function (data) {

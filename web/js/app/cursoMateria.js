@@ -40,14 +40,14 @@ $(document).ready(function () {
             success: function (data) {
                 $('#SelectCM').removeAttr('style');
                 $('#tablaCM').attr('style', 'display: none;');
-                var selectForm = $('#curso');
+                var selectForm = $('#estudiante');
                 selectForm.empty();
                 selectForm.append('<option selected  value="" disabled>Seleccione un curso</option>');
                 var json = $.parseJSON(data);
                 console.log(json);
                 for (var i = 0; i < json.length; ++i)
                 {
-                    var opcion = "<option value=\"" + json[i].idCurso + "\">" + json[i].nombre + "</option>";
+                    var opcion = "<option value=\"" + json[i].idEstudiante + "\">" + json[i].nombre + "</option>";
                     selectForm.append(opcion);
                 }
 

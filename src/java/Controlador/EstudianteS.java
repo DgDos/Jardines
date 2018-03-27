@@ -132,6 +132,13 @@ public class EstudianteS extends HttpServlet {
                 EstudianteDAO o = new EstudianteDAO();
                 o.updateEstudiante(e);
             }
+            if (opc == 6) {
+                EstudianteDAO e = new EstudianteDAO();
+                ArrayList<Estudiante> estudiantes = e.getAllEstudiantes();
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(estudiantes);
+                out.print(pasareEsto);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(EstudianteS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
@@ -154,14 +161,14 @@ public class EstudianteS extends HttpServlet {
             throws ServletException, IOException {
         try {
             Estudiante e = new Estudiante();
+            String fecha = request.getParameter("fechanacimiento");
+            String[] aux = fecha.split(" ");
             e.setNombre(request.getParameter("nombre"));
             e.setIdEstudiante(Integer.parseInt(request.getParameter("documento")));
-            e.setIdCurso(Integer.parseInt(request.getParameter("idcurso")));
-            e.setFechaNacimiento(request.getParameter("fechanacimiento"));
+            e.setFechaNacimiento(aux[0]);
             e.setCelularContacto(request.getParameter("celularcontacto"));
             e.setDireccion(request.getParameter("direccion"));
             e.setTipoSangre(request.getParameter("tiposangre"));
-            System.out.println(e.toString());
             EstudianteDAO o = new EstudianteDAO();
             o.addEstudiante(e);
 

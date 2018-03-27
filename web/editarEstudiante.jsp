@@ -71,9 +71,7 @@
                         <label style="color:white" >Buscar Estudiante:</label>
                         <input  class="form-control form-control-success" id="documentos" >
                     </div>
-                    <a>
-                        <button type="button" class="btn btn-default btn-round" id="botonVerE">Buscar Estudiante</button>
-                    </a>
+                    
 
 
                     <form id="EditarE"  >

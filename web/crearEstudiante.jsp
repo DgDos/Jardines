@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <%
-    Profesor p=(Profesor)request.getSession().getAttribute("profesor");
-    if(p!=null){
-        if(p.getTipoU()==1){
-            response.sendRedirect("menuProfesor.jsp");
+        Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+        if (p != null) {
+            if (p.getTipoU() == 1) {
+                response.sendRedirect("menuProfesor.jsp");
+            }
+        } else {
+            response.sendRedirect("index.jsp");
         }
-    }else{
-        response.sendRedirect("index.jsp");
-    }
     %>
     <head>
         <meta charset="utf-8" />
@@ -61,10 +61,10 @@
                         <a  href="eliminarEstudiante.jsp">
                             <button   type="text" class="btn btn-default btn-round" id="botonEliminar">Eliminar Estudiante</button>  
                         </a>
-                        
+
                     </div>
                     <br>
-             
+
                     <form id="CrearE" >
                         <div class="form-group">
                             <label style="color:white">Documento:</label>
@@ -75,35 +75,38 @@
                             <input  class="form-control form-control-success" id="nombre" required  >
                         </div>
                         <div class="form-group">
-                            <label style="color:white">Id Curso:</label>
-                            <input  class="form-control form-control-success" id="idcurso" required>
+                            <label style="color:white">Direccion:</label>
+                            <input  class="form-control form-control-success" id="direccion" required  >
                         </div> 
                         <div class="form-group">
-                            <label style="color:white">Fecha de Nacimiento:</label>
-                            <input  class="form-control form-control-success" id="fechanacimiento" required >
-                        </div> 
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label style="color:white">Direccion:</label>
-                                <input  class="form-control form-control-success" id="direccion" required  >
-                            </div> 
                             <label style="color:white">Celular:</label>
                             <input  class="form-control form-control-success" id="celularcontacto" required >
+                        </div>
+                        <label style="color:white">Fecha de Nacimiento:</label>
+                        <div class="row">
+                            <div class='col-sm-6'>
+                                <div class="form-group">
+                                    <div class='input-group date'  id='datetimepicker' >
+
+                                        <input  id="fechanacimiento" name="fecha" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label style="color:white">Tipo de sangre:</label>
                             <input  class="form-control form-control-success" id="tiposangre" required >
                         </div> 
-                        <div class="form-group">
-                            <label style="color:white">RH:</label>
-                            <input  class="form-control form-control-success" id="rh"  required>
-                        </div> 
+
                         <button type="submit" class="btn btn-neutral">Enviar</button>
                     </form>
-                    
-                    
-                    
-                    
+
+
+
+
 
                 </div>
             </div>

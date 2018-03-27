@@ -58,14 +58,13 @@ public class EstudianteDAO {
     }
 
     public void addEstudiante(Estudiante est) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into estudiante values (?,?,?,?,?,?,?,1)");
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into estudiante values (?,?,?,?,?,?,3,1)");
         preparedStatement.setInt(1, est.getIdEstudiante());
         preparedStatement.setString(2, est.getNombre());
         preparedStatement.setString(3, est.getCelularContacto());
         preparedStatement.setString(4, est.getDireccion());
         preparedStatement.setString(5, est.getFechaNacimiento());
         preparedStatement.setString(6, est.getTipoSangre());
-        preparedStatement.setInt(7, est.getIdCurso());
         preparedStatement.executeUpdate();
     }
     public void eliminarEstudiante(int idE) throws SQLException{
@@ -84,6 +83,25 @@ public class EstudianteDAO {
         preparedStatement.setInt(6, e.getIdCurso());
         preparedStatement.setInt(7, e.getIdEstudiante());
         preparedStatement.executeUpdate();
+    }
+
+    public ArrayList<Estudiante> getAllEstudiantes() throws SQLException {
+        
+        ArrayList<Estudiante> estudiantes= new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from estudiante where delete=1");
+        while (rs.next()) {
+            Estudiante estudiante=new Estudiante();
+            estudiante.setIdEstudiante(rs.getInt("documento"));
+            estudiante.setNombre(rs.getString("nombre"));
+            estudiante.setCelularContacto(rs.getString("celularcontacto"));
+            estudiante.setDireccion(rs.getString("direccion"));
+            estudiante.setFechaNacimiento(rs.getString("fechanacimiento"));
+            estudiante.setTipoSangre(rs.getString("tiposangre"));
+            estudiante.setIdCurso(rs.getInt("idcurso"));
+            estudiantes.add(estudiante);
+        }
+        return estudiantes;
     }
     
     
