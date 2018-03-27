@@ -53,7 +53,6 @@ public class DirectorCursoDAO {
         preparedStatement.setInt(2, idcurso);
         preparedStatement.setString(3, fechainicio);
         preparedStatement.setString(4, fechafinal);
-
         preparedStatement.executeUpdate();
 
     }
