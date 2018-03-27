@@ -102,5 +102,5 @@
 
     <!--  Paper Kit Initialization and functons -->
     <script src="assets/js/paper-kit.js?v=2.1.0"></script>
-    <script src="js/app/cursoMateria.js"></script>
+    <script src="js/app/ubicarDirector.js"></script>
 </html>

@@ -59,7 +59,6 @@ public class DirectorCursoDAO {
 
     public void deleteDirectorCurso(int idD) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("update directorcurso set delete=0 where id=" + idD);
-
         preparedStatement.executeUpdate();
     }
 
@@ -72,6 +71,24 @@ public class DirectorCursoDAO {
         preparedStatement.setInt(5, e.getIdDirector());
 
         preparedStatement.executeUpdate();
+    }
+
+    public boolean knowCedula(int cedula) throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from directorcurso where delete=1 and cedula=" + cedula);
+        while(rs.next()){
+            return false;
+        }      
+        return true;
+    }
+
+    public boolean knowCurso(int idCurso) throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from directorcurso where delete=1 and idcurso=" + idCurso);
+        while(rs.next()){
+            return false;
+        }      
+        return true;
     }
     
 }

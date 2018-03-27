@@ -48,6 +48,10 @@
         <servlet-name>DirectorCursoS</servlet-name>
         <servlet-class>Controlador.DirectorCursoS</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CursoEstudianteS</servlet-name>
+        <servlet-class>Controlador.CursoEstudianteS</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AsistenciaS</servlet-name>
         <url-pattern>/AsistenciaS</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>DirectorCursoS</servlet-name>
         <url-pattern>/DirectorCursoS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CursoEstudianteS</servlet-name>
+        <url-pattern>/CursoEstudianteS</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
