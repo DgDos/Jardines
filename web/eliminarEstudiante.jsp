@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <%
-    Profesor p=(Profesor)request.getSession().getAttribute("profesor");
-    if(p!=null){
-        if(p.getTipoU()==1){
-            response.sendRedirect("menuProfesor.jsp");
+        Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+        if (p != null) {
+            if (p.getTipoU() == 1) {
+                response.sendRedirect("menuProfesor.jsp");
+            }
+        } else {
+            response.sendRedirect("index.jsp");
         }
-    }else{
-        response.sendRedirect("index.jsp");
-    }
     %>
     <head>
         <meta charset="utf-8" />
@@ -61,21 +61,22 @@
                         <a  href="eliminarEstudiante.jsp">
                             <button   type="text" class="btn btn-default btn-round" id="botonEliminar">Eliminar Estudiante</button>  
                         </a>
-                        
+
                     </div>
                     <br>
-             
-                    
-                    
-                    
-                    
+
+
+
+
+
                     <form id="EliminarE" >                                              
-                        <div class="form-group">
-                            <label style="color:white">Estudiante a Eliminar:</label>
-                            <input  class="form-control form-control-success" id="documento">
+                        <div  class="form-group"  >
+                            <label style="color:white" >Buscar Estudiante:</label>
+                            <select class="form-control" required name="documento" id="documento">
+                                <option value="" selected disabled>Seleccione el estudiante</option>
+                            </select> 
                         </div>
-                        
-                     <button type="submit" class="btn btn-neutral" name="Enviar">Enviar</button>
+                        <button type="submit" class="btn btn-neutral" name="Enviar">Enviar</button>
                     </form>
 
                 </div>

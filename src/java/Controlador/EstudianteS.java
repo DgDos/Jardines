@@ -89,6 +89,7 @@ public class EstudianteS extends HttpServlet {
                 String pasareEsto = g.toJson(cursos);
                 out.print(pasareEsto);
             }
+            //obtener los estudiantes dado un curso
             if (opc == 1) {
                 int a = Integer.parseInt(request.getParameter("curso"));
                 EstudianteDAO obs = new EstudianteDAO();
@@ -97,6 +98,7 @@ public class EstudianteS extends HttpServlet {
                 String pasareEsto = g.toJson(estudiantes);
                 out.print(pasareEsto);
             }
+            //buscar info de un estudiante dado un id
             if (opc == 2) {
                 int estId = Integer.parseInt(request.getParameter("estudiante"));
                 EstudianteDAO obs = new EstudianteDAO();
@@ -105,9 +107,9 @@ public class EstudianteS extends HttpServlet {
                 String pasareEsto = g.toJson(e);
                 out.print(pasareEsto);
             }
+            //eliminar estudiante dado un documento
             if (opc == 3) {
                 int documento = Integer.parseInt(request.getParameter("documento"));
-                System.out.println(documento);
                 EstudianteDAO o = new EstudianteDAO();
                 o.eliminarEstudiante(documento);
             }
@@ -123,12 +125,10 @@ public class EstudianteS extends HttpServlet {
                 Estudiante e = new Estudiante();
                 e.setNombre(request.getParameter("nombre"));
                 e.setIdEstudiante(Integer.parseInt(request.getParameter("documento")));
-                e.setIdCurso(Integer.parseInt(request.getParameter("idcurso")));
                 e.setFechaNacimiento(request.getParameter("fechanacimiento"));
                 e.setCelularContacto(request.getParameter("celularcontacto"));
                 e.setDireccion(request.getParameter("direccion"));
                 e.setTipoSangre(request.getParameter("tiposangre"));
-                System.out.println(e.toString());
                 EstudianteDAO o = new EstudianteDAO();
                 o.updateEstudiante(e);
             }

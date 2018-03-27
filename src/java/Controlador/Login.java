@@ -58,14 +58,12 @@ public class Login extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String action = request.getParameter("action");
             if (action.equals("salir")) {
-                System.out.println("hola ????");
                 request.getSession().setAttribute("profesor", null);
                 response.sendRedirect("index.jsp");
             } else {
                 String usuario = request.getParameter("usuario");
                 String password = request.getParameter("password");
                 MessageDigest digest = MessageDigest.getInstance("SHA-256");
-                System.out.println("why??" + action);
                 byte[] encodedhash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
                 String ps2 = bytesToHex(encodedhash);
                 ProfesorDAO pro = new ProfesorDAO();

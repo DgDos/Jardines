@@ -67,12 +67,12 @@
 
 
 
-                    <div   class="form-group"  >
+                    <div  class="form-group"  >
                         <label style="color:white" >Buscar Estudiante:</label>
-                        <input  class="form-control form-control-success" id="documentos" >
+                        <select class="form-control" required name="documento" id="documento">
+                            <option value="" selected disabled>Seleccione el estudiante</option>
+                        </select> 
                     </div>
-                    
-
 
                     <form id="EditarE"  >
 
@@ -86,28 +86,33 @@
                             <input  class="form-control form-control-success" id="nombre" value="">
                         </div>
                         <div class="form-group">
-                            <label style="color:white">Id Curso:</label>
-                            <input  class="form-control form-control-success" id="idcurso" value="">
-                        </div> 
-                        <div class="form-group">
                             <label style="color:white">Fecha de Nacimiento:</label>
-                            <input  class="form-control form-control-success" id="fechanacimiento"  value="">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class='col-sm-6'>
+                                        <div class="form-group">
+                                            <div class='input-group date'  id='datetimepicker' >
+                                                <input  id="fechanacimiento" name="fecha" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div> 
                         <div class="form-group">
-                            <div class="form-group">
-                                <label style="color:white">Direccion:</label>
-                                <input  class="form-control form-control-success" id="direccion"  value="">
-                            </div> 
-                            <label style="color:white">Celular:</label>
+                            <label style="color:white">Direccion:</label>
+                            <input  class="form-control form-control-success" id="direccion"  value="">
+                        </div> 
+                        <div class="form-group">
+                            <label style="color:white">Celular de contacto:</label>
                             <input  class="form-control form-control-success"  id="celularcontacto" value="">
                         </div>
                         <div class="form-group">
                             <label style="color:white">Tipo de sangre:</label>
                             <input  class="form-control form-control-success" id="tiposangre"  value="">
-                        </div> 
-                        <div class="form-group">
-                            <label style="color:white">RH:</label>
-                            <input  class="form-control form-control-success" id="rh"  value="">
                         </div> 
                         <button type="submit" class="btn btn-neutral" name="Enviar">Enviar</button>
                     </form>

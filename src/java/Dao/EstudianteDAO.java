@@ -69,19 +69,17 @@ public class EstudianteDAO {
     }
     public void eliminarEstudiante(int idE) throws SQLException{
          PreparedStatement preparedStatement = connection.prepareStatement("update estudiante set delete=0 where documento="+idE);
-        
         preparedStatement.executeUpdate();
     }
 
     public void updateEstudiante(Estudiante e) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("update estudiante set nombre=?,celularcontacto=?,direccion=?,fechanacimiento=?,tiposangre=?,idcurso=?" + " where documento=?");
+        PreparedStatement preparedStatement = connection.prepareStatement("update estudiante set nombre=?,celularcontacto=?,direccion=?,fechanacimiento=?,tiposangre=?" + " where documento=?");
         preparedStatement.setString(1, e.getNombre());
         preparedStatement.setString(2, e.getCelularContacto());
         preparedStatement.setString(3, e.getDireccion());
         preparedStatement.setString(4, e.getFechaNacimiento());
         preparedStatement.setString(5, e.getTipoSangre());
-        preparedStatement.setInt(6, e.getIdCurso());
-        preparedStatement.setInt(7, e.getIdEstudiante());
+        preparedStatement.setInt(6, e.getIdEstudiante());
         preparedStatement.executeUpdate();
     }
 

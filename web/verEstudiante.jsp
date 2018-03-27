@@ -68,53 +68,17 @@
 
 
 
-                    <div   class="form-group"  >
+                    <div  class="form-group"  >
                         <label style="color:white" >Buscar Estudiante:</label>
-                        <input  class="form-control form-control-success" id="documentos" >
+                        <select class="form-control" required name="documento" id="documento">
+                            <option value="" selected disabled>Seleccione el estudiante</option>
+                        </select> 
                     </div>
-                    <a>
-                        <button type="button" class="btn btn-default btn-round" id="botonVerE">Buscar Estudiante</button>
-                    </a>
 
 
-
-                    <form id="VerE">
-                        <br>
-
-                        <div class="form-group">
-                            <label style="color:white">Documento:</label>
-                            <input  class="form-control form-control-success" id="documento2" readonly="readonly" >
-                        </div>
-                        <div class="form-group">
-                            <label style="color:white" >Nombre:</label>
-                            <input  class="form-control form-control-success" id="nombre" readonly="readonly"  >
-                        </div>
-                        <div class="form-group">
-                            <label style="color:white">Id Curso:</label>
-                            <input  class="form-control form-control-success" id="idcurso" readonly="readonly" >
-                        </div> 
-                        <div class="form-group">
-                            <label style="color:white">Fecha de Nacimiento:</label>
-                            <input  class="form-control form-control-success" id="fechanacimiento" readonly="readonly"  >
-                        </div> 
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label style="color:white">Direccion:</label>
-                                <input  class="form-control form-control-success" id="direccion" readonly="readonly" >
-                            </div> 
-                            <label style="color:white">Celular:</label>
-                            <input  class="form-control form-control-success" id="celularcontacto" readonly="readonly" >
-                        </div>
-                        <div class="form-group">
-                            <label style="color:white">Tipo de sangre:</label>
-                            <input  class="form-control form-control-success" id="tiposangre" readonly="readonly" >
-                        </div> 
-                        <div class="form-group">
-                            <label style="color:white">RH:</label>
-                            <input  class="form-control form-control-success" id="rh" readonly="readonly" >
-                        </div> 
-
-                    </form>
+                    <p id="verE">
+                        
+                    </p>
 
 
 

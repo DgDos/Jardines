@@ -4,19 +4,18 @@ $(document).ready(function () {
         url: "EstudianteS",
         //force to handle it as text
         data: {
-            'var': "0"
+            'opcion': "6"
         },
         dataType: "text",
         success: function (data) {
             $('#SelectCM').removeAttr('style');
-            var selectForm = $('#curso');
+            var selectForm = $('#documento');
             selectForm.empty();
             selectForm.append('<option selected  value="" disabled>Seleccione un estudiante</option>');
             var json = $.parseJSON(data);
-            console.log(json);
             for (var i = 0; i < json.length; ++i)
             {
-                var opcion = "<option value=\"" + json[i].idCurso + "\">" + json[i].nombre + "</option>";
+                var opcion = "<option value=\"" + json[i].idEstudiante + "\">" + json[i].nombre + "</option>";
                 selectForm.append(opcion);
             }
 
@@ -42,34 +41,6 @@ $(document).ready(function () {
         });
     });
 
-    $('#botonVerE').click(function () {
-        $.ajax({
-            type: 'GET',
-            url: "EstudianteS",
-            //force to handle it as text
-            data: {
-                'opcion': "4",
-                'documento': $('#documentos').val()
-                        // 'documento':"144144"
-            },
-            dataType: "text",
-            success: function (data) {
-                var json = $.parseJSON(data);
-                $('#documento2').attr('value', json.idEstudiante);
-                $('#nombre').attr('value', json.nombre);
-                $('#idcurso').attr('value', json.idCurso);
-                $('#fechanacimiento').attr('value', json.fechaNacimiento);
-                $('#direccion').attr('value', json.direccion);
-                $('#celularcontacto').attr('value', json.celularContacto);
-                $('#tiposangre').attr('value', json.tipoSangre);
-                $('#rh').attr('value', json.rh);
-
-
-            },
-            async: false
-        });
-
-    });
     $('#EditarE').on('submit', function () {
         $.ajax({
             type: 'GET',
@@ -78,12 +49,10 @@ $(document).ready(function () {
                 'opcion': "5",
                 'documento': $('#documento2').val(),
                 'nombre': $('#nombre').val(),
-                'idcurso': $('#idcurso').val(),
                 'fechanacimiento': $('#fechanacimiento').val(),
                 'direccion': $('#direccion').val(),
                 'celularcontacto': $('#celularcontacto').val(),
-                'tiposangre': $('#tiposangre').val(),
-                'rh': $('#rh').val()
+                'tiposangre': $('#tiposangre').val()
             },
             dataType: "text",
             success: function (data) {
@@ -93,4 +62,44 @@ $(document).ready(function () {
             async: false
         });
     });
+});
+
+$('#documento').on('change', function () {
+    $.ajax({
+            type: 'GET',
+            url: "EstudianteS",
+            //force to handle it as text
+
+            data: {
+                'opcion': "2",
+                'estudiante': $('#documento').val()
+            },
+            dataType: "text",
+            success: function (data) {
+                var json = $.parseJSON(data);
+                $('#documento2').attr('value', json.idEstudiante);
+                $('#nombre').attr('value', json.nombre);
+                $('#fechanacimiento').attr('value', json.fechaNacimiento);
+                $('#direccion').attr('value', json.direccion);
+                $('#celularcontacto').attr('value', json.celularContacto);
+                $('#tiposangre').attr('value', json.tipoSangre);
+                
+                var selectForm = $('#verE');
+                selectForm.empty();
+                var opcion = "<p style=\"color:white\" >Documento: " + json.idEstudiante + ".</p>";
+                selectForm.append(opcion);
+                opcion = "<p style=\"color:white\" >Nombre: " + json.nombre + ".</p>";
+                selectForm.append(opcion);               
+                opcion = "<p style=\"color:white\" >Fecha Nacimiento: " + json.fechaNacimiento + ".</p>";
+                selectForm.append(opcion);
+                opcion = "<p style=\"color:white\" >Celular de contacto: " + json.celularContacto + ".</p>";
+                selectForm.append(opcion);
+                opcion = "<p style=\"color:white\" >Direccion: " + json.direccion + ".</p>";
+                selectForm.append(opcion);
+                opcion = "<p style=\"color:white\" >Tipo Sangre: " + json.tipoSangre + ".</p>";
+                selectForm.append(opcion);
+                
+            },
+            async: false
+        });
 });

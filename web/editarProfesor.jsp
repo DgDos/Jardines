@@ -74,7 +74,7 @@
                     <div  class="form-group"  >
                         <label style="color:white" >Buscar Profesor:</label>
                         <select class="form-control" required name="cedula" id="cedula">
-                            <option value="" selected disabled>Seleccione la cedula</option>
+                            <option value="" selected disabled>Seleccione el profesor</option>
                         </select> 
                     </div>
                    
@@ -100,19 +100,19 @@
                         <div class="form-group">
                             <label style="color:white">Fecha de Nacimiento:</label>
                             <div class="col-md-6">
-                            <div class="row">
-                                <div class='col-sm-6'>
-                                    <div class="form-group">
-                                        <div class='input-group date'  id='datetimepicker' >
-                                            <input  id="fechanacimiento" name="fecha" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                            </span>
+                                <div class="row">
+                                    <div class='col-sm-6'>
+                                        <div class="form-group">
+                                            <div class='input-group date'  id='datetimepicker' >
+                                                <input  id="fechanacimiento" name="fecha" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         </div> 
                         <div class="form-group">
                             <label style="color:white">Tipo de Sangre:</label>
