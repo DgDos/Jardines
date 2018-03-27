@@ -59,7 +59,9 @@
                             <button   type="button" class="btn btn-default btn-round">Ver Curso</button>  
                         </a>                       
                        
-                        
+                        <a  href="ubicarEstudiante.jsp">
+                            <button   type="button" class="btn btn-default btn-round">Asignar Estudiante a un Curso</button>  
+                        </a> 
                     </div>
                 </div>
             </div>
