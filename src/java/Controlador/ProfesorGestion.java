@@ -92,7 +92,6 @@ public class ProfesorGestion extends HttpServlet {
             if (opc == 2) {
                 int cedula = Integer.parseInt(request.getParameter("cedula"));
                 String nombre = request.getParameter("nombre");
-                int tipoU = Integer.parseInt(request.getParameter("tipoU"));
                 String correo = request.getParameter("correo");
                 String celular = request.getParameter("celular");
                 String direccion = request.getParameter("direccion");
@@ -100,9 +99,9 @@ public class ProfesorGestion extends HttpServlet {
                 String fechaNacimiento = request.getParameter("fechanacimiento");
                 String tipoSangre = request.getParameter("tiposangre");
                 String usuario = request.getParameter("usuario");
-                String contra = request.getParameter("contra");
                 ProfesorDAO p = new ProfesorDAO();
-                Profesor profe = new Profesor(cedula, nombre, tipoU, correo, celular, direccion, experiencia, fechaNacimiento, tipoSangre, usuario, contra);
+                Profesor profe = new Profesor(cedula, nombre,correo, celular, direccion, experiencia, fechaNacimiento, tipoSangre, usuario);
+                System.out.println(profe);
                 p.updateProfesor(profe);
             }
 

@@ -73,11 +73,11 @@
 
                     <div  class="form-group"  >
                         <label style="color:white" >Buscar Profesor:</label>
-                        <input  class="form-control form-control-success" id="cedula">
+                        <select class="form-control" required name="cedula" id="cedula">
+                            <option value="" selected disabled>Seleccione la cedula</option>
+                        </select> 
                     </div>
-                    <a>
-                        <button type="button" class="btn btn-default btn-round" id="botonVerP">Buscar Profesor</button>
-                    </a>
+                   
 
 
 
@@ -95,27 +95,30 @@
                             <label style="color:white" >Usuario:</label>
                             <input  class="form-control form-control-success" id="usuario">
                         </div>
-                        <div class="form-group">
-                            <label style="color:white" >Contraseña:</label>
-                            <input  class="form-control form-control-success" id="password" >
-                        </div>
-                        <div class="form-group">
-                            <label style="color:white" >Tipo de Usuario:</label>
-                            <input  class="form-control form-control-success" id="tipousuario"  >
-                        </div>
+                        
+                       
                         <div class="form-group">
                             <label style="color:white">Fecha de Nacimiento:</label>
-                            <input  class="form-control form-control-success" id="fechanacimiento" >
+                            <div class="col-md-6">
+                            <div class="row">
+                                <div class='col-sm-6'>
+                                    <div class="form-group">
+                                        <div class='input-group date'  id='datetimepicker' >
+                                            <input  id="fechanacimiento" name="fecha" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </div> 
                         <div class="form-group">
                             <label style="color:white">Tipo de Sangre:</label>
                             <input  class="form-control form-control-success" id="tiposangre" >
                         </div> 
                         <div class="form-group">
-                            <div class="form-group">
-                                <label style="color:white">RH:</label>
-                                <input  class="form-control form-contr0ol-success" id="rh">
-                            </div> 
                             <label style="color:white">Correo:</label>
                             <input  class="form-control form-control-success" id="correo"  >
                         </div>
@@ -127,10 +130,7 @@
                             <label style="color:white">Direccion:</label>
                             <input  class="form-control form-control-success" id="direccion" >
                         </div> 
-                        <div class="form-group">
-                            <label style="color:white">Estudios:</label>
-                            <input  class="form-control form-control-success" id="estudios" >
-                        </div> 
+                        
                         <div class="form-group">
                             <label style="color:white">Experiencia:</label>
                             <input  class="form-control form-control-success" id="experiencia"  >
@@ -166,5 +166,6 @@
 
     <!--  Paper Kit Initialization and functons -->
     <script src="assets/js/paper-kit.js?v=2.1.0"></script>
+    <script src="js/app/verP.js"></script>
     <script src="js/app/myfunctions.js"></script>
 </html>

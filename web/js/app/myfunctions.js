@@ -1,4 +1,7 @@
+
+
 $(document).ready(function () {
+
     $('#EliminarProfesor2').on('submit', function () {
         $.ajax({
             type: 'GET',
@@ -55,19 +58,15 @@ $(document).ready(function () {
             url: "ProfesorGestion",
             data: {
                 'opcion': "2",
-                'cedula': $('#cedula').val(),
+                'cedula': $('#cedula2').val(),
                 'nombre': $('#nombre').val(),
-                'tipoU': $('#tipousuario').val(),
                 'correo': $('#correo').val(),
                 'celular': $('#celular').val(),
                 'direccion': $('#direccion').val(),
-                'estudios': $('#estudios').val(),
                 'experiencia': $('#experiencia').val(),
                 'fechanacimiento': $('#fechanacimiento').val(),
                 'tiposangre': $('#tiposangre').val(),
-                'rh': $('#rh').val(),
-                'usuario': $('#usuario').val(),
-                'contra': $('#password').val()
+                'usuario': $('#usuario').val()
             },
             dataType: "text",
             success: function (data) {

@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <%
-    Profesor p=(Profesor)request.getSession().getAttribute("profesor");
-    if(p!=null){
-        if(p.getTipoU()==1){
-            response.sendRedirect("menuProfesor.jsp");
+        Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+        if (p != null) {
+            if (p.getTipoU() == 1) {
+                response.sendRedirect("menuProfesor.jsp");
+            }
+        } else {
+            response.sendRedirect("index.jsp");
         }
-    }else{
-        response.sendRedirect("index.jsp");
-    }
     %>
     <head>
         <meta charset="utf-8" />
@@ -58,7 +58,7 @@
                             <button type="button" class="btn btn-default btn-round">Editar Profesor</button>
                         </a>                      
                         <a  href="verProfesor.jsp">
-                            <button   type="button" class="btn btn-default btn-round">Ver Profesor</button>  
+                            <button   type="button" class="btn btn-default btn-round" id="verp">Ver Profesor</button>  
                         </a>                       
                         <a  href="eliminarProfesor.jsp">
                             <button   type="button" class="btn btn-default btn-round">Eliminar Profesor</button>  
@@ -71,77 +71,26 @@
                     </div>
 
 
-                        <div  class="form-group"  >
-                            <label style="color:white" >Buscar Profesor:</label>
-                            <input  class="form-control form-control-success" id="cedula">
-                        </div>
-                     <a>
-                        <button type="button" class="btn btn-default btn-round" id="botonVerP">Buscar Profesor</button>
-                    </a>
-
-
-
-                        <form id="VerP" >
-                            <br>
-                            <div class="form-group">
-                                <label style="color:white">Cedula:</label>
-                                <input  class="form-control form-control-success" id="cedula2" readonly="readonly" >
-                            </div>
-                            <div class="form-group">
-                                <label style="color:white">Nombre:</label>
-                                <input  class="form-control form-control-success" id="nombre" readonly="readonly" >
-                            </div>
-                            <div class="form-group">
-                                <label style="color:white" >Usuario:</label>
-                                <input  class="form-control form-control-success" id="usuario" readonly="readonly">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label style="color:white" >Tipo de Usuario:</label>
-                                <input  class="form-control form-control-success" id="tipousuario" readonly="readonly" >
-                            </div>
-                            <div class="form-group">
-                                <label style="color:white">Fecha de Nacimiento:</label>
-                                <input  class="form-control form-control-success" id="fechanacimiento" readonly="readonly" >
-                            </div> 
-                            <div class="form-group">
-                                <label style="color:white">Tipo de Sangre:</label>
-                                <input  class="form-control form-control-success" id="tiposangre" readonly="readonly" >
-                            </div> 
-                            <div class="form-group">
-                                <div class="form-group">
-                                    <label style="color:white">RH:</label>
-                                    <input  class="form-control form-control-success" id="rh" readonly="readonly">
-                                </div> 
-                                <label style="color:white">Correo:</label>
-                                <input  class="form-control form-control-success" id="correo" readonly="readonly" >
-                            </div>
-                            <div class="form-group">
-                                <label style="color:white">Celular:</label>
-                                <input  class="form-control form-control-success" id="celular" readonly="readonly" >
-                            </div> 
-                            <div class="form-group">
-                                <label style="color:white">Direccion:</label>
-                                <input  class="form-control form-control-success" id="direccion" readonly="readonly" >
-                            </div> 
-                            <div class="form-group">
-                                <label style="color:white">Estudios:</label>
-                                <input  class="form-control form-control-success" id="estudios" readonly="readonly" >
-                            </div> 
-                            <div class="form-group">
-                                <label style="color:white">Experiencia:</label>
-                                <input  class="form-control form-control-success" id="experiencia" readonly="readonly" >
-                            </div> 
-
-                        </form>
-
-
-
-          
-
-
-
+                    <div  class="form-group"  >
+                        <label style="color:white" >Buscar Profesor:</label>
+                        <select class="form-control" required name="cedula" id="cedula">
+                            <option value="" selected disabled>Seleccione la cedula</option>
+                        </select> 
                     </div>
+                    <br>
+                    <p id="pa">
+                        
+                    </p>
+
+
+                    
+
+
+
+
+
+
+                </div>
             </div>
         </div>
     </body>
@@ -162,5 +111,5 @@
 
     <!--  Paper Kit Initialization and functons -->
     <script src="assets/js/paper-kit.js?v=2.1.0"></script>
-    <script src="js/app/myfunctions.js"></script>
+    <script src="js/app/verP.js"></script>
 </html>

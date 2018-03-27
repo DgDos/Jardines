@@ -70,10 +70,12 @@
                     
                     
                     <form id="EliminarProfesor2" >                                              
-                        <div class="form-group">
-                            <label style="color:white">Profesor a Eliminar:</label>
-                            <input  class="form-control form-control-success" id="cedula">
-                        </div>
+                        <div  class="form-group"  >
+                        <label style="color:white" >Buscar Profesor:</label>
+                        <select class="form-control" required name="cedula" id="cedula">
+                            <option value="" selected disabled>Seleccione la cedula</option>
+                        </select> 
+                    </div>
                         
                      <button type="submit" class="btn btn-neutral" name="Enviar">Enviar</button>
                     </form>
@@ -103,5 +105,6 @@
     <!--  Paper Kit Initialization and functons -->
     <script src="assets/js/paper-kit.js?v=2.1.0"></script>
     <script src="js/app/myfunctions.js"></script>
+     <script src="js/app/verP.js"></script>
 </html>
 

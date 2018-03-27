@@ -77,20 +77,31 @@
                             <input required class="form-control form-control-success" id="celular"  >
                             <label style="color:white">Direccion:</label>
                             <input required class="form-control form-control-success" id="direccion"  >
-                            <label style="color:white">Estudios:</label>
-                            <input required class="form-control form-control-success" id="estudios"  >
+                            
                             <label style="color:white">Experiencia:</label>
                             <input required class="form-control form-control-success" id="experiencia"  >
                             <label style="color:white">Fecha Nacimiento:</label>
-                            <input required class="form-control form-control-success" id="fechanacimiento"  >
+                            <div class="col-md-6">
+                            <div class="row">
+                                <div class='col-sm-6'>
+                                    <div class="form-group">
+                                        <div class='input-group date'  id='datetimepicker' >
+                                            <input  id="fechanacimiento" name="fechanacimiento" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                             <label style="color:white">Tipo Sangre:</label>
                             <input required class="form-control form-control-success" id="tiposangre"  >
-                            <label style="color:white">RH:</label>
-                            <input required class="form-control form-control-success" id="rh"  >
+
                             <label style="color:white">Usuario</label>
                             <input required class="form-control form-control-success" id="usuario"  >
                             <label style="color:white">Contraseña:</label>
-                            <input required class="form-control form-control-success" id="contra"  >
+                            <input required class="form-control form-control-success" id="contra" type="password" >
                         </div>
                         <button type="submit" class="btn btn-neutral">Enviar</button>
                     </form>

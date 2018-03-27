@@ -110,11 +110,13 @@ public class ProfesorS extends HttpServlet {
             String tipoSangre = request.getParameter("tiposangre");
             String usuario = request.getParameter("usuario");
             String contra = request.getParameter("contra");
+            String[] aux=fechaNacimiento.split(" ");
+            String aux2=aux[0];
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] encodedhash = digest.digest(contra.getBytes(StandardCharsets.UTF_8));
             String ps2 = bytesToHex(encodedhash);
             ProfesorDAO p = new ProfesorDAO();
-            Profesor profe = new Profesor(cedula, nombre, tipoU, correo, celular, direccion, experiencia, fechaNacimiento, tipoSangre, usuario, ps2);
+            Profesor profe = new Profesor(cedula, nombre, tipoU, correo, celular, direccion, experiencia, aux2, tipoSangre, usuario, ps2);
             p.addProfesor(profe);
         } catch (SQLException ex) {
             Logger.getLogger(ProfesorS.class.getName()).log(Level.SEVERE, null, ex);

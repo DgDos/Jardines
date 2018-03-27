@@ -39,6 +39,19 @@ public class Profesor {
         this.password = password;
     }
 
+    public Profesor(int idProfesor, String nombre, String correo, String celular, String direccion, String experiencia, String fechaNacimiento, String tipoSangre, String usuario) {
+        this.idProfesor = idProfesor;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.celular = celular;
+        this.direccion = direccion;
+        this.experiencia = experiencia;
+        this.fechaNacimiento = fechaNacimiento;
+        this.tipoSangre = tipoSangre;
+        this.usuario = usuario;
+    }
+
+
     
 
     
@@ -131,6 +144,11 @@ public class Profesor {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Profesor{" + "idProfesor=" + idProfesor + ", nombre=" + nombre + ", tipoU=" + tipoU + ", correo=" + correo + ", celular=" + celular + ", direccion=" + direccion + ", experiencia=" + experiencia + ", fechaNacimiento=" + fechaNacimiento + ", tipoSangre=" + tipoSangre + ", usuario=" + usuario + ", password=" + password + '}';
     }
     
     

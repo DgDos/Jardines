@@ -115,18 +115,16 @@ public class ProfesorDAO {
     }
 
     public void updateProfesor(Profesor e) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("update profesor set nombre=?,tipou=?,correo=?,celular=?,direccion=?,experiencia=?,fechanacimiento=?,tiposangre=?,usuario=?,password=?" + " where cedula=?");
+        PreparedStatement preparedStatement = connection.prepareStatement("update profesor set nombre=?,correo=?,celular=?,direccion=?,experiencia=?,fechanacimiento=?,tiposangre=?,usuario=?" + " where cedula=?");
         preparedStatement.setString(1, e.getNombre());
-        preparedStatement.setInt(2, e.getTipoU());
-        preparedStatement.setString(3, e.getCorreo());
-        preparedStatement.setString(4, e.getCelular());
-        preparedStatement.setString(5, e.getDireccion());
-        preparedStatement.setString(6, e.getExperiencia());
-        preparedStatement.setString(7, e.getFechaNacimiento());
-        preparedStatement.setString(8, e.getTipoSangre());
-        preparedStatement.setString(9, e.getUsuario());
-        preparedStatement.setString(10, e.getPassword());
-        preparedStatement.setInt(11, e.getIdProfesor());
+        preparedStatement.setString(2, e.getCorreo());
+        preparedStatement.setString(3, e.getCelular());
+        preparedStatement.setString(4, e.getDireccion());
+        preparedStatement.setString(5, e.getExperiencia());
+        preparedStatement.setString(6, e.getFechaNacimiento());
+        preparedStatement.setString(7, e.getTipoSangre());
+        preparedStatement.setString(8, e.getUsuario());
+        preparedStatement.setInt(9, e.getIdProfesor());
         preparedStatement.executeUpdate();
     }
 }
