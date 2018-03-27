@@ -75,5 +75,14 @@ public class CursoDAO {
         }
         return cursos;
     }
+    
+    public void updateNumeroEstudiantesCurso(int idCurso) throws SQLException, URISyntaxException, ClassNotFoundException, IOException{
+        CursoDAO dao = new CursoDAO();
+        Curso c = dao.getCursoById(idCurso);
+        int numeroEstudiantes = c.getNumeroEstudiantes()+1;
+        PreparedStatement preparedStatement= connection.prepareStatement("update curso set numeroestudiantes="+ numeroEstudiantes+ " where id=" + idCurso);
+       
+        preparedStatement.executeUpdate();
+    }
 
 }

@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Dao.CursoDAO;
 import Dao.EstudianteCursoDAO;
 import Dao.EstudianteDAO;
 import Modelo.Estudiante;
@@ -75,6 +76,8 @@ public class CursoEstudianteS extends HttpServlet {
             EstudianteDAO dao = new EstudianteDAO();
             System.out.println(idCurso+"--"+idEstudiante+"---"+fecha);
             if(dao.estGotCur(idEstudiante)){
+                CursoDAO daoC = new CursoDAO();
+                daoC.updateNumeroEstudiantesCurso(idCurso);
                 dao.updateCursoEstudiante(idEstudiante, idCurso);
                 EstudianteCursoDAO e = new EstudianteCursoDAO();
                 EstudianteCurso st = new EstudianteCurso(0, idEstudiante, idCurso, fechaAux[0], "");

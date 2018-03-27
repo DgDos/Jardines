@@ -11,8 +11,9 @@ $('#guardarMateria').on('click', function () {
         },
         dataType: "text",
         success: function (data) {
-
+            
         },
+        
         async: false
     });
 });
