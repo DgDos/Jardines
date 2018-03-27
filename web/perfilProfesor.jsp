@@ -51,51 +51,12 @@
                     <br>
 
                     <div class="container">
-                        <a>
-                            <button type="button" class="btn btn-default btn-round" id="verPerfil">Ver Perfil</button>
-                        </a>
+                        <p id="pa">
+                        
+                    </p>
                         <br>
                         <br>
-                        <div class="form-group">
-                            <label style="color:white">Nombre:</label>
-                            <input  class="form-control form-control-success" id="nombre" readonly="readonly" >
-                        </div>
-                        <div class="form-group">
-                            <label style="color:white" >Usuario:</label>
-                            <input  class="form-control form-control-success" id="usuario" readonly="readonly" >
-                        </div>
-                        <div class="form-group">
-                            <label style="color:white">Fecha de Nacimiento:</label>
-                            <input  class="form-control form-control-success" id="fechanacimiento" readonly="readonly" >
-                        </div> 
-                        <div class="form-group">
-                            <label style="color:white">Tipo de Sangre:</label>
-                            <input  class="form-control form-control-success" id="tiposangre" readonly="readonly" >
-                        </div> 
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label style="color:white">RH:</label>
-                                <input  class="form-control form-control-success" id="rh" readonly="readonly" >
-                            </div> 
-                            <label style="color:white">Correo:</label>
-                            <input  class="form-control form-control-success" id="correo" readonly="readonly" >
-                        </div>
-                        <div class="form-group">
-                            <label style="color:white">Celular:</label>
-                            <input  class="form-control form-control-success" id="celular" readonly="readonly" >
-                        </div> 
-                        <div class="form-group">
-                            <label style="color:white">Direccion:</label>
-                            <input  class="form-control form-control-success" id="direccion" readonly="readonly" >
-                        </div> 
-                        <div class="form-group">
-                            <label style="color:white">Estudios:</label>
-                            <input  class="form-control form-control-success" id="estudios" readonly="readonly" >
-                        </div> 
-                        <div class="form-group">
-                            <label style="color:white">Experiencia:</label>
-                            <input  class="form-control form-control-success" id="experiencia" readonly="readonly" >
-                        </div> 
+                       
                     </div>
 
                 </div>
@@ -121,5 +82,5 @@
 
     <!--  Paper Kit Initialization and functons -->
     <script src="assets/js/paper-kit.js?v=2.1.0"></script>
-    <script src="js/app/funciones.js"></script>
+    <script src="js/app/verperfilP.js"></script>
 </html>
