@@ -56,7 +56,7 @@
                       
                        
                         
-                        <table id="tablaCM" class="table table-hover" style="display: none;">
+                        <table id="tablaCM" class="table table-hover" >
 
                         </table>                                                           
                     </div>
