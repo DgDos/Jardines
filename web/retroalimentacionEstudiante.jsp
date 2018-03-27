@@ -78,9 +78,13 @@
 
                             <p id="Observador">
                                 
+                            </p>
+                            <p id="Asistencia">
                                 
                             </p>
-                            
+                            <p id="Notas">
+                                
+                            </p>
                     </div> 
                 </div> 
 
