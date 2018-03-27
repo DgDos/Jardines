@@ -37,9 +37,60 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
 
     </head>
-    <body style="background-color:black">
+    <body style="background-color:#ccccff">
         <%@include file="headerProfesor.jsp" %>
+ <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="section" id="carousel" style="background-color:#ccccff">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto">
+                        <div class="card page-carousel">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="carousel-item active">
+                                        <img class="d-block img-fluid" src="assets\img\colegio2.jpg" alt="First slide">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <p>Jardines</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block img-fluid" src="assets\img\colegio3.jpg" alt="Second slide">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <p>Somewhere else</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block img-fluid" src="assets\img\colegio4.jpg" alt="Third slide">
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <p>Here it is</p>
+                                        </div>
+                                    </div>
+                                </div>
 
+                                <a class="left carousel-control carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                    <span class="fa fa-angle-left"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                    <span class="fa fa-angle-right"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </body>
     <script src="assets/js/jquery-3.2.1.js" type="text/javascript"></script>

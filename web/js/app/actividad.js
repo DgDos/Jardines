@@ -70,15 +70,15 @@ $('#tema').on('change', function () {
             boton.removeAttr('style');
             $('#actividades').removeAttr('style');
             selectForm.empty();
-            selectForm.append('<p style=\"color:white\" >Actividades: </p>');
+            selectForm.append('<p style=\"\" >Actividades: </p>');
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
                 var j=i+1;
-                var opcion = "<p style=\"color:white\" >"+j+". "+json[i].nombre+"</p>";
+                var opcion = "<p style=\"\" >"+j+". "+json[i].nombre+"</p>";
                 selectForm.append(opcion);
             }
-            selectForm.append("<br><p style=\"color:white\" >Quiere agregar otro?</p>");
+            selectForm.append("<br><p style=\"\" >Quiere agregar otro?</p>");
         },
         async: false
     });

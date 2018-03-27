@@ -18,7 +18,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-        <title>Observador</title>
+        <title>Gestion Actividad</title>
 
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
@@ -36,7 +36,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
 
     </head>
-    <body style="background-color:black">
+    <body style="background-color:#ccccff">
         <%@include file="headerProfesor.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -53,12 +53,12 @@
                         <br>
                         <form id="SelectCM" style="display: none;">                                
                             <div>
-                                <label style="color:white">Curso y Materia: </label>
+                                <label >Curso y Materia: </label>
                                 <select class="form-control" required name="cm" id="cm">
                                     <option value="" selected disabled>Seleccione uno</option>
                                 </select> 
                                 <br>
-                                <label style="color:white">Tema: </label>
+                                <label >Tema: </label>
                                 <select class="form-control" required name="tema" id="tema">
                                     <option value="" selected disabled>Seleccione un tema</option>
                                 </select> 
@@ -66,7 +66,7 @@
                                 <p id="actividades">
 
                                 </p>
-                                <label style="color:white" for="detalle">Nombre: </label>
+                                <label  for="detalle">Nombre: </label>
                                 <input type="text" class="form-control form-control-success" name="nombre" id="nombre"> 
                                 <br>
                                 <button type="submit" class="btn btn-neutral" id="botonsito" name="Enviar" style="display: none;">Agregar</button>
@@ -86,7 +86,17 @@
     <script src="assets/js/popper.js" type="text/javascript"></script>
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
+    <!-- Switches -->
+    <script src="assets/js/bootstrap-switch.min.js"></script>
+
     <!--  Plugins for Slider -->
     <script src="assets/js/nouislider.js"></script>
+
+    <!--  Plugins for DateTimePicker -->
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!--  Paper Kit Initialization and functons -->
+    <script src="assets/js/paper-kit.js?v=2.1.0"></script>
     <script src="js/app/actividad.js"></script>
 </html>
