@@ -11,17 +11,17 @@ package Modelo;
  */
 public class Nota {
     private float nota;
-    private int idEstudiante;
-    private int idTema;
+    private int idEstudianteCurso;
+    private int idActividad;
     private String detallesExtra;
 
     public Nota() {
     }
 
-    public Nota(float nota, int idEstudiante, int idTema, String detallesExtra) {
+    public Nota(float nota, int idEstudianteCurso, int idActividad, String detallesExtra) {
         this.nota = nota;
-        this.idEstudiante = idEstudiante;
-        this.idTema = idTema;
+        this.idEstudianteCurso = idEstudianteCurso;
+        this.idActividad = idActividad;
         this.detallesExtra = detallesExtra;
     }
 
@@ -33,20 +33,20 @@ public class Nota {
         this.nota = nota;
     }
 
-    public int getIdEstudiante() {
-        return idEstudiante;
+    public int getIdEstudianteCurso() {
+        return idEstudianteCurso;
     }
 
-    public void setIdEstudiante(int idEstudiante) {
-        this.idEstudiante = idEstudiante;
+    public void setIdEstudianteCurso(int idEstudianteCurso) {
+        this.idEstudianteCurso = idEstudianteCurso;
     }
 
-    public int getIdTema() {
-        return idTema;
+    public int getIdActividad() {
+        return idActividad;
     }
 
-    public void setIdTema(int idTema) {
-        this.idTema = idTema;
+    public void setIdActividad(int idActividad) {
+        this.idActividad = idActividad;
     }
 
     public String getDetallesExtra() {

@@ -126,10 +126,10 @@ public class NotaS extends HttpServlet {
         try {
             float nota=Float.parseFloat(request.getParameter("nota"));
             int IdEstudiante=Integer.parseInt(request.getParameter("idEstudiante"));
-            int IdTema=Integer.parseInt(request.getParameter("idTema"));
+            int IdActividad=Integer.parseInt(request.getParameter("idActividad"));
             String DetallesExtra=request.getParameter("DetallesExtra");
             NotaDAO n=new NotaDAO();
-            n.addNota( nota,IdEstudiante,IdTema, DetallesExtra);
+            n.addNota( nota,IdEstudiante,IdActividad, DetallesExtra);
             
         } catch (SQLException ex) {
             Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);

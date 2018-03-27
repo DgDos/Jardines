@@ -51,7 +51,6 @@ public class EstudianteDAO {
             estudiante.setCelularContacto(rs.getString("celularcontacto"));
             estudiante.setDireccion(rs.getString("direccion"));
             estudiante.setFechaNacimiento(rs.getString("fechanacimiento"));
-            estudiante.setRh(rs.getString("rh"));
             estudiante.setTipoSangre(rs.getString("tiposangre"));
             estudiante.setIdCurso(rs.getInt("idcurso"));
         }
@@ -59,15 +58,14 @@ public class EstudianteDAO {
     }
 
     public void addEstudiante(Estudiante est) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into estudiante values (?,?,?,?,?,?,?,?,1)");
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into estudiante values (?,?,?,?,?,?,?,1)");
         preparedStatement.setInt(1, est.getIdEstudiante());
         preparedStatement.setString(2, est.getNombre());
         preparedStatement.setString(3, est.getCelularContacto());
         preparedStatement.setString(4, est.getDireccion());
         preparedStatement.setString(5, est.getFechaNacimiento());
-        preparedStatement.setString(6, est.getRh());
-        preparedStatement.setString(7, est.getTipoSangre());
-        preparedStatement.setInt(8, est.getIdCurso());
+        preparedStatement.setString(6, est.getTipoSangre());
+        preparedStatement.setInt(7, est.getIdCurso());
         preparedStatement.executeUpdate();
     }
     public void eliminarEstudiante(int idE) throws SQLException{
@@ -77,15 +75,14 @@ public class EstudianteDAO {
     }
 
     public void updateEstudiante(Estudiante e) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("update estudiante set nombre=?,celularcontacto=?,direccion=?,fechanacimiento=?,rh=?,tiposangre=?,idcurso=?" + " where documento=?");
+        PreparedStatement preparedStatement = connection.prepareStatement("update estudiante set nombre=?,celularcontacto=?,direccion=?,fechanacimiento=?,tiposangre=?,idcurso=?" + " where documento=?");
         preparedStatement.setString(1, e.getNombre());
         preparedStatement.setString(2, e.getCelularContacto());
         preparedStatement.setString(3, e.getDireccion());
         preparedStatement.setString(4, e.getFechaNacimiento());
-        preparedStatement.setString(5, e.getRh());
-        preparedStatement.setString(6, e.getTipoSangre());
-        preparedStatement.setInt(7, e.getIdCurso());
-        preparedStatement.setInt(8, e.getIdEstudiante());
+        preparedStatement.setString(5, e.getTipoSangre());
+        preparedStatement.setInt(6, e.getIdCurso());
+        preparedStatement.setInt(7, e.getIdEstudiante());
         preparedStatement.executeUpdate();
     }
     

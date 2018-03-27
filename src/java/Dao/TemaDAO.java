@@ -47,4 +47,18 @@ public class TemaDAO {
         }
         return temas; 
     }
+    
+    public void eliminarTema(int idT) throws SQLException{
+         PreparedStatement preparedStatement = connection.prepareStatement("update tema set delete=0 where id="+idT);
+        
+        preparedStatement.executeUpdate();
+    }
+    
+     public void updateTema(Tema e) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update tema set nombre=?,idcm=?" + " where id=?");
+        preparedStatement.setString(1, e.getNombre());
+        preparedStatement.setInt(2, e.getIdCM());
+        preparedStatement.setInt(3, e.getIdTema());
+        preparedStatement.executeUpdate();
+    }
 }

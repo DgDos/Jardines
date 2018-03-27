@@ -59,5 +59,16 @@ public class MateriaDAO {
         preparedStatement.setString(1, nombreM);
         preparedStatement.executeUpdate();
     }
+    public void eliminarMateria(int idM) throws SQLException{
+         PreparedStatement preparedStatement = connection.prepareStatement("update materia set delete=0 where id="+idM);
+        
+        preparedStatement.executeUpdate();
+    }
+    
+    public void updateMateria(Materia e) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update materia set nombre=? " + " where id=?");
+        preparedStatement.setString(1, e.getNombre());
+        preparedStatement.executeUpdate();
+    }
 
 }

@@ -128,7 +128,6 @@ public class EstudianteS extends HttpServlet {
                 e.setCelularContacto(request.getParameter("celularcontacto"));
                 e.setDireccion(request.getParameter("direccion"));
                 e.setTipoSangre(request.getParameter("tiposangre"));
-                e.setRh(request.getParameter("rh"));
                 System.out.println(e.toString());
                 EstudianteDAO o = new EstudianteDAO();
                 o.updateEstudiante(e);
@@ -162,7 +161,6 @@ public class EstudianteS extends HttpServlet {
             e.setCelularContacto(request.getParameter("celularcontacto"));
             e.setDireccion(request.getParameter("direccion"));
             e.setTipoSangre(request.getParameter("tiposangre"));
-            e.setRh(request.getParameter("rh"));
             System.out.println(e.toString());
             EstudianteDAO o = new EstudianteDAO();
             o.addEstudiante(e);

@@ -15,7 +15,6 @@ public class Estudiante {
     private String celularContacto;
     private String direccion;
     private String fechaNacimiento;
-    private String rh;
     private String tipoSangre;
     private int idCurso;
     
@@ -23,13 +22,12 @@ public class Estudiante {
     public Estudiante() {
     }
 
-    public Estudiante(int idEstudiante, String nombre, String celularContacto, String direccion, String fechaNacimiento, String rh, String tipoSangre, int idCurso) {
+    public Estudiante(int idEstudiante, String nombre, String celularContacto, String direccion, String fechaNacimiento, String tipoSangre, int idCurso) {
         this.idEstudiante = idEstudiante;
         this.nombre = nombre;
         this.celularContacto = celularContacto;
         this.direccion = direccion;
         this.fechaNacimiento = fechaNacimiento;
-        this.rh = rh;
         this.tipoSangre = tipoSangre;
         this.idCurso = idCurso;
     }
@@ -74,14 +72,6 @@ public class Estudiante {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getRh() {
-        return rh;
-    }
-
-    public void setRh(String rh) {
-        this.rh = rh;
-    }
-
     public String getTipoSangre() {
         return tipoSangre;
     }
@@ -100,7 +90,7 @@ public class Estudiante {
 
     @Override
     public String toString() {
-        return "Estudiante{" + "idEstudiante=" + idEstudiante + ", nombre=" + nombre + ", celularContacto=" + celularContacto + ", direccion=" + direccion + ", fechaNacimiento=" + fechaNacimiento + ", rh=" + rh + ", tipoSangre=" + tipoSangre + ", idCurso=" + idCurso + '}';
+        return "Estudiante{" + "idEstudiante=" + idEstudiante + ", nombre=" + nombre + ", celularContacto=" + celularContacto + ", direccion=" + direccion + ", fechaNacimiento=" + fechaNacimiento +  ", tipoSangre=" + tipoSangre + ", idCurso=" + idCurso + '}';
     }
     
     
