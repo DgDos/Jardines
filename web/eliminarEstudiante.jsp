@@ -60,7 +60,7 @@
 
                     <form id="EliminarE" >                                              
                         <div  class="form-group"  >
-                            <label >Buscar Estudiante:</label>
+                            <label >Eliminar Estudiante:</label>
                             <select class="form-control" required name="documento" id="documento">
                                 <option value="" selected disabled>Seleccione el estudiante</option>
                             </select> 

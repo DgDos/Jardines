@@ -18,6 +18,7 @@
                         <a class="dropdown-item" href="editarEstudiante.jsp">Editar Estudiante</a>
                         <a class="dropdown-item" href="verEstudiante.jsp">Ver Estudiante</a>
                         <a class="dropdown-item" href="eliminarEstudiante.jsp">Eliminar Estudiante</a>
+                         <a class="dropdown-item" href="ubicarEstudiante.jsp">Asignar Estudiante</a>
                     </ul>
                 </div>
             
@@ -32,6 +33,7 @@
                                 <a class="dropdown-item" href="editarProfesor.jsp">Editar Profesor</a>
                                 <a class="dropdown-item" href="verProfesor.jsp">Ver Profesor</a>
                                 <a class="dropdown-item" href="eliminarProfesor.jsp">Eliminar Profesor</a>
+                                <a class="dropdown-item" href="ubicarDirector.jsp">Asignar Profesor</a>
                             </ul>
                         </div>
                         <li class="nav-item">

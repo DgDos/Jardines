@@ -36,7 +36,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
 
     </head>
-    <body style="background-color:black">
+    <body style="background-color:white">
         <%@include file="headerAdmin.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -47,21 +47,23 @@
                     <br>
                     <br>
                     <br>
+                    <br>
+                    <br>
                     <form id="ubicarPro">                                
                         <div class="form-group">
-                            <label style="color:white">Curso: </label>
+                            <label >Curso: </label>
                             <select class="form-control" required name="curso" id="curso">
                                 <option value="" selected disabled>Seleccione un curso</option>
                             </select> 
                         </div>
                         <div class="form-group">
-                            <label style="color:white" >Profesor: </label>
+                            <label  >Profesor: </label>
                             <select required name="profesor" id="profesor" class="form-control">
                                 <option value="" selected  disabled>Seleccione un profesor</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label style="color:white">Fecha de Inicio:</label>
+                            <label >Fecha de Inicio:</label>
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class='col-sm-6'>
@@ -77,7 +79,7 @@
                                 </div>
                             </div>
                         </div> 
-                        <button type="submit" class="btn btn-neutral" name="Enviar">Ubicar</button>
+                        <button type="submit" class="btn btn-default" name="Enviar">Ubicar</button>
                     </form>                                                       
                 </div>
             </div>

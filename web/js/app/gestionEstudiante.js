@@ -86,17 +86,17 @@ $('#documento').on('change', function () {
                 
                 var selectForm = $('#verE');
                 selectForm.empty();
-                var opcion = "<p style=\"color:white\" >Documento: " + json.idEstudiante + ".</p>";
+                var opcion = "<p style=\"\" >Documento: " + json.idEstudiante + ".</p>";
                 selectForm.append(opcion);
-                opcion = "<p style=\"color:white\" >Nombre: " + json.nombre + ".</p>";
+                opcion = "<p style=\"\" >Nombre: " + json.nombre + ".</p>";
                 selectForm.append(opcion);               
-                opcion = "<p style=\"color:white\" >Fecha Nacimiento: " + json.fechaNacimiento + ".</p>";
+                opcion = "<p style=\"\" >Fecha Nacimiento: " + json.fechaNacimiento + ".</p>";
                 selectForm.append(opcion);
-                opcion = "<p style=\"color:white\" >Celular de contacto: " + json.celularContacto + ".</p>";
+                opcion = "<p style=\"\" >Celular de contacto: " + json.celularContacto + ".</p>";
                 selectForm.append(opcion);
-                opcion = "<p style=\"color:white\" >Direccion: " + json.direccion + ".</p>";
+                opcion = "<p style=\"\" >Direccion: " + json.direccion + ".</p>";
                 selectForm.append(opcion);
-                opcion = "<p style=\"color:white\" >Tipo Sangre: " + json.tipoSangre + ".</p>";
+                opcion = "<p style=\"\" >Tipo Sangre: " + json.tipoSangre + ".</p>";
                 selectForm.append(opcion);
                 
             },

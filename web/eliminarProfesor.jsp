@@ -60,13 +60,13 @@
 
                     <form id="EliminarProfesor2" >                                              
                         <div  class="form-group"  >
-                            <label style="color:white" >Buscar Profesor:</label>
+                            <label  >Eliminar Profesor:</label>
                             <select class="form-control" required name="cedula" id="cedula">
                                 <option value="" selected disabled>Seleccione la cedula</option>
                             </select> 
                         </div>
 
-                        <button type="submit" class="btn btn-neutral" name="Enviar">Enviar</button>
+                        <button type="submit" class="btn btn-default" name="Enviar">Enviar</button>
                     </form>
 
                 </div>
