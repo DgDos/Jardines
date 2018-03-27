@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <%
-    Profesor p=(Profesor)request.getSession().getAttribute("profesor");
-    if(p!=null){
-        if(p.getTipoU()==0){
-            response.sendRedirect("menuAdmin.jsp");
+        Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+        if (p != null) {
+            if (p.getTipoU() == 0) {
+                response.sendRedirect("menuAdmin.jsp");
+            }
+        } else {
+            response.sendRedirect("index.jsp");
         }
-    }else{
-        response.sendRedirect("index.jsp");
-    }
     %>
     <head>
         <meta charset="utf-8" />
@@ -36,7 +36,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
 
     </head>
-    <body style="background-color:black">
+    <body style="background-color:#ccccff">
         <%@include file="headerProfesor.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -50,51 +50,51 @@
                     <br>
                     <br>
                     <div class="container">
-                        <a>
-                            <button type="button"  type="text" name="director" class="btn btn-default btn-round" id="botonVisualizar">Visualizar</button>
-                        </a>
-                        <a>
-                            <button type="button"  type="text" name="profesor" class="btn btn-default btn-round" id="botonRealizar">Realizar</button>
-                        </a>
-                        <br>
-                        <br>
-                        <br>
-                        <form id="SelectCurso" style="display: none;">                                
-                            <div>
+                      
+                        <form id="SelectCurso" >                                
+                            <div >
+                                <div class="form-inline" >
+                                    <label >Profesor: </label>
+                                    <select class="form-control" required name="profe" id="profe">
+                                        <option value="" selected disabled>Seleccione el profesor</option>
+                                    </select> 
+                                    <label >Curso: </label>
+                                    <select class="form-control" required name="curso" id="curso">
+                                        <option value="" selected disabled>Seleccione un curso</option>
+                                    </select> 
+                                   
+                                    <label  >Estudiante:</label>
+                                    <select required name="estudiante" id="estudiante" class="form-control">
+                                        <option value="" selected  disabled>Seleccione un estudiante</option>
+                                    </select>   
+                                    
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                            <table id="tablaObs" class="table table-hover">
 
-                                <label style="color:white">Curso: </label>
-                                <select class="form-control" required name="curso" id="curso">
-                                    <option value="" selected disabled>Seleccione un curso</option>
-                                </select> 
-                                <br>
-                                <label style="color:white" >Estudiante:</label>
-                                <select required name="estudiante" id="estudiante" class="form-control">
-                                    <option value="" selected  disabled>Seleccione un estudiante</option>
-                                </select>   
-                                <br>
-                                <br>
-                                <br>
-                                <table id="tablaObs" class="table table-hover" style="display: none;">
+                            </table>
 
-                                </table>
-                            </div>  
                         </form>
-                        <form id="AddObs" style="display: none;">
+                        <form id="AddObs">
                             <div class="form-group" >
-                                <label style="color:white" for="detalle">Detalle:</label>
+                                <label  for="detalle">Detalle:</label>
                                 <input type="text" class="form-control form-control-success" name="detalle" id="detalles">                               
                                 <br> 
-                                <label for="calificacion" style="color:white">Calificacion: </label>
-                                <select required name="calificacion" id="calificacion">
-                                    <option value="" selected disabled style="color:black">Seleccione una opcion</option>
-                                    <option value="5" style="color:green">5</option>  
-                                    <option value="4" style="color:yellowgreen">4</option> 
-                                    <option value="3"style="color:yellow">3</option>
-                                    <option value="2" style="color:orange">2</option>
-                                    <option value="1" style="color:red">1</option>
-                                </select> 
+                                <label for="calificacion" >Calificacion: </label>
+                                <div class="col-4">
+                                    <select required name="calificacion" id="calificacion" class="form-control">
+                                        <option value="" selected disabled >Seleccione una opcion</option>
+                                        <option value="5" style="color:green">5</option>  
+                                        <option value="4" style="color:yellowgreen">4</option> 
+                                        <option value="3"style="color:yellow">3</option>
+                                        <option value="2" style="color:orange">2</option>
+                                        <option value="1" style="color:red">1</option>
+                                    </select> 
+                                </div>
                             </div>
-                            <button type="submit" class="btn btn-neutral" name="Enviar">Enviar</button>
+                            <button type="submit" class="btn btn-default" name="Enviar">Enviar</button>
                         </form>                                                               
                     </div>
                 </div>
