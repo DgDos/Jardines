@@ -117,7 +117,9 @@ $('#SelectCM').on('submit', function () {
         data: {
             'curso': $('#curso').val(),
             'materia': $('#materia').val(),
-            'profesor': $('#profesor').val()
+            'profesor': $('#profesor').val(),
+            'fechainicio': $('#fecha').val()
+            
         },
         dataType: "text",
         success: function (data) {

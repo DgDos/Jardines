@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <%
-    Profesor p=(Profesor)request.getSession().getAttribute("profesor");
-    if(p!=null){
-        if(p.getTipoU()==1){
-            response.sendRedirect("menuProfesor.jsp");
+        Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+        if (p != null) {
+            if (p.getTipoU() == 1) {
+                response.sendRedirect("menuProfesor.jsp");
+            }
+        } else {
+            response.sendRedirect("index.jsp");
         }
-    }else{
-        response.sendRedirect("index.jsp");
-    }
     %>
     <head>
         <meta charset="utf-8" />
@@ -48,7 +48,7 @@
                     <br>
                     <br>
                     <br>
-                    
+
                     <div class="container">
                         <a>
                             <button type="button"  type="text" name="crearCursoMateria" class="btn btn-default btn-round" id="crearCursoMateria">Crear Curso Materia</button>
@@ -74,14 +74,28 @@
                                 <label style="color:white" >Profesor: </label>
                                 <select required name="profesor" id="profesor" class="form-control">
                                     <option value="" selected  disabled>Seleccione un profesor</option>
-                                </select> 
+                                </select>
                                 <br>
+                                <label style="color:white" >Fecha de Inicio: </label>
+                                <div class="row">
+                                <div class='col-sm-6'>
+                                    <div class="form-group">
+                                        <div class='input-group date'  id='datetimepicker' >
+                                            <input  id="fecha" name="fecha" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                               <br>
                                 <br>
                                 <button type="submit" class="btn btn-neutral" name="Enviar">Ubicar</button>
                             </div>  
                         </form>
                         <table id="tablaCM" class="table table-hover" style="display: none;">
-                            
+
                         </table>                                                           
                     </div>
                 </div>
