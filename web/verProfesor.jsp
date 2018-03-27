@@ -36,7 +36,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
 
     </head>
-    <body style="background-color:black">
+    <body style="background-color:white">
         <%@include file="headerAdmin.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -51,18 +51,7 @@
 
 
                     <div class="container">
-                        <a class href="crearProfesor.jsp">
-                            <button type="button" class="btn btn-default btn-round"> Crear Profesor</button>
-                        </a>                      
-                        <a  href="editarProfesor.jsp">
-                            <button type="button" class="btn btn-default btn-round">Editar Profesor</button>
-                        </a>                      
-                        <a  href="verProfesor.jsp">
-                            <button   type="button" class="btn btn-default btn-round" id="verp">Ver Profesor</button>  
-                        </a>                       
-                        <a  href="eliminarProfesor.jsp">
-                            <button   type="button" class="btn btn-default btn-round">Eliminar Profesor</button>  
-                        </a>
+                       
                         <br>
                         <br>
 
@@ -72,7 +61,7 @@
 
 
                     <div  class="form-group"  >
-                        <label style="color:white" >Buscar Profesor:</label>
+                        <label >Buscar Profesor:</label>
                         <select class="form-control" required name="cedula" id="cedula">
                             <option value="" selected disabled>Seleccione la cedula</option>
                         </select> 

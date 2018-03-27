@@ -30,7 +30,7 @@
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
     </head>
-    <body style="background-color:black">
+    <body style="background-color:white">
         <%@include file="headerAdmin.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -43,50 +43,38 @@
                     <br>
                     <br>
                     <div class="container">
-                        <a class href="crearProfesor.jsp">
-                            <button type="button" class="btn btn-default btn-round"> Crear Profesor</button>
-                        </a>                      
-                        <a  href="editarProfesor.jsp">
-                            <button type="button" class="btn btn-default btn-round">Editar Profesor</button>
-                        </a>                      
-                        <a  href="verProfesor.jsp">
-                            <button   type="button" class="btn btn-default btn-round">Ver Profesor</button>  
-                        </a>                       
-                        <a  href="eliminarProfesor.jsp">
-                            <button   type="button" class="btn btn-default btn-round">Eliminar Profesor</button>  
-                        </a>
-                       
+                        
                     </div>
                     <br>
                     <form id="crearProfesor" >
                         <div class="form-group">
-                            <label style="color:white">Cedula:</label>
+                            <label >Cedula:</label>
                             <input  required class="form-control form-control-success" id="cedula" >
-                            <label style="color:white">Nombre:</label>
+                            <label >Nombre:</label>
                             <input  required class="form-control form-control-success" id="nombre"  >
-                            <label style="color:white">TipoU:</label>
+                            <label >TipoU:</label>
                             <select required class="form-control" id="tipoU">
                                 <option selected  value="" disabled>Seleccione un curso</option>
                                 <option value="0">Administrador</option>
                                 <option value="1">Profesor</option>
                             </select>
                             <br>
-                            <label style="color:white">Correo:</label>
+                            <label>Correo:</label>
                             <input required class="form-control form-control-success" id="correo"  >
-                            <label style="color:white">Celular:</label>
+                            <label >Celular:</label>
                             <input required class="form-control form-control-success" id="celular"  >
-                            <label style="color:white">Direccion:</label>
+                            <label >Direccion:</label>
                             <input required class="form-control form-control-success" id="direccion"  >
                             
-                            <label style="color:white">Experiencia:</label>
+                            <label >Experiencia:</label>
                             <input required class="form-control form-control-success" id="experiencia"  >
-                            <label style="color:white">Fecha Nacimiento:</label>
+                            <label >Fecha Nacimiento:</label>
                             <div class="col-md-6">
                             <div class="row">
                                 <div class='col-sm-6'>
                                     <div class="form-group">
                                         <div class='input-group date'  id='datetimepicker' >
-                                            <input  id="fechanacimiento" name="fechanacimiento" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
+                                            <input required  id="fechanacimiento" name="fechanacimiento" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                             </span>
@@ -95,15 +83,15 @@
                                 </div>
                             </div>
                         </div>
-                            <label style="color:white">Tipo Sangre:</label>
+                            <label >Tipo Sangre:</label>
                             <input required class="form-control form-control-success" id="tiposangre"  >
 
-                            <label style="color:white">Usuario</label>
+                            <label >Usuario</label>
                             <input required class="form-control form-control-success" id="usuario"  >
-                            <label style="color:white">Contraseña:</label>
+                            <label >Contraseña:</label>
                             <input required class="form-control form-control-success" id="contra" type="password" >
                         </div>
-                        <button type="submit" class="btn btn-neutral">Enviar</button>
+                        <button type="submit" class="btn btn-default">Enviar</button>
                     </form>
                 </div>
             </div>

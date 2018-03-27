@@ -9,33 +9,48 @@
             <a class="navbar-brand" href="menuAdmin.jsp">Jardin Infantil</a>
         </div>
         <div class="collapse navbar-collapse" id="navbarToggler">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="perfilAdmin.jsp"  class="nav-link" ><i class=" nc-icon nc-badge" ></i>Ver Perfil</a>
-                </li>
-                <li class="nav-item">
-                    <a href="gestionEstudiante.jsp"  class="nav-link"><i class="nc-icon nc-circle-10"></i> Gestion Estudiante</a>
-                </li>
-                <li class="nav-item">
-                    <a href="gestionProfesor.jsp"  class="nav-link"><i class="nc-icon nc-single-02"></i> Gestion Profesor</a>
-                </li>
-                <li class="nav-item">
-                    <a href="gestionCurso.jsp" class="nav-link"><i class="nc-icon nc-ruler-pencil"></i> Gestion Curso</a>
-                </li>  
-                 <li class="nav-item">
-                    <a href="cursoMateria.jsp"  class="nav-link"><i class="nc-icon nc-single-copy-04"></i>Curso/Materia</a>
-                </li>
-                <li class="nav-item">
-                    <a href="gestionMateria.jsp"  class="nav-link"><i class="nc-icon nc-tile-56"></i> Gestion Materia</a>
-                </li>
-                <li class="nav-item">
-                    <a href="tema.jsp"  class="nav-link"><i class="nc-icon nc-tile-56"></i> Gestion Tema</a>
-                </li>
-                <li class="nav-item">
-                    <a href="Login?action=salir" class="nav-link"><i class="nc-icon nc-button-power"></i> Logout</a>
-                </li>
-            </ul>
+            <ul class="navbar-nav ml-auto">               
+
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle " data-toggle="dropdown" id="dropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-circle-10"></i>Gestion Estudiante</a>
+                    <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="crearEstudiante.jsp">Crear Estudiante</a>
+                        <a class="dropdown-item" href="editarEstudiante.jsp">Editar Estudiante</a>
+                        <a class="dropdown-item" href="verEstudiante.jsp">Ver Estudiante</a>
+                        <a class="dropdown-item" href="eliminarEstudiante.jsp">Eliminar Estudiante</a>
+                    </ul>
+                </div>
+            
+
+                <div class="collapse navbar-collapse" id="navbarToggler">
+                    <ul class="navbar-nav ml-auto">               
+
+                        <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle " data-toggle="dropdown" id="dropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-single-02"></i>Gestion Profesor</a>
+                            <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="crearProfesor.jsp">Crear Profesor</a>
+                                <a class="dropdown-item" href="editarProfesor.jsp">Editar Profesor</a>
+                                <a class="dropdown-item" href="verProfesor.jsp">Ver Profesor</a>
+                                <a class="dropdown-item" href="eliminarProfesor.jsp">Eliminar Profesor</a>
+                            </ul>
+                        </div>
+                        <li class="nav-item">
+                            <a href="gestionCurso.jsp" class="nav-link"><i class="nc-icon nc-ruler-pencil"></i> Gestion Curso</a>
+                        </li>  
+                        <li class="nav-item">
+                            <a href="cursoMateria.jsp"  class="nav-link"><i class="nc-icon nc-single-copy-04"></i>Curso/Materia</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="gestionMateria.jsp"  class="nav-link"><i class="nc-icon nc-tile-56"></i> Gestion Materia</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="tema.jsp"  class="nav-link"><i class="nc-icon nc-tile-56"></i> Gestion Tema</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="Login?action=salir" class="nav-link"><i class="nc-icon nc-button-power"></i> Logout</a>
+                        </li>
+                    </ul>
+                </div>
         </div>
-    </div>
 </nav>
 <br>

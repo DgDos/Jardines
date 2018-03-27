@@ -36,7 +36,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
 
     </head>
-    <body style="background-color:black">
+    <body style="background-color:white">
         <%@include file="headerAdmin.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -51,18 +51,7 @@
 
 
                     <div class="container">
-                        <a class href="crearProfesor.jsp">
-                            <button type="button" class="btn btn-default btn-round"> Crear Profesor</button>
-                        </a>                      
-                        <a  href="editarProfesor.jsp">
-                            <button type="button" class="btn btn-default btn-round">Editar Profesor</button>
-                        </a>                      
-                        <a  href="verProfesor.jsp">
-                            <button   type="button" class="btn btn-default btn-round">Ver Profesor</button>  
-                        </a>                       
-                        <a  href="eliminarProfesor.jsp">
-                            <button   type="button" class="btn btn-default btn-round">Eliminar Profesor</button>  
-                        </a>
+                        
                         <br>
                         <br>
 
@@ -72,7 +61,7 @@
 
 
                     <div  class="form-group"  >
-                        <label style="color:white" >Buscar Profesor:</label>
+                        <label  >Buscar Profesor:</label>
                         <select class="form-control" required name="cedula" id="cedula">
                             <option value="" selected disabled>Seleccione el profesor</option>
                         </select> 
@@ -84,21 +73,21 @@
                     <form id="EditarP" >
                         <br>
                         <div class="form-group">
-                            <label style="color:white">Cedula:</label>
+                            <label >Cedula:</label>
                             <input  class="form-control form-control-success" id="cedula2" readonly="readonly" >
                         </div>
                         <div class="form-group">
-                            <label style="color:white">Nombre:</label>
+                            <label >Nombre:</label>
                             <input  class="form-control form-control-success" id="nombre" >
                         </div>
                         <div class="form-group">
-                            <label style="color:white" >Usuario:</label>
+                            <label  >Usuario:</label>
                             <input  class="form-control form-control-success" id="usuario">
                         </div>
                         
                        
                         <div class="form-group">
-                            <label style="color:white">Fecha de Nacimiento:</label>
+                            <label >Fecha de Nacimiento:</label>
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class='col-sm-6'>
@@ -115,27 +104,27 @@
                             </div>
                         </div> 
                         <div class="form-group">
-                            <label style="color:white">Tipo de Sangre:</label>
+                            <label >Tipo de Sangre:</label>
                             <input  class="form-control form-control-success" id="tiposangre" >
                         </div> 
                         <div class="form-group">
-                            <label style="color:white">Correo:</label>
+                            <label >Correo:</label>
                             <input  class="form-control form-control-success" id="correo"  >
                         </div>
                         <div class="form-group">
-                            <label style="color:white">Celular:</label>
+                            <label >Celular:</label>
                             <input  class="form-control form-control-success" id="celular" >
                         </div> 
                         <div class="form-group">
-                            <label style="color:white">Direccion:</label>
+                            <label >Direccion:</label>
                             <input  class="form-control form-control-success" id="direccion" >
                         </div> 
                         
                         <div class="form-group">
-                            <label style="color:white">Experiencia:</label>
+                            <label >Experiencia:</label>
                             <input  class="form-control form-control-success" id="experiencia"  >
                         </div> 
-                        <button type="submit" class="btn btn-neutral" name="Enviar">Enviar</button>
+                        <button type="submit" class="btn btn-default" name="Enviar">Enviar</button>
 
                     </form>
 

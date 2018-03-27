@@ -36,7 +36,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
 
     </head>
-    <body style="background-color:black">
+    <body style="background-color:white">
         <%@include file="headerAdmin.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -49,18 +49,7 @@
                     <br>
                     <br>
                     <div class="container">
-                        <a class href="crearEstudiante.jsp">
-                            <button type="text" class="btn btn-default btn-round" id="botonCrear"> Crear Estudiante</button>
-                        </a>                      
-                        <a  href="editarEstudiante.jsp">
-                            <button type="text" class="btn btn-default btn-round" id="editarBoton">Editar Estudiante</button>
-                        </a>                      
-                        <a  href="verEstudiante.jsp">
-                            <button   type="text" class="btn btn-default btn-round" id="botonVer">Ver Estudiante</button>  
-                        </a>                       
-                        <a  href="eliminarEstudiante.jsp">
-                            <button   type="text" class="btn btn-default btn-round" id="botonEliminar">Eliminar Estudiante</button>  
-                        </a>
+                        
 
                     </div>
                     <br>
@@ -71,12 +60,12 @@
 
                     <form id="EliminarE" >                                              
                         <div  class="form-group"  >
-                            <label style="color:white" >Buscar Estudiante:</label>
+                            <label >Buscar Estudiante:</label>
                             <select class="form-control" required name="documento" id="documento">
                                 <option value="" selected disabled>Seleccione el estudiante</option>
                             </select> 
                         </div>
-                        <button type="submit" class="btn btn-neutral" name="Enviar">Enviar</button>
+                        <button type="submit" class="btn btn-default" name="Enviar">Enviar</button>
                     </form>
 
                 </div>

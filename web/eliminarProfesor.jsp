@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <%
-    Profesor p=(Profesor)request.getSession().getAttribute("profesor");
-    if(p!=null){
-        if(p.getTipoU()==1){
-            response.sendRedirect("menuProfesor.jsp");
+        Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+        if (p != null) {
+            if (p.getTipoU() == 1) {
+                response.sendRedirect("menuProfesor.jsp");
+            }
+        } else {
+            response.sendRedirect("index.jsp");
         }
-    }else{
-        response.sendRedirect("index.jsp");
-    }
     %>
     <head>
         <meta charset="utf-8" />
@@ -36,7 +36,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
 
     </head>
-    <body style="background-color:black">
+    <body style="background-color:white">
         <%@include file="headerAdmin.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -49,35 +49,24 @@
                     <br>
                     <br>
                     <div class="container">
-                        <a class href="crearProfesor.jsp">
-                            <button type="button" class="btn btn-default btn-round"> Crear Profesor</button>
-                        </a>                      
-                        <a  href="editarProfesor.jsp">
-                            <button type="button" class="btn btn-default btn-round">Editar Profesor</button>
-                        </a>                      
-                        <a  href="verProfesor.jsp">
-                            <button   type="button" class="btn btn-default btn-round">Ver Profesor</button>  
-                        </a>                       
-                        <a  href="eliminarProfesor.jsp">
-                            <button   type="button" class="btn btn-default btn-round">Eliminar Profesor</button>  
-                        </a>
-                        
+
+
                     </div>
                     <br>
-             
-                    
-                    
-                    
-                    
+
+
+
+
+
                     <form id="EliminarProfesor2" >                                              
                         <div  class="form-group"  >
-                        <label style="color:white" >Buscar Profesor:</label>
-                        <select class="form-control" required name="cedula" id="cedula">
-                            <option value="" selected disabled>Seleccione la cedula</option>
-                        </select> 
-                    </div>
-                        
-                     <button type="submit" class="btn btn-neutral" name="Enviar">Enviar</button>
+                            <label style="color:white" >Buscar Profesor:</label>
+                            <select class="form-control" required name="cedula" id="cedula">
+                                <option value="" selected disabled>Seleccione la cedula</option>
+                            </select> 
+                        </div>
+
+                        <button type="submit" class="btn btn-neutral" name="Enviar">Enviar</button>
                     </form>
 
                 </div>
@@ -105,6 +94,6 @@
     <!--  Paper Kit Initialization and functons -->
     <script src="assets/js/paper-kit.js?v=2.1.0"></script>
     <script src="js/app/myfunctions.js"></script>
-     <script src="js/app/verP.js"></script>
+    <script src="js/app/verP.js"></script>
 </html>
 

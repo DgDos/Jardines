@@ -36,7 +36,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
 
     </head>
-    <body style="background-color:black">
+    <body style="background-color:white">
         <%@include file="headerAdmin.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -49,46 +49,34 @@
                     <br>
                     <br>
                     <div class="container">
-                        <a class href="crearEstudiante.jsp">
-                            <button type="text" class="btn btn-default btn-round" id="botonCrear"> Crear Estudiante</button>
-                        </a>                      
-                        <a  href="editarEstudiante.jsp">
-                            <button type="text" class="btn btn-default btn-round" id="editarBoton">Editar Estudiante</button>
-                        </a>                      
-                        <a  href="verEstudiante.jsp">
-                            <button   type="text" class="btn btn-default btn-round" id="botonVer">Ver Estudiante</button>  
-                        </a>                       
-                        <a  href="eliminarEstudiante.jsp">
-                            <button   type="text" class="btn btn-default btn-round" id="botonEliminar">Eliminar Estudiante</button>  
-                        </a>
-
+                       
                     </div>
                     <br>
 
                     <form id="CrearE" >
                         <div class="form-group">
-                            <label style="color:white">Documento:</label>
+                            <label >Documento:</label>
                             <input  class="form-control form-control-success" id="documento" required>
                         </div>
                         <div class="form-group">
-                            <label style="color:white" >Nombre:</label>
+                            <label  >Nombre:</label>
                             <input  class="form-control form-control-success" id="nombre" required  >
                         </div>
                         <div class="form-group">
-                            <label style="color:white">Direccion:</label>
+                            <label >Direccion:</label>
                             <input  class="form-control form-control-success" id="direccion" required  >
                         </div> 
                         <div class="form-group">
-                            <label style="color:white">Celular:</label>
+                            <label >Celular:</label>
                             <input  class="form-control form-control-success" id="celularcontacto" required >
                         </div>
-                        <label style="color:white">Fecha de Nacimiento:</label>
+                        <label >Fecha de Nacimiento:</label>
                         <div class="row">
                             <div class='col-sm-6'>
                                 <div class="form-group">
                                     <div class='input-group date'  id='datetimepicker' >
 
-                                        <input  id="fechanacimiento" name="fecha" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
+                                        <input required id="fechanacimiento" name="fecha" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
                                         </span>
@@ -97,11 +85,11 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label style="color:white">Tipo de sangre:</label>
+                            <label >Tipo de sangre:</label>
                             <input  class="form-control form-control-success" id="tiposangre" required >
                         </div> 
 
-                        <button type="submit" class="btn btn-neutral">Enviar</button>
+                        <button type="submit" class="btn btn-default">Enviar</button>
                     </form>
 
 

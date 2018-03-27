@@ -36,7 +36,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
 
     </head>
-    <body style="background-color:black">
+    <body style="background-color:white">
         <%@include file="headerAdmin.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -49,26 +49,14 @@
                     <br>
                     <br>
                     <div class="container">
-                        <a class href="crearEstudiante.jsp">
-                            <button type="text" class="btn btn-default btn-round" id="botonCrear"> Crear Estudiante</button>
-                        </a>                      
-                        <a  href="editarEstudiante.jsp">
-                            <button type="text" class="btn btn-default btn-round" id="editarBoton">Editar Estudiante</button>
-                        </a>                      
-                        <a  href="verEstudiante.jsp">
-                            <button   type="text" class="btn btn-default btn-round" id="botonVer">Ver Estudiante</button>  
-                        </a>                       
-                        <a  href="eliminarEstudiante.jsp">
-                            <button   type="text" class="btn btn-default btn-round" id="botonEliminar">Eliminar Estudiante</button>  
-                        </a>
-
+                       
                     </div>
                     <br>
 
 
 
                     <div  class="form-group"  >
-                        <label style="color:white" >Buscar Estudiante:</label>
+                        <label  >Buscar Estudiante:</label>
                         <select class="form-control" required name="documento" id="documento">
                             <option value="" selected disabled>Seleccione el estudiante</option>
                         </select> 
@@ -78,15 +66,15 @@
 
                         <br>
                         <div class="form-group">
-                            <label style="color:white">Documento:</label>
+                            <label >Documento:</label>
                             <input  class="form-control form-control-success" id="documento2" readonly="readonly" >
                         </div>
                         <div class="form-group">
-                            <label style="color:white" >Nombre:</label>
+                            <label >Nombre:</label>
                             <input  class="form-control form-control-success" id="nombre" value="">
                         </div>
                         <div class="form-group">
-                            <label style="color:white">Fecha de Nacimiento:</label>
+                            <label >Fecha de Nacimiento:</label>
                             <div class="col-md-6">
                                 <div class="row">
                                     <div class='col-sm-6'>
@@ -103,18 +91,18 @@
                             </div>
                         </div> 
                         <div class="form-group">
-                            <label style="color:white">Direccion:</label>
+                            <label >Direccion:</label>
                             <input  class="form-control form-control-success" id="direccion"  value="">
                         </div> 
                         <div class="form-group">
-                            <label style="color:white">Celular de contacto:</label>
+                            <label >Celular de contacto:</label>
                             <input  class="form-control form-control-success"  id="celularcontacto" value="">
                         </div>
                         <div class="form-group">
-                            <label style="color:white">Tipo de sangre:</label>
+                            <label >Tipo de sangre:</label>
                             <input  class="form-control form-control-success" id="tiposangre"  value="">
                         </div> 
-                        <button type="submit" class="btn btn-neutral" name="Enviar">Enviar</button>
+                        <button type="submit" class="btn btn-default" name="Enviar">Enviar</button>
                     </form>
 
 

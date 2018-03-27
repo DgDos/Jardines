@@ -50,7 +50,7 @@
                     <br>
                     <div class="container">
                     </div>
-                    <form id="formulario" class="form-inline" >
+                    <form id="formulario">
 
                         <div class="form-group">
                             <label style="color:white">Nombre del la Materia:</label>
@@ -77,7 +77,7 @@
                 </div>
             </div>
 
-
+        </div>
 
 
     </body>
