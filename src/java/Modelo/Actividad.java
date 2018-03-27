@@ -9,15 +9,16 @@ package Modelo;
  *
  * @author FiJus
  */
-public class Actividades {
+public class Actividad {
     private int id;
     private String nombre;
     private int idTema;
+  
 
-    public Actividades() {
+    public Actividad() {
     }
 
-    public Actividades(int id, String nombre, int idTema) {
+    public Actividad(int id, String nombre, int idTema) {
         this.id = id;
         this.nombre = nombre;
         this.idTema = idTema;

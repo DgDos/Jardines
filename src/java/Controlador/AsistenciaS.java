@@ -9,13 +9,13 @@ import Dao.AsistenciaDAO;
 import Dao.CursoDAO;
 import Dao.EstudianteDAO;
 import Dao.FechaDAO;
-import Dao.ProfesorCursoDAO;
+import Dao.DirectorCursoDAO;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Fecha;
 import Modelo.Profesor;
 import Modelo.Asistencia;
-import Modelo.ProfesorCurso;
+import Modelo.DirectorCurso;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -72,11 +72,11 @@ public class AsistenciaS extends HttpServlet {
                 if (op == 0) {
                     int pi = p.getIdProfesor();
                    
-                    ProfesorCursoDAO pc = new ProfesorCursoDAO();
-                    ArrayList<ProfesorCurso> pcm = pc.getAllProCur(pi);
+                    DirectorCursoDAO pc = new DirectorCursoDAO();
+                    ArrayList<DirectorCurso> pcm = pc.getAllProCur(pi);
                     ArrayList<Curso> cursos = new ArrayList<>();
                     CursoDAO c = new CursoDAO();
-                    for (ProfesorCurso profesorcurso : pcm) {
+                    for (DirectorCurso profesorcurso : pcm) {
                         cursos.add(c.getCursoById(profesorcurso.getIdCurso()));
                     }
                     Gson g = new Gson();

@@ -8,12 +8,12 @@ package Controlador;
 import Dao.CursoDAO;
 import Dao.EstudianteDAO;
 import Dao.ObservadorDAO;
-import Dao.ProfesorCursoDAO;
+import Dao.DirectorCursoDAO;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Observador;
 import Modelo.Profesor;
-import Modelo.ProfesorCurso;
+import Modelo.DirectorCurso;
 import com.google.gson.Gson;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
@@ -78,11 +78,11 @@ public class EstudianteS extends HttpServlet {
             int opc = Integer.parseInt(request.getParameter("opcion"));
             if (opc == 0) {
                 Profesor p = (Profesor) request.getSession().getAttribute("profesor");
-                ProfesorCursoDAO pc = new ProfesorCursoDAO();
-                ArrayList<ProfesorCurso> pcm = pc.getAllProCur(p.getIdProfesor());
+                DirectorCursoDAO pc = new DirectorCursoDAO();
+                ArrayList<DirectorCurso> pcm = pc.getAllProCur(p.getIdProfesor());
                 ArrayList<Curso> cursos = new ArrayList<>();
                 CursoDAO c = new CursoDAO();
-                for (ProfesorCurso profesorcurso : pcm) {
+                for (DirectorCurso profesorcurso : pcm) {
                     cursos.add(c.getCursoById(profesorcurso.getIdCurso()));
                 }
                 Gson g = new Gson();

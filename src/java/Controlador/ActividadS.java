@@ -10,7 +10,7 @@ import Dao.CursoDAO;
 import Dao.CursoMateriaDAO;
 import Dao.MateriaDAO;
 import Dao.TemaDAO;
-import Modelo.Actividades;
+import Modelo.Actividad;
 import Modelo.Curso;
 import Modelo.CursoMateria;
 import Modelo.Materia;
@@ -82,7 +82,7 @@ public class ActividadS extends HttpServlet {
             if(opcion==2){
                 int idT=Integer.parseInt(request.getParameter("tema"));
                 ActividadDAO a=new ActividadDAO();
-                ArrayList<Actividades> actividades=a.getAllActividades(idT);
+                ArrayList<Actividad> actividades=a.getAllActividades(idT);
                 Gson g = new Gson();
                 String pasareEsto = g.toJson(actividades);
                 out.print(pasareEsto);

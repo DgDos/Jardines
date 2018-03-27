@@ -7,12 +7,12 @@ package Controlador;
 
 import Dao.CursoDAO;
 import Dao.NotaDAO;
-import Dao.ProfesorCursoDAO;
+import Dao.DirectorCursoDAO;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Nota;
 import Modelo.Profesor;
-import Modelo.ProfesorCurso;
+import Modelo.DirectorCurso;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -76,11 +76,11 @@ public class NotaS extends HttpServlet {
             int opc = Integer.parseInt(request.getParameter("opcion"));
             if (opc == 0) {
                 Profesor p=(Profesor)request.getSession().getAttribute("profesor");
-                ProfesorCursoDAO pc = new ProfesorCursoDAO();
-                ArrayList<ProfesorCurso> pcm = pc.getAllProCur(p.getIdProfesor());
+                DirectorCursoDAO pc = new DirectorCursoDAO();
+                ArrayList<DirectorCurso> pcm = pc.getAllProCur(p.getIdProfesor());
                 ArrayList<Curso> cursos=new ArrayList<>();
                 CursoDAO c=new CursoDAO();
-                for (ProfesorCurso profesorcurso : pcm) {                  
+                for (DirectorCurso profesorcurso : pcm) {                  
                     cursos.add(c.getCursoById(profesorcurso.getIdCurso()));
                 }
                 Gson g = new Gson();

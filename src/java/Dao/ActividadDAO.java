@@ -5,7 +5,7 @@
  */
 package Dao;
 
-import Modelo.Actividades;
+import Modelo.Actividad;
 import Util.DbUtil;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -35,12 +35,12 @@ public class ActividadDAO {
         preparedStatement.executeUpdate();
     }
 
-    public ArrayList<Actividades> getAllActividades(int idT) throws SQLException {
-        ArrayList<Actividades> actividad = new ArrayList<>();
+    public ArrayList<Actividad> getAllActividades(int idT) throws SQLException {
+        ArrayList<Actividad> actividad = new ArrayList<>();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("select * from actividad where delete=1 and idtema="+idT);
         while (rs.next()) {
-            Actividades c = new Actividades();
+            Actividad c = new Actividad();
             c.setIdTema(rs.getInt("idtema"));
             c.setNombre(rs.getString("nombre"));
             c.setId(rs.getInt("id"));
@@ -48,4 +48,32 @@ public class ActividadDAO {
         }
         return actividad;
     }
+    
+    public void deleteActividad(int idA) throws SQLException{
+         PreparedStatement preparedStatement = connection.prepareStatement("update actividad set delete=0 where id="+idA);
+        
+        preparedStatement.executeUpdate();
+    }
+    
+    public void updateEstudiante(Actividad e) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update actividad set nombre=?,idtema=?" + " where id=?");
+        preparedStatement.setString(1, e.getNombre());
+        preparedStatement.setInt(2, e.getIdTema());
+        preparedStatement.setInt(3, e.getId());   
+        preparedStatement.executeUpdate();
+    }
+    
+     public Actividad getActividadByID(int idA) throws SQLException, URISyntaxException {
+        Actividad actividad= new Actividad();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from actividad where id=" + idA);
+        while (rs.next()) {
+            actividad.setId(rs.getInt("id"));
+            actividad.setNombre(rs.getString("nombre"));
+            actividad.setIdTema(rs.getInt("idtema"));
+            
+        }
+        return actividad;
+    }
+    
 }

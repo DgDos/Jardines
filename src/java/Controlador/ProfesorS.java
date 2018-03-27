@@ -11,6 +11,9 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -65,7 +68,7 @@ public class ProfesorS extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {          
+        try (PrintWriter out = response.getWriter()) {
             Profesor p = (Profesor) request.getSession().getAttribute("profesor");
             int cedula = p.getIdProfesor();
             ProfesorDAO pc = new ProfesorDAO();
@@ -73,7 +76,7 @@ public class ProfesorS extends HttpServlet {
             Gson g = new Gson();
             String pasareEsto = g.toJson(p);
             out.print(pasareEsto);
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(ProfesorS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
@@ -102,21 +105,24 @@ public class ProfesorS extends HttpServlet {
             String correo = request.getParameter("correo");
             String celular = request.getParameter("celular");
             String direccion = request.getParameter("direccion");
-            String estudios = request.getParameter("estudios");
             String experiencia = request.getParameter("experiencia");
             String fechaNacimiento = request.getParameter("fechanacimiento");
             String tipoSangre = request.getParameter("tiposangre");
-            String rh = request.getParameter("rh");
             String usuario = request.getParameter("usuario");
             String contra = request.getParameter("contra");
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] encodedhash = digest.digest(contra.getBytes(StandardCharsets.UTF_8));
+            String ps2 = bytesToHex(encodedhash);
             ProfesorDAO p = new ProfesorDAO();
-            Profesor profe = new Profesor(cedula, nombre, tipoU, correo, celular, direccion, estudios, experiencia, fechaNacimiento, tipoSangre, rh, usuario, contra);
+            Profesor profe = new Profesor(cedula, nombre, tipoU, correo, celular, direccion, experiencia, fechaNacimiento, tipoSangre, usuario, ps2);
             p.addProfesor(profe);
         } catch (SQLException ex) {
             Logger.getLogger(ProfesorS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
             Logger.getLogger(ProfesorS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProfesorS.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(ProfesorS.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -130,5 +136,17 @@ public class ProfesorS extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private static String bytesToHex(byte[] hash) {
+        StringBuffer hexString = new StringBuffer();
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if (hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
 
 }

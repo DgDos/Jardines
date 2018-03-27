@@ -7,12 +7,12 @@ package Controlador;
 
 import Dao.CursoDAO;
 import Dao.EstudianteDAO;
-import Dao.ProfesorCursoDAO;
+import Dao.DirectorCursoDAO;
 import Dao.ProfesorDAO;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Profesor;
-import Modelo.ProfesorCurso;
+import Modelo.DirectorCurso;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -96,15 +96,13 @@ public class ProfesorGestion extends HttpServlet {
                 String correo = request.getParameter("correo");
                 String celular = request.getParameter("celular");
                 String direccion = request.getParameter("direccion");
-                String estudios = request.getParameter("estudios");
                 String experiencia = request.getParameter("experiencia");
                 String fechaNacimiento = request.getParameter("fechanacimiento");
                 String tipoSangre = request.getParameter("tiposangre");
-                String rh = request.getParameter("rh");
                 String usuario = request.getParameter("usuario");
                 String contra = request.getParameter("contra");
                 ProfesorDAO p = new ProfesorDAO();
-                Profesor profe = new Profesor(cedula, nombre, tipoU, correo, celular, direccion, estudios, experiencia, fechaNacimiento, tipoSangre, rh, usuario, contra);
+                Profesor profe = new Profesor(cedula, nombre, tipoU, correo, celular, direccion, experiencia, fechaNacimiento, tipoSangre, usuario, contra);
                 p.updateProfesor(profe);
             }
 

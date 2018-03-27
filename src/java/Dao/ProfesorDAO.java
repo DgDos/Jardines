@@ -31,20 +31,18 @@ public class ProfesorDAO {
     public Profesor getProfesorById(int idPro) throws SQLException, URISyntaxException {
         Profesor pro = new Profesor();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from profesor where cedula=" + idPro);
+        ResultSet rs = statement.executeQuery("select * from profesor where delete=1 and cedula=" + idPro);
         while (rs.next()) {
             pro.setIdProfesor(rs.getInt("cedula"));
             pro.setNombre(rs.getString("nombre"));
-            pro.setTipoU(rs.getInt("tipoU"));
+            pro.setTipoU(rs.getInt("tipou"));
             pro.setPassword(rs.getString("password"));
             pro.setCorreo(rs.getString("correo"));
             pro.setCelular(rs.getString("celular"));
             pro.setDireccion(rs.getString("direccion"));
-            pro.setEstudios(rs.getString("estudios"));
             pro.setExperiencia(rs.getString("experiencia"));
-            pro.setFechaNacimiento(rs.getString("fechaNacimiento"));
-            pro.setTipoSangre(rs.getString("tipoSangre"));
-            pro.setRh(rs.getString("rh"));
+            pro.setFechaNacimiento(rs.getString("fechanacimiento"));
+            pro.setTipoSangre(rs.getString("tiposangre"));
             pro.setUsuario(rs.getString("usuario"));
         }
         return pro;
@@ -57,15 +55,13 @@ public class ProfesorDAO {
             Profesor pro = new Profesor();
             pro.setIdProfesor(rs.getInt("cedula"));
             pro.setNombre(rs.getString("nombre"));
-            pro.setTipoU(rs.getInt("tipoU"));
+            pro.setTipoU(rs.getInt("tipou"));
             pro.setCorreo(rs.getString("correo"));
             pro.setCelular(rs.getString("celular"));
             pro.setDireccion(rs.getString("direccion"));
-            pro.setEstudios(rs.getString("estudios"));
             pro.setExperiencia(rs.getString("experiencia"));
-            pro.setFechaNacimiento(rs.getString("fechaNacimiento"));
-            pro.setTipoSangre(rs.getString("tipoSangre"));
-            pro.setRh(rs.getString("rh"));
+            pro.setFechaNacimiento(rs.getString("fechanacimiento"));
+            pro.setTipoSangre(rs.getString("tiposangre"));
             pro.setUsuario(rs.getString("usuario"));
             pro.setPassword(rs.getString("password"));
             profesores.add(pro);
@@ -82,15 +78,13 @@ public class ProfesorDAO {
             Profesor pro = new Profesor();
             pro.setIdProfesor(rs.getInt("cedula"));
             pro.setNombre(rs.getString("nombre"));
-            pro.setTipoU(rs.getInt("tipoU"));
+            pro.setTipoU(rs.getInt("tipou"));
             pro.setCorreo(rs.getString("correo"));
             pro.setCelular(rs.getString("celular"));
             pro.setDireccion(rs.getString("direccion"));
-            pro.setEstudios(rs.getString("estudios"));
             pro.setExperiencia(rs.getString("experiencia"));
-            pro.setFechaNacimiento(rs.getString("fechaNacimiento"));
-            pro.setTipoSangre(rs.getString("tipoSangre"));
-            pro.setRh(rs.getString("rh"));
+            pro.setFechaNacimiento(rs.getString("fechanacimiento"));
+            pro.setTipoSangre(rs.getString("tiposangre"));
             pro.setUsuario(rs.getString("usuario"));
             pro.setPassword(rs.getString("password"));
             profesores.add(pro);
@@ -99,20 +93,18 @@ public class ProfesorDAO {
     }
 
     public void addProfesor(Profesor profe) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into profesor values (?,?,?,?,?,?,?,?,?,?,?,?,?,1)");
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into profesor values (?,?,?,?,?,?,?,?,?,?,?,1)");
         preparedStatement.setInt(1, profe.getIdProfesor());
         preparedStatement.setString(2, profe.getNombre());
         preparedStatement.setInt(3, profe.getTipoU());
         preparedStatement.setString(4, profe.getCorreo());
         preparedStatement.setString(5, profe.getCelular());
         preparedStatement.setString(6, profe.getDireccion());
-        preparedStatement.setString(7, profe.getEstudios());
-        preparedStatement.setString(8, profe.getExperiencia());
-        preparedStatement.setString(9, profe.getFechaNacimiento());
-        preparedStatement.setString(10, profe.getTipoSangre());
-        preparedStatement.setString(11, profe.getRh());
-        preparedStatement.setString(12, profe.getUsuario());
-        preparedStatement.setString(13, profe.getPassword());
+        preparedStatement.setString(7, profe.getExperiencia());
+        preparedStatement.setString(8, profe.getFechaNacimiento());
+        preparedStatement.setString(9, profe.getTipoSangre());
+        preparedStatement.setString(10, profe.getUsuario());
+        preparedStatement.setString(11, profe.getPassword());
         preparedStatement.executeUpdate();
     }
 
@@ -123,20 +115,18 @@ public class ProfesorDAO {
     }
 
     public void updateProfesor(Profesor e) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("update profesor set nombre=?,tipou=?,correo=?,celular=?,direccion=?,estudios=?,experiencia=?,fechanacimiento=?,tiposangre=?,rh=?,usuario=?,password=?" + " where cedula=?");
+        PreparedStatement preparedStatement = connection.prepareStatement("update profesor set nombre=?,tipou=?,correo=?,celular=?,direccion=?,experiencia=?,fechanacimiento=?,tiposangre=?,usuario=?,password=?" + " where cedula=?");
         preparedStatement.setString(1, e.getNombre());
         preparedStatement.setInt(2, e.getTipoU());
         preparedStatement.setString(3, e.getCorreo());
         preparedStatement.setString(4, e.getCelular());
         preparedStatement.setString(5, e.getDireccion());
-        preparedStatement.setString(6, e.getEstudios());
-        preparedStatement.setString(7, e.getExperiencia());
-        preparedStatement.setString(8, e.getFechaNacimiento());
-        preparedStatement.setString(9, e.getTipoSangre());
-        preparedStatement.setString(10, e.getRh());
-        preparedStatement.setString(11, e.getUsuario());
-        preparedStatement.setString(12, e.getPassword());
-        preparedStatement.setInt(13, e.getIdProfesor());
+        preparedStatement.setString(6, e.getExperiencia());
+        preparedStatement.setString(7, e.getFechaNacimiento());
+        preparedStatement.setString(8, e.getTipoSangre());
+        preparedStatement.setString(9, e.getUsuario());
+        preparedStatement.setString(10, e.getPassword());
+        preparedStatement.setInt(11, e.getIdProfesor());
         preparedStatement.executeUpdate();
     }
 }

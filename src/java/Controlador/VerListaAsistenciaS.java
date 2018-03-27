@@ -9,13 +9,13 @@ import Dao.AsistenciaDAO;
 import Dao.CursoDAO;
 import Dao.FechaDAO;
 import Dao.ObservadorDAO;
-import Dao.ProfesorCursoDAO;
+import Dao.DirectorCursoDAO;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Fecha;
 import Modelo.Observador;
 import Modelo.Profesor;
-import Modelo.ProfesorCurso;
+import Modelo.DirectorCurso;
 import Util.ConsultaAsistencia;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -72,11 +72,11 @@ public class VerListaAsistenciaS extends HttpServlet {
             int opc = Integer.parseInt(request.getParameter("opcion"));
             if (opc == 0) {
                 Profesor p=(Profesor)request.getSession().getAttribute("profesor");
-                ProfesorCursoDAO pc = new ProfesorCursoDAO();
-                ArrayList<ProfesorCurso> pcm = pc.getAllProCur(p.getIdProfesor());
+                DirectorCursoDAO pc = new DirectorCursoDAO();
+                ArrayList<DirectorCurso> pcm = pc.getAllProCur(p.getIdProfesor());
                 ArrayList<Curso> cursos=new ArrayList<>();
                 CursoDAO c=new CursoDAO();
-                for (ProfesorCurso profesorcurso : pcm) {                  
+                for (DirectorCurso profesorcurso : pcm) {                  
                     cursos.add(c.getCursoById(profesorcurso.getIdCurso()));
                 }
                 Gson g = new Gson();
