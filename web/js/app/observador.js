@@ -10,83 +10,89 @@
 //    return false;
 //});
 $(document).ready(function () {
-    $('#director').click(function () {
-        $.ajax({
-            type: 'GET',
-            url: "ObservadorS",
-            //force to handle it as text
-            data: {
-                'opcion': "0"
-            },
-            dataType: "text",
-            success: function (data) {
-                $('#tablaObs').removeAttr('style');
-                $('#SelectCurso').removeAttr('style');
-                $('#AddObs').attr('style', 'display: none;');
-                var selectForm = $('#curso');
-                selectForm.empty();
-                    selectForm.append('<option selected  value="" disabled>Seleccione un curso</option>');
-                var json = $.parseJSON(data);
-                console.log(json);
-                for (var i = 0; i < json.length; ++i)
-                {
-                    var opcion = "<option value=\"" + json[i].idCurso + "\">" + json[i].nombre + "</option>";
-                    selectForm.append(opcion);
-                }
-            },
-            async: false
-        });
-    });
-    
-    $('#profesor').click(function () {
-        $.ajax({
-            type: 'GET',
-            url: "ObservadorS",
-            //force to handle it as text
-            data: {
-                'opcion': "0"
-            },
-            dataType: "text",
-            success: function (data) {
-                $('#AddObs').removeAttr('style');
-                $('#tablaObs').attr('style', 'display: none;');
-                $('#SelectCurso').removeAttr('style');
-                var selectForm = $('#curso');
-                selectForm.empty();
-                selectForm.append('<option selected  value="" disabled>Seleccione un curso</option>');
-                var json = $.parseJSON(data);
-                console.log(json);
-                for (var i = 0; i < json.length; ++i)
-                {
-                    var opcion = "<option value=\"" + json[i].idCurso + "\">" + json[i].nombre + "</option>";
-                    selectForm.append(opcion);
-                }                          
-            },
-            async: false
-        });
+    $('#opcion').on('change', function () {
+        var esco = $('#opcion').val();
+        if (esco.trim() == "0") {
+            cursoDirector();
+        } else {
+            cursoProfesor();
+        }
     });
 });
 
-
-
-$('#AddObs').on('submit', function () {
+function cursoProfesor(){
     $.ajax({
-        type: 'POST',
-        url: "ObservadorS",        
+        type: 'GET',
+        url: "ObservadorS",
+        //force to handle it as text
         data: {
-            'detalles': $('#detalles').val(),
-            'calificacion': $('#calificacion').val(),
-            'idEstudiante': $('#estudiante').val()
+            'opcion': "3"
         },
         dataType: "text",
         success: function (data) {
-            
+            $('#AddObs').removeAttr('style');
+            $('#tablaObs').attr('style', 'display: none;');
+            $('#SelectCurso').removeAttr('style');
+            var selectForm = $('#curso');
+            selectForm.empty();
+            selectForm.append('<option selected  value="" disabled>Seleccione un curso</option>');
+            var json = $.parseJSON(data);
+            console.log(json);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<option value=\"" + json[i].idCurso + "\">" + json[i].nombre + "</option>";
+                selectForm.append(opcion);
+            }
+        },
+        async: false
+    });
+}
+
+function cursoDirector() {
+    $.ajax({
+        type: 'GET',
+        url: "ObservadorS",
+        //force to handle it as text
+        data: {
+            'opcion': "0"
+        },
+        dataType: "text",
+        success: function (data) {
+            $('#tablaObs').removeAttr('style');
+            $('#SelectCurso').removeAttr('style');
+            $('#AddObs').attr('style', 'display: none;');
+            var selectForm = $('#curso');
+            selectForm.empty();
+            selectForm.append('<option selected  value="" disabled>Seleccione un curso</option>');
+            var json = $.parseJSON(data);
+            console.log(json);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<option value=\"" + json[i].idCurso + "\">" + json[i].nombre + "</option>";
+                selectForm.append(opcion);
+            }
+        },
+        async: false
+    });
+}
+$('#AddObs').on('submit', function () {
+    $.ajax({
+        type: 'POST',
+        url: "ObservadorS",
+        data: {
+            'tipo': $('#tipo').val(),
+            'detalles': $('#detalles').val(),
+            'calificacion': $('#calificacion').val(),
+            'idEstudiante': $('#estudiante').val(),
+            'idCurso':$('#curso').val()
+        },
+        dataType: "text",
+        success: function (data) {
+
         },
         async: false
     });
 });
-
-
 $('#curso').on('change', function () {
     $.ajax({
         type: 'GET',
@@ -113,13 +119,12 @@ $('#curso').on('change', function () {
         async: false
     });
 });
-
 $('#estudiante').on('change', function () {
     $.ajax({
         type: 'GET',
         url: "ObservadorS",
         //force to handle it as text
-        
+
         data: {
             'opcion': "2",
             'estudiante': $('#estudiante').val()
@@ -139,9 +144,6 @@ $('#estudiante').on('change', function () {
         async: false
     });
 });
-
-
-
 //function consultarEstudiantes(curso) {
 //    $.ajax({
 //        type: 'GET',

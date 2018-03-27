@@ -6,10 +6,12 @@
 package Controlador;
 
 import Dao.CursoDAO;
+import Dao.CursoMateriaDAO;
 import Dao.EstudianteDAO;
 import Dao.ObservadorDAO;
 import Dao.DirectorCursoDAO;
 import Modelo.Curso;
+import Modelo.CursoMateria;
 import Modelo.Estudiante;
 import Modelo.Observador;
 import Modelo.Profesor;
@@ -64,15 +66,15 @@ public class ObservadorS extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
+
             int opc = Integer.parseInt(request.getParameter("opcion"));
             if (opc == 0) {
-                Profesor p=(Profesor)request.getSession().getAttribute("profesor");
+                Profesor p = (Profesor) request.getSession().getAttribute("profesor");
                 DirectorCursoDAO pc = new DirectorCursoDAO();
                 ArrayList<DirectorCurso> pcm = pc.getAllProCur(p.getIdProfesor());
-                ArrayList<Curso> cursos=new ArrayList<>();
-                CursoDAO c=new CursoDAO();
-                for (DirectorCurso profesorcurso : pcm) {                  
+                ArrayList<Curso> cursos = new ArrayList<>();
+                CursoDAO c = new CursoDAO();
+                for (DirectorCurso profesorcurso : pcm) {
                     cursos.add(c.getCursoById(profesorcurso.getIdCurso()));
                 }
                 Gson g = new Gson();
@@ -93,6 +95,19 @@ public class ObservadorS extends HttpServlet {
                 ArrayList<Observador> observaciones = obs.getObservadorByID(estId);
                 Gson g = new Gson();
                 String pasareEsto = g.toJson(observaciones);
+                out.print(pasareEsto);
+            }
+            if (opc == 3) {
+                Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+                CursoMateriaDAO cm = new CursoMateriaDAO();
+                ArrayList<CursoMateria> pcm = cm.getAllCMProfesor(p.getIdProfesor());
+                ArrayList<Curso> cursos = new ArrayList<>();
+                CursoDAO c = new CursoDAO();
+                for (CursoMateria profesorcurso : pcm) {
+                    cursos.add(c.getCursoById(profesorcurso.getIdCurso()));
+                }
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(cursos);
                 out.print(pasareEsto);
             }
         } catch (SQLException ex) {
@@ -116,13 +131,13 @@ public class ObservadorS extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            String detalles=request.getParameter("detalles");
-            int calificacion=Integer.parseInt(request.getParameter("calificacion"));
-            int idEst=Integer.parseInt(request.getParameter("idEstudiante"));
-            Profesor p=(Profesor)request.getSession().getAttribute("profesor");
-            ObservadorDAO o=new ObservadorDAO();
-            o.addObservador(detalles,calificacion,idEst,p.getIdProfesor());
-            
+            String detalles = request.getParameter("detalles");
+            int calificacion = Integer.parseInt(request.getParameter("calificacion"));
+            int idEst = Integer.parseInt(request.getParameter("idEstudiante"));
+            Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+            ObservadorDAO o = new ObservadorDAO();
+            o.addObservador(detalles, calificacion, idEst, p.getIdProfesor());
+
         } catch (SQLException ex) {
             Logger.getLogger(ObservadorS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
