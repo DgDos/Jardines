@@ -21,24 +21,47 @@ import java.util.ArrayList;
  * @author FiJus
  */
 public class CursoDAO {
+
     private Connection connection;
 
     public CursoDAO() throws SQLException, URISyntaxException, ClassNotFoundException, IOException {
         connection = DbUtil.getConnection();
     }
+
+    public void addCurso(Curso curso) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into curso(nombre,numeroestudiantes,delete) values (?,?,1)");
+        preparedStatement.setString(1, curso.getNombre());
+        preparedStatement.setInt(2, 0);
+        preparedStatement.executeUpdate();
+    }
     
-    public Curso getCursoById(int idCurso) throws SQLException{
-        Curso c=new Curso();
+    public void deleteCurso(int idCurso) throws SQLException{
+        PreparedStatement preparedStatement = connection.prepareStatement("update curso set delete=0 where id=?");
+        preparedStatement.setInt(1, idCurso);
+        preparedStatement.executeUpdate();
+    }
+    
+    public void updateCurso(Curso curso) throws SQLException{
+        PreparedStatement preparedStatement= connection.prepareStatement("update curso set nombre=?,numeroestudiantes=? where id=?");
+        preparedStatement.setString(1, curso.getNombre());
+        preparedStatement.setInt(2, curso.getNumeroEstudiantes());
+        preparedStatement.setInt(3, curso.getIdCurso());
+        preparedStatement.executeUpdate();
+    }
+
+    public Curso getCursoById(int idCurso) throws SQLException {
+        Curso c = new Curso();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from curso where id="+idCurso);
+        ResultSet rs = statement.executeQuery("select * from curso where delete=1 and id=" + idCurso);
         while (rs.next()) {
             c.setIdCurso(idCurso);
             c.setNombre(rs.getString("nombre"));
+            c.setNumeroEstudiantes(rs.getInt("numeroestudiantes"));
         }
         return c;
     }
-    
-      public ArrayList<Curso> getAllCursos() throws SQLException, URISyntaxException {
+
+    public ArrayList<Curso> getAllCursos() throws SQLException, URISyntaxException {
         ArrayList<Curso> cursos = new ArrayList<>();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("select * from curso where delete=1");
@@ -47,17 +70,10 @@ public class CursoDAO {
             c.setIdCurso(rs.getInt("id"));
             c.setNombre(rs.getString("nombre"));
             c.setNumeroEstudiantes(rs.getInt("numeroestudiantes"));
-            
+
             cursos.add(c);
         }
         return cursos;
     }
-    
 
-    public void addCurso(Curso curso) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into curso(nombre,numeroestudiantes,delete) values (?,?,1)");
-        preparedStatement.setString(1, curso.getNombre());
-        preparedStatement.setInt(2, curso.getNumeroEstudiantes());
-        preparedStatement.executeUpdate();
-    }
 }

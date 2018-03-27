@@ -7,10 +7,12 @@ package Controlador;
 
 import Dao.ProfesorDAO;
 import Modelo.Profesor;
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -61,10 +63,13 @@ public class Login extends HttpServlet {
             }
             String usuario = request.getParameter("usuario");
             String password = request.getParameter("password");
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] encodedhash = digest.digest(password.getBytes(StandardCharsets.UTF_8));
+            String ps2 = bytesToHex(encodedhash);
             ProfesorDAO pro = new ProfesorDAO();
             ArrayList<Profesor> profesores = pro.getallProfesoresLogin();
             for (Profesor p : profesores) {
-                if (p.getUsuario().equals(usuario) && p.getPassword().equals(password)) {
+                if (p.getUsuario().equals(usuario) && p.getPassword().equals(ps2)) {
                     request.getSession().setAttribute("profesor", p);
                 }
             }
@@ -74,6 +79,8 @@ public class Login extends HttpServlet {
         } catch (URISyntaxException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -103,4 +110,15 @@ public class Login extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private static String bytesToHex(byte[] hash) {
+        StringBuffer hexString = new StringBuffer();
+        for (int i = 0; i < hash.length; i++) {
+            String hex = Integer.toHexString(0xff & hash[i]);
+            if (hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        return hexString.toString();
+    }
 }

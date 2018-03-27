@@ -6,6 +6,7 @@
 package Controlador;
 
 import Dao.CursoDAO;
+import Dao.EstudianteDAO;
 import Dao.ObservadorDAO;
 import Dao.DirectorCursoDAO;
 import Modelo.Curso;
@@ -80,7 +81,7 @@ public class ObservadorS extends HttpServlet {
             }
             if (opc == 1) {
                 int a = Integer.parseInt(request.getParameter("curso"));
-                ObservadorDAO obs = new ObservadorDAO();
+                EstudianteDAO obs = new EstudianteDAO();
                 ArrayList<Estudiante> estudiantes = obs.getEstudiantesByIDCurso(a);
                 Gson g = new Gson();
                 String pasareEsto = g.toJson(estudiantes);

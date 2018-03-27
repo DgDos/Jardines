@@ -5,7 +5,6 @@
  */
 package Dao;
 
-import Modelo.Estudiante;
 import Modelo.Observador;
 import Util.DbUtil;
 import java.io.IOException;
@@ -30,52 +29,63 @@ public class ObservadorDAO {
     }
 
     public void addObservador(String detalles, int calificacion, int idEst, int idProfesor) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into observador(idprofesor,detalles,calificacion,idestudiante,delete) values (?,?,?,?,?)");
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into observador(idprofesor,detalles,calificacion,idestudiantecurso,delete) values (?,?,?,?,?)");
         preparedStatement.setInt(1, idProfesor);
         preparedStatement.setString(2, detalles);
         preparedStatement.setInt(3, calificacion);
         preparedStatement.setInt(4, idEst);
         preparedStatement.setInt(5, 1);
-        System.out.println(calificacion+"--"+detalles+"---"+idEst+"--"+idProfesor);
         preparedStatement.executeUpdate();
     }
 
-    public ArrayList<Estudiante> getEstudiantesByIDCurso(int id_curso) throws SQLException, URISyntaxException {
-        ArrayList<Estudiante> estudiantes = new ArrayList<>();
-        Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from estudiante where idcurso=" + id_curso);
-        while (rs.next()) {
-            Estudiante c = new Estudiante();
-            c.setIdEstudiante(rs.getInt("documento"));
-            c.setNombre(rs.getString("nombre"));
-            estudiantes.add(c);
-        }
-        return estudiantes;
+    public void updateObservador(Observador obs) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update observador set idprofesor=?,detalles=?,calificacion=?,idestudiantecurso=?" + " where id=?");
+        preparedStatement.setInt(1, obs.getIdProfesor());
+        preparedStatement.setString(2, obs.getDetalles());
+        preparedStatement.setInt(3, obs.getCalificacion());
+        preparedStatement.setInt(4, obs.getIdEstudianteCurso());
+        preparedStatement.setInt(5, obs.getIdObs());
+        preparedStatement.executeUpdate();
     }
+    
+    public void deleteObservador(int idObs) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update observador set delete=0 where id=?");
+        preparedStatement.setInt(1, idObs);
+        preparedStatement.executeUpdate();
+    }
+    
+
 
     public ArrayList<Observador> getObservadorByID(int id_estudiante) throws SQLException, URISyntaxException {
         ArrayList<Observador> notasObs = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from observador where idestudiante=" + id_estudiante+" and delete=1");
+        ResultSet rs = statement.executeQuery("select * from observador where idestudiantecurso=" + id_estudiante+" and delete=1");
         while (rs.next()) {
             Observador c = new Observador();
-            c.setIdEstudiante(rs.getInt("idestudiante"));
+            c.setIdObs(rs.getInt("id"));
+            c.setIdEstudianteCurso(rs.getInt("idestudiantecurso"));
             c.setCalificacion(rs.getInt("calificacion"));
             c.setDetalles(rs.getString("detalles"));
+            c.setIdProfesor(rs.getInt("idprofesor"));
             notasObs.add(c);
         }
         return notasObs;
     }
 
     public ArrayList<Observador> getAllObservadores() throws SQLException, URISyntaxException {
-        ArrayList<Observador> notasObs = new ArrayList<>();
+        ArrayList<Observador> observadores = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from observador where delete=1");
+        ResultSet rs = statement.executeQuery("select * from observador");
         while (rs.next()) {
             Observador c = new Observador();
-            notasObs.add(c);
+            c.setIdObs(rs.getInt("id"));
+            c.setIdProfesor(rs.getInt("idprofesor"));
+            c.setDetalles(rs.getString("detalles"));
+            c.setCalificacion(rs.getInt("calificacion"));
+            c.setIdEstudianteCurso(rs.getInt("idestudiantecurso"));
+            observadores.add(c);
         }
-        return notasObs;
+        return observadores;
     }
 
 }

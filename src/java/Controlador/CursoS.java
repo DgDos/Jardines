@@ -101,9 +101,7 @@ public class CursoS extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()){
             String nombreCurso = request.getParameter("nombreCurso");
-            int numeroEstudiantes = Integer.parseInt(request.getParameter("numeroEstudiantes"));
-
-            Curso curso = new Curso(0, nombreCurso, numeroEstudiantes);
+            Curso curso = new Curso(0, nombreCurso, 0);
             CursoDAO dao = new CursoDAO();
             dao.addCurso(curso);
 

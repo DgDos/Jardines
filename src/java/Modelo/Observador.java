@@ -13,16 +13,18 @@ public class Observador {
     private int idObs;
     private int calificacion;
     private String detalles;
-    private int idEstudiante;
+    private int idEstudianteCurso;
+    private int idProfesor;
 
     public Observador() {
     }
 
-    public Observador(int idObs, int calificacion, String detalles, int idEstudiante) {
+    public Observador(int idObs, int calificacion, String detalles, int idEstudianteCurso, int idProfesor) {
         this.idObs = idObs;
         this.calificacion = calificacion;
         this.detalles = detalles;
-        this.idEstudiante = idEstudiante;
+        this.idEstudianteCurso = idEstudianteCurso;
+        this.idProfesor = idProfesor;
     }
 
     public int getIdObs() {
@@ -49,12 +51,20 @@ public class Observador {
         this.detalles = detalles;
     }
 
-    public int getIdEstudiante() {
-        return idEstudiante;
+    public int getIdEstudianteCurso() {
+        return idEstudianteCurso;
     }
 
-    public void setIdEstudiante(int idEstudiante) {
-        this.idEstudiante = idEstudiante;
+    public void setIdEstudianteCurso(int idEstudianteCurso) {
+        this.idEstudianteCurso = idEstudianteCurso;
+    }
+
+    public int getIdProfesor() {
+        return idProfesor;
+    }
+
+    public void setIdProfesor(int idProfesor) {
+        this.idProfesor = idProfesor;
     }
     
     
