@@ -5,8 +5,16 @@
  */
 package Controlador;
 
+import Dao.EstudianteCursoDAO;
+import Dao.EstudianteDAO;
+import Modelo.Estudiante;
+import Modelo.EstudianteCurso;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URISyntaxException;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,19 +37,7 @@ public class CursoEstudianteS extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet CursoEstudianteS</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet CursoEstudianteS at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -53,10 +49,11 @@ public class CursoEstudianteS extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+       
+      
     }
 
     /**
@@ -70,7 +67,27 @@ public class CursoEstudianteS extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            int idCurso = Integer.parseInt(request.getParameter("curso"));
+            int idEstudiante = Integer.parseInt(request.getParameter("estudiante"));
+            String fecha = request.getParameter("fecha");
+            String[] fechaAux = fecha.split(" ");
+            EstudianteDAO dao = new EstudianteDAO();
+            System.out.println(idCurso+"--"+idEstudiante+"---"+fecha);
+            if(dao.estGotCur(idEstudiante)){
+                dao.updateCursoEstudiante(idEstudiante, idCurso);
+                EstudianteCursoDAO e = new EstudianteCursoDAO();
+                EstudianteCurso st = new EstudianteCurso(0, idEstudiante, idCurso, fechaAux[0], "");
+                e.addEstCur(st);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CursoEstudianteS.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(CursoEstudianteS.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(CursoEstudianteS.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
 
     /**
@@ -82,5 +99,6 @@ public class CursoEstudianteS extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
 
 }

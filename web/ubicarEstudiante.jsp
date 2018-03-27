@@ -47,7 +47,7 @@
                     <br>
                     <br>
                     <br>
-                    <form id="ubicarPro">                                
+                    <form id="ubicarEst">                                
                         <div class="form-group">
                             <label style="color:white">Curso: </label>
                             <select class="form-control" required name="cursos" id="cursos">
@@ -55,7 +55,7 @@
                             </select> 
                         </div>
                         <div class="form-group">
-                            <label style="color:white" >Profesor: </label>
+                            <label style="color:white" >Estudiante: </label>
                             <select required name="estudiantes" id="estudiantes" class="form-control">
                                 <option value="" selected  disabled>Seleccione un Estudiante</option>
                             </select>

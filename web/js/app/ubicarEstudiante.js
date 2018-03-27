@@ -50,15 +50,15 @@ $(document).ready(function () {
 
 });
 
-$('#guardarCurso').on('click', function () {
+$('#ubicarEst').on('click', function () {
     $.ajax({
         type: 'POST',
-        url: "EstudianteS",
+        url: "CursoEstudianteS",
        
         data: {
             'curso': $('#cursos').val(),
             'fecha':$('#fecha').val(),
-            'Estudiante':$('#Estudiantes').val()
+            'estudiante':$('#estudiantes').val()
         },
         dataType: "text",
         success: function (data) {

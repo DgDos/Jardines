@@ -107,6 +107,15 @@ public class EstudianteDAO {
         preparedStatement.setInt(1, idCurso);
         preparedStatement.executeUpdate();
     }
+
+    public boolean estGotCur(int idEstudiante)  throws SQLException{
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from estudiante where documento= "+idEstudiante+" and delete=1 and idCurso=3");
+        while(rs.next()){
+            return true;
+        }
+        return false;
+    }
     
     
 }
