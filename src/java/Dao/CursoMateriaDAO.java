@@ -48,7 +48,7 @@ public class CursoMateriaDAO {
             c.setIdCurso(rs.getInt("idcurso"));
             c.setIdMateria(rs.getInt("idmateria"));
             c.setIdProfesor(rs.getInt("idprofesor"));
-            c.setFechaInicial(rs.getString("fechainicial"));
+            c.setFechaInicial(rs.getString("fechainicio"));
             c.setFechaFinal(rs.getString("fechafinal"));
             cursos.add(c);
         }
