@@ -139,6 +139,13 @@ public class EstudianteS extends HttpServlet {
                 String pasareEsto = g.toJson(estudiantes);
                 out.print(pasareEsto);
             }
+            if (opc == 7) {
+                EstudianteDAO e = new EstudianteDAO();
+                ArrayList<Estudiante> estudiantes = e.getAllEstudiantesSinUbicar();
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(estudiantes);
+                out.print(pasareEsto);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(EstudianteS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {

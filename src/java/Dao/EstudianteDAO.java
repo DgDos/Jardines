@@ -116,6 +116,24 @@ public class EstudianteDAO {
         }
         return false;
     }
+
+    public ArrayList<Estudiante> getAllEstudiantesSinUbicar() throws SQLException {
+         ArrayList<Estudiante> estudiantes= new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from estudiante where delete=1 and idcurso=3");
+        while (rs.next()) {
+            Estudiante estudiante=new Estudiante();
+            estudiante.setIdEstudiante(rs.getInt("documento"));
+            estudiante.setNombre(rs.getString("nombre"));
+            estudiante.setCelularContacto(rs.getString("celularcontacto"));
+            estudiante.setDireccion(rs.getString("direccion"));
+            estudiante.setFechaNacimiento(rs.getString("fechanacimiento"));
+            estudiante.setTipoSangre(rs.getString("tiposangre"));
+            estudiante.setIdCurso(rs.getInt("idcurso"));
+            estudiantes.add(estudiante);
+        }
+        return estudiantes;
+    }
     
     
 }

@@ -51,10 +51,10 @@
                     <br>
                     <div class="container">
                         <a>
-                            <button type="button"  type="text" name="VerObservaciones" class="btn btn-default btn-round" id="botonVisualizar">Visualizar</button>
+                            <button type="button"  type="text" name="director" class="btn btn-default btn-round" id="botonVisualizar">Visualizar</button>
                         </a>
                         <a>
-                            <button type="button"  type="text" name="RealizarObservaciones" class="btn btn-default btn-round" id="botonRealizar">Realizar</button>
+                            <button type="button"  type="text" name="profesor" class="btn btn-default btn-round" id="botonRealizar">Realizar</button>
                         </a>
                         <br>
                         <br>

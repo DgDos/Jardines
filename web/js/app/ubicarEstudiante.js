@@ -28,7 +28,7 @@ $(document).ready(function () {
         url: "EstudianteS",
         //force to handle it as text
         data: {
-            'opcion': "6"
+            'opcion': "7"
         },
         dataType: "text",
         success: function (data) {

@@ -10,7 +10,7 @@
 //    return false;
 //});
 $(document).ready(function () {
-    $('#botonVisualizar').click(function () {
+    $('#director').click(function () {
         $.ajax({
             type: 'GET',
             url: "ObservadorS",
@@ -38,7 +38,7 @@ $(document).ready(function () {
         });
     });
     
-    $('#botonRealizar').click(function () {
+    $('#profesor').click(function () {
         $.ajax({
             type: 'GET',
             url: "ObservadorS",
