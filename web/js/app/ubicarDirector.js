@@ -59,7 +59,8 @@ $('#ubicarPro').on('submit', function () {
         },
         dataType: "text",
         success: function (data) {
-            
+        alert('Se ha ubicado al Director exitosamente');
+        location.reload();
         },
         async: false
     });

@@ -117,7 +117,8 @@ $('#SelectCM').on('submit', function () {
         },
         dataType: "text",
         success: function (data) {
-
+        alert('Se ha asignado la Materia exitosamente');
+        location.reload();
         },
         async: false
     });

@@ -62,7 +62,8 @@ $('#ubicarEst').on('click', function () {
         },
         dataType: "text",
         success: function (data) {
-
+        alert('Se ha ubicado al Estudiante exitosamente');
+        location.reload();
         },
         async: false
     });

@@ -60,7 +60,7 @@
                         
 
 
-                        <button type="submit" id="guardarCurso" class="btn btn-default btn-round" >Guardar</button> 
+                        <button type="button" id="guardarCurso" class="btn btn-default btn-round" >Guardar</button> 
 
 
                     </form>

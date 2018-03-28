@@ -1,24 +1,18 @@
-
-      
-$('#guardarMateria').on('click', function () {
+$('#guardarMateria').on('click', function (e) {
+console.log('in');
+e.preventDefault();
     $.ajax({
         type: 'POST',
         url: "MateriaS",
-       
+
         data: {
             'nombreMateria': $('#nombreMateria').val()
-           
         },
         dataType: "text",
         success: function (data) {
-            
-        },
-        
-        async: false
-    });
+        alert('Se ha guardado la Materia exitosamente');
+        location.reload();
+        }
+         });
 });
-  
-  
-  
-
 

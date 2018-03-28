@@ -94,7 +94,8 @@ $('#SelectCM').on('submit', function () {
         },
         dataType: "text",
         success: function (data) {
-            
+        alert('Actividad agregada exitosamente');
+        location.reload();
         },
         async: false
     });

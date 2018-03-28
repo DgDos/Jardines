@@ -60,18 +60,13 @@
 
 
 
-                        <button type="submit"  id="guardarMateria" class="btn btn-default btn-round"   >Guardar</button> 
+                        <button type="button"  id="guardarMateria" class="btn btn-default btn-round"   >Guardar</button> 
 
 
                     </form>
 
 
                     <br>
-
-
-
-
-
 
 
 
