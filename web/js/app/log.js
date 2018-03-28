@@ -21,7 +21,8 @@ $(document).ready(function () {
             },
             dataType: "text",
             success: function (data) {
-
+                alert('Se ha creado al Profesor exitosamente');
+                location.reload();
             },
             async: false
         });

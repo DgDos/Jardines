@@ -40,8 +40,9 @@ $(document).ready(function () {
             },
             dataType: "text",
             success: function (data) {
-
-
+                alert('Se ha creado el Estudiante exitosamente');
+                location.reload();
+            
             },
             async: false
         });

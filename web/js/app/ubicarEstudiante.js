@@ -22,8 +22,8 @@ $(document).ready(function () {
         },
         async: false
     });
-    
-     $.ajax({
+
+    $.ajax({
         type: 'GET',
         url: "EstudianteS",
         //force to handle it as text
@@ -48,25 +48,25 @@ $(document).ready(function () {
     });
 
 
-});
+    $('#ubicar').on('click', function () {
+        $.ajax({
+            type: 'POST',
+            url: "CursoEstudianteS",
 
-$('#ubicarEst').on('click', function () {
-    $.ajax({
-        type: 'POST',
-        url: "CursoEstudianteS",
-       
-        data: {
-            'curso': $('#cursos').val(),
-            'fecha':$('#fecha').val(),
-            'estudiante':$('#estudiantes').val()
-        },
-        dataType: "text",
-        success: function (data) {
-        alert('Se ha ubicado al Estudiante exitosamente');
-        location.reload();
-        },
-        async: false
+            data: {
+                'curso': $('#cursos').val(),
+                'fecha': $('#fecha').val(),
+                'estudiante': $('#estudiantes').val()
+            },
+            dataType: "text",
+            success: function (data) {
+                alert('Se ha ubicado al Estudiante exitosamente');
+                location.reload();
+            },
+            async: false
+        });
     });
+
 });
 
 

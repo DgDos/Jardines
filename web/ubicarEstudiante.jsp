@@ -79,7 +79,7 @@
                                 </div>
                             </div>
                         </div> 
-                        <button type="submit" class="btn btn-default" id="ubicar" name="ubicar">Ubicar</button>
+                        <button type="button" class="btn btn-default" id="ubicar" name="ubicar">Ubicar</button>
                     </form>                                                       
                 </div>
             </div>
