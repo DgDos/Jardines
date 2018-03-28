@@ -38,18 +38,18 @@
     </head>
     <body style="background-color:#ccccff">
         <%@include file="headerProfesor.jsp" %>
-        <div class="container-fluid text-center">    
-            <div class="row content">
+        <div class=" text-center">    
+            <div class="">
                 <div class="col-sm-2 sidenav">
 
                 </div>
-                <div class="col-sm-8 text-left"> 
+                <div class="col-sm-12 text-left"> 
                     <br>
                     <br>
                     <br>
                     <br>
                     <br>
-                    <div class="container">
+                    <div class="">
                       
                         <form id="SelectCurso" >                                
                             <div >
@@ -57,6 +57,8 @@
                                     <label >Profesor: </label>
                                     <select class="form-control" required name="profe" id="profe">
                                         <option value="" selected disabled>Seleccione el profesor</option>
+                                        <option value="0" >Director</option>
+                                        <option value="1" >Profesor</option>
                                     </select> 
                                     <label >Curso: </label>
                                     <select class="form-control" required name="curso" id="curso">
@@ -72,18 +74,18 @@
                             </div>
                             <br>
                             <br>
-                            <table id="tablaObs" class="table table-hover">
+                            <table id="tablaObs" class="table table-hover" style="display: none;">
 
                             </table>
 
                         </form>
-                        <form id="AddObs">
+                        <form id="AddObs" style="display: none;">
                             <div class="form-group" >
                                 <label  for="detalle">Detalle:</label>
-                                <input type="text" class="form-control form-control-success" name="detalle" id="detalles">                               
+                                <input type="text" class="form-control form-control-success col-8" name="detalle" id="detalles">                               
                                 <br> 
                                 <label for="calificacion" >Calificacion: </label>
-                                <div class="col-4">
+                                <div class="col-1">
                                     <select required name="calificacion" id="calificacion" class="form-control">
                                         <option value="" selected disabled >Seleccione una opcion</option>
                                         <option value="5" style="color:green">5</option>  

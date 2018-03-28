@@ -10,8 +10,8 @@
 //    return false;
 //});
 $(document).ready(function () {
-    $('#opcion').on('change', function () {
-        var esco = $('#opcion').val();
+    $('#profe').on('change', function () {
+        var esco = $('#profe').val();
         if (esco.trim() == "0") {
             cursoDirector();
         } else {
@@ -30,7 +30,7 @@ function cursoProfesor(){
         },
         dataType: "text",
         success: function (data) {
-            $('#AddObs').removeAttr('style');
+            $('#AddObs').attr('style', 'display: none;');
             $('#tablaObs').attr('style', 'display: none;');
             $('#SelectCurso').removeAttr('style');
             var selectForm = $('#curso');
@@ -58,7 +58,7 @@ function cursoDirector() {
         },
         dataType: "text",
         success: function (data) {
-            $('#tablaObs').removeAttr('style');
+            $('#tablaObs').attr('style', 'display: none;');
             $('#SelectCurso').removeAttr('style');
             $('#AddObs').attr('style', 'display: none;');
             var selectForm = $('#curso');
@@ -80,7 +80,7 @@ $('#AddObs').on('submit', function () {
         type: 'POST',
         url: "ObservadorS",
         data: {
-            'tipo': $('#tipo').val(),
+            'tipo': $('#profe').val(),
             'detalles': $('#detalles').val(),
             'calificacion': $('#calificacion').val(),
             'idEstudiante': $('#estudiante').val(),
@@ -131,13 +131,15 @@ $('#estudiante').on('change', function () {
         },
         dataType: "text",
         success: function (data) {
+            $('#tablaObs').removeAttr('style');
+            $('#AddObs').removeAttr('style');
             var selectForm = $('#tablaObs');
             selectForm.empty();
-            selectForm.append('<tr><td style="color:white" >Detalles</td><td style="color:white" >Calificacion</td> </tr>');
+            selectForm.append('<tr><td>Detalles</td><td>Calificacion</td><td>Profesor</td> </tr>');
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
-                var opcion = "<tr><td style=\"color:white\" >" + json[i].detalles + "</td><td style=\"color:white\" >" + json[i].calificacion + "</td> </tr>";
+                var opcion = "<tr><td>" + json[i].curso + "</td><td>" + json[i].materia + "</td><td>" + json[i].profesor + "</td> </tr>";
                 selectForm.append(opcion);
             }
         },

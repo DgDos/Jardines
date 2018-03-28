@@ -70,19 +70,12 @@ public class EstudianteCursoDAO {
         return estudiantesCurso;
     }
 
-    public ArrayList<EstudianteCurso> getAllEstCur() throws SQLException, URISyntaxException {
-        ArrayList<EstudianteCurso> estudiantesCurso = new ArrayList<>();
+    public int getEstCur(int idEst) throws SQLException, URISyntaxException {
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from estudiantecurso where delete=1");
-        while (rs.next()) {
-            EstudianteCurso c = new EstudianteCurso();
-            c.setIdEstCur(rs.getInt("id"));
-            c.setIdEstudiante(rs.getInt("idestudiante"));
-            c.setIdCurso(rs.getInt("idcurso"));
-            c.setFechaInicio(rs.getString("fechainicio"));
-            c.setFechaFinal(rs.getString("fechafinal"));
-            estudiantesCurso.add(c);
+        ResultSet rs = statement.executeQuery("select * from estudiantecurso where delete=1 and idestudiante="+idEst);
+        while(rs.next()){
+        return rs.getInt("id");
         }
-        return estudiantesCurso;
+        return 0;
     }
 }
