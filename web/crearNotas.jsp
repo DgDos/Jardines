@@ -36,7 +36,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
 
     </head>
-    <body style="background-color:black">
+    <body style="background-color:#ccccff">
         <%@include file="headerProfesor.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -50,6 +50,8 @@
                     <br>
                     <br>
                     <div class="container">
+                        
+                        <h3>Notas del curso</h3>
                         <a>
                             <button type="button"  type="text" name="VerNotas" class="btn btn-default btn-round" id="botonVisualizar">Visualizar</button>
                         </a>
@@ -110,7 +112,7 @@
 
     <!--  Plugins for Slider -->
     <script src="assets/js/nouislider.js"></script>
-    <script src="js/app/observador.js"></script>
+    <script src="js/app/notas.js"></script>
     <script src="js/app/log.js"></script>
 </html>
 

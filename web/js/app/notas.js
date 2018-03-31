@@ -128,11 +128,11 @@ $('#estudiante').on('change', function () {
         success: function (data) {
             var selectForm = $('#tablaNota');
             selectForm.empty();
-            selectForm.append('<tr><td style="color:white" >Detalles</td><td style="color:white" >Nota</td> </tr>');
+            selectForm.append('<tr><td style="color:white" >Actividad</td><td style="color:white" >Nota</td><td style="color:white" >Detalles</td> </tr>');
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
-                var opcion = "<tr><td style=\"color:white\" >" + json[i].detalles + "</td><td style=\"color:white\" >" + json[i].calificacion + "</td> </tr>";
+                var opcion = "<tr><td style=\"color:white\" >" + json[i].curso + "</td><td style=\"color:white\" >" + json[i].materia + "</td><td style=\"color:white\" >" + json[i].profesor + "</td> </tr>";
                 selectForm.append(opcion);
             }
         },

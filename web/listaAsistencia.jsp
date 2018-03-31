@@ -21,7 +21,7 @@
     </head>
 
 
-    <body style="background-color:black">
+    <body style="background-color:#ccccff">
         <%@include file="headerProfesor.jsp" %>
 
         <div class="container-fluid text-center">    

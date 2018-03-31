@@ -36,7 +36,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
 
     </head>
-    <body style="background-color:black">
+    <body style="background-color:#ccccff">
         <%@include file="headerProfesor.jsp" %>
         <br>
         <div class="container-fluid text-center">    

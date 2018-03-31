@@ -74,6 +74,7 @@ public class NotaS extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             int opc = Integer.parseInt(request.getParameter("opcion"));
+            //lista los cursos dado el profesor que esta en sesion
             if (opc == 0) {
                 Profesor p=(Profesor)request.getSession().getAttribute("profesor");
                 DirectorCursoDAO pc = new DirectorCursoDAO();
@@ -87,6 +88,7 @@ public class NotaS extends HttpServlet {
                 String pasareEsto = g.toJson(cursos);
                 out.print(pasareEsto);
             }
+             //lista los estudiantes dado el curso como director de curso
             if (opc == 1) {
                 int a = Integer.parseInt(request.getParameter("curso"));
                 NotaDAO notica = new NotaDAO();
@@ -95,6 +97,7 @@ public class NotaS extends HttpServlet {
                 String pasareEsto = g.toJson(notas);
                 out.print(pasareEsto);
             }
+             //lista las notas de un estudiante dado
             if (opc == 2) {
                 int estId = Integer.parseInt(request.getParameter("estudiante"));
                 NotaDAO notica = new NotaDAO();
