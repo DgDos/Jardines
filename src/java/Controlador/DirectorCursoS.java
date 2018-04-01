@@ -5,11 +5,17 @@
  */
 package Controlador;
 
+import Dao.CursoDAO;
 import Dao.DirectorCursoDAO;
+import Dao.ProfesorDAO;
+import Modelo.Curso;
+import Modelo.Profesor;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -35,7 +41,40 @@ public class DirectorCursoS extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            int opc = Integer.parseInt(request.getParameter("opcion"));
+            if (opc == 0) {
+                ProfesorDAO p = new ProfesorDAO();
+                ArrayList<Profesor> profesores = p.getallProfesores();
+                ArrayList<Profesor> profesoresapasar = new ArrayList<>();
+                DirectorCursoDAO c = new DirectorCursoDAO();
+                for (Profesor profe : profesores) {
+                    if (c.knowCedula(profe.getIdProfesor())) {
+                        profesoresapasar.add(profe);
+                    }
+                }
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(profesoresapasar);
+                out.print(pasareEsto);
+            }
+            if (opc == 1) {
+                CursoDAO c = new CursoDAO();
+                ArrayList<Curso> cursos = c.getAllCursos();
+                ArrayList<Curso> cursosapasar = new ArrayList<>();
+                DirectorCursoDAO d = new DirectorCursoDAO();
+                for (Curso cur : cursos) {
+                    if (d.knowCurso(cur.getIdCurso())) {
+                        cursosapasar.add(cur);
+                    }
+                }
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(cursosapasar);
+                out.print(pasareEsto);
+            }
+        } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
+            Logger.getLogger(DirectorCursoS.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

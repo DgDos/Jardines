@@ -7,6 +7,7 @@ package Controlador;
 
 import Dao.CursoDAO;
 import Dao.CursoMateriaDAO;
+import Dao.DirectorCursoDAO;
 import Dao.MateriaDAO;
 import Dao.ProfesorDAO;
 import Modelo.Curso;

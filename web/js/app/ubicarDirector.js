@@ -1,10 +1,10 @@
 $(document).ready(function () {
     $.ajax({
         type: 'GET',
-        url: "CursoS",
+        url: "DirectorCursoS",
         //force to handle it as text
         data: {
-            'op': "0"
+            'opcion': "1"
         },
         dataType: "text",
         success: function (data) {
@@ -24,11 +24,10 @@ $(document).ready(function () {
     });
     $.ajax({
         type: 'GET',
-        url: "CursoMateriaS",
+        url: "DirectorCursoS",
         //force to handle it as text
         data: {
-            'opcion': "1",
-            'var': "2"
+            'opcion': "0"
         },
         dataType: "text",
         success: function (data) {
