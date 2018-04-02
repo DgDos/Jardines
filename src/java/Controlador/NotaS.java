@@ -8,6 +8,7 @@ package Controlador;
 import Dao.CursoDAO;
 import Dao.NotaDAO;
 import Dao.DirectorCursoDAO;
+import Dao.EstudianteDAO;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Nota;
@@ -91,10 +92,10 @@ public class NotaS extends HttpServlet {
              //lista los estudiantes dado el curso como director de curso
             if (opc == 1) {
                 int a = Integer.parseInt(request.getParameter("curso"));
-                NotaDAO notica = new NotaDAO();
-                ArrayList<Nota> notas = notica.getNotaByIdEstudiante(a);
+                EstudianteDAO obs = new EstudianteDAO();
+                ArrayList<Estudiante> estudiantes = obs.getEstudiantesByIDCurso(a);
                 Gson g = new Gson();
-                String pasareEsto = g.toJson(notas);
+                String pasareEsto = g.toJson(estudiantes);
                 out.print(pasareEsto);
             }
              //lista las notas de un estudiante dado

@@ -52,6 +52,7 @@
                     <div class="container">
                         
                         <h3>Notas del curso</h3>
+                        <br>
                         <a>
                             <button type="button"  type="text" name="VerNotas" class="btn btn-default btn-round" id="botonVisualizar">Visualizar</button>
                         </a>
@@ -64,12 +65,12 @@
                         <form id="SelectCurso" style="display: none;">                                
                             <div>
 
-                                <label style="color:white">Curso: </label>
+                                <label style="color:black">Curso: </label>
                                 <select class="form-control" required name="curso" id="curso">
                                     <option value="" selected disabled>Seleccione un curso</option>
                                 </select> 
                                 <br>
-                                <label style="color:white" >Estudiante:</label>
+                                <label style="color:black" >Estudiante:</label>
                                 <br>
                                 <select required name="estudiante" id="estudiante" class="form-control">
                                     <option value="" selected  disabled>Seleccione un estudiante</option>
@@ -77,25 +78,18 @@
                                 <br>
                                 <br>
                                 <br>
-                                <table id="tablaObs" class="table table-hover" style="display: none;">
+                                <table id="tablaNota" class="table table-hover" style="display: none;">
 
                                 </table>
                             </div>  
                         </form>
-                        <form id="AddObs" style="display: none;">
+                        <form id="AddNota" style="display: none;">
                             <div class="form-group" >
-                                <label style="color:white" for="detalle">Tema:</label>
+                                <label style="color:black" for="detalle">Actividad:</label>
                                 <input type="text" class="form-control form-control-success" name="detalle" id="detalles">                               
                                 <br> 
-                                <label for="calificacion" style="color:white">Nota: </label>
-                                <select required name="calificacion" id="calificacion" class="form-control">
-                                    <option value="" selected disabled style="color:black">Seleccione una opcion</option>
-                                    <option value="5" style="color:green">5</option>  
-                                    <option value="4" style="color:yellowgreen">4</option> 
-                                    <option value="3"style="color:yellow">3</option>
-                                    <option value="2" style="color:orange">2</option>
-                                    <option value="1" style="color:red">1</option>
-                                </select> 
+                                <label for="calificacion" style="color:black">Nota: </label>
+                                <input type="text" class="form-control form-control-success" name="calificacion" id="calificacion"> 
                             </div>
                             <button type="submit" class="btn btn-neutral" name="Enviar">Establecer nota</button>
                         </form>                                                               

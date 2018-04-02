@@ -50,7 +50,7 @@
                     <br>
                     <br>
                     <div class="">
-                      
+                       
                         <form id="SelectCurso" >                                
                             <div >
                                 <div class="form-inline" >

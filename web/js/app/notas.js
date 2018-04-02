@@ -48,8 +48,8 @@ $(document).ready(function () {
             },
             dataType: "text",
             success: function (data) {
-                $('#AddNota').removeAttr('style');
-                $('#tablaNota').attr('style', 'display: none;');
+                //$('#AddNota').removeAttr('style');
+                //$('#tablaNota').attr('style', 'display: none;');
                 $('#SelectCurso').removeAttr('style');
                 var selectForm = $('#curso');
                 selectForm.empty();
@@ -76,11 +76,15 @@ $('#AddNota').on('submit', function () {
         data: {
             'idTema': $('#tema').val(),
             'nota': $('#nota').val(),
-            'idEstudiante': $('#estudiante').val()
+            'idEstudiante': $('#estudiante').val(),
+            'idActividad': $('#actividad').val()
         },
+        
         dataType: "text",
+        
         success: function (data) {
-            
+        alert('Nota agregada exitosamente');
+
         },
         async: false
     });
