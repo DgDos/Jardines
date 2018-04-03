@@ -10,43 +10,30 @@ package Modelo;
  * @author FiJus
  */
 public class Asistencia {
-    private int idCurso;
-    private int idEstudiante;
-    private int idFecha;
+    private int idEstudianteCurso;
+    private String Fecha;
     private int vino;
 
-    public Asistencia() {
-    }
-
-    public Asistencia(int idCurso, int idEstudiante, int idFecha, int vino) {
-        this.idCurso = idCurso;
-        this.idEstudiante = idEstudiante;
-        this.idFecha = idFecha;
+    public Asistencia(int idEstudianteCurso, String Fecha, int vino) {
+        this.idEstudianteCurso = idEstudianteCurso;
+        this.Fecha = Fecha;
         this.vino = vino;
     }
 
-    public int getIdCurso() {
-        return idCurso;
+    public int getIdEstudianteCurso() {
+        return idEstudianteCurso;
     }
 
-    public void setIdCurso(int idCurso) {
-        this.idCurso = idCurso;
+    public void setIdEstudianteCurso(int idEstudianteCurso) {
+        this.idEstudianteCurso = idEstudianteCurso;
     }
 
-    public int getIdEstudiante() {
-        return idEstudiante;
+    public String getFecha() {
+        return Fecha;
     }
 
-    public void setIdEstudiante(int idEstudiante) {
-        this.idEstudiante = idEstudiante;
-    }
-
-    public int getIdFecha() {
-        return idFecha;
-    }
-
-    public void setIdFecha(int idFecha) {
-        this.idFecha = idFecha;
+    public void setFecha(String Fecha) {
+        this.Fecha = Fecha;
     }
 
     public int getVino() {
@@ -56,6 +43,8 @@ public class Asistencia {
     public void setVino(int vino) {
         this.vino = vino;
     }
+
+   
     
     
 }

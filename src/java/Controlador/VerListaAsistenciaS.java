@@ -93,9 +93,11 @@ public class VerListaAsistenciaS extends HttpServlet {
             }
             if (opc == 2) {
                 int curso = Integer.parseInt(request.getParameter("curso"));
-                int fecha = Integer.parseInt(request.getParameter("fecha"));
+                String fecha = request.getParameter("fecha");
+                String[] fechaAux = fecha.split(" ");
                 AsistenciaDAO obs = new AsistenciaDAO();
-                ArrayList<ConsultaAsistencia> l = obs.getAsistenciaFecha(curso,fecha);
+                System.out.println(curso+ "   "+ fechaAux[0]);
+                ArrayList<ConsultaAsistencia> l = obs.getAsistenciaFecha(curso,fechaAux[0]);
                 Gson g = new Gson();
                 String pasareEsto = g.toJson(l);
                 out.print(pasareEsto);

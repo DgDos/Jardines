@@ -35,26 +35,41 @@
                     <br>
                     <br>
 
-                    <button type="button" name="guardar" id="botonCargar" class="btn btn-default btn-round" > Cargar Cursos</button> 
-
                     <a href="listaAsistencia.jsp"  class="btn btn-default btn-round"  ><i class=" nc-icon nc-badge"></i>Volver</a>
 
 
 
 
                     <form id="formulario" class="form-inline" >
-                        <SELECT  id="cursosProfesor" class="form-control">
-                            <OPTION></OPTION>
+                        <div class="form-group">
+                            <SELECT  id="cursosProfesor" class="form-control">
+                                <OPTION></OPTION>
 
-                        </SELECT>
+                            </SELECT>
+                        </div>    
 
-                        <SELECT  id="fechas" class="form-control">
-                            <OPTION></OPTION>
+                        <div class="form-group">
+                          <label >Fecha :</label>
 
-                        </SELECT>
+                            <div class="row">
+                                <div class='col-sm-6'>
+                                    <div class="form-group">
+                                        <div class='input-group date'  id='datetimepicker' >
+                                            <input  id="fecha" name="fecha" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                        </div> 
                         <br>
                         <br>
                         <br>
+                        <input type="button" value="Click me" id="Buscar"><br> 
+                        
                         <table class="table table-striped" id="tabla" style="color: white"  >
                             <thead>
                                 <tr>
@@ -90,7 +105,25 @@
             </div>
         </div>
 
-        <script src="js/jquery-1.7.1.min.js"></script>
+        <script src="assets/js/jquery-3.2.1.js" type="text/javascript"></script>
+        <script src="assets/js/jquery-ui-1.12.1.custom.min.js" type="text/javascript"></script>
+        <script src="assets/js/popper.js" type="text/javascript"></script>
+        <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+        <!-- Switches -->
+        <script src="assets/js/bootstrap-switch.min.js"></script>
+
+        <!--  Plugins for Slider -->
+        <script src="assets/js/nouislider.js"></script>
+
+        <!--  Plugins for DateTimePicker -->
+        <script src="assets/js/moment.min.js"></script>
+        <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+
+        <!--  Paper Kit Initialization and functons -->
+        <script src="assets/js/paper-kit.js?v=2.1.0"></script>
+
+        <!--  <script src="js/jquery-1.7.1.min.js"></script>-->
         <script src="js/app/verasistencia.js"></script>
     </body>
 </html>

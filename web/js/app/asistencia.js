@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#botonCargar').click(function () {
+    $
         $.ajax({
             type: 'GET',
             url: "AsistenciaS",
@@ -26,35 +26,10 @@ $(document).ready(function () {
         });
     });
     
-     $('#botonCargar').click(function () {
-        $.ajax({
-            type: 'GET',
-            url: "AsistenciaS",
-            //force to handle it as text
-            data: {
-                'op':"1"
+     
+    
+    
 
-            },
-            dataType: "text",
-            success: function (data) {
-                var selectForm = $('#fechas');
-                selectForm.empty();
-                selectForm.append('<option selected  value="" disabled>Seleccione una fecha</option>');
-                var json = $.parseJSON(data);
-                console.log(json);
-                for (var i = 0; i < json.length; ++i)
-                {
-                    var opcion = "<option class='idFechas' value=\"" +  json[i].idFecha + "\">" + json[i].fecha + "</option>";
-                    selectForm.append(opcion);
-                }
-                selectForm.attr('required', false);
-            },
-            async: false
-        });
-    });
-    
-    
-});
 
 
 
@@ -92,9 +67,8 @@ $(document).ready(function () {
   
   
 $('#guardarAsistencia').on('click', function () {
-    var idCurso = parseInt($('#cursosProfesor').children("option:selected").val());
     var idEstudiante = Array();
-    var idFecha = parseInt($('#fechas').children("option:selected").val());
+    var fecha = parseInt($('#fecha').children("option:selected").val());
     var vino = Array();
       $('#tabla tbody tr:not(:eq(0))').each(function(i, x) {
        
@@ -102,9 +76,9 @@ $('#guardarAsistencia').on('click', function () {
         
         vino[i]=parseInt($(this).children('td').eq(2).children("select").children("option:selected").val());
     });      
-      console.log(idCurso);
+      
       console.log(idEstudiante);
-      console.log(idFecha);
+      console.log(fecha);
       console.log(vino);
       
 
@@ -113,14 +87,16 @@ $('#guardarAsistencia').on('click', function () {
         type: 'POST',
         url: "AsistenciaS",
         data: {
-            'idCurso': idCurso,
             'idEstudiante': idEstudiante,
-            'idFecha': idFecha,
+            'fecha': fecha,
             'vino': vino
+            
+       
         },
         dataType: "text",
         success: function (data) {
-
+            alert('Se ha guardado la Materia exitosamente');
+            location.reload();
         },
         async: false
     });

@@ -29,10 +29,10 @@ public class AsistenciaDAO {
         connection = DbUtil.getConnection();
     }
     
-    public ArrayList<ConsultaAsistencia> getAsistenciaFecha(int idCurso,int idFecha) throws SQLException{
+    public ArrayList<ConsultaAsistencia> getAsistenciaFecha(int idCurso,String fecha) throws SQLException{
         ArrayList<ConsultaAsistencia> asis=new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select estudiante.nombre,asistencia.vino from asistencia,estudiante where asistencia.idCurso="+idCurso+" and asistencia.idfecha="+idFecha+" and asistencia.idestudiante= estudiante.documento");
+        ResultSet rs = statement.executeQuery("select estudiante.nombre,asistencia.vino from estudiante,estudiantecurso,asistencia where estudiante.documento = estudiantecurso.idestudiante and asistencia.idestudiantecurso = estudiantecurso.id and estudiantecurso.idcurso ="+idCurso+" and  asistencia.fecha ='" + fecha+"'");
         while (rs.next()) {
             ConsultaAsistencia ca=new ConsultaAsistencia();
             ca.setNombre(rs.getString("nombre"));
@@ -43,11 +43,11 @@ public class AsistenciaDAO {
     }
     
     public void addAsistencia(Asistencia asistencia) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into asistencia values (?,?,?,?)");
-        preparedStatement.setInt(1, asistencia.getIdCurso());
-        preparedStatement.setInt(2, asistencia.getIdEstudiante());
-        preparedStatement.setInt(3, asistencia.getIdFecha());
-        preparedStatement.setInt(4, asistencia.getVino() );
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into asistencia values (?,?,?,1)");
+        preparedStatement.setInt(1, asistencia.getIdEstudianteCurso());
+        preparedStatement.setString(2, asistencia.getFecha());
+        preparedStatement.setInt(3, asistencia.getVino());
+       
        
         preparedStatement.executeUpdate();
     }

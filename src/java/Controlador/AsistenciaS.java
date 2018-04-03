@@ -10,12 +10,14 @@ import Dao.CursoDAO;
 import Dao.EstudianteDAO;
 import Dao.FechaDAO;
 import Dao.DirectorCursoDAO;
+import Dao.EstudianteCursoDAO;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Fecha;
 import Modelo.Profesor;
 import Modelo.Asistencia;
 import Modelo.DirectorCurso;
+import Modelo.EstudianteCurso;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -118,14 +120,22 @@ public class AsistenciaS extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
          try { 
          String[] idEstudiante =  request.getParameterValues("idEstudiante[]");
-         String idCurso = request.getParameter("idCurso");
-         String idFecha = request.getParameter("idFecha");
+         String fecha = request.getParameter("fecha");
          String[] vino = request.getParameterValues("vino[]");
          
+         ArrayList<Integer> idEstudianteCurso = new ArrayList<>();
+         
+         for(int i=0; i < idEstudiante.length;i++){
+             EstudianteCursoDAO dao = new EstudianteCursoDAO();
+             int idEC = dao.getEstCur(Integer.parseInt(idEstudiante[i]));
+             idEstudianteCurso.add(idEC);
+         }
+         
+         String[] fechaAux = fecha.split(" ");
          
          for(int i=0; i<idEstudiante.length; i++){
              
-             Asistencia asistencia = new Asistencia(Integer.parseInt(idCurso), Integer.parseInt(idEstudiante[i]), Integer.parseInt(idFecha),Integer.parseInt(vino[i]));
+             Asistencia asistencia = new Asistencia(idEstudianteCurso.get(i), fechaAux[0], Integer.parseInt(vino[i]));
             
              AsistenciaDAO dao = new AsistenciaDAO();
              dao.addAsistencia(asistencia);

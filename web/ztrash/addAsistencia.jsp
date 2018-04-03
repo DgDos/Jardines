@@ -71,12 +71,7 @@
                     <hr>
 
                     <form class="form-inline" action="ListaAsistencia" method="POST">
-                        <text name="fecha">
-                        <script>
-                            var f = new Date();
-                            document.write(f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear());
-                        </script>
-                        </text>
+                        
                         <table class="table table-striped">
                             <thead>
                                 <tr>
