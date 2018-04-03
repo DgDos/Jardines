@@ -68,9 +68,9 @@ $(document).ready(function () {
   
 $('#guardarAsistencia').on('click', function () {
     var idEstudiante = Array();
-    var fecha = parseInt($('#fecha').children("option:selected").val());
+    var fecha = $('#fecha').val();
     var vino = Array();
-      $('#tabla tbody tr:not(:eq(0))').each(function(i, x) {
+      $('#tabla tbody tr').each(function(i, x) {
        
         idEstudiante[i]=parseInt($(this).children('td').eq(0).attr('values'));
         
@@ -95,7 +95,7 @@ $('#guardarAsistencia').on('click', function () {
         },
         dataType: "text",
         success: function (data) {
-            alert('Se ha guardado la Materia exitosamente');
+            alert('Se ha guardado la Asistencia exitosamente');
             location.reload();
         },
         async: false

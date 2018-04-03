@@ -130,9 +130,9 @@ public class AsistenciaS extends HttpServlet {
              int idEC = dao.getEstCur(Integer.parseInt(idEstudiante[i]));
              idEstudianteCurso.add(idEC);
          }
-         
+             
          String[] fechaAux = fecha.split(" ");
-         
+         System.out.println(fecha);
          for(int i=0; i<idEstudiante.length; i++){
              
              Asistencia asistencia = new Asistencia(idEstudianteCurso.get(i), fechaAux[0], Integer.parseInt(vino[i]));
