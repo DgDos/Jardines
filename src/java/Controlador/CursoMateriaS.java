@@ -119,11 +119,10 @@ public class CursoMateriaS extends HttpServlet {
         try {
             int idC= Integer.parseInt(request.getParameter("curso"));
             int idM= Integer.parseInt(request.getParameter("materia"));
-            int idP= Integer.parseInt(request.getParameter("profesor"));
+            String idP= request.getParameter("profesor");
             String fechaInicio = request.getParameter("fechainicio");
             String[] fechaaux = fechaInicio.split(" ");
             CursoMateriaDAO cmd=new CursoMateriaDAO();
-            System.out.println(idC+"----"+idM+"----"+idP);
             cmd.addCM(idC, idM, idP,fechaaux[0],null);
             
             

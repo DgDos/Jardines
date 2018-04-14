@@ -14,12 +14,12 @@ public class Observador {
     private int calificacion;
     private String detalles;
     private int idEstudianteCurso;
-    private int idProfesor;
+    private String idProfesor;
 
     public Observador() {
     }
 
-    public Observador(int idObs, int calificacion, String detalles, int idEstudianteCurso, int idProfesor) {
+    public Observador(int idObs, int calificacion, String detalles, int idEstudianteCurso, String idProfesor) {
         this.idObs = idObs;
         this.calificacion = calificacion;
         this.detalles = detalles;
@@ -59,11 +59,11 @@ public class Observador {
         this.idEstudianteCurso = idEstudianteCurso;
     }
 
-    public int getIdProfesor() {
+    public String getIdProfesor() {
         return idProfesor;
     }
 
-    public void setIdProfesor(int idProfesor) {
+    public void setIdProfesor(String idProfesor) {
         this.idProfesor = idProfesor;
     }
     

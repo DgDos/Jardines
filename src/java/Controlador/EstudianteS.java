@@ -100,7 +100,7 @@ public class EstudianteS extends HttpServlet {
             }
             //buscar info de un estudiante dado un id
             if (opc == 2) {
-                int estId = Integer.parseInt(request.getParameter("estudiante"));
+                String estId = request.getParameter("estudiante");
                 EstudianteDAO obs = new EstudianteDAO();
                 Estudiante e = obs.getEstudianteByID(estId);
                 Gson g = new Gson();
@@ -109,12 +109,12 @@ public class EstudianteS extends HttpServlet {
             }
             //eliminar estudiante dado un documento
             if (opc == 3) {
-                int documento = Integer.parseInt(request.getParameter("documento"));
+                String documento = request.getParameter("documento");
                 EstudianteDAO o = new EstudianteDAO();
                 o.eliminarEstudiante(documento);
             }
             if (opc == 4) {
-                int estId = Integer.parseInt(request.getParameter("documento"));
+                String estId = request.getParameter("documento");
                 EstudianteDAO obs = new EstudianteDAO();
                 Estudiante e = obs.getEstudianteByID(estId);
                 Gson g = new Gson();
@@ -124,7 +124,7 @@ public class EstudianteS extends HttpServlet {
             if (opc == 5) {
                 Estudiante e = new Estudiante();
                 e.setNombre(request.getParameter("nombre"));
-                e.setIdEstudiante(Integer.parseInt(request.getParameter("documento")));
+                e.setIdEstudiante(request.getParameter("documento"));
                 e.setFechaNacimiento(request.getParameter("fechanacimiento"));
                 e.setCelularContacto(request.getParameter("celularcontacto"));
                 e.setDireccion(request.getParameter("direccion"));
@@ -171,7 +171,7 @@ public class EstudianteS extends HttpServlet {
             String fecha = request.getParameter("fechanacimiento");
             String[] aux = fecha.split(" ");
             e.setNombre(request.getParameter("nombre"));
-            e.setIdEstudiante(Integer.parseInt(request.getParameter("documento")));
+            e.setIdEstudiante(request.getParameter("documento"));
             e.setFechaNacimiento(aux[0]);
             e.setCelularContacto(request.getParameter("celularcontacto"));
             e.setDireccion(request.getParameter("direccion"));

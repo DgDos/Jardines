@@ -13,14 +13,14 @@ public class CursoMateria {
     private int idCM;
     private int idCurso;
     private int idMateria;
-    private int idProfesor;
+    private String idProfesor;
     private String fechaInicio;
     private String fechaFinal;
 
     public CursoMateria() {
     }
 
-    public CursoMateria(int idCM, int idCurso, int idMateria, int idProfesor,String fechaInicio,String fechaFinal) {
+    public CursoMateria(int idCM, int idCurso, int idMateria, String idProfesor,String fechaInicio,String fechaFinal) {
         this.idCM = idCM;
         this.idCurso = idCurso;
         this.idMateria = idMateria;
@@ -70,11 +70,11 @@ public class CursoMateria {
         this.idMateria = idMateria;
     }
 
-    public int getIdProfesor() {
+    public String getIdProfesor() {
         return idProfesor;
     }
 
-    public void setIdProfesor(int idProfesor) {
+    public void setIdProfesor(String idProfesor) {
         this.idProfesor = idProfesor;
     }
 

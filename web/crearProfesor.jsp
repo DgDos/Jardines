@@ -29,6 +29,19 @@
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
+        
+        <script>
+            function lettersOnly(input) {
+                var regex = /[^a-z]/gi;
+                input.value = input.value.replace(regex, "");
+            }
+        </script>
+        <script>
+            function NumbersOnly(input) {
+                var regex = /[^0-9]/gi;
+                input.value = input.value.replace(regex, "");
+            }
+        </script>
     </head>
     <body style="background-color:white">
         <%@include file="headerAdmin.jsp" %>
@@ -49,9 +62,9 @@
                     <form id="crearProfesor" >
                         <div class="form-group">
                             <label >Cedula:</label>
-                            <input  required class="form-control form-control-success" id="cedula" >
+                            <input onkeyup="NumbersOnly(this)" required class="form-control form-control-success" id="cedula" >
                             <label >Nombre:</label>
-                            <input  required class="form-control form-control-success" id="nombre"  >
+                            <input  onkeyup="lettersOnly(this)" required class="form-control form-control-success" id="nombre"  >
                             <label >TipoU:</label>
                             <select required class="form-control" id="tipoU">
                                 <option selected  value="" disabled>Seleccione un curso</option>
@@ -60,14 +73,14 @@
                             </select>
                             <br>
                             <label>Correo:</label>
-                            <input required class="form-control form-control-success" id="correo"  >
+                            <input type="email" required class="form-control form-control-success" id="correo"  >
                             <label >Celular:</label>
-                            <input required class="form-control form-control-success" id="celular"  >
+                            <input  onkeyup="NumbersOnly(this)" required class="form-control form-control-success" id="celular"  >
                             <label >Direccion:</label>
                             <input required class="form-control form-control-success" id="direccion"  >
                             
                             <label >Experiencia:</label>
-                            <input required class="form-control form-control-success" id="experiencia"  >
+                            <input  onkeyup="LettersOnly(this)" required class="form-control form-control-success" id="experiencia"  >
                             <label >Fecha Nacimiento:</label>
                             <div class="col-md-6">
                             <div class="row">
@@ -83,8 +96,20 @@
                                 </div>
                             </div>
                         </div>
-                            <label >Tipo Sangre:</label>
-                            <input required class="form-control form-control-success" id="tiposangre"  >
+                             <div class="form-group col-sm-4">
+                            <label >Tipo de sangre:</label>
+                            <select required class="form-control" id="tiposangre" required>
+                                <option selected  value="" disabled>Seleccione un tipo de sangre</option>
+                                <option>A+</option>
+                                <option>B+</option>
+                                <option>O+</option>
+                                <option>AB+</option>
+                                <option>A-</option>
+                                <option>B-</option>
+                                <option>O-</option>
+                                <option>AB-</option>
+                            </select>
+                        </div>
 
                             <label >Usuario</label>
                             <input required class="form-control form-control-success" id="usuario"  >

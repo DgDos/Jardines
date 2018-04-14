@@ -90,7 +90,7 @@ public class DirectorCursoS extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-            int cedula = Integer.parseInt(request.getParameter("cedula"));
+            String cedula = request.getParameter("cedula");
             int idCurso = Integer.parseInt(request.getParameter("idCurso"));
             String fechaInicio = request.getParameter("fechaInicio");
             DirectorCursoDAO d = new DirectorCursoDAO();

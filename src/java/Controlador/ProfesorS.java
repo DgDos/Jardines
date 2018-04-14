@@ -70,7 +70,7 @@ public class ProfesorS extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             Profesor p = (Profesor) request.getSession().getAttribute("profesor");
-            int cedula = p.getIdProfesor();
+            String cedula = p.getIdProfesor();
             ProfesorDAO pc = new ProfesorDAO();
             Profesor pcm = pc.getProfesorById(cedula);
             Gson g = new Gson();
@@ -99,7 +99,7 @@ public class ProfesorS extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            int cedula = Integer.parseInt(request.getParameter("cedula"));
+            String cedula = request.getParameter("cedula");
             String nombre = request.getParameter("nombre");
             int tipoU = Integer.parseInt(request.getParameter("tipoU"));
             String correo = request.getParameter("correo");

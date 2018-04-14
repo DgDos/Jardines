@@ -74,15 +74,15 @@ public class ProfesorGestion extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             int opc = Integer.parseInt(request.getParameter("opcion"));
-            System.out.println("llegue");
+           
             if (opc == 0) {
-                int cedula = Integer.parseInt(request.getParameter("cedula"));
+                String cedula = request.getParameter("cedula");
                 System.out.println(cedula + "cedula");
                 ProfesorDAO o = new ProfesorDAO();
                 o.eliminarProfesor(cedula);
             }
             if (opc == 1) {
-                int estId = Integer.parseInt(request.getParameter("cedula"));
+                String estId = request.getParameter("cedula");
                 ProfesorDAO obs = new ProfesorDAO();
                 Profesor e = obs.getProfesorById(estId);
                 Gson g = new Gson();
@@ -90,7 +90,7 @@ public class ProfesorGestion extends HttpServlet {
                 out.print(pasareEsto);
             }
             if (opc == 2) {
-                int cedula = Integer.parseInt(request.getParameter("cedula"));
+                String cedula = request.getParameter("cedula");
                 String nombre = request.getParameter("nombre");
                 String correo = request.getParameter("correo");
                 String celular = request.getParameter("celular");

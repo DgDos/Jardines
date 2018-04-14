@@ -34,7 +34,18 @@
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
-
+        <script>
+            function lettersOnly(input) {
+                var regex = /[^a-z]/gi;
+                input.value = input.value.replace(regex, "");
+            }
+        </script>
+        <script>
+            function NumbersOnly(input) {
+                var regex = /[^0-9]/gi;
+                input.value = input.value.replace(regex, "");
+            }
+        </script>
     </head>
     <body style="background-color:white">
         <%@include file="headerAdmin.jsp" %>
@@ -49,18 +60,18 @@
                     <br>
                     <br>
                     <div class="container">
-                       
+
                     </div>
                     <br>
 
                     <form id="CrearE" >
                         <div class="form-group">
                             <label >Documento:</label>
-                            <input  class="form-control form-control-success" id="documento" required>
+                            <input placeholder="Solo numeros" onkeyup="NumbersOnly(this)" class="form-control form-control-success" id="documento" required>
                         </div>
                         <div class="form-group">
                             <label  >Nombre:</label>
-                            <input  class="form-control form-control-success" id="nombre" required  >
+                            <input placeholder="Solo Letra"   onkeyup="lettersOnly(this)" class="form-control form-control-success" id="nombre" required  >
                         </div>
                         <div class="form-group">
                             <label >Direccion:</label>
@@ -68,7 +79,7 @@
                         </div> 
                         <div class="form-group">
                             <label >Celular:</label>
-                            <input  class="form-control form-control-success" id="celularcontacto" required >
+                            <input placeholder="Solo numeros" onkeyup="NumbersOnly(this)" class="form-control form-control-success" id="celularcontacto" required >
                         </div>
                         <label >Fecha de Nacimiento:</label>
                         <div class="row">
@@ -84,9 +95,19 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-sm-4">
                             <label >Tipo de sangre:</label>
-                            <input  class="form-control form-control-success" id="tiposangre" required >
+                            <select required class="form-control" id="tiposangre" required>
+                                <option selected  value="" disabled>Seleccione un tipo de sangre</option>
+                                <option>A+</option>
+                                <option>B+</option>
+                                <option>O+</option>
+                                <option>AB+</option>
+                                <option>A-</option>
+                                <option>B-</option>
+                                <option>O-</option>
+                                <option>AB-</option>
+                            </select>
                         </div> 
 
                         <button type="submit" class="btn btn-default">Enviar</button>

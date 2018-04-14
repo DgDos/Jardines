@@ -30,7 +30,7 @@ public class EstudianteCursoDAO {
 
     public void addEstCur(EstudianteCurso e) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("insert into estudiantecurso(idestudiante,idcurso,fechainicio,fechafinal,delete) values (?,?,?,?,?)");
-        preparedStatement.setInt(1, e.getIdEstudiante());
+        preparedStatement.setString(1, e.getIdEstudiante());
         preparedStatement.setInt(2, e.getIdCurso());
         preparedStatement.setString(3, e.getFechaInicio());
         preparedStatement.setString(4, e.getFechaFinal());
@@ -40,7 +40,7 @@ public class EstudianteCursoDAO {
 
     public void updateEstCur(EstudianteCurso e) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("update estudiantecurso set idestudiante=?,idcurso=?,fechainicio=?,fechafinal=?" + " where id=?");
-        preparedStatement.setInt(1, e.getIdEstudiante());
+        preparedStatement.setString(1, e.getIdEstudiante());
         preparedStatement.setInt(2, e.getIdCurso());
         preparedStatement.setString(3, e.getFechaInicio());
         preparedStatement.setString(4, e.getFechaFinal());
@@ -61,7 +61,7 @@ public class EstudianteCursoDAO {
         while (rs.next()) {
             EstudianteCurso c = new EstudianteCurso();
             c.setIdEstCur(idEstCur);
-            c.setIdEstudiante(rs.getInt("idestudiante"));
+            c.setIdEstudiante(rs.getString("idestudiante"));
             c.setIdCurso(rs.getInt("idcurso"));
             c.setFechaInicio(rs.getString("fechainicio"));
             c.setFechaFinal(rs.getString("fechafinal"));

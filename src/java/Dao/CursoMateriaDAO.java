@@ -27,12 +27,11 @@ public class CursoMateriaDAO {
         connection = DbUtil.getConnection();
     }
     
-    public void addCM(int idC,int idM,int idP,String fechaInicial, String fechaFinal) throws SQLException{
+    public void addCM(int idC,int idM,String idP,String fechaInicial, String fechaFinal) throws SQLException{
         PreparedStatement preparedStatement = connection.prepareStatement("insert into cursomateria(idcurso,idmateria,idprofesor,fechainicio,fechafinal,delete) values (?,?,?,?,?,1)");
-        System.out.println(idC+"----"+idM+"----"+idP);
         preparedStatement.setInt(1, idC);
         preparedStatement.setInt(2, idM);
-        preparedStatement.setInt(3, idP);
+        preparedStatement.setString(3, idP);
         preparedStatement.setString(4, fechaInicial);
         preparedStatement.setString(5, fechaFinal);
         preparedStatement.executeUpdate();
@@ -47,7 +46,7 @@ public class CursoMateriaDAO {
             c.setIdCM(rs.getInt("id"));
             c.setIdCurso(rs.getInt("idcurso"));
             c.setIdMateria(rs.getInt("idmateria"));
-            c.setIdProfesor(rs.getInt("idprofesor"));
+            c.setIdProfesor(rs.getString("idprofesor"));
             c.setFechaInicial(rs.getString("fechainicio"));
             c.setFechaFinal(rs.getString("fechafinal"));
             cursos.add(c);
@@ -55,16 +54,16 @@ public class CursoMateriaDAO {
         return cursos; 
     }
     
-    public ArrayList<CursoMateria> getAllCMProfesor(int idP) throws SQLException {
+    public ArrayList<CursoMateria> getAllCMProfesor(String idP) throws SQLException {
        ArrayList<CursoMateria> cursos = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from cursomateria where delete=1 and idprofesor="+idP);
+        ResultSet rs = statement.executeQuery("select * from cursomateria where delete=1 and idprofesor='"+idP+"'");
         while (rs.next()) {
             CursoMateria c = new CursoMateria();
             c.setIdCM(rs.getInt("id"));
             c.setIdCurso(rs.getInt("idcurso"));
             c.setIdMateria(rs.getInt("idmateria"));
-            c.setIdProfesor(rs.getInt("idprofesor"));
+            c.setIdProfesor(rs.getString("idprofesor"));
             c.setFechaInicial(rs.getString("fechainicio"));
             c.setFechaFinal(rs.getString("fechafinal"));
             cursos.add(c);
@@ -82,7 +81,7 @@ public class CursoMateriaDAO {
         PreparedStatement preparedStatement = connection.prepareStatement("update cursomateria set idcurso=?,idmateria=?,idprofesor=?,fechainicio=?,fechafinal=?" + " where id=?");
         preparedStatement.setInt(1, e.getIdCurso());
         preparedStatement.setInt(2, e.getIdMateria());
-        preparedStatement.setInt(3, e.getIdProfesor());
+        preparedStatement.setString(3, e.getIdProfesor());
         preparedStatement.setString(4, e.getFechaInicio());
         preparedStatement.setString(5, e.getFechaFinal());
         preparedStatement.setInt(6, e.getIdCM());

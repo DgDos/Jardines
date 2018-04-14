@@ -28,12 +28,12 @@ public class ProfesorDAO {
         connection = DbUtil.getConnection();
     }
 
-    public Profesor getProfesorById(int idPro) throws SQLException, URISyntaxException {
+    public Profesor getProfesorById(String idPro) throws SQLException, URISyntaxException {
         Profesor pro = new Profesor();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from profesor where delete=1 and cedula=" + idPro);
+        ResultSet rs = statement.executeQuery("select * from profesor where delete=1 and cedula='" + idPro+"'");
         while (rs.next()) {
-            pro.setIdProfesor(rs.getInt("cedula"));
+            pro.setIdProfesor(rs.getString("cedula"));
             pro.setNombre(rs.getString("nombre"));
             pro.setTipoU(rs.getInt("tipou"));
             pro.setPassword(rs.getString("password"));
@@ -53,7 +53,7 @@ public class ProfesorDAO {
         ResultSet rs = statement.executeQuery("select * from profesor where delete=1");
         while (rs.next()) {
             Profesor pro = new Profesor();
-            pro.setIdProfesor(rs.getInt("cedula"));
+            pro.setIdProfesor(rs.getString("cedula"));
             pro.setNombre(rs.getString("nombre"));
             pro.setTipoU(rs.getInt("tipou"));
             pro.setCorreo(rs.getString("correo"));
@@ -76,7 +76,7 @@ public class ProfesorDAO {
         ResultSet rs = statement.executeQuery("select * from profesor where delete=1 and tipou=1");
         while (rs.next()) {
             Profesor pro = new Profesor();
-            pro.setIdProfesor(rs.getInt("cedula"));
+            pro.setIdProfesor(rs.getString("cedula"));
             pro.setNombre(rs.getString("nombre"));
             pro.setTipoU(rs.getInt("tipou"));
             pro.setCorreo(rs.getString("correo"));
@@ -94,7 +94,7 @@ public class ProfesorDAO {
 
     public void addProfesor(Profesor profe) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("insert into profesor values (?,?,?,?,?,?,?,?,?,?,?,1)");
-        preparedStatement.setInt(1, profe.getIdProfesor());
+        preparedStatement.setString(1, profe.getIdProfesor());
         preparedStatement.setString(2, profe.getNombre());
         preparedStatement.setInt(3, profe.getTipoU());
         preparedStatement.setString(4, profe.getCorreo());
@@ -108,8 +108,8 @@ public class ProfesorDAO {
         preparedStatement.executeUpdate();
     }
 
-    public void eliminarProfesor(int cedula) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("update profesor set delete=0 where cedula=" + cedula);
+    public void eliminarProfesor(String cedula) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update profesor set delete=0 where cedula='" + cedula+"'");
 
         preparedStatement.executeUpdate();
     }
@@ -124,7 +124,7 @@ public class ProfesorDAO {
         preparedStatement.setString(6, e.getFechaNacimiento());
         preparedStatement.setString(7, e.getTipoSangre());
         preparedStatement.setString(8, e.getUsuario());
-        preparedStatement.setInt(9, e.getIdProfesor());
+        preparedStatement.setString(9, e.getIdProfesor());
         preparedStatement.executeUpdate();
     }
 }

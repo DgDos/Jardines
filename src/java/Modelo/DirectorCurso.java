@@ -10,7 +10,7 @@ package Modelo;
  * @author FiJus
  */
 public class DirectorCurso {
-    private int idDirector;
+    private String idDirector;
     private int idCurso;
     private int cedula;
     private String fechainicio;
@@ -20,7 +20,7 @@ public class DirectorCurso {
     public DirectorCurso() {
     }
 
-    public DirectorCurso(int idProfesor, int idCurso, int cedula, String fechainicio, String fechafinal) {
+    public DirectorCurso(String idProfesor, int idCurso, int cedula, String fechainicio, String fechafinal) {
         this.idDirector = idProfesor;
         this.idCurso = idCurso;
         this.cedula = cedula;
@@ -54,11 +54,11 @@ public class DirectorCurso {
 
    
 
-    public int getIdDirector() {
+    public String getIdDirector() {
         return idDirector;
     }
 
-    public void setIdDirector(int idDirector) {
+    public void setIdDirector(String idDirector) {
         this.idDirector = idDirector;
     }
 

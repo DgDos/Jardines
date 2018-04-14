@@ -34,19 +34,19 @@ public class EstudianteDAO {
         ResultSet rs = statement.executeQuery("select * from estudiante where idcurso=" + id_curso);
         while (rs.next()) {
             Estudiante c = new Estudiante();
-            c.setIdEstudiante(rs.getInt("documento"));
+            c.setIdEstudiante(rs.getString("documento"));
             c.setNombre(rs.getString("nombre"));
             estudiantes.add(c);
         }
         return estudiantes;
     }
     
-    public Estudiante getEstudianteByID(int idEst) throws SQLException, URISyntaxException {
+    public Estudiante getEstudianteByID(String idEst) throws SQLException, URISyntaxException {
         Estudiante estudiante= new Estudiante();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from estudiante where documento=" + idEst);
+        ResultSet rs = statement.executeQuery("select * from estudiante where documento='" + idEst+"'");
         while (rs.next()) {
-            estudiante.setIdEstudiante(rs.getInt("documento"));
+            estudiante.setIdEstudiante(rs.getString("documento"));
             estudiante.setNombre(rs.getString("nombre"));
             estudiante.setCelularContacto(rs.getString("celularcontacto"));
             estudiante.setDireccion(rs.getString("direccion"));
@@ -59,7 +59,7 @@ public class EstudianteDAO {
 
     public void addEstudiante(Estudiante est) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("insert into estudiante values (?,?,?,?,?,?,3,1)");
-        preparedStatement.setInt(1, est.getIdEstudiante());
+        preparedStatement.setString(1, est.getIdEstudiante());
         preparedStatement.setString(2, est.getNombre());
         preparedStatement.setString(3, est.getCelularContacto());
         preparedStatement.setString(4, est.getDireccion());
@@ -67,8 +67,8 @@ public class EstudianteDAO {
         preparedStatement.setString(6, est.getTipoSangre());
         preparedStatement.executeUpdate();
     }
-    public void eliminarEstudiante(int idE) throws SQLException{
-         PreparedStatement preparedStatement = connection.prepareStatement("update estudiante set delete=0 where documento="+idE);
+    public void eliminarEstudiante(String idE) throws SQLException{
+         PreparedStatement preparedStatement = connection.prepareStatement("update estudiante set delete=0 where documento='"+idE+"'");
         preparedStatement.executeUpdate();
     }
 
@@ -79,7 +79,7 @@ public class EstudianteDAO {
         preparedStatement.setString(3, e.getDireccion());
         preparedStatement.setString(4, e.getFechaNacimiento());
         preparedStatement.setString(5, e.getTipoSangre());
-        preparedStatement.setInt(6, e.getIdEstudiante());
+        preparedStatement.setString(6, e.getIdEstudiante());
         preparedStatement.executeUpdate();
     }
 
@@ -90,7 +90,7 @@ public class EstudianteDAO {
         ResultSet rs = statement.executeQuery("select * from estudiante where delete=1");
         while (rs.next()) {
             Estudiante estudiante=new Estudiante();
-            estudiante.setIdEstudiante(rs.getInt("documento"));
+            estudiante.setIdEstudiante(rs.getString("documento"));
             estudiante.setNombre(rs.getString("nombre"));
             estudiante.setCelularContacto(rs.getString("celularcontacto"));
             estudiante.setDireccion(rs.getString("direccion"));
@@ -102,15 +102,15 @@ public class EstudianteDAO {
         return estudiantes;
     }
     
-    public void updateCursoEstudiante(int documento,int idCurso) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("update estudiante set idcurso=?" + " where documento=" + documento);
+    public void updateCursoEstudiante(String documento,int idCurso) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update estudiante set idcurso=?" + " where documento='" + documento+"'");
         preparedStatement.setInt(1, idCurso);
         preparedStatement.executeUpdate();
     }
 
-    public boolean estGotCur(int idEstudiante)  throws SQLException{
+    public boolean estGotCur(String idEstudiante)  throws SQLException{
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from estudiante where documento= "+idEstudiante+" and delete=1 and idCurso=3");
+        ResultSet rs = statement.executeQuery("select * from estudiante where documento= '"+idEstudiante+"' and delete=1 and idCurso=3");
         while(rs.next()){
             return true;
         }
@@ -123,7 +123,7 @@ public class EstudianteDAO {
         ResultSet rs = statement.executeQuery("select * from estudiante where delete=1 and idcurso=3");
         while (rs.next()) {
             Estudiante estudiante=new Estudiante();
-            estudiante.setIdEstudiante(rs.getInt("documento"));
+            estudiante.setIdEstudiante(rs.getString("documento"));
             estudiante.setNombre(rs.getString("nombre"));
             estudiante.setCelularContacto(rs.getString("celularcontacto"));
             estudiante.setDireccion(rs.getString("direccion"));

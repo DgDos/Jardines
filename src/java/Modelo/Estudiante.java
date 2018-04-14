@@ -10,7 +10,7 @@ package Modelo;
  * @author FiJus
  */
 public class Estudiante {
-    private int idEstudiante;
+    private String idEstudiante;
     private String nombre;
     private String celularContacto;
     private String direccion;
@@ -22,7 +22,7 @@ public class Estudiante {
     public Estudiante() {
     }
 
-    public Estudiante(int idEstudiante, String nombre, String celularContacto, String direccion, String fechaNacimiento, String tipoSangre, int idCurso) {
+    public Estudiante(String idEstudiante, String nombre, String celularContacto, String direccion, String fechaNacimiento, String tipoSangre, int idCurso) {
         this.idEstudiante = idEstudiante;
         this.nombre = nombre;
         this.celularContacto = celularContacto;
@@ -32,11 +32,11 @@ public class Estudiante {
         this.idCurso = idCurso;
     }
 
-    public int getIdEstudiante() {
+    public String getIdEstudiante() {
         return idEstudiante;
     }
 
-    public void setIdEstudiante(int idEstudiante) {
+    public void setIdEstudiante(String idEstudiante) {
         this.idEstudiante = idEstudiante;
     }
 

@@ -11,7 +11,7 @@ package Modelo;
  */
 public class EstudianteCurso {
     private int idEstCur;
-    private int idEstudiante;
+    private String idEstudiante;
     private int idCurso;
     private String fechaInicio;
     private String fechaFinal;
@@ -19,7 +19,7 @@ public class EstudianteCurso {
     public EstudianteCurso() {
     }
 
-    public EstudianteCurso(int idEstCur, int idEstudiante, int idCurso, String fechaInicio, String fechaFinal) {
+    public EstudianteCurso(int idEstCur, String idEstudiante, int idCurso, String fechaInicio, String fechaFinal) {
         this.idEstCur = idEstCur;
         this.idEstudiante = idEstudiante;
         this.idCurso = idCurso;
@@ -35,11 +35,11 @@ public class EstudianteCurso {
         this.idEstCur = idEstCur;
     }
 
-    public int getIdEstudiante() {
+    public String getIdEstudiante() {
         return idEstudiante;
     }
 
-    public void setIdEstudiante(int idEstudiante) {
+    public void setIdEstudiante(String idEstudiante) {
         this.idEstudiante = idEstudiante;
     }
 

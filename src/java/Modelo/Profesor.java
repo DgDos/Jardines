@@ -10,7 +10,7 @@ package Modelo;
  * @author FiJus
  */
 public class Profesor {
-    private int idProfesor;
+    private String idProfesor;
     private String nombre;
     private int tipoU;
     private String correo;
@@ -25,7 +25,7 @@ public class Profesor {
     public Profesor() {
     }
 
-    public Profesor(int idProfesor, String nombre, int tipoU, String correo, String celular, String direccion, String experiencia, String fechaNacimiento, String tipoSangre, String usuario, String password) {
+    public Profesor(String idProfesor, String nombre, int tipoU, String correo, String celular, String direccion, String experiencia, String fechaNacimiento, String tipoSangre, String usuario, String password) {
         this.idProfesor = idProfesor;
         this.nombre = nombre;
         this.tipoU = tipoU;
@@ -39,7 +39,7 @@ public class Profesor {
         this.password = password;
     }
 
-    public Profesor(int idProfesor, String nombre, String correo, String celular, String direccion, String experiencia, String fechaNacimiento, String tipoSangre, String usuario) {
+    public Profesor(String idProfesor, String nombre, String correo, String celular, String direccion, String experiencia, String fechaNacimiento, String tipoSangre, String usuario) {
         this.idProfesor = idProfesor;
         this.nombre = nombre;
         this.correo = correo;
@@ -56,11 +56,11 @@ public class Profesor {
 
     
 
-    public int getIdProfesor() {
+    public String getIdProfesor() {
         return idProfesor;
     }
 
-    public void setIdProfesor(int idProfesor) {
+    public void setIdProfesor(String idProfesor) {
         this.idProfesor = idProfesor;
     }
 

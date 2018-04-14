@@ -70,7 +70,7 @@ public class CursoEstudianteS extends HttpServlet {
             throws ServletException, IOException {
         try {
             int idCurso = Integer.parseInt(request.getParameter("curso"));
-            int idEstudiante = Integer.parseInt(request.getParameter("estudiante"));
+            String idEstudiante = request.getParameter("estudiante");
             String fecha = request.getParameter("fecha");
             String[] fechaAux = fecha.split(" ");
             EstudianteDAO dao = new EstudianteDAO();

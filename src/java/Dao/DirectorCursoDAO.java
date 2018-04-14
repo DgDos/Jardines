@@ -34,7 +34,7 @@ public class DirectorCursoDAO {
      * @throws SQLException
      * @throws URISyntaxException
      */
-    public ArrayList<DirectorCurso> getAllProCur(int idPro) throws SQLException, URISyntaxException {
+    public ArrayList<DirectorCurso> getAllProCur(String idPro) throws SQLException, URISyntaxException {
         ArrayList<DirectorCurso> procur = new ArrayList<>();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("select * from directorcurso where delete=1 and cedula=" + idPro);
@@ -47,9 +47,9 @@ public class DirectorCursoDAO {
         return procur;
     }
 
-    public void addDirectorCurso(int cedula, int idcurso, String fechainicio, String fechafinal) throws SQLException {
+    public void addDirectorCurso(String cedula, int idcurso, String fechainicio, String fechafinal) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("insert into directorcurso(cedula,idcurso,fechainicio,fechafinal,delete) values (?,?,?,?,1)");
-        preparedStatement.setInt(1, cedula);
+        preparedStatement.setString(1, cedula);
         preparedStatement.setInt(2, idcurso);
         preparedStatement.setString(3, fechainicio);
         preparedStatement.setString(4, fechafinal);
@@ -68,14 +68,14 @@ public class DirectorCursoDAO {
         preparedStatement.setInt(2, e.getIdCurso());
         preparedStatement.setString(3, e.getFechainicio());
         preparedStatement.setString(4, e.getFechafinal());
-        preparedStatement.setInt(5, e.getIdDirector());
+        preparedStatement.setString(5, e.getIdDirector());
 
         preparedStatement.executeUpdate();
     }
 
-    public boolean knowCedula(int cedula) throws SQLException {
+    public boolean knowCedula(String cedula) throws SQLException {
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from directorcurso where delete=1 and cedula=" + cedula);
+        ResultSet rs = statement.executeQuery("select * from directorcurso where delete=1 and cedula='" + cedula+"'");
         while(rs.next()){
             return false;
         }      

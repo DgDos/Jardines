@@ -28,9 +28,9 @@ public class ObservadorDAO {
         connection = DbUtil.getConnection();
     }
 
-    public void addObservador(String detalles, int calificacion, int idEst, int idProfesor) throws SQLException {
+    public void addObservador(String detalles, int calificacion, int idEst, String idProfesor) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("insert into observador(idprofesor,detalles,calificacion,idestudiantecurso,delete) values (?,?,?,?,?)");
-        preparedStatement.setInt(1, idProfesor);
+        preparedStatement.setString(1, idProfesor);
         preparedStatement.setString(2, detalles);
         preparedStatement.setInt(3, calificacion);
         preparedStatement.setInt(4, idEst);
@@ -40,7 +40,7 @@ public class ObservadorDAO {
 
     public void updateObservador(Observador obs) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("update observador set idprofesor=?,detalles=?,calificacion=?,idestudiantecurso=?" + " where id=?");
-        preparedStatement.setInt(1, obs.getIdProfesor());
+        preparedStatement.setString(1, obs.getIdProfesor());
         preparedStatement.setString(2, obs.getDetalles());
         preparedStatement.setInt(3, obs.getCalificacion());
         preparedStatement.setInt(4, obs.getIdEstudianteCurso());
@@ -66,7 +66,7 @@ public class ObservadorDAO {
             c.setIdEstudianteCurso(rs.getInt("idestudiantecurso"));
             c.setCalificacion(rs.getInt("calificacion"));
             c.setDetalles(rs.getString("detalles"));
-            c.setIdProfesor(rs.getInt("idprofesor"));
+            c.setIdProfesor(rs.getString("idprofesor"));
             notasObs.add(c);
         }
         return notasObs;
@@ -79,7 +79,7 @@ public class ObservadorDAO {
         while (rs.next()) {
             Observador c = new Observador();
             c.setIdObs(rs.getInt("id"));
-            c.setIdProfesor(rs.getInt("idprofesor"));
+            c.setIdProfesor(rs.getString("idprofesor"));
             c.setDetalles(rs.getString("detalles"));
             c.setCalificacion(rs.getInt("calificacion"));
             c.setIdEstudianteCurso(rs.getInt("idestudiantecurso"));
