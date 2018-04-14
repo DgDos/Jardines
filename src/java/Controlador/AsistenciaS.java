@@ -135,7 +135,7 @@ public class AsistenciaS extends HttpServlet {
          System.out.println(fecha);
          for(int i=0; i<idEstudiante.length; i++){
              
-             Asistencia asistencia = new Asistencia(idEstudianteCurso.get(i), fechaAux[0], Integer.parseInt(vino[i]));
+             Asistencia asistencia = new Asistencia(idEstudianteCurso.get(i), fechaAux[0],vino[i]);
             
              AsistenciaDAO dao = new AsistenciaDAO();
              dao.addAsistencia(asistencia);

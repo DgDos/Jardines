@@ -12,9 +12,9 @@ package Modelo;
 public class Asistencia {
     private int idEstudianteCurso;
     private String Fecha;
-    private int vino;
+    private String vino;
 
-    public Asistencia(int idEstudianteCurso, String Fecha, int vino) {
+    public Asistencia(int idEstudianteCurso, String Fecha, String vino) {
         this.idEstudianteCurso = idEstudianteCurso;
         this.Fecha = Fecha;
         this.vino = vino;
@@ -36,11 +36,11 @@ public class Asistencia {
         this.Fecha = Fecha;
     }
 
-    public int getVino() {
+    public String getVino() {
         return vino;
     }
 
-    public void setVino(int vino) {
+    public void setVino(String vino) {
         this.vino = vino;
     }
 

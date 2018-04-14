@@ -36,17 +36,12 @@
                     <br>
                     <br>
                     <br>
-
-
-
-
-
-                    <a href="verAsistencia.jsp"  class="btn btn-default btn-round"  ><i class=" nc-icon nc-badge"></i>Ver Asistencia</a>
-
-
-
+                    
+                       
 
                     <form id="formulario" class="form-inline" >
+                        
+                        
                         <div class="form-group">
                             <SELECT  id="cursosProfesor" class="form-control">
                                 <OPTION></OPTION>
@@ -99,7 +94,7 @@
 
                                 </tbody>
                             </table>
-                            <button type="button" id="guardarAsistencia" class="btn btn-default btn-round" >Guardar</button> 
+                            <button type="button" id="guardarAsistencia" class="btn btn-default btn-round" >Guardar</button> <br> <br>
 
 
                     </form>

@@ -54,7 +54,7 @@ $(document).ready(function () {
                 console.log(json);
                 for (var i = 0; i < json.length; ++i)
                 {
-                    var opcion = "<tr><td class='idEstudiantes' values="+ json[i].idEstudiante + ">" + json[i].idEstudiante + "</td> <td>" + json[i].nombre + " </td> <td>  <select class='vino'> <option value='1'> Presente </option><option value='0' > Ausente </option> </select> </tr>";
+                    var opcion = "<tr><td class='idEstudiantes' values="+ json[i].idEstudiante + ">" + json[i].idEstudiante + "</td> <td>" + json[i].nombre + " </td> <td>  <select class='vino'> <option value= 'Presente' > Presente </option><option value= 'Ausente' > Ausente </option> </select> </tr>";
                     selectForm.append(opcion);
                 }
                 selectForm.attr('required', false);
@@ -72,9 +72,9 @@ $('#guardarAsistencia').on('click', function () {
     var vino = Array();
       $('#tabla tbody tr').each(function(i, x) {
        
-        idEstudiante[i]=parseInt($(this).children('td').eq(0).attr('values'));
+        idEstudiante[i]=$(this).children('td').eq(0).attr('values');
         
-        vino[i]=parseInt($(this).children('td').eq(2).children("select").children("option:selected").val());
+        vino[i]=$(this).children('td').eq(2).children("select").children("option:selected").val();
     });      
       
       console.log(idEstudiante);

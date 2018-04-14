@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <html lang="en">
-    <head>
+     <head>
         <meta charset="utf-8" />
         <link rel="icon" type="image/png" href="assets/img/colegio.ico">
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
@@ -21,7 +21,7 @@
     </head>
 
 
-    <body style="background-color:black">
+    <body style="background-color:#ccccff">
         <%@include file="headerProfesor.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
@@ -34,12 +34,6 @@
                     <br>
                     <br>
                     <br>
-
-                    <a href="listaAsistencia.jsp"  class="btn btn-default btn-round"  ><i class=" nc-icon nc-badge"></i>Volver</a>
-
-
-
-
                     <form id="formulario" class="form-inline" >
                         <div class="form-group">
                             <SELECT  id="cursosProfesor" class="form-control">
@@ -62,13 +56,9 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                          
-                        </div> 
-                        <br>
-                        <br>
-                        <br>
-                        <input type="button" value="Click me" id="Buscar"><br> 
+                            </div>         
+                        </div>     
+                        <input type="button" value="Buscar" class="btn btn-default btn-round"  id="Buscar"><br> <br>
                         
                         <table class="table table-striped" id="tabla" style="color: white"  >
                             <thead>

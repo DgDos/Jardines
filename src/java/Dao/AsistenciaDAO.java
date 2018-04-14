@@ -34,9 +34,9 @@ public class AsistenciaDAO {
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("select estudiante.nombre,asistencia.vino from estudiante,estudiantecurso,asistencia where estudiante.documento = estudiantecurso.idestudiante and asistencia.idestudiantecurso = estudiantecurso.id and estudiantecurso.idcurso ="+idCurso+" and  asistencia.fecha ='" + fecha+"'");
         while (rs.next()) {
-            ConsultaAsistencia ca=new ConsultaAsistencia();
+            ConsultaAsistencia ca= new ConsultaAsistencia();
             ca.setNombre(rs.getString("nombre"));
-            ca.setVino(rs.getInt("vino"));
+            ca.setVino(rs.getString("vino"));
             asis.add(ca);
         }
         return asis;
@@ -46,7 +46,7 @@ public class AsistenciaDAO {
         PreparedStatement preparedStatement = connection.prepareStatement("insert into asistencia values (?,?,?,1)");
         preparedStatement.setInt(1, asistencia.getIdEstudianteCurso());
         preparedStatement.setString(2, asistencia.getFecha());
-        preparedStatement.setInt(3, asistencia.getVino());
+        preparedStatement.setString(3, asistencia.getVino());
        
        
         preparedStatement.executeUpdate();

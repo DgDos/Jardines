@@ -13,9 +13,14 @@
                 <li class="nav-item" >
                     <a href="perfilProfesor.jsp"  class="nav-link"  ><i class=" nc-icon nc-badge"></i>Ver Perfil</a>
                 </li>
-                <li class="nav-item">
-                    <a href="listaAsistencia.jsp"  class="nav-link"><i class="nc-icon nc-check-2"></i> Asistencia del Curso</a>
-                </li>
+                <div class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle " data-toggle="dropdown" id="dropdownMenuButton" href="" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-single-02"></i>Asistencia</a>
+                            <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="listaAsistencia.jsp">Tomar Asistencia</a>
+                                <a class="dropdown-item" href="verAsistencia.jsp">Ver Asistencia</a>
+                               
+                            </ul>
+                        </div> 
                 <li class="nav-item">
                     <a href="crearNotas.jsp" class="nav-link"><i class="nc-icon nc-book-bookmark"></i> Notas del Curso</a>
                 </li>

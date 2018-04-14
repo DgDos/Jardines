@@ -11,12 +11,12 @@ package Util;
  */
 public class ConsultaAsistencia {
     private String nombre;
-    private int vino;
+    private String vino;
 
     public ConsultaAsistencia() {
     }
 
-    public ConsultaAsistencia(String nombre, int vino) {
+    public ConsultaAsistencia(String nombre, String vino) {
         this.nombre = nombre;
         this.vino = vino;
     }
@@ -29,11 +29,11 @@ public class ConsultaAsistencia {
         this.nombre = nombre;
     }
 
-    public int getVino() {
+    public String getVino() {
         return vino;
     }
 
-    public void setVino(int vino) {
+    public void setVino(String vino) {
         this.vino = vino;
     }
     
