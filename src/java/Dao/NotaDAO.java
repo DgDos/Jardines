@@ -32,7 +32,7 @@ public class NotaDAO {
     public ArrayList<Nota> getNotaByIdEstudiante(int id_estudiante) throws SQLException, URISyntaxException {
         ArrayList<Nota> notas = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from nota where idestudiante=" + id_estudiante);
+        ResultSet rs = statement.executeQuery("select * from nota where idestudiante=?" + id_estudiante);
         while (rs.next()) {
             Nota n = new Nota();
             n.setIdEstudianteCurso(rs.getInt("id_Est"));
@@ -45,7 +45,7 @@ public class NotaDAO {
     public Nota getNotaByIdActividad(int idActividad) throws SQLException, URISyntaxException {
         Nota nota= new Nota();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from nota where idActividad=" + idActividad);
+        ResultSet rs = statement.executeQuery("select * from nota where idActividad=?" + idActividad);
         while (rs.next()) {
             nota.setNota(rs.getFloat("nota"));
             nota.setIdEstudianteCurso(rs.getInt("id_Est"));
@@ -57,7 +57,7 @@ public class NotaDAO {
     }
 
     public void addNota(float nota, int IdEstudianteCurso, int IdActividad, String DetallesExtra) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into nota values (?,?,?,?,1)");
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into nota (nota,idestudiantecurso,idactividad,detallesextra) values (?,?,?,?)");
         preparedStatement.setFloat(1, nota);
         preparedStatement.setInt(2, IdEstudianteCurso);
         preparedStatement.setInt(3, IdActividad);

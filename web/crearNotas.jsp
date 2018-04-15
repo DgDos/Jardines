@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html lang="en">
     <%
-    Profesor p=(Profesor)request.getSession().getAttribute("profesor");
-    if(p!=null){
-        if(p.getTipoU()==0){
-            response.sendRedirect("menuAdmin.jsp");
+        Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+        if (p != null) {
+            if (p.getTipoU() == 0) {
+                response.sendRedirect("menuAdmin.jsp");
+            }
+        } else {
+            response.sendRedirect("index.jsp");
         }
-    }else{
-        response.sendRedirect("index.jsp");
-    }
     %>
     <head>
         <meta charset="utf-8" />
@@ -18,7 +18,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-        <title>Notas</title>
+        <title>Gestion Notas</title>
 
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
@@ -48,51 +48,33 @@
                     <br>
                     <br>
                     <br>
-                    <br>
-                    <div class="container">
-                        
-                        <h3>Notas del curso</h3>
-                        <br>
-                        <a>
-                            <button type="button"  type="text" name="VerNotas" class="btn btn-default btn-round" id="botonVisualizar">Visualizar</button>
-                        </a>
-                        <a>
-                            <button type="button"  type="text" name="EstablecerNotas" class="btn btn-default btn-round" id="botonRealizar">Establecer</button>
-                        </a>
-                        <br>
-                        <br>
-                        <br>
-                        <form id="SelectCurso" style="display: none;">                                
-                            <div>
 
-                                <label style="color:black">Curso: </label>
+                    <div class="container">
+                        <br>
+                        <form id="Notas">                                
+                            <div>
+                                <label >Curso y Materia: </label>
                                 <select class="form-control" required name="curso" id="curso">
-                                    <option value="" selected disabled>Seleccione un curso</option>
+                                    <option value="" selected disabled>Seleccione uno</option>
                                 </select> 
                                 <br>
-                                <label style="color:black" >Estudiante:</label>
+                                <label >Tema: </label>
+                                <select class="form-control" required name="tema" id="tema">
+                                    <option value="" selected disabled>Seleccione un tema</option>
+                                </select> 
                                 <br>
-                                <select required name="estudiante" id="estudiante" class="form-control">
-                                    <option value="" selected  disabled>Seleccione un estudiante</option>
-                                </select>   
+                                
+                                <label>Actividad: </label>
+                                <select class="form-control" required name="actividades" id="actividades">
+                                    <option value="" selected disabled>Seleccione una actividad </option>
+                                </select>  
                                 <br>
-                                <br>
-                                <br>
-                                <table id="tablaNota" class="table table-hover" style="display: none;">
-
-                                </table>
+                                <button type="submit" class="btn btn-neutral" id="botonsito" name="Enviar" style="display: none;">Agregar</button>
                             </div>  
                         </form>
-                        <form id="AddNota" style="display: none;">
-                            <div class="form-group" >
-                                <label style="color:black" for="detalle">Actividad:</label>
-                                <input type="text" class="form-control form-control-success" name="detalle" id="detalles">                               
-                                <br> 
-                                <label for="calificacion" style="color:black">Nota: </label>
-                                <input type="text" class="form-control form-control-success" name="calificacion" id="calificacion"> 
-                            </div>
-                            <button type="submit" class="btn btn-neutral" name="Enviar">Establecer nota</button>
-                        </form>                                                               
+                        <table id="tablaNota" class="table table-hover" style="display: none;">
+
+                        </table>                                                           
                     </div>
                 </div>
 
@@ -104,9 +86,17 @@
     <script src="assets/js/popper.js" type="text/javascript"></script>
     <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
+    <!-- Switches -->
+    <script src="assets/js/bootstrap-switch.min.js"></script>
+
     <!--  Plugins for Slider -->
     <script src="assets/js/nouislider.js"></script>
-    <script src="js/app/notas.js"></script>
-    <script src="js/app/log.js"></script>
-</html>
 
+    <!--  Plugins for DateTimePicker -->
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!--  Paper Kit Initialization and functons -->
+    <script src="assets/js/paper-kit.js?v=2.1.0"></script>
+    <script src="js/app/notas.js"></script>
+</html>
