@@ -69,12 +69,21 @@
                                     <option value="" selected disabled>Seleccione una actividad </option>
                                 </select>  
                                 <br>
-                                <button type="submit" class="btn btn-neutral" id="botonsito" name="Enviar" style="display: none;">Agregar</button>
+                                
                             </div>  
-                        </form>
+                        
                         <table id="tablaNota" class="table table-hover" style="display: none;">
 
-                        </table>                                                           
+                        </table> 
+                        
+                        </form>
+                        <form id="AddNota" style="display: none;">
+                            <div class="form-group" >
+                                
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-neutral" id="botonsito" name="Enviar" style="display: none;">Agregar</button>
+                        </form>                        
                     </div>
                 </div>
 
