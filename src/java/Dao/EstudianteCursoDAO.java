@@ -78,6 +78,10 @@ public class EstudianteCursoDAO {
         }
         return 0;
     }
+
+    public int getEstCur(int estId) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

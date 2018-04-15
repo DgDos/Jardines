@@ -51,10 +51,10 @@
 
                     <div class="container">
                         <br>
-                        <form id="Notas">                                
+                        <form id="SelectCM">                                
                             <div>
                                 <label >Curso y Materia: </label>
-                                <select class="form-control" required name="curso" id="curso">
+                                <select class="form-control" required name="cm" id="cm">
                                     <option value="" selected disabled>Seleccione uno</option>
                                 </select> 
                                 <br>

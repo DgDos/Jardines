@@ -45,7 +45,7 @@ public class NotaDAO {
     public Nota getNotaByIdActividad(int idActividad) throws SQLException, URISyntaxException {
         Nota nota= new Nota();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from nota where idActividad=?" + idActividad);
+        ResultSet rs = statement.executeQuery("select * from nota where idActividad=" + idActividad);
         while (rs.next()) {
             nota.setNota(rs.getFloat("nota"));
             nota.setIdEstudianteCurso(rs.getInt("id_Est"));
