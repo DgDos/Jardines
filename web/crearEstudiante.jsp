@@ -36,7 +36,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
         <script>
             function lettersOnly(input) {
-                var regex = /[^a-z]/gi;
+                var regex = /[^a-z- ]/gi;
                 input.value = input.value.replace(regex, "");
             }
         </script>

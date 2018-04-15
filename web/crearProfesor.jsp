@@ -32,7 +32,7 @@
         
         <script>
             function lettersOnly(input) {
-                var regex = /[^a-z]/gi;
+                var regex = /[^a-z- ]/gi;
                 input.value = input.value.replace(regex, "");
             }
         </script>
@@ -80,7 +80,7 @@
                             <input required class="form-control form-control-success" id="direccion"  >
                             
                             <label >Experiencia:</label>
-                            <input  onkeyup="LettersOnly(this)" required class="form-control form-control-success" id="experiencia"  >
+                            <input  onkeyup="lettersOnly(this)" required class="form-control form-control-success" id="experiencia"  >
                             <label >Fecha Nacimiento:</label>
                             <div class="col-md-6">
                             <div class="row">
