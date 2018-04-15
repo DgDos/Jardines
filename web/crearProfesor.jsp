@@ -62,9 +62,9 @@
                     <form id="crearProfesor" >
                         <div class="form-group">
                             <label >Cedula:</label>
-                            <input onkeyup="NumbersOnly(this)" required class="form-control form-control-success" id="cedula" >
+                            <input placeholder="Solo numeros" onkeyup="NumbersOnly(this)" required class="form-control form-control-success" id="cedula" >
                             <label >Nombre:</label>
-                            <input  onkeyup="lettersOnly(this)" required class="form-control form-control-success" id="nombre"  >
+                            <input  placeholder="Solo letras" onkeyup="lettersOnly(this)" required class="form-control form-control-success" id="nombre"  >
                             <label >TipoU:</label>
                             <select required class="form-control" id="tipoU">
                                 <option selected  value="" disabled>Seleccione un curso</option>
@@ -75,12 +75,12 @@
                             <label>Correo:</label>
                             <input type="email" required class="form-control form-control-success" id="correo"  >
                             <label >Celular:</label>
-                            <input  onkeyup="NumbersOnly(this)" required class="form-control form-control-success" id="celular"  >
+                            <input  placeholder="Solo numeros" onkeyup="NumbersOnly(this)" required class="form-control form-control-success" id="celular"  >
                             <label >Direccion:</label>
                             <input required class="form-control form-control-success" id="direccion"  >
                             
                             <label >Experiencia:</label>
-                            <input  onkeyup="lettersOnly(this)" required class="form-control form-control-success" id="experiencia"  >
+                            <input  placeholder="Solo letras" onkeyup="lettersOnly(this)" required class="form-control form-control-success" id="experiencia"  >
                             <label >Fecha Nacimiento:</label>
                             <div class="col-md-6">
                             <div class="row">
