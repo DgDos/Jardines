@@ -70,9 +70,9 @@ public class EstudianteCursoDAO {
         return estudiantesCurso;
     }
 
-    public int getEstCur(int idEst) throws SQLException, URISyntaxException {
+    public int getEstCur(String idEst) throws SQLException, URISyntaxException {
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from estudiantecurso where delete=1 and idestudiante="+idEst);
+        ResultSet rs = statement.executeQuery("select * from estudiantecurso where delete=1 and idestudiante='"+idEst+"'");
         while(rs.next()){
         return rs.getInt("id");
         }

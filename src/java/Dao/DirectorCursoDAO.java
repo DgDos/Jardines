@@ -37,7 +37,7 @@ public class DirectorCursoDAO {
     public ArrayList<DirectorCurso> getAllProCur(String idPro) throws SQLException, URISyntaxException {
         ArrayList<DirectorCurso> procur = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from directorcurso where delete=1 and cedula=" + idPro);
+        ResultSet rs = statement.executeQuery("select * from directorcurso where delete=1 and cedula='" + idPro+"'");
         while (rs.next()) {
             DirectorCurso c = new DirectorCurso();
             c.setIdCurso(rs.getInt("idcurso"));
