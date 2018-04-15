@@ -120,7 +120,8 @@ public class NotaS extends HttpServlet {
                 String pasareEsto = g.toJson(actividades);
                 out.print(pasareEsto);
             }
-        } catch (SQLException ex) {
+            
+                    } catch (SQLException ex) {
             Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
             Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);

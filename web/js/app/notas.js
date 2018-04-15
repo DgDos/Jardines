@@ -70,7 +70,7 @@ $('#tema').on('change', function () {
             boton.removeAttr('style');
             $('#actividades').removeAttr('style');
             selectForm.empty();
-            selectForm.append('<p style=\"\" >Actividades: </p>');
+            selectForm.append('<option selected  value="" disabled>Seleccione un tema</option>');
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
@@ -78,12 +78,39 @@ $('#tema').on('change', function () {
                 var opcion = "<p style=\"\" >"+j+". "+json[i].nombre+"</p>";
                 selectForm.append(opcion);
             }
-            selectForm.append("<br><p style=\"\" >Quiere agregar otro?</p>");
+            
         },
         async: false
     });
 });
 
+$('#actividades').on('change', function () {
+    $.ajax({
+        type: 'GET',
+        url: "NotaS",
+        //force to handle it as text
+
+        data: {
+            'opcion': "2",
+            'estudiante': $('#estudiante').val()
+        },
+        dataType: "text",
+        success: function (data) {
+            $('#tablaNota').removeAttr('style');
+            $('#AddNota').removeAttr('style');
+            var selectForm = $('#tablaNota');
+            selectForm.empty();
+            selectForm.append('<tr><td>Detalles</td><td>Calificacion</td><td>Profesor</td> </tr>');
+            var json = $.parseJSON(data);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<tr><td>" + json[i].curso + "</td><td>" + json[i].materia + "</td><td>" + json[i].profesor + "</td> </tr>";
+                selectForm.append(opcion);
+            }
+        },
+        async: false
+    });
+});
 $('#SelectCM').on('submit', function () {
     $.ajax({
         type: 'POST',
