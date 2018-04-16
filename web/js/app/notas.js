@@ -70,7 +70,7 @@ $('#tema').on('change', function () {
             boton.removeAttr('style');
             $('#actividades').removeAttr('style');
             selectForm.empty();
-            selectForm.append('<option selected  value="" disabled>Seleccione un tema</option>');
+            selectForm.append('<option selected  value="" disabled>Seleccione una actividad</option>');
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
@@ -84,45 +84,18 @@ $('#tema').on('change', function () {
     });
 });
 
-$('#actividades').on('change', function () {
-    $.ajax({
-        type: 'GET',
-        url: "NotaS",
-        //force to handle it as text
-
-        data: {
-            'opcion': "2",
-            'estudiante': $('#estudiante').val()
-        },
-        dataType: "text",
-        success: function (data) {
-            $('#tablaNota').removeAttr('style');
-            $('#AddNota').removeAttr('style');
-            var selectForm = $('#tablaNota');
-            selectForm.empty();
-            selectForm.append('<tr><td>Detalles</td><td>Calificacion</td><td>Profesor</td> </tr>');
-            var json = $.parseJSON(data);
-            for (var i = 0; i < json.length; ++i)
-            {
-                var opcion = "<tr><td>" + json[i].curso + "</td><td>" + json[i].materia + "</td><td>" + json[i].profesor + "</td> </tr>";
-                selectForm.append(opcion);
-            }
-        },
-        async: false
-    });
-});
-$('#SelectCM').on('submit', function () {
+$('#AddNota').on('submit', function () {
     $.ajax({
         type: 'POST',
-        url: "NotaS",        
+        url: "NotaS",
         data: {
-            'tema': $('#tema').val(),
-            'nombre': $('#nombre').val()
+            'nota': $('#nota').val(),
+            'idEstudiante': $('#estudiante').val(),
+            'idActividad':$('#actividad').val()
         },
         dataType: "text",
         success: function (data) {
-        alert('Nota agregada exitosamente');
-        location.reload();
+
         },
         async: false
     });
