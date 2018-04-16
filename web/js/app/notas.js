@@ -57,7 +57,7 @@ $('#tema').on('change', function () {
     $.ajax({
         type: 'GET',
         url: "NotaS",
-        //force to handle it as text
+        //force to handle it as te
         data: {
             'opcion': "2",
             'tema': $('#tema').val()
@@ -70,7 +70,7 @@ $('#tema').on('change', function () {
             boton.removeAttr('style');
             $('#actividades').removeAttr('style');
             selectForm.empty();
-            selectForm.append('<option selected  value="" disabled>Seleccione una actividad</option>');
+            selectForm.append('<option selected  value="" disabled>Seleccione un tema</option>');
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
@@ -100,3 +100,5 @@ $('#AddNota').on('submit', function () {
         async: false
     });
 });
+
+
