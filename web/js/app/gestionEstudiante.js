@@ -34,7 +34,7 @@ $(document).ready(function () {
             },
             dataType: "text",
             success: function (data) {
-
+                alert('Se ha eliminado el estudiante exitosamente');
 
             },
             async: false
@@ -56,7 +56,7 @@ $(document).ready(function () {
             },
             dataType: "text",
             success: function (data) {
-
+             alert('Se han guardado los cambios exitosamente');
 
             },
             async: false
