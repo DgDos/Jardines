@@ -69,7 +69,7 @@ $(document).ready(function () {
                 var json = $.parseJSON(data);
                 for (var i = 0; i < json.length; ++i)
                 {
-                    var opcion = "<p style=\"color:white\" >Detalle: " + json[i].curso + ", Calificacion: " + json[i].materia + ", Profesor: " + json[i].profesor + ".</p>";
+                    var opcion = "<p style=\"color:white\" >Detalle:" + json[i].curso + ", Calificacion: " + json[i].materia + ", Profesor: " + json[i].profesor + ".</p>";
                     selectForm.append(opcion);
                 }
             },
