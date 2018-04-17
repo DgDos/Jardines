@@ -126,7 +126,7 @@ $('#actividades').on('change', function () {
     });
 });*/
 
-$('#AddNota').on('click', function () {
+$('#botonsito').on('click', function () {
     var idEstudiante = Array();
     var nota = Array();
       $('#tablaNota tbody tr').each(function(i, x) {
