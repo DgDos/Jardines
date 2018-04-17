@@ -120,6 +120,16 @@ public class NotaS extends HttpServlet {
                 String pasareEsto = g.toJson(actividades);
                 out.print(pasareEsto);
             }
+            //lista estudiantes del curso
+            if (opcion == 3){
+                int idCurso = Integer.parseInt(request.getParameter("curso"));
+                    EstudianteDAO dao = new EstudianteDAO();
+                    ArrayList<Estudiante> estudiantes = dao.getEstudiantesByIDCurso(idCurso);
+
+                    Gson g = new Gson();
+                    String pasareEsto = g.toJson(estudiantes);
+                    out.print(pasareEsto);
+            }
             
                     } catch (SQLException ex) {
             Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);

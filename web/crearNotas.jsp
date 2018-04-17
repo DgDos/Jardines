@@ -79,10 +79,11 @@
                         </form>
                         <form id="AddNota" style="display: none;">
                             <div class="form-group" >
-                                
+                                <label  for="nota">Nota:</label>
+                                <input type="text" class="form-control form-control-success col-8" name="nota" id="nota">   
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-neutral" id="botonsito" name="Enviar" style="display: none;">Agregar</button>
+                            <button type="submit" class="btn btn-neutral" id="botonsito" name="Enviar" style="display: none;">Agregar Nota</button>
                         </form>                        
                     </div>
                 </div>

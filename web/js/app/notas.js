@@ -36,7 +36,7 @@ $('#cm').on('change', function () {
         },
         dataType: "text",
         success: function (data) {
-            $('#actividades').attr('style', 'display: none;');
+            $('#actividades').removeAttr('style');
             $('#botonsito').attr('style', 'display: none;');
             var selectForm = $('#tema');
             selectForm.empty();
@@ -70,15 +70,40 @@ $('#tema').on('change', function () {
             boton.removeAttr('style');
             $('#actividades').removeAttr('style');
             selectForm.empty();
-            selectForm.append('<option selected  value="" disabled>Seleccione un tema</option>');
+            selectForm.append('<option selected  value="" disabled>Seleccione una actividad</option>');
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
-                var j=i+1;
-                var opcion = "<p style=\"\" >"+j+". "+json[i].nombre+"</p>";
+            
+                var opcion = "<option value=\"" + json[i].id + "\">" + json[i].nombre + "</option>";
                 selectForm.append(opcion);
             }
-            
+            },
+        async: false
+    });
+});
+$('#actividades').on('change', function () {
+    $.ajax({
+        type: 'GET',
+        url: "NotaS",
+        //force to handle it as te
+        data: {
+            'opcion': "3",
+            'actividad': $('#actividades').val()
+        },
+        dataType: "text",
+        success: function (data) {
+            $('#tablaNota').removeAttr('style');
+            $('#AddNota').removeAttr('style');
+            var selectForm = $('#tablaNota');
+            selectForm.empty();
+            selectForm.append('<tr><td>Estudiante</td><td>Nota</td> </tr>');
+            var json = $.parseJSON(data);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<tr><td>" + json[i].idEstudiante + "</td><td>" + json[i].nota + "</td> </tr>";
+                selectForm.append(opcion);
+            }
         },
         async: false
     });
@@ -91,7 +116,7 @@ $('#AddNota').on('submit', function () {
         data: {
             'nota': $('#nota').val(),
             'idEstudiante': $('#estudiante').val(),
-            'idActividad':$('#actividad').val()
+            'id':$('#actividad').val()
         },
         dataType: "text",
         success: function (data) {
