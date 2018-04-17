@@ -72,14 +72,26 @@
                                 
                             </div>  
                         
-                        <table id="tablaNota" class="table table-hover" style="display: none;">
-
-                        </table> 
+                        
                         
                         </form>
                         <form id="AddNota" style="display: none;">
                             <div class="form-group" >
-                                
+                                <table id="tablaNota" class="table table-hover" style="display: none;">
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Nota</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <tr>
+                                            <td id="Nombre"></td>
+                                            <td id="Nota"></td>
+                                        </tr>
+                                    </tbody>     
+                                </table> 
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-neutral" id="botonsito" name="Enviar" style="display: none;">Agregar Nota</button>

@@ -11,6 +11,7 @@ import Dao.NotaDAO;
 import Dao.DirectorCursoDAO;
 import Dao.EstudianteDAO;
 import Dao.CursoMateriaDAO;
+import Dao.EstudianteCursoDAO;
 import Dao.MateriaDAO;
 import Dao.TemaDAO;
 import Modelo.Actividad;
@@ -151,23 +152,45 @@ public class NotaS extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            float nota = Float.parseFloat(request.getParameter("nota"));
-            int IdEstudiante = Integer.parseInt(request.getParameter("idEstudiante"));
-            int IdActividad = Integer.parseInt(request.getParameter("idActividad"));
-            String DetallesExtra = request.getParameter("DetallesExtra");
-            NotaDAO n = new NotaDAO();
-            System.out.println(nota + "----" + IdEstudiante);
-            n.addNota(nota, IdEstudiante, IdActividad, DetallesExtra);
-
-        } catch (SQLException ex) {
-            Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);
+        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+        // try { 
+         String[] nota = request.getParameterValues("nota[]");
+         String[] idEstudiante =  request.getParameterValues("idEstudiante[]");
+         //int idActividad =  Integer.parseInt(request.getParameter("idActividad"));
+         //String DetallesExtra = request.getParameter("DetallesExtra");
+        
+         System.out.println("nota"+ idEstudiante[0]+ "LLEGUE");
+         /*
+         ArrayList<Integer> idEstudianteCurso = new ArrayList<>();
+         
+         for(int i=0; i < idEstudiante.length;i++){
+             EstudianteCursoDAO dao = new EstudianteCursoDAO();
+             int idEC = dao.getEstCur(idEstudiante[i]);
+             idEstudianteCurso.add(idEC);
+         }
+             
+        
+         for(int i=0; i<idEstudiante.length; i++){
+             
+             Nota notita = new Nota(nota[i], idEstudianteCurso.get(i), idActividad, DetallesExtra);
+            
+             NotaDAO dao = new NotaDAO();
+             dao.addNota(i, i, i, DetallesExtra);
+             
+         }
+         
+           } catch (SQLException ex) {
+                Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         
+            */
         }
-    }
+    
 
     /**
      * Returns a short description of the servlet.

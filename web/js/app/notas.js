@@ -101,7 +101,7 @@ $('#actividades').on('change', function () {
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
-                var opcion = "<tr><td>" + json[i].nombre + " </td> <td>  <label for='nota'> <input type= 'text' > </select></tr>";
+                var opcion = "<tr><td>" + json[i].nombre + " </td> <td>  <label for='nota'> <input type= 'text' ></tr>";
                 selectForm.append(opcion);
             }
         },
@@ -126,10 +126,10 @@ $('#actividades').on('change', function () {
     });
 });*/
 
-$('#botonsito').on('submit', function () {
+$('#AddNota').on('click', function () {
     var idEstudiante = Array();
     var nota = Array();
-      $('#tabla tbody tr').each(function(i, x) {
+      $('#tablaNota tbody tr').each(function(i, x) {
        
         idEstudiante[i]=$(this).children('td').eq(0).attr('values');
         
@@ -143,8 +143,8 @@ $('#botonsito').on('submit', function () {
         type: 'POST',
         url: "NotaS",
         data: {
-            'nota': $('#nota').val(),
-            'idEstudiante': $('#estudiante').val()
+            'nota': nota,
+            'idEstudiante': idEstudiante
             
         },
         dataType: "text",
