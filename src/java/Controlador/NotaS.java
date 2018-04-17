@@ -154,29 +154,30 @@ public class NotaS extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         response.setContentType("text/html;charset=UTF-8");
-        // try { 
+         try { 
          String[] nota = request.getParameterValues("nota[]");
          String[] idEstudiante =  request.getParameterValues("idEstudiante[]");
-         //int idActividad =  Integer.parseInt(request.getParameter("idActividad"));
+         int idActividad =  Integer.parseInt(request.getParameter("idActividad"));
          //String DetallesExtra = request.getParameter("DetallesExtra");
         
          System.out.println("nota"+ idEstudiante[0]+ "LLEGUE");
-         /*
+         
          ArrayList<Integer> idEstudianteCurso = new ArrayList<>();
          
-         for(int i=0; i < idEstudiante.length;i++){
+         for(int i=1; i < idEstudiante.length;i++){
              EstudianteCursoDAO dao = new EstudianteCursoDAO();
              int idEC = dao.getEstCur(idEstudiante[i]);
              idEstudianteCurso.add(idEC);
          }
              
         
-         for(int i=0; i<idEstudiante.length; i++){
+         for(int i=1; i<idEstudiante.length; i++){
              
-             Nota notita = new Nota(nota[i], idEstudianteCurso.get(i), idActividad, DetallesExtra);
+             //Nota notita = new Nota(Integer.parseInt(nota[i]), , idActividad, "uyguggv");
             
              NotaDAO dao = new NotaDAO();
-             dao.addNota(i, i, i, DetallesExtra);
+             System.out.println(idEstudianteCurso);
+             dao.addNota(Integer.parseInt(nota[i]), idEstudianteCurso.get(i-1), idActividad, "yuyg");
              
          }
          
@@ -188,7 +189,7 @@ public class NotaS extends HttpServlet {
                 Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);
             }
          
-            */
+            
         }
     
 

@@ -101,7 +101,7 @@ $('#actividades').on('change', function () {
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
-                var opcion = "<tr><td>" + json[i].nombre + " </td> <td>  <label for='nota'> <input type= 'text' ></tr>";
+                var opcion = "<tr><td   class='idEstudiante' values="+ json[i].idEstudiante+ ">"+ json[i].nombre + " </td> <td>  <select class='vino'> <option value= '1' > 1 </option><option value= '2' > 2 </option> <option value= '3' > 3 </option> </select> </tr>";
                 selectForm.append(opcion);
             }
         },
@@ -129,11 +129,12 @@ $('#actividades').on('change', function () {
 $('#botonsito').on('click', function () {
     var idEstudiante = Array();
     var nota = Array();
+    var idActividad = $('#actividades').val();
       $('#tablaNota tbody tr').each(function(i, x) {
        
         idEstudiante[i]=$(this).children('td').eq(0).attr('values');
         
-        nota[i]=$(this).children('td').eq(2).children("select").children("option:selected").val();
+        nota[i]=$(this).children('td').eq(1).children("select").children("option:selected").val();
     });      
       
       console.log(idEstudiante);
@@ -144,7 +145,8 @@ $('#botonsito').on('click', function () {
         url: "NotaS",
         data: {
             'nota': nota,
-            'idEstudiante': idEstudiante
+            'idEstudiante': idEstudiante,
+            'idActividad': idActividad
             
         },
         dataType: "text",
