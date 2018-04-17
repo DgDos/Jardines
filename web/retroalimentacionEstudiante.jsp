@@ -51,9 +51,6 @@
                     <br>
                     
                     <div class="container">
-                        <a>
-                            <button type="button" class="btn btn-default btn-round" id="botonVerE">Buscar Estudiante</button>
-                        </a>
                         <br>
                         <br>
                         <div class="form-group">  

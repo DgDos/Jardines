@@ -64,7 +64,7 @@ $('#tema').on('change', function () {
         },
         dataType: "text",
         success: function (data) {
-
+            $('#nombreaparece').removeAttr('style');
             var selectForm = $('#actividades');
             var boton= $('#botonsito');
             boton.removeAttr('style');

@@ -39,6 +39,7 @@ $('#cm').on('change', function () {
             var selectForm = $('#temas');
             var boton= $('#botonsito');
             boton.removeAttr('style');
+            $('#nombreaparece').removeAttr('style');
             selectForm.empty();
             selectForm.append('<p style=\"\" >Temas: </p>');
             var json = $.parseJSON(data);

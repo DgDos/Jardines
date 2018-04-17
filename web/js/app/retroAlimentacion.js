@@ -1,30 +1,30 @@
 $(document).ready(function () {
-    $('#botonVerE').click(function () {
-        $.ajax({
-            type: 'GET',
-            url: "EstudianteS",
-            //force to handle it as text
-            data: {
-                'opcion': "0"
-            },
-            dataType: "text",
-            success: function (data) {
-                $('#idE').removeAttr('style');
-                $('#datos').removeAttr('style');
-                var selectForm = $('#curso');
-                selectForm.empty();
-                selectForm.append('<option selected  value="" disabled>Seleccione un curso</option>');
-                var json = $.parseJSON(data);
-                console.log(json);
-                for (var i = 0; i < json.length; ++i)
-                {
-                    var opcion = "<option value=\"" + json[i].idCurso + "\">" + json[i].nombre + "</option>";
-                    selectForm.append(opcion);
-                }
-            },
-            async: false
-        });
+
+    $.ajax({
+        type: 'GET',
+        url: "EstudianteS",
+        //force to handle it as text
+        data: {
+            'opcion': "0"
+        },
+        dataType: "text",
+        success: function (data) {
+            $('#idE').removeAttr('style');
+            $('#datos').removeAttr('style');
+            var selectForm = $('#curso');
+            selectForm.empty();
+            selectForm.append('<option selected  value="" disabled>Seleccione un curso</option>');
+            var json = $.parseJSON(data);
+            console.log(json);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<option value=\"" + json[i].idCurso + "\">" + json[i].nombre + "</option>";
+                selectForm.append(opcion);
+            }
+        },
+        async: false
     });
+
     $('#curso').on('change', function () {
         $.ajax({
             type: 'GET',
@@ -69,7 +69,7 @@ $(document).ready(function () {
                 var json = $.parseJSON(data);
                 for (var i = 0; i < json.length; ++i)
                 {
-                    var opcion = "<p style=\"color:white\" >Detalle: "+json[i].detalles+", Calificacion: " + json[i].calificacion + ".</p>";
+                    var opcion = "<p style=\"color:white\" >Detalle: " + json[i].curso + ", Calificacion: " + json[i].materia + ", Profesor: " + json[i].profesor + ".</p>";
                     selectForm.append(opcion);
                 }
             },

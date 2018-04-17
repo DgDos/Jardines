@@ -66,10 +66,12 @@
                                 <p id="actividades">
 
                                 </p>
-                                <label  for="detalle">Nombre: </label>
-                                <input type="text" class="form-control form-control-success" name="nombre" id="nombre"> 
-                                <br>
-                                <button type="submit" class="btn btn-neutral" id="botonsito" name="Enviar" style="display: none;">Agregar</button>
+                                <div id="nombreaparece" style="display: none;">
+                                    <label  for="detalle">Nombre: </label>
+                                    <input type="text" class="form-control form-control-success" name="nombre" id="nombre"> 
+                                    <br>
+                                    <button type="submit" class="btn btn-neutral" id="botonsito" name="Enviar" style="display: none;">Agregar</button>
+                                </div>  
                             </div>  
                         </form>
                         <table id="tablaCM" class="table table-hover" style="display: none;">
