@@ -15,7 +15,7 @@ $(document).ready(function () {
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
-                var opcion = "<option value=\"" + json[i].idEstudiante + "\">" + json[i].nombre + "</option>";
+                var opcion = "<option value=\"" + json[i].idEstudiante + "\">" + json[i].idEstudiante + "</option>";
                 selectForm.append(opcion);
             }
 
@@ -56,7 +56,7 @@ $(document).ready(function () {
             },
             dataType: "text",
             success: function (data) {
-             alert('Se han guardado los cambios exitosamente');
+                alert('Se han guardado los cambios exitosamente');
 
             },
             async: false
@@ -66,40 +66,48 @@ $(document).ready(function () {
 
 $('#documento').on('change', function () {
     $.ajax({
-            type: 'GET',
-            url: "EstudianteS",
-            //force to handle it as text
+        type: 'GET',
+        url: "EstudianteS",
+        //force to handle it as text
 
-            data: {
-                'opcion': "2",
-                'estudiante': $('#documento').val()
-            },
-            dataType: "text",
-            success: function (data) {
-                var json = $.parseJSON(data);
-                $('#documento2').attr('value', json.idEstudiante);
-                $('#nombre').attr('value', json.nombre);
-                $('#fechanacimiento').attr('value', json.fechaNacimiento);
-                $('#direccion').attr('value', json.direccion);
-                $('#celularcontacto').attr('value', json.celularContacto);
-                $('#tiposangre').attr('value', json.tipoSangre);
-                
-                var selectForm = $('#verE');
-                selectForm.empty();
-                var opcion = "<p style=\"\" >Documento: " + json.idEstudiante + ".</p>";
-                selectForm.append(opcion);
-                opcion = "<p style=\"\" >Nombre: " + json.nombre + ".</p>";
-                selectForm.append(opcion);               
-                opcion = "<p style=\"\" >Fecha Nacimiento: " + json.fechaNacimiento + ".</p>";
-                selectForm.append(opcion);
-                opcion = "<p style=\"\" >Celular de contacto: " + json.celularContacto + ".</p>";
-                selectForm.append(opcion);
-                opcion = "<p style=\"\" >Direccion: " + json.direccion + ".</p>";
-                selectForm.append(opcion);
-                opcion = "<p style=\"\" >Tipo Sangre: " + json.tipoSangre + ".</p>";
-                selectForm.append(opcion);
-                
-            },
-            async: false
-        });
+        data: {
+            'opcion': "2",
+            'estudiante': $('#documento').val()
+        },
+        dataType: "text",
+        success: function (data) {
+            var json = $.parseJSON(data);
+            $('#documento2').attr('value', json.idEstudiante);
+            $('#nombre').attr('value', json.nombre);
+            $('#fechanacimiento').attr('value', json.fechaNacimiento);
+            $('#direccion').attr('value', json.direccion);
+            $('#celularcontacto').attr('value', json.celularContacto);
+            $('#tiposangre').attr('value', json.tipoSangre);
+
+            var selectForm = $('#verE');
+            selectForm.empty();
+            var opcion = "<p style=\"\" >Documento: " + json.idEstudiante + ".</p>";
+            selectForm.append(opcion);
+            opcion = "<p style=\"\" >Nombre: " + json.nombre + ".</p>";
+            selectForm.append(opcion);
+            opcion = "<p style=\"\" >Fecha Nacimiento: " + json.fechaNacimiento + ".</p>";
+            selectForm.append(opcion);
+            opcion = "<p style=\"\" >Celular de contacto: " + json.celularContacto + ".</p>";
+            selectForm.append(opcion);
+            opcion = "<p style=\"\" >Direccion: " + json.direccion + ".</p>";
+            selectForm.append(opcion);
+            opcion = "<p style=\"\" >Tipo Sangre: " + json.tipoSangre + ".</p>";
+            selectForm.append(opcion);
+            $('#boton').removeAttr('style');
+            $('#div1').removeAttr('style');
+            $('#div2').removeAttr('style');
+            $('#div3').removeAttr('style');
+            $('#div4').removeAttr('style');
+            $('#div5').removeAttr('style');
+            $('#div6').removeAttr('style');
+            $('#div7').removeAttr('style');
+
+        },
+        async: false
+    });
 });

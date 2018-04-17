@@ -15,7 +15,7 @@
                     <a class="nav-link dropdown-toggle " data-toggle="dropdown" id="dropdownMenuButton" href="" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-circle-10"></i>Estudiante</a>
                     <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="crearEstudiante.jsp">Crear Estudiante</a>
-                        <a class="dropdown-item" href="editarEstudiante.jsp">Editar Estudiante</a>
+                        <%--<a class="dropdown-item" href="editarEstudiante.jsp">Ver Estudiante</a>--%>
                         <a class="dropdown-item" href="verEstudiante.jsp">Ver Estudiante</a>
                         <a class="dropdown-item" href="eliminarEstudiante.jsp">Eliminar Estudiante</a>
                         <a class="dropdown-item" href="ubicarEstudiante.jsp">Asignar Estudiante</a>

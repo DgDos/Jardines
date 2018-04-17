@@ -43,7 +43,7 @@
                 <div class="col-sm-2 sidenav">
 
                 </div>
-                <div class="col-sm-8 text-left"> 
+                <div class="col-sm-4 text-left"> 
                     <br>
                     <br>
                     <br>
@@ -55,12 +55,13 @@
 
 
 
-                    <div  class="form-group"  >
+                 <%--   <div  class="form-group"  >
                         <label  >Buscar Estudiante:</label>
                         <select class="form-control" required name="documento" id="documento">
                             <option value="" selected disabled>Seleccione el estudiante</option>
                         </select> 
                     </div>
+                 --%>
 
                     <form id="EditarE"  >
 
@@ -102,7 +103,7 @@
                             <label >Tipo de sangre:</label>
                             <input  class="form-control form-control-success" id="tiposangre"  value="">
                         </div> 
-                        <button type="submit" class="btn btn-default" name="Enviar">Enviar</button>
+                        <button type="submit" class="btn btn-default" name="Enviar">Guardar Cambios</button>
                     </form>
 
 
