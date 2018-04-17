@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -93,16 +94,17 @@ public class ObservadorS extends HttpServlet {
                 out.print(pasareEsto);
             }
             if (opc == 2) {
-                int estId = Integer.parseInt(request.getParameter("estudiante"));
-                EstudianteCursoDAO e=new EstudianteCursoDAO();              
+                String estId = request.getParameter("estudiante");
+                EstudianteCursoDAO e = new EstudianteCursoDAO();
                 ObservadorDAO obs = new ObservadorDAO();
                 ArrayList<Observador> observaciones = obs.getObservadorByID(e.getEstCur(estId));
-                ArrayList<consultaCM> consultas=new ArrayList<>();
-                for(Observador ob:observaciones){
-                    ProfesorDAO p=new ProfesorDAO();
-                    Profesor profe=p.getProfesorById(ob.getIdProfesor());
-                    String cal=""+ob.getCalificacion();
-                    consultaCM nuCon = new consultaCM(ob.getDetalles(), cal, profe.getNombre());
+                ArrayList<consultaCM> consultas = new ArrayList<>();
+                for (Observador ob : observaciones) {
+                    ProfesorDAO p = new ProfesorDAO();
+                    String detalles="Fecha: "+ob.getFecha()+", "+ob.getDetalles();
+                    Profesor profe = p.getProfesorById(ob.getIdProfesor());
+                    String cal = "" + ob.getCalificacion();
+                    consultaCM nuCon = new consultaCM(detalles, cal, profe.getNombre());
                     consultas.add(nuCon);
                 }
                 Gson g = new Gson();
@@ -145,20 +147,24 @@ public class ObservadorS extends HttpServlet {
         try {
             String detalles = request.getParameter("detalles");
             int calificacion = Integer.parseInt(request.getParameter("calificacion"));
-            int idEst = Integer.parseInt(request.getParameter("idEstudiante"));
-            int tipo= Integer.parseInt(request.getParameter("tipo"));
-            int idCur=Integer.parseInt(request.getParameter("idCurso"));
-            EstudianteCursoDAO estcur=new EstudianteCursoDAO();
-            int idEstCur=estcur.getEstCur(idEst);
-            String detallesFinal="";
-            if(tipo==0){
-                detallesFinal+="Director: "+detalles;
-            }else{
-                detallesFinal+="Profesor: "+detalles;
+            String idEst = request.getParameter("idEstudiante");
+            int tipo = Integer.parseInt(request.getParameter("tipo"));
+            int idCur = Integer.parseInt(request.getParameter("idCurso"));
+            EstudianteCursoDAO estcur = new EstudianteCursoDAO();
+            int idEstCur = estcur.getEstCur(idEst);
+            String detallesFinal = "";
+            Date d = new Date(System.currentTimeMillis());
+            String je = d + "";
+            String[] aux3 = je.split("-");
+            String fechaObservacion = aux3[2] + "/" + aux3[1] + "/" + aux3[0];
+            if (tipo == 0) {
+                detallesFinal += "Director: " + detalles;
+            } else {
+                detallesFinal += "Profesor: " + detalles;
             }
             Profesor p = (Profesor) request.getSession().getAttribute("profesor");
             ObservadorDAO o = new ObservadorDAO();
-            o.addObservador(detallesFinal, calificacion, idEstCur, p.getIdProfesor());
+            o.addObservador(detallesFinal, calificacion, idEstCur, p.getIdProfesor(), fechaObservacion);
 
         } catch (SQLException ex) {
             Logger.getLogger(ObservadorS.class.getName()).log(Level.SEVERE, null, ex);

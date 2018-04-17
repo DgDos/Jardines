@@ -15,8 +15,18 @@ public class Observador {
     private String detalles;
     private int idEstudianteCurso;
     private String idProfesor;
+    private String fecha;
 
     public Observador() {
+    }
+
+    public Observador(int idObs, int calificacion, String detalles, int idEstudianteCurso, String idProfesor, String fecha) {
+        this.idObs = idObs;
+        this.calificacion = calificacion;
+        this.detalles = detalles;
+        this.idEstudianteCurso = idEstudianteCurso;
+        this.idProfesor = idProfesor;
+        this.fecha = fecha;
     }
 
     public Observador(int idObs, int calificacion, String detalles, int idEstudianteCurso, String idProfesor) {
@@ -65,6 +75,14 @@ public class Observador {
 
     public void setIdProfesor(String idProfesor) {
         this.idProfesor = idProfesor;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
     
     

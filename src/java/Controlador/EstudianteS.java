@@ -9,16 +9,19 @@ import Dao.CursoDAO;
 import Dao.EstudianteDAO;
 import Dao.ObservadorDAO;
 import Dao.DirectorCursoDAO;
+import Dao.EstudianteCursoDAO;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Observador;
 import Modelo.Profesor;
 import Modelo.DirectorCurso;
+import Modelo.EstudianteCurso;
 import com.google.gson.Gson;
 import static com.sun.corba.se.spi.presentation.rmi.StubAdapter.request;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -178,6 +181,21 @@ public class EstudianteS extends HttpServlet {
             e.setTipoSangre(request.getParameter("tiposangre"));
             EstudianteDAO o = new EstudianteDAO();
             o.addEstudiante(e);
+            if (!request.getParameter("curso").equals("")) {
+                int idCurso = Integer.parseInt(request.getParameter("curso"));
+                Date d=new Date(System.currentTimeMillis());
+                String je=d+"";
+                String[] aux2=je.split("-");
+                String fechaCurso=aux2[2]+"/"+aux2[1]+"/"+aux2[0];
+                CursoDAO daoC = new CursoDAO();
+                daoC.updateNumeroEstudiantesCurso(idCurso);
+                o.updateCursoEstudiante(e.getIdEstudiante(), idCurso);
+                EstudianteCursoDAO ec = new EstudianteCursoDAO();
+                EstudianteCurso st = new EstudianteCurso(0, e.getIdEstudiante(), idCurso, fechaCurso, "");
+                ec.addEstCur(st);
+                
+            } 
+            
 
         } catch (SQLException ex) {
             Logger.getLogger(EstudianteS.class.getName()).log(Level.SEVERE, null, ex);

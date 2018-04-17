@@ -1,5 +1,27 @@
 $(document).ready(function () {
-
+    $.ajax({
+        type: 'GET',
+        url: "DirectorCursoS",
+        //force to handle it as text
+        data: {
+            'opcion': "1"
+        },
+        dataType: "text",
+        success: function (data) {
+            var selectForm = $('#curso');
+            selectForm.empty();
+            selectForm.append('<option selected  value="" disabled>Seleccione un curso</option>');
+            var json = $.parseJSON(data);
+            console.log(json);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<option value=\"" + json[i].idCurso + "\">" + json[i].nombre + "</option>";
+                selectForm.append(opcion);
+            }
+            selectForm.attr('required', false);
+        },
+        async: false
+    });
     $('#crearProfesor').on('submit', function () {
         $.ajax({
             type: 'POST',
@@ -17,7 +39,8 @@ $(document).ready(function () {
                 'tiposangre': $('#tiposangre').val(),
                 'rh': $('#rh').val(),
                 'usuario': $('#usuario').val(),
-                'contra': $('#contra').val()
+                'contra': $('#contra').val(),
+                'curso': $('#curso').val()
             },
             dataType: "text",
             success: function (data) {

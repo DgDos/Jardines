@@ -109,6 +109,13 @@
                                 <option>AB-</option>
                             </select>
                         </div> 
+                        <h6>Seleccione un curso si quiere asignar al estudiante</h6>
+                        <div class="form-group">
+                            <label >Curso: </label>
+                            <select class="form-control" name="curso" id="curso">
+                                <option value="0" selected disabled>Seleccione un curso</option>
+                            </select> 
+                        </div>
 
                         <button type="submit" class="btn btn-default">Enviar</button>
                     </form>

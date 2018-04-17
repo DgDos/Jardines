@@ -29,7 +29,7 @@
         <link href='http://fonts.googleapis.com/css?family=Montserrat:400,300,700' rel='stylesheet' type='text/css'>
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
-        
+
         <script>
             function lettersOnly(input) {
                 var regex = /[^a-z- ]/gi;
@@ -56,7 +56,7 @@
                     <br>
                     <br>
                     <div class="container">
-                        
+
                     </div>
                     <br>
                     <form id="crearProfesor" >
@@ -78,43 +78,50 @@
                             <input  placeholder="Solo numeros" onkeyup="NumbersOnly(this)" required class="form-control form-control-success" id="celular"  >
                             <label >Direccion:</label>
                             <input required class="form-control form-control-success" id="direccion"  >
-                            
+
                             <label >Experiencia:</label>
                             <input  placeholder="Solo letras" onkeyup="lettersOnly(this)" required class="form-control form-control-success" id="experiencia"  >
                             <label >Fecha Nacimiento:</label>
                             <div class="col-md-6">
-                            <div class="row">
-                                <div class='col-sm-6'>
-                                    <div class="form-group">
-                                        <div class='input-group date'  id='datetimepicker' >
-                                            <input required  id="fechanacimiento" name="fechanacimiento" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                            </span>
+                                <div class="row">
+                                    <div class='col-sm-6'>
+                                        <div class="form-group">
+                                            <div class='input-group date'  id='datetimepicker' >
+                                                <input required  id="fechanacimiento" name="fechanacimiento" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                             <div class="form-group col-sm-4">
-                            <label >Tipo de sangre:</label>
-                            <select required class="form-control" id="tiposangre" required>
-                                <option selected  value="" disabled>Seleccione un tipo de sangre</option>
-                                <option>A+</option>
-                                <option>B+</option>
-                                <option>O+</option>
-                                <option>AB+</option>
-                                <option>A-</option>
-                                <option>B-</option>
-                                <option>O-</option>
-                                <option>AB-</option>
-                            </select>
-                        </div>
+                            <div class="form-group col-sm-4">
+                                <label >Tipo de sangre:</label>
+                                <select required class="form-control" id="tiposangre" required>
+                                    <option selected  value="" disabled>Seleccione un tipo de sangre</option>
+                                    <option>A+</option>
+                                    <option>B+</option>
+                                    <option>O+</option>
+                                    <option>AB+</option>
+                                    <option>A-</option>
+                                    <option>B-</option>
+                                    <option>O-</option>
+                                    <option>AB-</option>
+                                </select>
+                            </div>
 
                             <label >Usuario</label>
                             <input required class="form-control form-control-success" id="usuario"  >
                             <label >Contraseña:</label>
                             <input required class="form-control form-control-success" id="contra" type="password" >
+                            <h6> Seleccion curso del que quiere que sea director</h6>
+                            <div class="form-group">
+                                <label >Curso: </label>
+                                <select class="form-control" required name="curso" id="curso">
+                                    <option value="" selected disabled>Seleccione un curso</option>
+                                </select> 
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-default">Enviar</button>
                     </form>

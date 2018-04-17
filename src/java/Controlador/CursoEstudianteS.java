@@ -74,7 +74,6 @@ public class CursoEstudianteS extends HttpServlet {
             String fecha = request.getParameter("fecha");
             String[] fechaAux = fecha.split(" ");
             EstudianteDAO dao = new EstudianteDAO();
-            System.out.println(idCurso+"--"+idEstudiante+"---"+fecha);
             if(dao.estGotCur(idEstudiante)){
                 CursoDAO daoC = new CursoDAO();
                 daoC.updateNumeroEstudiantesCurso(idCurso);

@@ -13,8 +13,16 @@ public class consultaCM {
     private String curso;
     private String materia;
     private String profesor;
+    private String fecha;
 
     public consultaCM() {
+    }
+
+    public consultaCM(String curso, String materia, String profesor, String fecha) {
+        this.curso = curso;
+        this.materia = materia;
+        this.profesor = profesor;
+        this.fecha = fecha;
     }
 
     public consultaCM(String curso, String materia, String profesor) {
@@ -45,6 +53,10 @@ public class consultaCM {
 
     public void setProfesor(String profesor) {
         this.profesor = profesor;
+    }
+
+    public consultaCM(String fecha) {
+        this.fecha = fecha;
     }
     
 }

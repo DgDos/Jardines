@@ -28,13 +28,14 @@ public class ObservadorDAO {
         connection = DbUtil.getConnection();
     }
 
-    public void addObservador(String detalles, int calificacion, int idEst, String idProfesor) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into observador(idprofesor,detalles,calificacion,idestudiantecurso,delete) values (?,?,?,?,?)");
+    public void addObservador(String detalles, int calificacion, int idEst, String idProfesor,String fecha) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into observador(idprofesor,detalles,calificacion,idestudiantecurso,fecha,delete) values (?,?,?,?,?,?)");
         preparedStatement.setString(1, idProfesor);
         preparedStatement.setString(2, detalles);
         preparedStatement.setInt(3, calificacion);
         preparedStatement.setInt(4, idEst);
-        preparedStatement.setInt(5, 1);
+        preparedStatement.setString(5, fecha);
+        preparedStatement.setInt(6, 1);
         preparedStatement.executeUpdate();
     }
 
@@ -67,6 +68,7 @@ public class ObservadorDAO {
             c.setCalificacion(rs.getInt("calificacion"));
             c.setDetalles(rs.getString("detalles"));
             c.setIdProfesor(rs.getString("idprofesor"));
+            c.setFecha(rs.getString("fecha"));
             notasObs.add(c);
         }
         return notasObs;
@@ -83,6 +85,7 @@ public class ObservadorDAO {
             c.setDetalles(rs.getString("detalles"));
             c.setCalificacion(rs.getInt("calificacion"));
             c.setIdEstudianteCurso(rs.getInt("idestudiantecurso"));
+            c.setFecha(rs.getString("fecha"));
             observadores.add(c);
         }
         return observadores;

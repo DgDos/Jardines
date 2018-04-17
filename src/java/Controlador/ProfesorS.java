@@ -5,6 +5,7 @@
  */
 package Controlador;
 
+import Dao.DirectorCursoDAO;
 import Dao.ProfesorDAO;
 import Modelo.Profesor;
 import com.google.gson.Gson;
@@ -14,6 +15,7 @@ import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -110,14 +112,25 @@ public class ProfesorS extends HttpServlet {
             String tipoSangre = request.getParameter("tiposangre");
             String usuario = request.getParameter("usuario");
             String contra = request.getParameter("contra");
-            String[] aux=fechaNacimiento.split(" ");
-            String aux2=aux[0];
+            String[] aux = fechaNacimiento.split(" ");
+            String aux2 = aux[0];
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] encodedhash = digest.digest(contra.getBytes(StandardCharsets.UTF_8));
             String ps2 = bytesToHex(encodedhash);
             ProfesorDAO p = new ProfesorDAO();
             Profesor profe = new Profesor(cedula, nombre, tipoU, correo, celular, direccion, experiencia, aux2, tipoSangre, usuario, ps2);
             p.addProfesor(profe);
+            if (!request.getParameter("curso").equals("")) {
+                int idCurso = Integer.parseInt(request.getParameter("curso"));
+                Date d = new Date(System.currentTimeMillis());
+                String je = d + "";
+                String[] aux3 = je.split("-");
+                String fechaCurso = aux3[2] + "/" + aux3[1] + "/" + aux3[0];
+                DirectorCursoDAO dc = new DirectorCursoDAO();
+                if (dc.knowCedula(cedula) && dc.knowCurso(idCurso)) {
+                    dc.addDirectorCurso(cedula, idCurso, fechaCurso, "");
+                }
+            }
         } catch (SQLException ex) {
             Logger.getLogger(ProfesorS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {

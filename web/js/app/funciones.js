@@ -26,6 +26,26 @@
 //    });
 //});
 $(document).ready(function () {
+    $.ajax({
+        type: 'GET',
+        url: "CursoS",
+        data: {
+            'op' : "0"
+        },
+        dataType: "text",
+        success: function (data) {
+            var selectForm = $('#curso');
+            selectForm.empty();
+            selectForm.append('<option selected  value="" disabled>Seleccione un curso</option>');
+            var json = $.parseJSON(data);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<option value=\"" + json[i].idCurso + "\">" + json[i].nombre + "</option>";
+                selectForm.append(opcion);
+            }
+        },
+        async: false
+    });
     $('#CrearE').on('submit', function () {
         $.ajax({
             type: 'POST',
@@ -36,13 +56,14 @@ $(document).ready(function () {
                 'fechanacimiento': $('#fechanacimiento').val(),
                 'direccion': $('#direccion').val(),
                 'celularcontacto': $('#celularcontacto').val(),
-                'tiposangre': $('#tiposangre').val()
+                'tiposangre': $('#tiposangre').val(),
+                'curso': $('#curso').val()
             },
             dataType: "text",
             success: function (data) {
                 alert('Se ha creado el Estudiante exitosamente');
                 location.reload();
-            
+
             },
             async: false
         });
