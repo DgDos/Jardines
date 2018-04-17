@@ -89,7 +89,7 @@ $('#actividades').on('change', function () {
         //force to handle it as te
         data: {
             'opcion': "3",
-            'actividad': $('#actividades').val()
+            'curso': $('#cm').val()
         },
         dataType: "text",
         success: function (data) {
@@ -97,11 +97,11 @@ $('#actividades').on('change', function () {
             $('#AddNota').removeAttr('style');
             var selectForm = $('#tablaNota');
             selectForm.empty();
-            selectForm.append('<tr><td>Estudiante</td><td>Nota</td> </tr>');
+            selectForm.append('<tr><td>Estudiante</td><td>Ingrese Nota</td> </tr>');
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
-                var opcion = "<tr><td>" + json[i].idEstudiante + "</td><td>" + json[i].nombre + " </td><td>" + json[i].nota + "</td> </tr>";
+                var opcion = "<tr><td>" + json[i].nombre + " </td> <td>  <label for='nota'> <input type= 'text' > </select></tr>";
                 selectForm.append(opcion);
             }
         },
@@ -127,6 +127,18 @@ $('#actividades').on('change', function () {
 });*/
 
 $('#botonsito').on('submit', function () {
+    var idEstudiante = Array();
+    var nota = Array();
+      $('#tabla tbody tr').each(function(i, x) {
+       
+        idEstudiante[i]=$(this).children('td').eq(0).attr('values');
+        
+        nota[i]=$(this).children('td').eq(2).children("select").children("option:selected").val();
+    });      
+      
+      console.log(idEstudiante);
+      console.log(nota);
+      
     $.ajax({
         type: 'POST',
         url: "NotaS",

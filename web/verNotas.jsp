@@ -36,39 +36,38 @@
                     <br>
 
 
-                    <form id="formulario"  >
+                    <form id="formulario" class="form-inline" >
+                        <div class="form-group">
+                            <SELECT  id="cursosProfesor" class="form-control">
+                                <OPTION></OPTION>
 
+                            </SELECT>
+                        </div>    
 
-
-
-                        <table class="table" id="tabla" >
+                        
+                        <input type="button" value="Buscar" class="btn btn-default btn-round"  id="Buscar"><br> <br>
+                        
+                        <table class="table table-striped" id="tabla" style="color: white"  >
                             <thead>
                                 <tr>
-
-                                    <th>Estudiante</th> <th>Nota</th>
+                                    <th>Nombre Estudiante</th>
+                                    <th>Nota</th>
 
                                 </tr>
-                                
-                                 
-
-                                    
-
-                                
                             </thead>
 
                             <tbody>
 
                                 <tr>
 
-                                    <td id="idEstudiante"></td>
+                                    <td id="idEstudiante" ></td>
+                                    <td id="nombreEstudiante"></td>
+
+
 
                                 </tr>
 
-                                 <tr>
 
-                                    <td id="Notas"></td>
-
-                                </tr>
                             </tbody>
                         </table>
 
