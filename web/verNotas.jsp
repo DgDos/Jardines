@@ -60,7 +60,7 @@
 
                                 <tr>
 
-                                    <td id="nombreMateria"></td>
+                                    <td id="idEstudiante"></td>
 
                                 </tr>
 

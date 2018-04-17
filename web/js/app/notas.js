@@ -101,7 +101,7 @@ $('#actividades').on('change', function () {
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
-                var opcion = "<tr><td>" + json[i].idEstudiante + "</td><td>" + json[i].nota + "</td> </tr>";
+                var opcion = "<tr><td>" + json[i].idEstudiante + "</td><td>" + json[i].nombre + " </td><td>" + json[i].nota + "</td> </tr>";
                 selectForm.append(opcion);
             }
         },
@@ -109,7 +109,7 @@ $('#actividades').on('change', function () {
     });
 });
 
-$('#AddNota').on('submit', function () {
+/*$('#AddNota').on('submit', function () {
     $.ajax({
         type: 'POST',
         url: "NotaS",
@@ -124,6 +124,22 @@ $('#AddNota').on('submit', function () {
         },
         async: false
     });
+});*/
+
+$('#botonsito').on('submit', function () {
+    $.ajax({
+        type: 'POST',
+        url: "NotaS",
+        data: {
+            'nota': $('#nota').val(),
+            'idEstudiante': $('#estudiante').val()
+            
+        },
+        dataType: "text",
+        success: function (data) {
+            alert('Se ha guardado la Nota exitosamente');
+            location.reload();
+        },
+        async: false
+    });
 });
-
-
