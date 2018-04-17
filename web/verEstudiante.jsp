@@ -55,66 +55,70 @@
                     <br>
 
 
+                    <div id="parteArriba">
+
+                        <div class="form-group">
+                            <label  >Buscar Estudiante:</label>
+                            <select class="form-control" required name="documento" id="documento">
+                                <option value="" selected disabled>Seleccione el estudiante</option>
+                            </select> 
+                        </div>
 
 
-                    <div  id="buscarElabel" class="form-group" style="display: block;" >
-                        <label  >Buscar Estudiante:</label>
-                        <select class="form-control" required name="documento" id="documento">
-                            <option value="" selected disabled>Seleccione el estudiante</option>
-                        </select> 
+                        <p id="verE" id="parrafoEsconder"style="display: block;">
+
+                        </p>
+                        <br>
+                        <button id="boton" type="button" class="btn btn-default" name="Enviar" style="display: none;"  >Editar Perfil</button>
                     </div>
 
+                    <div id="parteAbajo" style="display: none;">
+                        <form id="EditarE"  >
 
-                    <p id="verE" id="parrafoEsconder"style="display: block;">
-
-                    </p>
-                    <br>
-                    <button id="boton" type="button" class="btn btn-default" name="Enviar" style="display: none;"  >Editar Perfil</button>
-
-                    <form id="EditarE"  >
-
-                        <br>
-                        <div id="div1" class="form-group" style="display: none;">
-                            <label >Documento:</label>
-                            <input  class="form-control form-control-success" id="documento2" readonly="readonly" >
-                        </div>
-                        <div id="div2" class="form-group" style="display: none;">
-                            <label >Nombre:</label>
-                            <input  class="form-control form-control-success" id="nombre" value="">
-                        </div>
-                        <div id="div3" class="form-group" style="display: none;">
-                            <label >Fecha de Nacimiento:</label>
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class='col-sm-10'>
-                                        <div class="form-group">
-                                            <div class='input-group date'  id='datetimepicker' >
-                                                <input  id="fechanacimiento" name="fecha" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
-                                                <span class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                </span>
+                            <br>
+                            <div  class="form-group" >
+                                <label >Documento:</label>
+                                <input  class="form-control form-control-success" id="documento2" readonly="readonly" >
+                            </div>
+                            <div  class="form-group" >
+                                <label >Nombre:</label>
+                                <input  class="form-control form-control-success" id="nombre" value="">
+                            </div>
+                            <div  class="form-group" >
+                                <label >Fecha de Nacimiento:</label>
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class='col-sm-10'>
+                                            <div class="form-group">
+                                                <div class='input-group date'  id='datetimepicker' >
+                                                    <input  id="fechanacimiento" name="fecha" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div> 
+                            <div  class="form-group" >
+                                <label >Direccion:</label>
+                                <input  class="form-control form-control-success" id="direccion"  value="">
+                            </div> 
+                            <div  class="form-group" >
+                                <label >Celular de contacto:</label>
+                                <input  class="form-control form-control-success"  id="celularcontacto" value="">
                             </div>
-                        </div> 
-                        <div id="div4" class="form-group" style="display: none;">
-                            <label >Direccion:</label>
-                            <input  class="form-control form-control-success" id="direccion"  value="">
-                        </div> 
-                        <div id="div5" class="form-group" style="display: none;">
-                            <label >Celular de contacto:</label>
-                            <input  class="form-control form-control-success"  id="celularcontacto" value="">
-                        </div>
-                        <div id="div6" class="form-group" style="display: none;">
-                            <label >Tipo de sangre:</label>
-                            <input  class="form-control form-control-success" id="tiposangre"  value="">
-                        </div> 
-                        <button  id="div7" style="display: none;" type="submit" class="btn btn-default" name="Enviar">Guardar Cambios</button>
-                    </form>
+                            <div  class="form-group" >
+                                <label >Tipo de sangre:</label>
+                                <input  class="form-control form-control-success" id="tiposangre"  value="">
+                            </div> 
+                            <button   type="submit" class="btn btn-default" name="Enviar">Guardar Cambios</button>
+                            <button  id="boton2" type="button" class="btn btn-default" name="Enviar">Volver</button>
 
+                        </form>
 
+                    </div>
 
 
 

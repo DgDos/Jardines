@@ -18,7 +18,7 @@ $(document).ready(function () {
             console.log(json);
             for (var i = 0; i < json.length; ++i)
             {
-                var opcion = "<option value=\"" + json[i].idProfesor + "\">" + json[i].nombre + "</option>";
+                var opcion = "<option value=\"" + json[i].idProfesor + "\">" + json[i].idProfesor + "</option>";
                 selectForm.append(opcion);
             }
         },
@@ -42,7 +42,7 @@ $(document).ready(function () {
                 var opcion = "<p style=\"\" >Cedula: " + json.idProfesor + ".</p>";
                 selectForm.append(opcion);
                 opcion = "<p style=\"\" >Nombre: " + json.nombre + ".</p>";
-                selectForm.append(opcion);               
+                selectForm.append(opcion);
                 opcion = "<p style=\"\" >Usuario: " + json.usuario + ".</p>";
                 selectForm.append(opcion);
                 opcion = "<p style=\"\" >Fecha Nacimiento: " + json.fechaNacimiento + ".</p>";
@@ -70,10 +70,19 @@ $(document).ready(function () {
                 $('#direccion').attr('value', json.direccion);
                 $('#estudios').attr('value', json.estudios);
                 $('#experiencia').attr('value', json.experiencia);
-                
+                $('#boton').removeAttr('style');
+
 
             },
             async: false
         });
     });
 });
+$('#boton').on('click',function(){
+     $('#parteArriba').attr('style', 'display: none;');
+     $('#parteAbajo').removeAttr('style');
+ });
+ $('#boton2').on('click',function(){
+     $('#parteAbajo').attr('style', 'display: none;');
+     $('#parteArriba').removeAttr('style');
+ });

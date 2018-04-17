@@ -64,6 +64,15 @@ $(document).ready(function () {
     });
 });
 
+ $('#boton').on('click',function(){
+     $('#parteArriba').attr('style', 'display: none;');
+     $('#parteAbajo').removeAttr('style');
+ });
+ $('#boton2').on('click',function(){
+     $('#parteAbajo').attr('style', 'display: none;');
+     $('#parteArriba').removeAttr('style');
+ });
+ 
 $('#documento').on('change', function () {
     $.ajax({
         type: 'GET',
@@ -99,13 +108,7 @@ $('#documento').on('change', function () {
             opcion = "<p style=\"\" >Tipo Sangre: " + json.tipoSangre + ".</p>";
             selectForm.append(opcion);
             $('#boton').removeAttr('style');
-            $('#div1').removeAttr('style');
-            $('#div2').removeAttr('style');
-            $('#div3').removeAttr('style');
-            $('#div4').removeAttr('style');
-            $('#div5').removeAttr('style');
-            $('#div6').removeAttr('style');
-            $('#div7').removeAttr('style');
+            
 
         },
         async: false

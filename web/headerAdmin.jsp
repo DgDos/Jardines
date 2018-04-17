@@ -29,7 +29,7 @@
                     <a class="nav-link dropdown-toggle " data-toggle="dropdown" id="dropdownMenuButton" href="" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-single-02"></i>Profesor</a>
                     <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="crearProfesor.jsp">Crear Profesor</a>
-                        <a class="dropdown-item" href="editarProfesor.jsp">Editar Profesor</a>
+                        <%--<a class="dropdown-item" href="editarProfesor.jsp">Editar Profesor</a>--%>
                         <a class="dropdown-item" href="verProfesor.jsp">Ver Profesor</a>
                         <a class="dropdown-item" href="eliminarProfesor.jsp">Eliminar Profesor</a>
                         <a class="dropdown-item" href="ubicarDirector.jsp">Asignar Profesor</a>

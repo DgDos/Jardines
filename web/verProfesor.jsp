@@ -43,7 +43,7 @@
                 <div class="col-sm-2 sidenav">
 
                 </div>
-                <div class="col-sm-8 text-left"> 
+                <div class="col-sm-2 text-left"> 
                     <br>
                     <br>
                     <br>
@@ -58,23 +58,88 @@
 
                     </div>
 
+                    <div id="parteArriba">
 
-                    <div  class="form-group"  >
-                        <label >Buscar Profesor:</label>
-                        <select class="form-control" required name="cedula" id="cedula">
-                            <option value="" selected disabled>Seleccione la cedula</option>
-                        </select> 
+                        <div  class="form-group"  >
+                            <label >Buscar Profesor:</label>
+                            <select class="form-control" required name="cedula" id="cedula">
+                                <option value="" selected disabled>Seleccione la cedula</option>
+                            </select> 
+                        </div>
+
+                        <p id="pa">
+
+                        </p>
+                        <br>
+                        <button id="boton" type="button" class="btn btn-default" name="Enviar" style="display: none;"  >Editar Perfil</button>
+
                     </div>
 
-                    <p id="pa">
 
-                    </p>
+                    <div id="parteAbajo" style="display: none;">
+                        <form id="EditarP" >
+                            <br>
+                            <div class="form-group">
+                                <label >Cedula:</label>
+                                <input  class="form-control form-control-success" id="cedula2" readonly="readonly" >
+                            </div>
+                            <div class="form-group">
+                                <label >Nombre:</label>
+                                <input  class="form-control form-control-success" id="nombre" >
+                            </div>
+                            <div class="form-group">
+                                <label  >Usuario:</label>
+                                <input  class="form-control form-control-success" id="usuario">
+                            </div>
+
+
+                            <div class="form-group">
+                                <label >Fecha de Nacimiento:</label>
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class='col-sm-10'>
+                                            <div class="form-group">
+                                                <div class='input-group date'  id='datetimepicker' >
+                                                    <input  id="fechanacimiento" name="fecha" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
+                                                    <span class="input-group-addon">
+                                                        <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                            <div class="form-group">
+                                <label >Tipo de Sangre:</label>
+                                <input  class="form-control form-control-success" id="tiposangre" >
+                            </div> 
+                            <div class="form-group">
+                                <label >Correo:</label>
+                                <input  class="form-control form-control-success" id="correo"  >
+                            </div>
+                            <div class="form-group">
+                                <label >Celular:</label>
+                                <input  class="form-control form-control-success" id="celular" >
+                            </div> 
+                            <div class="form-group">
+                                <label >Direccion:</label>
+                                <input  class="form-control form-control-success" id="direccion" >
+                            </div> 
+
+                            <div class="form-group">
+                                <label >Experiencia:</label>
+                                <input  class="form-control form-control-success" id="experiencia"  >
+                            </div> 
+                            <button type="submit" class="btn btn-default" name="Enviar">Guardar Cambios</button>
+                            <button  id="boton2" type="button" class="btn btn-default" name="Enviar">Volver</button>
+
+                        </form>
 
 
 
 
-
-
+                    </div>
 
 
 
@@ -100,4 +165,6 @@
     <!--  Paper Kit Initialization and functons -->
     <script src="assets/js/paper-kit.js?v=2.1.0"></script>
     <script src="js/app/verP.js"></script>
+    <script src="js/app/myfunctions.js"></script>
+
 </html>
