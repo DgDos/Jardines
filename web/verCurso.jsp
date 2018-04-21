@@ -35,41 +35,74 @@
                     <br>
                     <br>
 
+                    <div id="parteArriba" >
 
-                    <form id="formulario" >
-                        <SELECT  id="cursos" class="form-control">
-                            <OPTION></OPTION>
+                        <form id="formulario"  >
+                            <SELECT  id="cursos" class="form-control">
+                                <OPTION></OPTION>
 
-                        </SELECT>
+                            </SELECT>
 
-                        <br>
-                        <br>
+                            <br>
+                            <br>
+                            <div class="form-inline">
+                                <div id="boton"  style="display: none;" >
+                                    <button  id="boton" type="submit" class="btn btn-outline-danger btn-sm btn-round" name="Enviar">Eliminar Curso</button>
+
+                                </div>
+
+                                &nbsp;
+                                &nbsp;
+                                <div id="boton2"  style="display: none;" >
+                                    <button  id="boton2" type="button" class="btn btn-outline-info btn-sm btn-round" name="Enviar">Editar Curso</button>
+
+                                </div>
+                            </div>
+                            <br>
+                            <table class="table " id="tabla" style="display: none;" >
+                                <thead>
+                                    <tr>
+                                        <th>Documento Estudiante</th>
+                                        <th>Nombre Estudiante</th>
+
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+
+                                        <td id="idEstudiante" ></td>
+                                        <td id="nombreEstudiante"></td>
+
+                                    </tr>
 
 
-                        <table class="table " id="tabla" >
-                            <thead>
-                                <tr>
-                                    <th>Documento Estudiante</th>
-                                    <th>Nombre Estudiante</th>
-
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-
-                                    <td id="idEstudiante" ></td>
-                                    <td id="nombreEstudiante"></td>
-
-                                </tr>
+                                </tbody>
+                            </table>
 
 
-                            </tbody>
-                        </table>
+                        </form>
+                    </div>
 
-
-                    </form>
-
+                    <div id="parteAbajo" style="display: none;" >
+                        <form id="EditarC">
+                            <div  class="form-group" style="display: none;" >
+                                <label >Id Curso :</label>
+                                <input  class="form-control form-control-success" id="idcurso" value="">
+                            </div>
+                            <div  class="form-group" >
+                                <label >Nombre:</label>
+                                <input  class="form-control form-control-success" id="cursos2" value="">
+                            </div>
+                            <div class="form-inline">
+                                <button   type="submit" class="btn btn-outline-info btn-sm btn-round" name="Enviar">Guardar Cambios</button>
+                                &nbsp;
+                                &nbsp;
+                                
+                               <button  id="boton3" type="button" class="btn btn-outline-danger btn-sm btn-round" name="Enviar">Volver</button>
+                            </div>
+                        </form>
+                    </div>
 
 
 

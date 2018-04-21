@@ -54,7 +54,7 @@ public class CursoS extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int op = Integer.parseInt(request.getParameter("op"));
@@ -66,8 +66,8 @@ public class CursoS extends HttpServlet {
                 String pasareEsto = g.toJson(cursos);
                 out.print(pasareEsto);
             }
-            
-            if(op == 1){
+
+            if (op == 1) {
                 int idCurso = Integer.parseInt(request.getParameter("curso"));
                 EstudianteDAO dao = new EstudianteDAO();
                 ArrayList<Estudiante> estudiantes = dao.getEstudiantesByIDCurso(idCurso);
@@ -75,7 +75,30 @@ public class CursoS extends HttpServlet {
                 String pasareEsto = g.toJson(estudiantes);
                 out.print(pasareEsto);
             }
-            
+            if (op == 2) {
+                int idCurso = Integer.parseInt(request.getParameter("curso"));
+                CursoDAO dao = new CursoDAO();
+                dao.deleteCurso(idCurso);
+
+            }
+            if (op == 3) {
+                int idCurso = Integer.parseInt(request.getParameter("curso"));
+                CursoDAO dao = new CursoDAO();
+                Curso curso = dao.getCursoById(idCurso);
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(curso);
+                out.print(pasareEsto);
+
+            }
+            if (op == 4) {
+                Curso e = new Curso();
+                e.setIdCurso(Integer.parseInt(request.getParameter("idCurso")));
+                e.setNombre(request.getParameter("nombre"));
+                CursoDAO o = new CursoDAO();
+                o.updateCurso(e);
+
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(CursoS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
@@ -83,7 +106,7 @@ public class CursoS extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CursoS.class.getName()).log(Level.SEVERE, null, ex);
         }
-      
+
     }
 
     /**
@@ -99,7 +122,7 @@ public class CursoS extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()){
+        try (PrintWriter out = response.getWriter()) {
             String nombreCurso = request.getParameter("nombreCurso");
             Curso curso = new Curso(0, nombreCurso, 0);
             CursoDAO dao = new CursoDAO();

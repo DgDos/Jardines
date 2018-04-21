@@ -131,9 +131,16 @@
                                 <label >Experiencia:</label>
                                 <input  class="form-control form-control-success" id="experiencia"  >
                             </div> 
-                            <button type="submit" class="btn btn-default" name="Enviar">Guardar Cambios</button>
-                            <button  id="boton2" type="button" class="btn btn-default" name="Enviar">Volver</button>
+                            <div class="form-inline">
+                                <button type="submit" class="btn btn-sm" name="Enviar">Guardar Cambios</button>
+                                &nbsp;
+                                &nbsp;
+                                <br>
+                                <br>
 
+
+                                <button  id="boton2" type="button" class="btn btn-sm" name="Enviar">Volver</button>
+                            </div>
                         </form>
 
 

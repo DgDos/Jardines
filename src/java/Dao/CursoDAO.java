@@ -42,10 +42,9 @@ public class CursoDAO {
     }
     
     public void updateCurso(Curso curso) throws SQLException{
-        PreparedStatement preparedStatement= connection.prepareStatement("update curso set nombre=?,numeroestudiantes=? where id=?");
+        PreparedStatement preparedStatement= connection.prepareStatement("update curso set nombre=? where id=?");
         preparedStatement.setString(1, curso.getNombre());
-        preparedStatement.setInt(2, curso.getNumeroEstudiantes());
-        preparedStatement.setInt(3, curso.getIdCurso());
+        preparedStatement.setInt(2, curso.getIdCurso());
         preparedStatement.executeUpdate();
     }
 
