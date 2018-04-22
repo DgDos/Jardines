@@ -6,7 +6,7 @@
         <link rel="icon" type="image/png" href="assets/img/colegio.ico">
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Ver Materia</title>
+        <title>Ver Notas</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
         <!-- Bootstrap core CSS     -->
@@ -42,11 +42,19 @@
                                 <OPTION></OPTION>
 
                             </SELECT>
+                           
+                            
                         </div>    
 
                         
-                        <input type="button" value="Buscar" class="btn btn-default btn-round"  id="Buscar"><br> <br>
-                        
+                        <input type="button" value="Notas por Curso" class="btn btn-default btn-round"  id="Buscar"><br> <br>
+                        <br>
+                        <div class="form-group">
+                        <SELECT  id="cursosMateria" class="form-control">
+                                <OPTION></OPTION>
+                        </SELECT>
+                        </div>
+                        <input type="button" value="Notas por Materia" class="btn btn-default btn-round"  id="BuscarNotasMateria"><br> <br>
                         <table class="table table-striped" id="tabla" style="color: white"  >
                             <thead>
                                 <tr>

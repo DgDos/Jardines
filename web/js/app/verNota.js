@@ -49,6 +49,30 @@ $(document).ready(function () {
             },
             async: false
         });
+        });
+        $(document).ready(function () {
+        $.ajax({
+           type: 'GET',
+        url: "NotaS",
+        //force to handle it as text
+        data: {
+            'opcion': "0"
+        },
+        dataType: "text",
+        success: function (data) {
+            var selectForm = $('#cursosMateria');
+            selectForm.empty();
+            selectForm.append('<option selected  value="" disabled>Seleccione uno</option>');
+            var json = $.parseJSON(data);
+            console.log(json);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<option value=\"" + json[i].idcm + "\">" + json[i].nombre + "</option>";
+                selectForm.append(opcion);
+            }
+        },
+        async: false
+        });
     });
     
     $('#Buscar').on('click', function () {
@@ -94,7 +118,8 @@ $(document).ready(function () {
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
-                var opcion = "<tr><td>" + json[i].nombre + " </td><td>" + json[i].nota + "</td> </tr>";
+                var opcion = "<tr><td   class='idEstudiante' values="+ json[i].idEstudiante+ ">"+ json[i].nombre + " </td> <td>" +json[i].nota + "</td> </tr>";
+                //var opcion = "<tr><td>" + json[i].nombre + " </td><td>" + json[i].nota + "</td> </tr>";
                 selectForm.append(opcion);
             }
         },
@@ -103,8 +128,34 @@ $(document).ready(function () {
 });
 
 
+$('#BuscarNotasMateria').on('click', function () {
 
-
+ $.ajax({
+        type: 'GET',
+        url: "NotaS",
+        //force to handle it as te
+        data: {
+            'opcion': "3",
+            'curso': $('#cm').val()
+        },
+        dataType: "text",
+        success: function (data) {
+            $('#tabla').removeAttr('style');
+            
+            var selectForm = $('#tabla');
+            selectForm.empty();
+            selectForm.append('<tr><td>Estudiante</td><td>Nota</td> </tr>');
+            var json = $.parseJSON(data);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<tr><td   class='idEstudiante' values="+ json[i].idEstudiante+ ">"+ json[i].nombre + " </td> <td>" +json[i].nota + "</td> </tr>";
+                //var opcion = "<tr><td>" + json[i].nombre + " </td><td>" + json[i].nota + "</td> </tr>";
+                selectForm.append(opcion);
+            }
+        },
+        async: false
+    });
+});
 
 
 

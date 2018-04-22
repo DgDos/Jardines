@@ -101,7 +101,7 @@ $('#actividades').on('change', function () {
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
-                var opcion = "<tr><td   class='idEstudiante' values="+ json[i].idEstudiante+ ">"+ json[i].nombre + " </td> <td>  <select class='vino'> <option value= '1' > 1 </option><option value= '2' > 2 </option> <option value= '3' > 3 </option> </select> </tr>";
+                var opcion = "<tr><td class='idEstudiante' values="+ json[i].idEstudiante+ ">"+ json[i].nombre + " </td> <td>  <select class='vino'> <option value= '1' > 1 </option><option value= '2' > 2 </option><option value= '3' > 3 </option><option value= '4' > 4 </option><option value= '5' > 5 </option></select> </tr>";
                 selectForm.append(opcion);
             }
         },

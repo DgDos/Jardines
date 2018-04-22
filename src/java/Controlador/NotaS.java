@@ -132,7 +132,7 @@ public class NotaS extends HttpServlet {
                     out.print(pasareEsto);
             }
             
-                    } catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
             Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);
@@ -160,7 +160,7 @@ public class NotaS extends HttpServlet {
          int idActividad =  Integer.parseInt(request.getParameter("idActividad"));
          //String DetallesExtra = request.getParameter("DetallesExtra");
         
-         System.out.println("nota"+ idEstudiante[0]+ "LLEGUE");
+         //System.out.println("nota"+ idEstudiante[0]+ "LLEGUE");
          
          ArrayList<Integer> idEstudianteCurso = new ArrayList<>();
          
