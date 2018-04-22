@@ -50,10 +50,11 @@ $(document).ready(function () {
             async: false
         });
         });
+        
         $(document).ready(function () {
         $.ajax({
            type: 'GET',
-        url: "NotaS",
+        url: "VerListaAsistenciaS",
         //force to handle it as text
         data: {
             'opcion': "0"
@@ -62,7 +63,7 @@ $(document).ready(function () {
         success: function (data) {
             var selectForm = $('#cursosMateria');
             selectForm.empty();
-            selectForm.append('<option selected  value="" disabled>Seleccione uno</option>');
+            selectForm.append('<option selected  value="" disabled>Seleccione una materia</option>');
             var json = $.parseJSON(data);
             console.log(json);
             for (var i = 0; i < json.length; ++i)
