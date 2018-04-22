@@ -132,6 +132,14 @@ public class NotaS extends HttpServlet {
                     out.print(pasareEsto);
             }
             
+            if (opcion == 4){
+                NotaDAO n = new NotaDAO();
+                ArrayList<Nota> notas = n.getAllNotas();
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(notas);
+                out.print(pasareEsto);
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
@@ -177,7 +185,7 @@ public class NotaS extends HttpServlet {
             
              NotaDAO dao = new NotaDAO();
              System.out.println(idEstudianteCurso);
-             dao.addNota(Integer.parseInt(nota[i]), idEstudianteCurso.get(i-1), idActividad, "yuyg");
+             dao.addNota(Integer.parseInt(nota[i]), idEstudianteCurso.get(i-1), idActividad, "hola");
              
          }
          

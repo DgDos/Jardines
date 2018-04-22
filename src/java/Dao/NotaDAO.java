@@ -55,6 +55,21 @@ public class NotaDAO {
         }
         return nota;
     }
+    
+    public ArrayList<Nota> getAllNotas() throws SQLException {
+        ArrayList<Nota> notas = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from nota where delete=1");
+        while (rs.next()) {
+            Nota n = new Nota();
+            n.setIdEstudianteCurso(rs.getInt("idEstudianteCurso"));
+            n.setIdActividad(rs.getInt("idActividad"));
+            n.setNota(rs.getFloat("nota"));
+            n.setDetallesExtra("detallesExtra");
+            notas.add(n);
+        }
+        return notas;
+    }
 
     public void addNota(float nota, int IdEstudianteCurso, int IdActividad, String DetallesExtra) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("insert into nota (nota,idestudiantecurso,idactividad,detallesextra) values (?,?,?,?)");
