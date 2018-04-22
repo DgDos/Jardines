@@ -8,7 +8,7 @@ $(document).ready(function () {
         },
         dataType: "text",
         success: function (data) {
-            $('#SelectCM').removeAttr('style');
+            $('#SelectCM1').removeAttr('style');
             var selectForm = $('#cm');
             selectForm.empty();
             selectForm.append('<option selected  value="" disabled>Seleccione uno</option>');
@@ -24,6 +24,8 @@ $(document).ready(function () {
     });
 });
 
+
+
 $('#cm').on('change', function () {
     $.ajax({
         type: 'GET',
@@ -37,30 +39,85 @@ $('#cm').on('change', function () {
         success: function (data) {
 
             var selectForm = $('#temas');
-            var boton= $('#botonsito');
+            var boton = $('#botonsito');
             boton.removeAttr('style');
             $('#nombreaparece').removeAttr('style');
+            $('#texto2').empty();
+            $('#texto2').append('<p>Temas:</p>');
+            $('#botonE').removeAttr('style');
             selectForm.empty();
-            selectForm.append('<p style=\"\" >Temas: </p>');
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
-                var j=i+1;
-                var opcion = "<p style=\"\" >"+j+". "+json[i].nombre+"</p>";
+                var j = i + 1;
+                var opcion = "<tr><td>" + j + ". " + json[i].nombre + "</td><td>" + "<button type=\"button\" data-toggle=\"tooltip\" data-placement=\"right\" title=\"Eliminar\" class=\"btn btn-link btn-warning\" onclick=\"eliminarTema(" + json[i].idTema + ")\"><i class=\"nc-icon nc-simple-remove\"></i></button>" + "</td> </tr>";
                 selectForm.append(opcion);
             }
-            selectForm.append("<br><p style=\"\" >Quiere agregar otro?</p>");
+            var selectForm2 = $('#texto');
+            selectForm2.empty();
+            selectForm2.append("<br><p style=\"\" >Quiere agregar otro?</p>");
         },
         async: false
     });
 });
-$('#SelectCM').on('submit', function () {
+
+function eliminarTema(idTema) {
     $.ajax({
         type: 'POST',
-            url: "TemaS",        
+        url: "TemaS",
         data: {
-            'idcm': $('#cm').val(),
-            'nombre': $('#nombre').val()
+            'opcion': "eliminar",
+            'idTema': idTema
+        },
+        dataType: "text",
+        success: function (data) {
+            window.location.reload();
+        },
+        async: false
+    });
+}
+
+$('#botonE').on('click', function () {
+    $.ajax({
+        type: 'GET',
+        url: "TemaS",
+        //force to handle it as text
+        data: {
+            'opcion': "2",
+            'idcm': $('#cm').val()
+        },
+        dataType: "text",
+        success: function (data) {
+            var es=$('#megaescondido');
+            es.removeAttr('style');
+            $('#texto2').attr('style','display: none;');
+            $('#temas').attr('style','display: none;');
+            $('#botonE').attr('style','display: none;');
+            $('#SelectCM').attr('style','display: none;');
+            $('#texto').attr('style','display: none;');
+            $('#editar').removeAttr('style');
+            var escondido=$('#temasS');
+            escondido.empty();
+            escondido.append('<option selected  value="" disabled>Seleccione uno</option>');
+            var json = $.parseJSON(data);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<option value=\"" + json[i].idTema + "\">" + json[i].nombre + "</option>";
+                escondido.append(opcion);
+            }
+        }
+    });
+});
+
+$('#editar').on('submit', function () {
+    $.ajax({
+        type: 'POST',
+        url: "TemaS",
+        data: {
+            'opcion': "editar",
+            'nombre': $('#nombre2').val(),
+            'idTema': $('#temasS').val(),
+            'idcm': $('#cm').val()
         },
         dataType: "text",
         success: function (data) {
@@ -71,4 +128,20 @@ $('#SelectCM').on('submit', function () {
 });
 
 
- 
+
+$('#SelectCM').on('submit', function () {
+    $.ajax({
+        type: 'POST',
+        url: "TemaS",
+        data: {
+            'opcion': "crear",
+            'idcm': $('#cm').val(),
+            'nombre': $('#nombre').val()
+        },
+        dataType: "text",
+        success: function (data) {
+
+        },
+        async: false
+    });
+});

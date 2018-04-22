@@ -51,26 +51,34 @@ public class TemaS extends HttpServlet {
             if (opcion == 0) {
                 CursoMateriaDAO t = new CursoMateriaDAO();
                 ArrayList<CursoMateria> cms = t.getAllCM();
-                ArrayList<ConsultaCMS> cmsCompleto=new ArrayList<>();
-                for(CursoMateria cm:cms){
-                    CursoDAO c=new CursoDAO();
-                    Curso curso=c.getCursoById(cm.getIdCurso());
-                    MateriaDAO m=new MateriaDAO();
-                    Materia materia=m.getMateriaById(cm.getIdMateria());
-                    String curmat=curso.getNombre()+": "+materia.getNombre();
-                    ConsultaCMS c1=new ConsultaCMS(cm.getIdCM(), curmat);
+                ArrayList<ConsultaCMS> cmsCompleto = new ArrayList<>();
+                for (CursoMateria cm : cms) {
+                    CursoDAO c = new CursoDAO();
+                    Curso curso = c.getCursoById(cm.getIdCurso());
+                    MateriaDAO m = new MateriaDAO();
+                    Materia materia = m.getMateriaById(cm.getIdMateria());
+                    String curmat = curso.getNombre() + ": " + materia.getNombre();
+                    ConsultaCMS c1 = new ConsultaCMS(cm.getIdCM(), curmat);
                     cmsCompleto.add(c1);
                 }
                 Gson g = new Gson();
                 String pasareEsto = g.toJson(cmsCompleto);
                 out.print(pasareEsto);
             }
-            if(opcion==2){
-                int idCM=Integer.parseInt(request.getParameter("idcm"));
+            if (opcion == 2) {
+                int idCM = Integer.parseInt(request.getParameter("idcm"));
                 TemaDAO t = new TemaDAO();
                 ArrayList<Tema> temas = t.getAllTemas(idCM);
                 Gson g = new Gson();
                 String pasareEsto = g.toJson(temas);
+                out.print(pasareEsto);
+            }
+            if(opcion == 3){
+                int idTema=Integer.parseInt(request.getParameter("idTema"));
+                TemaDAO t=new TemaDAO();
+                Tema tema=t.getTemaById(idTema);
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(tema);
                 out.print(pasareEsto);
             }
         } catch (SQLException ex) {
@@ -95,11 +103,33 @@ public class TemaS extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            int idCM = Integer.parseInt(request.getParameter("idcm"));
-            String nombre = request.getParameter("nombre");
-            TemaDAO t = new TemaDAO();
-            System.out.println(idCM+"---"+nombre);
-            t.addTema(idCM, nombre);
+            String opcion = request.getParameter("opcion");
+            System.out.println("holaaaaaaaa ayudaaaa");
+            if (opcion.equals("crear")) {
+                
+                int idCM = Integer.parseInt(request.getParameter("idcm"));
+                String nombre = request.getParameter("nombre");
+                if (!nombre.equals("")) {
+                    TemaDAO t = new TemaDAO();
+                    t.addTema(idCM, nombre);
+                }
+            }
+            if (opcion.equals("eliminar")) {
+                int idTema = Integer.parseInt(request.getParameter("idTema"));
+                TemaDAO t = new TemaDAO();
+                t.eliminarTema(idTema);
+            }
+            if (opcion.equals("editar")){
+                int idCM = Integer.parseInt(request.getParameter("idcm"));
+                int idTema=Integer.parseInt(request.getParameter("idTema"));
+                String nombre = request.getParameter("nombre");
+                if (!nombre.equals("")) {
+                    TemaDAO t = new TemaDAO();
+                    Tema tema=new Tema(idTema, nombre, idCM);
+                    t.updateTema(tema);
+                }
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(TemaS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {

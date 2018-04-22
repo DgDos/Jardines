@@ -51,24 +51,49 @@
 
                     <div class="container">
                         <br>
-                        <form id="SelectCM" style="display: none;">                                
+                        <div id="SelectCM1">                                
                             <div>
-                                <label >Curso y Materia: </label>
-                                <select class="form-control" required name="cm" id="cm">
-                                    <option value="" selected disabled>Seleccione uno</option>
-                                </select> 
-                                <br>
-                                <p id="temas">
-
-                                </p>
-                                <div id="nombreaparece" style="display: none;">
-                                    <label  for="detalle">Nombre: </label>
-                                    <input type="text" class="form-control form-control-success" name="nombre" id="nombre"> 
+                                <form id="edyel">
+                                    <label >Curso y Materia: </label>
+                                    <select class="form-control" required name="cm" id="cm">
+                                        <option value="" selected disabled>Seleccione uno</option>
+                                    </select> 
                                     <br>
-                                    <button type="submit" class="btn btn-default" id="botonsito" name="Enviar" style="display: none;">Agregar</button>
-                                </div>
+                                    <div id="megaescondido" style="display: none;">
+                                        <label >Temas</label>
+                                        <select class="form-control" required name="TemasS" id="temasS">
+                                            <option value="" selected disabled>Seleccione uno</option>
+                                        </select> 
+                                    </div>
+                                    <p id="texto2"></p>
+                                    <table id="temas">
+                                        <tr>
+                                            <td>
+
+                                            </td>
+                                        </tr> 
+                                    </table>
+                                </form>
+                                <button type="button" class="btn btn-outline-info btn-round btn-sm" style="display: none;" id="botonE" name="editar">Editar</button>
+                                <p id="texto"></p>
+                                <form id="SelectCM">
+                                    <div id="nombreaparece" style="display: none;">
+                                        <label  for="detalle">Nombre: </label>
+                                        <input type="text" class="form-control form-control-success" name="nombre" id="nombre"> 
+                                        <br>
+                                        <button type="submit" class="btn btn-outline-primary btn-round" id="botonsito" name="Enviar" style="display: none;">Agregar <i class="nc-icon nc-check-2"></i></button>
+                                    </div>
+                                </form>
+
                             </div>
 
+                        </div>
+                        <br>
+                        <form id="editar" style="display: none;">
+                            <label  for="detalle2">Nombre nuevo: </label>
+                            <input type="text" class="form-control form-control-success" name="nombre2" id="nombre2"> 
+                            <br>
+                            <button type="submit" class="btn btn-outline-primary btn-round" name="Enviar2"><i class="nc-icon nc-settings-gear-65"></i> Editar</button>
                         </form>
                         <table id="tablaCM" class="table table-hover" style="display: none;">
 
