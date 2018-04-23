@@ -77,15 +77,24 @@ $(document).ready(function () {
         });
         $.ajax({
             type: 'GET',
-            url: "NotasS",
+            url: "ObservadorS",
             //force to handle it as text
 
             data: {
-               
+                "opcion": '4',
+                "idEst": $('#estudiante').val()
             },
             dataType: "text",
             success: function (data) {
-
+                var selectForm = $('#Nota');
+                selectForm.empty();
+                selectForm.append('Notas');
+                var json = $.parseJSON(data);
+                for (var i = 0; i < json.length; ++i)
+                {
+                    var opcion = "<p style=\"color:white\" >Actividad:" + json[i].curso + ", Detalles: " + json[i].materia + ", Nota: " + json[i].profesor + ".</p>";
+                    selectForm.append(opcion);
+                }
             },
             async: false
         });
@@ -95,7 +104,7 @@ $(document).ready(function () {
             //force to handle it as text
 
             data: {
-                "op":'3',
+                "op": '3',
                 "idEst": $('#estudiante').val()
             },
             dataType: "text",

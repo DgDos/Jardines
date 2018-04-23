@@ -7,6 +7,7 @@ package Dao;
 
 import Modelo.Observador;
 import Util.DbUtil;
+import Util.consultaCM;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.Connection;
@@ -89,6 +90,20 @@ public class ObservadorDAO {
             observadores.add(c);
         }
         return observadores;
+    }
+
+    public ArrayList<consultaCM> getNotasById(int estCur) throws SQLException {
+       ArrayList<consultaCM> notas = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select nota.nota,nota.detallesextra,actividad.nombre from actividad,nota where actividad.id=nota.idactividad and idestudiantecurso="+estCur); 
+        while(rs.next()){
+            consultaCM n=new consultaCM();
+            n.setCurso(rs.getString("nombre"));
+            n.setMateria(rs.getString("detallesextra"));
+            n.setProfesor(rs.getString("nota"));
+            notas.add(n);
+        }
+        return notas;
     }
 
 }

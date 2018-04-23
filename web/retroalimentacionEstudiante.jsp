@@ -79,7 +79,7 @@
                             <p id="Asistencia">
                                 
                             </p>
-                            <p id="Notas">
+                            <p id="Nota">
                                 
                             </p>
                     </div> 

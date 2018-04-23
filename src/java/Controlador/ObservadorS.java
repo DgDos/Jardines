@@ -124,6 +124,17 @@ public class ObservadorS extends HttpServlet {
                 String pasareEsto = g.toJson(cursos);
                 out.print(pasareEsto);
             }
+            if(opc== 4){
+                String idEst=request.getParameter("idEst");
+                EstudianteCursoDAO ec=new EstudianteCursoDAO();
+                int estCur= ec.getEstCur(idEst);
+                ObservadorDAO o=new ObservadorDAO();
+                ArrayList<consultaCM> consultaNota=o.getNotasById(estCur);
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(consultaNota);
+                out.print(pasareEsto);        
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(ObservadorS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
