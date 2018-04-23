@@ -22,6 +22,7 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -68,41 +69,41 @@ public class AsistenciaS extends HttpServlet {
 
         try (PrintWriter out = response.getWriter()) {
 
-         Profesor p = (Profesor) request.getSession().getAttribute("profesor");
-      
-                int op = Integer.parseInt(request.getParameter("op"));
-                if (op == 0) {
-                    String pi = p.getIdProfesor();
-                   
-                    DirectorCursoDAO pc = new DirectorCursoDAO();
-                    ArrayList<DirectorCurso> pcm = pc.getAllProCur(pi);
-                    ArrayList<Curso> cursos = new ArrayList<>();
-                    CursoDAO c = new CursoDAO();
-                    for (DirectorCurso profesorcurso : pcm) {
-                        cursos.add(c.getCursoById(profesorcurso.getIdCurso()));
-                    }
-                    Gson g = new Gson();
-                    String pasareEsto = g.toJson(cursos);
-                    out.print(pasareEsto);
-                }
-                if (op == 1) {
-                    FechaDAO dao = new FechaDAO();
-                    ArrayList<Fecha> fechas = dao.allFechas();
-                    Gson g = new Gson();
-                    String pasareEsto = g.toJson(fechas);
-                    out.print(pasareEsto);
-                }
+            Profesor p = (Profesor) request.getSession().getAttribute("profesor");
 
-                if (op == 2) {
-                    int idCurso = Integer.parseInt(request.getParameter("curso"));
-                    EstudianteDAO dao = new EstudianteDAO();
-                    ArrayList<Estudiante> estudiantes = dao.getEstudiantesByIDCurso(idCurso);
+            int op = Integer.parseInt(request.getParameter("op"));
+            if (op == 0) {
+                String pi = p.getIdProfesor();
 
-                    Gson g = new Gson();
-                    String pasareEsto = g.toJson(estudiantes);
-                    out.print(pasareEsto);
+                DirectorCursoDAO pc = new DirectorCursoDAO();
+                ArrayList<DirectorCurso> pcm = pc.getAllProCur(pi);
+                ArrayList<Curso> cursos = new ArrayList<>();
+                CursoDAO c = new CursoDAO();
+                for (DirectorCurso profesorcurso : pcm) {
+                    cursos.add(c.getCursoById(profesorcurso.getIdCurso()));
                 }
-            
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(cursos);
+                out.print(pasareEsto);
+            }
+            if (op == 1) {
+                FechaDAO dao = new FechaDAO();
+                ArrayList<Fecha> fechas = dao.allFechas();
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(fechas);
+                out.print(pasareEsto);
+            }
+
+            if (op == 2) {
+                int idCurso = Integer.parseInt(request.getParameter("curso"));
+                EstudianteDAO dao = new EstudianteDAO();
+                ArrayList<Estudiante> estudiantes = dao.getEstudiantesByIDCurso(idCurso);
+
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(estudiantes);
+                out.print(pasareEsto);
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
@@ -118,40 +119,43 @@ public class AsistenciaS extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
         response.setContentType("text/html;charset=UTF-8");
-         try { 
-         String[] idEstudiante =  request.getParameterValues("idEstudiante[]");
-         String fecha = request.getParameter("fecha");
-         String[] vino = request.getParameterValues("vino[]");
-         
-         ArrayList<Integer> idEstudianteCurso = new ArrayList<>();
-         
-         for(int i=0; i < idEstudiante.length;i++){
-             EstudianteCursoDAO dao = new EstudianteCursoDAO();
-             int idEC = dao.getEstCur(idEstudiante[i]);
-             idEstudianteCurso.add(idEC);
-         }
-             
-         String[] fechaAux = fecha.split(" ");
-         System.out.println(fecha);
-         for(int i=0; i<idEstudiante.length; i++){
-             
-             Asistencia asistencia = new Asistencia(idEstudianteCurso.get(i), fechaAux[0],vino[i]);
-            
-             AsistenciaDAO dao = new AsistenciaDAO();
-             dao.addAsistencia(asistencia);
-             
-         }
-         
-           } catch (SQLException ex) {
-                Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (URISyntaxException ex) {
-                Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);
+        try {
+            String[] idEstudiante = request.getParameterValues("idEstudiante[]");
+            //String fecha = request.getParameter("fecha");
+            String[] vino = request.getParameterValues("vino[]");
+
+            Date d = new Date(System.currentTimeMillis());
+            String je = d + "";
+            String[] aux3 = je.split("-");
+            String fecha = aux3[1] + "/" + aux3[2] + "/" + aux3[0];
+
+            ArrayList<Integer> idEstudianteCurso = new ArrayList<>();
+
+            for (int i = 0; i < idEstudiante.length; i++) {
+                EstudianteCursoDAO dao = new EstudianteCursoDAO();
+                int idEC = dao.getEstCur(idEstudiante[i]);
+                idEstudianteCurso.add(idEC);
             }
-         
+
+            AsistenciaDAO dao = new AsistenciaDAO();
+
+            boolean aux = dao.comprobarAsistencia(idEstudianteCurso.get(0), fecha);
             
-        
+            if (aux == false) {
+                for (int i = 0; i < idEstudiante.length; i++) {
+                    Asistencia asistencia = new Asistencia(idEstudianteCurso.get(i), fecha, vino[i]);
+                    dao.addAsistencia(asistencia);
+
+                }
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (URISyntaxException ex) {
+            Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 

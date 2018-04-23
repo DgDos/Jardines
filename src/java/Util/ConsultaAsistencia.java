@@ -12,7 +12,7 @@ package Util;
 public class ConsultaAsistencia {
     private String nombre;
     private String vino;
-
+    private String fecha;
     public ConsultaAsistencia() {
     }
 
@@ -21,6 +21,16 @@ public class ConsultaAsistencia {
         this.vino = vino;
     }
 
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+    
+    
+    
     public String getNombre() {
         return nombre;
     }

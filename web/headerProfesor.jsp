@@ -18,6 +18,7 @@
                             <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">
                                 <a class="dropdown-item" href="listaAsistencia.jsp">Tomar Asistencia</a>
                                 <a class="dropdown-item" href="verAsistencia.jsp">Ver Asistencia</a>
+                                <a class="dropdown-item" href="verAsistenciaEstudiante.jsp">Ver Asistencia de un Estudiante</a>
                                
                             </ul>
                         </div> 

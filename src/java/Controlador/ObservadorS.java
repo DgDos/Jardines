@@ -156,7 +156,8 @@ public class ObservadorS extends HttpServlet {
             Date d = new Date(System.currentTimeMillis());
             String je = d + "";
             String[] aux3 = je.split("-");
-            String fechaObservacion = aux3[2] + "/" + aux3[1] + "/" + aux3[0];
+            String fechaObservacion =  aux3[1]+ "/" + aux3[2] + "/" + aux3[0];
+           
             if (tipo == 0) {
                 detallesFinal += "Director: " + detalles;
             } else {

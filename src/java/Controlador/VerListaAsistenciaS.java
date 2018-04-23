@@ -10,6 +10,7 @@ import Dao.CursoDAO;
 import Dao.FechaDAO;
 import Dao.ObservadorDAO;
 import Dao.DirectorCursoDAO;
+import Dao.EstudianteDAO;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Fecha;
@@ -102,6 +103,24 @@ public class VerListaAsistenciaS extends HttpServlet {
                 String pasareEsto = g.toJson(l);
                 out.print(pasareEsto);
             }
+            if(opc == 3){
+                int a = Integer.parseInt(request.getParameter("curso"));
+                EstudianteDAO obs = new EstudianteDAO();
+                ArrayList<Estudiante> estudiantes = obs.getEstudiantesByIDCurso(a);
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(estudiantes);
+                out.print(pasareEsto);
+            }
+            if (opc == 4) {
+                int curso = Integer.parseInt(request.getParameter("curso"));
+                String nombre = request.getParameter("nombre");
+                AsistenciaDAO obs = new AsistenciaDAO();
+                ArrayList<ConsultaAsistencia> l = obs.getAsistenciaEstudiante(curso,nombre);
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(l);
+                out.print(pasareEsto);
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(VerListaAsistenciaS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {

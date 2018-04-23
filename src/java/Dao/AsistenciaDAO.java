@@ -42,6 +42,35 @@ public class AsistenciaDAO {
         return asis;
     }
     
+    public ArrayList<ConsultaAsistencia> getAsistenciaEstudiante(int idCurso,String nombre) throws SQLException{
+        ArrayList<ConsultaAsistencia> asis=new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select estudiante.nombre,asistencia.fecha from  estudiante,asistencia,estudiantecurso where estudiante.documento = estudiantecurso.idestudiante and asistencia.idestudiantecurso = estudiantecurso.id and estudiantecurso.idcurso ="+idCurso+" and estudiante.nombre= '"+ nombre +"' and asistencia.vino = 'Ausente'");
+        while (rs.next()) {
+            ConsultaAsistencia ca= new ConsultaAsistencia();
+            ca.setNombre(rs.getString("nombre"));
+            ca.setFecha(rs.getString("fecha"));
+            asis.add(ca);
+        }
+        return asis;
+    }
+    
+    public boolean comprobarAsistencia (int idEstudianteCurso , String fecha) throws SQLException{
+        String aaaa = null;
+        Statement statement = connection.createStatement();
+         ResultSet rs = statement.executeQuery("select * from asistencia where idestudiantecurso = "+idEstudianteCurso+"and fecha= '" +fecha+ "'");
+         boolean aux = true;
+         
+         if(rs.next()== true){
+             aux = true;
+         }else{
+             aux = false;
+         }
+         return aux;
+       
+    }
+    
+    
     public void addAsistencia(Asistencia asistencia) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("insert into asistencia values (?,?,?,1)");
         preparedStatement.setInt(1, asistencia.getIdEstudianteCurso());

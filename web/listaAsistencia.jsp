@@ -36,37 +36,25 @@
                     <br>
                     <br>
                     <br>
-                    
+                     <div class="form-group">
+                         <div> 
+                            <SELECT  id="cursosProfesor" class="form-control">
+                                <OPTION></OPTION>
+
+                            </SELECT>
+                             </div> 
+                        </div> 
                        
 
                     <form id="formulario" class="form-inline" >
                         
                         
-                        <div class="form-group">
-                            <SELECT  id="cursosProfesor" class="form-control">
-                                <OPTION></OPTION>
-
-                            </SELECT>
-                        </div>
+                       
 
                         <div class="form-group">
-                            <label >Fecha :</label>
+                           
 
-                            <div class="row">
-                                <div class='col-sm-6'>
-                                    <div class="form-group">
-                                        <div class='input-group date'  id='datetimepicker' >
-                                            <input  id="fecha" name="fecha" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
-                                            <span class="input-group-addon">
-                                                <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div> 
-                          
-                            </div>
-
-
+                            <br>
                             <br>
                             <br>
                             <br>

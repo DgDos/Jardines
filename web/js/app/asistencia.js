@@ -68,7 +68,6 @@ $(document).ready(function () {
   
 $('#guardarAsistencia').on('click', function () {
     var idEstudiante = Array();
-    var fecha = $('#fecha').val();
     var vino = Array();
       $('#tabla tbody tr').each(function(i, x) {
        
@@ -78,7 +77,6 @@ $('#guardarAsistencia').on('click', function () {
     });      
       
       console.log(idEstudiante);
-      console.log(fecha);
       console.log(vino);
       
 
@@ -88,7 +86,6 @@ $('#guardarAsistencia').on('click', function () {
         url: "AsistenciaS",
         data: {
             'idEstudiante': idEstudiante,
-            'fecha': fecha,
             'vino': vino
             
        
