@@ -72,7 +72,7 @@ public class NotaDAO {
     }
 
     public void addNota(float nota, int IdEstudianteCurso, int IdActividad, String DetallesExtra) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into nota (nota,idestudiantecurso,idactividad,detallesextra) values (?,?,?,?)");
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into nota (nota,idestudiantecurso,idactividad,detallesextra,delete) values (?,?,?,?,1)");
         preparedStatement.setFloat(1, nota);
         preparedStatement.setInt(2, IdEstudianteCurso);
         preparedStatement.setInt(3, IdActividad);

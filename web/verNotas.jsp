@@ -68,8 +68,8 @@
 
                                 <tr>
 
-                                    <td id="idEstudiante" ></td>
-                                    <td id="nombreEstudiante"></td>
+                                    <td id="nombreEstudiante" ></td>
+                                    <td id="nota"></td>
 
 
 
