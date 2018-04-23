@@ -75,34 +75,43 @@ $(document).ready(function () {
             },
             async: false
         });
-//        $.ajax({
-//            type: 'GET',
-//            url: "NotasS",
-//            //force to handle it as text
-//
-//            data: {
-//               
-//            },
-//            dataType: "text",
-//            success: function (data) {
-//
-//            },
-//            async: false
-//        });
-//        $.ajax({
-//            type: 'GET',
-//            url: "AsistenciaS",
-//            //force to handle it as text
-//
-//            data: {
-//                
-//            },
-//            dataType: "text",
-//            success: function (data) {
-//                
-//            },
-//            async: false
-//        });
+        $.ajax({
+            type: 'GET',
+            url: "NotasS",
+            //force to handle it as text
+
+            data: {
+               
+            },
+            dataType: "text",
+            success: function (data) {
+
+            },
+            async: false
+        });
+        $.ajax({
+            type: 'GET',
+            url: "AsistenciaS",
+            //force to handle it as text
+
+            data: {
+                "op":'3',
+                "idEst": $('#estudiante').val()
+            },
+            dataType: "text",
+            success: function (data) {
+                var selectForm = $('#Asistencia');
+                selectForm.empty();
+                selectForm.append('Asistencias');
+                var json = $.parseJSON(data);
+                for (var i = 0; i < json.length; ++i)
+                {
+                    var opcion = "<p style=\"color:white\" >Fecha:" + json[i].Fecha + ", Estuvo: " + json[i].vino + ".</p>";
+                    selectForm.append(opcion);
+                }
+            },
+            async: false
+        });
     });
 });
 

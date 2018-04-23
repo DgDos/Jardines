@@ -80,5 +80,18 @@ public class AsistenciaDAO {
        
         preparedStatement.executeUpdate();
     }
+
+    public ArrayList<Asistencia> getAsistenciaByEst(int estCur) throws SQLException {
+        ArrayList<Asistencia> asistencias=new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from asistencia where idestudiantecurso = "+estCur+" and delete=1");
+        while (rs.next()){
+            Asistencia a=new Asistencia();
+            a.setFecha(rs.getString("fecha"));
+            a.setVino(rs.getString("vino"));
+            asistencias.add(a);
+        }
+        return asistencias;
+    }
     
 }

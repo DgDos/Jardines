@@ -103,6 +103,16 @@ public class AsistenciaS extends HttpServlet {
                 String pasareEsto = g.toJson(estudiantes);
                 out.print(pasareEsto);
             }
+            if(op==3){
+                String idEst=request.getParameter("idEst");
+                EstudianteCursoDAO ec=new EstudianteCursoDAO();
+                int estCur= ec.getEstCur(idEst);
+                AsistenciaDAO a=new AsistenciaDAO();
+                ArrayList<Asistencia> asiste=a.getAsistenciaByEst(estCur);
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(asiste);
+                out.print(pasareEsto);
+            }
 
         } catch (SQLException ex) {
             Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);

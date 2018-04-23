@@ -14,6 +14,11 @@ public class Asistencia {
     private String Fecha;
     private String vino;
 
+    public Asistencia() {
+    }
+
+    
+    
     public Asistencia(int idEstudianteCurso, String Fecha, String vino) {
         this.idEstudianteCurso = idEstudianteCurso;
         this.Fecha = Fecha;
