@@ -106,36 +106,5 @@ $(document).ready(function () {
 });
 
 
-$('#BuscarNotasMateria').on('click', function () {
-
- $.ajax({
-        type: 'GET',
-        url: "NotaS",
-        //force to handle it as te
-        data: {
-            'opcion': "3",
-            'curso': $('#cm').val()
-        },
-        dataType: "text",
-        success: function (data) {
-            $('#tabla').removeAttr('style');
-            
-            var selectForm = $('#tabla');
-            selectForm.empty();
-            selectForm.append('<tr><td style="color:white" >Nombre</td><td style="color:white" >Nota</td> </tr>');
-            var json = $.parseJSON(data);
-            for (var i = 0; i < json.length; ++i)
-            {
-                var opcion = "<tr><td   class='idEstudiante' values="+ json[i].idEstudiante+ ">"+ json[i].nombre + " </td> <td>" +json[i].nota + "</td> </tr>";
-                //var opcion = "<tr><td>" + json[i].nombre + " </td><td>" + json[i].nota + "</td> </tr>";
-                selectForm.append(opcion);
-            }
-        },
-        async: false
-    });
-});
-
-
-
 
 

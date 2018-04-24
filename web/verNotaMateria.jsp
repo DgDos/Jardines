@@ -6,7 +6,7 @@
         <link rel="icon" type="image/png" href="assets/img/colegio.ico">
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>Ver Notas</title>
+        <title>Ver Notas Materia</title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
         <!-- Bootstrap core CSS     -->
@@ -37,18 +37,6 @@
 
 
                     <form id="formulario" class="form-inline" >
-                        <div class="form-group">
-                            <SELECT  id="cursosProfesor" class="form-control">
-                                <OPTION></OPTION>
-
-                            </SELECT>
-                           
-                            
-                        </div>    
-
-                        
-                        <input type="button" value="Notas por Curso" class="btn btn-default btn-round"  id="Buscar"><br> <br>
-                        <br>
                         <div class="form-group">
                         <SELECT  id="cursosMateria" class="form-control">
                                 <OPTION></OPTION>
@@ -107,6 +95,6 @@
 
         <!--  Paper Kit Initialization and functons -->
         <script src="assets/js/paper-kit.js?v=2.1.0"></script>
-        <script src="js/app/verNota.js"></script>
+        <script src="js/app/verNotaMateria.js"></script>
     </body>
 </html>
