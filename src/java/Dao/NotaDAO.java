@@ -42,18 +42,19 @@ public class NotaDAO {
         return notas;
     }
     
-    public Nota getNotaByIdActividad(int idActividad) throws SQLException, URISyntaxException {
-        Nota nota= new Nota();
+    public ArrayList<Nota> getNotaByIdActividad(int idActividad) throws SQLException, URISyntaxException {
+        ArrayList<Nota> notas = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from nota where idActividad=" + idActividad);
+        ResultSet rs = statement.executeQuery("select estudiante.nombre, nota.nota from estudiante,nota,estudiantecurso,actividad where nota.idestudiantecurso = estudiantecurso.id and estudiantecurso.idestudiante=estudiante.documento and nota.idactividad=actividad.id  and actividad.id=" + idActividad);
         while (rs.next()) {
+            Nota nota = new Nota();
+            nota.setNombre(rs.getString("nombre"));
             nota.setNota(rs.getFloat("nota"));
-            nota.setIdEstudianteCurso(rs.getInt("id_Est"));
-            nota.setIdActividad(rs.getInt("idactividad"));
-            nota.setDetallesExtra(rs.getString("detalles"));
+            notas.add(nota);
+            ;
             
         }
-        return nota;
+        return notas;
     }
     
     public ArrayList<Nota> getAllNotas() throws SQLException {
@@ -94,4 +95,5 @@ public class NotaDAO {
         preparedStatement.setString(4, e.getDetallesExtra());
         preparedStatement.executeUpdate();
     }
+    
 }

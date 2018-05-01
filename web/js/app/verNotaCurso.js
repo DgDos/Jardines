@@ -25,29 +25,7 @@ $(document).ready(function () {
             async: false
         });
         
-        $.ajax({
-        type: 'GET',
-        url: "NotaS",
-        //force to handle it as text
-        data: {
-            'opcion': "0"
-        },
-        dataType: "text",
-        success: function (data) {
-            var selectForm = $('#cursosMateria');
-            selectForm.empty();
-            selectForm.append('<option selected  value="" disabled>Seleccione una materia</option>');
-            var json = $.parseJSON(data);
-            console.log(json);
-            for (var i = 0; i < json.length; ++i)
-            {
-                var opcion = "<option value=\"" + json[i].idcm + "\">" + json[i].nombre + "</option>";
-                selectForm.append(opcion);
-            }
-        },
-        async: false
-        });
-
+       
         
         });
         

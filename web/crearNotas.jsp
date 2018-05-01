@@ -82,6 +82,7 @@
                                         <tr>
                                             <th>Nombre</th>
                                             <th>Nota</th>
+                                            <th>Detalles</th>
                                         </tr>
                                     </thead>
                                     
@@ -89,6 +90,7 @@
                                         <tr>
                                             <td id="Nombre"></td>
                                             <td id="Nota"></td>
+                                            <td id="detallesextra"</td>
                                         </tr>
                                     </tbody>     
                                 </table> 

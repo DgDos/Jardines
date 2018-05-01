@@ -54,7 +54,7 @@
                                 <tr>
                                     <th>Nombre Estudiante</th>
                                     <th>Nota</th>
-
+                                    <th>Curso</th>
                                 </tr>
                             </thead>
 
@@ -64,7 +64,7 @@
 
                                     <td id="nombreEstudiante" ></td>
                                     <td id="nota"></td>
-
+                                    <td id="curso"></td>
 
 
                                 </tr>

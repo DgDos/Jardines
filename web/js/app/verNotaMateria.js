@@ -72,7 +72,7 @@ $('#BuscarNotasMateria').on('click', function () {
             
             var selectForm = $('#tabla');
             selectForm.empty();
-            selectForm.append('<tr><td style="color:white" >Nombre</td><td style="color:white" >Nota</td> </tr>');
+            selectForm.append('<tr><td style="color:white" >Nombre</td><td style="color:white" >Nota</td><td style="color:white" >Materia</td> </tr>');
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {

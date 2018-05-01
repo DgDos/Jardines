@@ -166,7 +166,7 @@ public class NotaS extends HttpServlet {
          String[] nota = request.getParameterValues("nota[]");
          String[] idEstudiante =  request.getParameterValues("idEstudiante[]");
          int idActividad =  Integer.parseInt(request.getParameter("idActividad"));
-         //String DetallesExtra = request.getParameter("DetallesExtra");
+         String[] DetallesExtra = request.getParameterValues("detallesextra[]");
         
          //System.out.println("nota"+ idEstudiante[0]+ "LLEGUE");
          
@@ -185,7 +185,7 @@ public class NotaS extends HttpServlet {
             
              NotaDAO dao = new NotaDAO();
              System.out.println(idEstudianteCurso);
-             dao.addNota(Integer.parseInt(nota[i]), idEstudianteCurso.get(i-1), idActividad, "hola");
+             dao.addNota(Integer.parseInt(nota[i]), idEstudianteCurso.get(i-1), idActividad, DetallesExtra[i]);
              
          }
          

@@ -13,6 +13,7 @@ public class Nota {
     private float nota;
     private int idEstudianteCurso;
     private int idActividad;
+    private String nombre;
     private String detallesExtra;
 
     public Nota() {
@@ -24,6 +25,23 @@ public class Nota {
         this.idActividad = idActividad;
         this.detallesExtra = detallesExtra;
     }
+
+    public Nota(float nota,String nombre) {
+        this.nota = nota;
+        this.nombre= nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
+    
+    
 
     public float getNota() {
         return nota;

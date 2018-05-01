@@ -97,11 +97,11 @@ $('#actividades').on('change', function () {
             $('#AddNota').removeAttr('style');
             var selectForm = $('#tablaNota');
             selectForm.empty();
-            selectForm.append('<tr><td>Estudiante</td><td>Ingrese Nota</td> </tr>');
+            selectForm.append('<tr><td>Estudiante</td><td>Ingrese Nota</td> <td>Detalles</td></tr>');
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
-                var opcion = "<tr><td class='idEstudiante' values="+ json[i].idEstudiante+ ">"+ json[i].nombre + " </td> <td>  <select class='vino'> <option value= '1' > 1 </option><option value= '2' > 2 </option><option value= '3' > 3 </option><option value= '4' > 4 </option><option value= '5' > 5 </option></select> </tr>";
+                var opcion = "<tr><td class='idEstudiante' values="+ json[i].idEstudiante+ ">"+ json[i].nombre + " </td> <td>  <select class='nota'> <option value= '1' > 1 </option><option value= '2' > 2 </option><option value= '3' > 3 </option><option value= '4' > 4 </option><option value= '5' > 5 </option></select></td> <td> <input type='text' class='detalle'><br></td></tr>";
                 selectForm.append(opcion);
             }
         },
@@ -129,24 +129,30 @@ $('#actividades').on('change', function () {
 $('#botonsito').on('click', function () {
     var idEstudiante = Array();
     var nota = Array();
+    var detallesextra = Array();
     var idActividad = $('#actividades').val();
       $('#tablaNota tbody tr').each(function(i, x) {
        
         idEstudiante[i]=$(this).children('td').eq(0).attr('values');
         
         nota[i]=$(this).children('td').eq(1).children("select").children("option:selected").val();
+        
+        detallesextra[i]=$(this).children('td').eq(2).attr('text');
     });      
       
       console.log(idEstudiante);
       console.log(nota);
+      console.log(detallesextra);
+      
       
     $.ajax({
         type: 'POST',
         url: "NotaS",
-        data: {
+        data: { //envio de datos al servlet
             'nota': nota,
             'idEstudiante': idEstudiante,
-            'idActividad': idActividad
+            'idActividad': idActividad,
+            'detallesextra': detallesextra
             
         },
         dataType: "text",
