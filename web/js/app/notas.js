@@ -129,7 +129,7 @@ $('#actividades').on('change', function () {
 $('#botonsito').on('click', function () {
     var idEstudiante = Array();
     var nota = Array();
-    var detallesextra = Array();
+    var detalles = Array();
     var idActividad = $('#actividades').val();
       $('#tablaNota tbody tr').each(function(i, x) {
        
@@ -137,12 +137,12 @@ $('#botonsito').on('click', function () {
         
         nota[i]=$(this).children('td').eq(1).children("select").children("option:selected").val();
         
-        detallesextra[i]=$(this).children('td').eq(2).attr('text');
+        detalles[i]=$(this).children('td').eq(2).attr('values');
     });      
       
       console.log(idEstudiante);
       console.log(nota);
-      console.log(detallesextra);
+      console.log(detalles);
       
       
     $.ajax({
@@ -152,7 +152,7 @@ $('#botonsito').on('click', function () {
             'nota': nota,
             'idEstudiante': idEstudiante,
             'idActividad': idActividad,
-            'detallesextra': detallesextra
+            'detallesextra': detalles
             
         },
         dataType: "text",

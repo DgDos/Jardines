@@ -140,6 +140,10 @@ public class NotaS extends HttpServlet {
                 out.print(pasareEsto);
             }
             
+            if (opcion==5){
+                
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {

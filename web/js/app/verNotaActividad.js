@@ -90,7 +90,7 @@ $('#BuscarNotasActividad').on('click', function () {
         url: "NotaS",
         //force to handle it as te
         data: {
-            'opcion': "3",
+            'opcion': "4",
             'curso': $('#cm').val()
         },
         dataType: "text",
