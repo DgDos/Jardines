@@ -55,7 +55,7 @@ public class ActividadDAO {
         preparedStatement.executeUpdate();
     }
     
-    public void updateEstudiante(Actividad e) throws SQLException {
+    public void updateActividad(Actividad e) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("update actividad set nombre=?,idtema=?" + " where id=?");
         preparedStatement.setString(1, e.getNombre());
         preparedStatement.setInt(2, e.getIdTema());

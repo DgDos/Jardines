@@ -51,6 +51,7 @@
 
                     <div class="container">
                         <br>
+                        <div id="parteArriba">
                         <form id="SelectCM" style="display: none;">                                
                             <div>
                                 <label >Curso y Materia: </label>
@@ -63,20 +64,49 @@
                                     <option value="" selected disabled>Seleccione un tema</option>
                                 </select> 
                                 <br>
-                                <p id="actividades">
+                            </div> 
+                        </form>
 
-                                </p>
-                                <div id="nombreaparece" style="display: none;">
-                                    <label  for="detalle">Nombre: </label>
-                                    <input type="text" class="form-control form-control-success" name="nombre" id="nombre"> 
-                                    <br>
-                                    <button type="submit" class="btn btn-neutral" id="botonsito" name="Enviar" style="display: none;">Agregar</button>
-                                </div>  
+                        <p id="actividades">
+
+                        </p>
+
+                        <form id="SelectCM2" style="display: none;"> 
+                            <div id="nombreaparece" style="display: none;">
+                                <label  for="detalle">Nombre: </label>
+                                <input type="text" class="form-control form-control-success" name="nombre" id="nombre"> 
+                                <br>
+                                <button type="submit" class="btn btn-neutral" id="botonsito" name="Enviar" style="display: none;">Agregar</button>
                             </div>  
+
                         </form>
                         <table id="tablaCM" class="table table-hover" style="display: none;">
 
-                        </table>                                                           
+                        </table>  
+                        </div>
+                        <div id="parteAbajo" style="display: none;">
+                        <form id="EditarA">
+                            <div  class="form-group" style="display: none;" >
+                                <label >Id:</label>
+                                <input  class="form-control form-control-success" id="idactividad2" value="">
+                            </div>
+                            <div  class="form-group" style="display: none;" >
+                                <label >IdTema:</label>
+                                <input  class="form-control form-control-success" id="tema2" value="">
+                            </div>
+                            <div  class="form-group" >
+                                <label >Actividad:</label>
+                                <input  class="form-control form-control-success" id="actividad2" value="">
+                            </div>
+                            <div class="form-inline">
+                                <button   type="submit" class="btn btn-outline-info btn-sm btn-round" name="Enviar">Guardar Cambios</button>
+                                &nbsp;
+                                &nbsp;
+                                
+                               <button  id="boton3" type="button" class="btn btn-outline-danger btn-sm btn-round" name="Enviar">Volver</button>
+                            </div>
+                        </form>
+                    </div>
                     </div>
                 </div>
 

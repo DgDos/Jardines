@@ -87,6 +87,28 @@ public class ActividadS extends HttpServlet {
                 String pasareEsto = g.toJson(actividades);
                 out.print(pasareEsto);
             }
+            if(opcion==3){
+                Actividad e = new Actividad();
+                e.setNombre(request.getParameter("nombre"));
+                e.setId(Integer.parseInt(request.getParameter("id")));
+                e.setIdTema(Integer.parseInt(request.getParameter("tema2")));
+                ActividadDAO o = new ActividadDAO();
+                o.updateActividad(e);
+                
+            }
+            if(opcion==4){
+                int id = Integer.parseInt(request.getParameter("id"));
+                ActividadDAO obs = new ActividadDAO();
+                Actividad e = obs.getActividadByID(id);
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(e);
+                out.print(pasareEsto);
+                
+            } if (opcion == 5) {
+                int id = Integer.parseInt(request.getParameter("id"));
+                ActividadDAO o = new ActividadDAO();
+                o.deleteActividad(id);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(TemaS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {

@@ -57,12 +57,37 @@ public class MateriaS extends HttpServlet {
 
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
+            int opc = Integer.parseInt(request.getParameter("opcion"));
+            if (opc == 0) {
             MateriaDAO dao = new MateriaDAO();
             ArrayList<Materia> materias = dao.getAllMaterias();
             Gson g = new Gson();
             String pasareEsto = g.toJson(materias);
             out.print(pasareEsto);
-
+            }
+            if(opc==1){
+                int id = Integer.parseInt(request.getParameter("id"));
+                MateriaDAO obs = new MateriaDAO();
+                Materia e = obs.getMateriaById(id);
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(e);
+                out.print(pasareEsto);
+                
+            }
+            if(opc==2){
+                Materia e = new Materia();
+                e.setNombre(request.getParameter("materia"));
+                e.setIdMateria(Integer.parseInt(request.getParameter("id")));
+                MateriaDAO o = new MateriaDAO();
+                o.updateMateria(e);
+                
+            }
+             if (opc == 3) {
+                int id = Integer.parseInt(request.getParameter("id"));
+                MateriaDAO o = new MateriaDAO();
+                o.eliminarMateria(id);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(MateriaS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {

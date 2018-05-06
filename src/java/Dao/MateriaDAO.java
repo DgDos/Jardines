@@ -68,6 +68,7 @@ public class MateriaDAO {
     public void updateMateria(Materia e) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("update materia set nombre=? " + " where id=?");
         preparedStatement.setString(1, e.getNombre());
+        preparedStatement.setInt(2, e.getIdMateria());
         preparedStatement.executeUpdate();
     }
 

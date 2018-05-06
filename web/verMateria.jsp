@@ -35,7 +35,7 @@
                     <br>
                     <br>
 
-
+                    <div id="parteArriba" >
                     <form id="formulario"  >
 
 
@@ -55,7 +55,7 @@
                                 <tr>
 
                                     <td id="nombreMateria"></td>
-
+                                    
                                 </tr>
 
 
@@ -66,7 +66,26 @@
                     </form>
 
 
-
+                    </div>
+                    <div id="parteAbajo" style="display: none;">
+                        <form id="EditarM">
+                            <div  class="form-group" style="display: none;" >
+                                <label >Id:</label>
+                                <input  class="form-control form-control-success" id="idmateria2" value="">
+                            </div>
+                            <div  class="form-group" >
+                                <label >Materia:</label>
+                                <input  class="form-control form-control-success" id="materia2" value="">
+                            </div>
+                            <div class="form-inline">
+                                <button   type="submit" class="btn btn-outline-info btn-sm btn-round" name="Enviar">Guardar Cambios</button>
+                                &nbsp;
+                                &nbsp;
+                                
+                               <button  id="boton3" type="button" class="btn btn-outline-danger btn-sm btn-round" name="Enviar">Volver</button>
+                            </div>
+                        </form>
+                    </div>
 
                 </div>
 
