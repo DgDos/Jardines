@@ -38,19 +38,15 @@ public class EstudianteCursoDAO {
         preparedStatement.executeUpdate();
     }
 
-    public void updateEstCur(EstudianteCurso e) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("update estudiantecurso set idestudiante=?,idcurso=?,fechainicio=?,fechafinal=?" + " where id=?");
-        preparedStatement.setString(1, e.getIdEstudiante());
-        preparedStatement.setInt(2, e.getIdCurso());
-        preparedStatement.setString(3, e.getFechaInicio());
-        preparedStatement.setString(4, e.getFechaFinal());
-        preparedStatement.setInt(5, e.getIdEstCur());
+    public void updateEstCur(int curso,String documento) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update estudiantecurso set idcurso=?" + " where idestudiante=? and delete=1");
+        preparedStatement.setInt(1, curso);
+        preparedStatement.setString(2, documento);
         preparedStatement.executeUpdate();
     }
 
-    public void deleteEstCur(int idEstCur) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("update estudiantecurso set delete=0 where id=?");
-        preparedStatement.setInt(1, idEstCur);
+    public void deleteEstCur(String idEstCur) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update estudiantecurso set delete=0 where idestudiante='"+idEstCur+"'");
         preparedStatement.executeUpdate();
     }
 

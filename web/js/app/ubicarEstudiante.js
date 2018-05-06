@@ -54,6 +54,7 @@ $(document).ready(function () {
             url: "CursoEstudianteS",
 
             data: {
+                'opcion': "crear",
                 'curso': $('#cursos').val(),
                 'fecha': $('#fecha').val(),
                 'estudiante': $('#estudiantes').val()

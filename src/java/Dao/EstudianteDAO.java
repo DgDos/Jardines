@@ -58,13 +58,14 @@ public class EstudianteDAO {
     }
 
     public void addEstudiante(Estudiante est) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into estudiante values (?,?,?,?,?,?,3,1)");
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into estudiante values (?,?,?,?,?,?,?,1)");
         preparedStatement.setString(1, est.getIdEstudiante());
         preparedStatement.setString(2, est.getNombre());
         preparedStatement.setString(3, est.getCelularContacto());
         preparedStatement.setString(4, est.getDireccion());
         preparedStatement.setString(5, est.getFechaNacimiento());
         preparedStatement.setString(6, est.getTipoSangre());
+        preparedStatement.setInt(7, est.getIdCurso());
         preparedStatement.executeUpdate();
     }
     public void eliminarEstudiante(String idE) throws SQLException{

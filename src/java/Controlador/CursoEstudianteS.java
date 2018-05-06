@@ -38,7 +38,7 @@ public class CursoEstudianteS extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -50,11 +50,10 @@ public class CursoEstudianteS extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-     protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-       
-      
+
     }
 
     /**
@@ -69,19 +68,37 @@ public class CursoEstudianteS extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            int idCurso = Integer.parseInt(request.getParameter("curso"));
-            String idEstudiante = request.getParameter("estudiante");
-            String fecha = request.getParameter("fecha");
-            String[] fechaAux = fecha.split(" ");
-            EstudianteDAO dao = new EstudianteDAO();
-            if(dao.estGotCur(idEstudiante)){
-                CursoDAO daoC = new CursoDAO();
-                daoC.updateNumeroEstudiantesCurso(idCurso);
-                dao.updateCursoEstudiante(idEstudiante, idCurso);
-                EstudianteCursoDAO e = new EstudianteCursoDAO();
-                EstudianteCurso st = new EstudianteCurso(0, idEstudiante, idCurso, fechaAux[0], "");
-                e.addEstCur(st);
+            String opcion = request.getParameter("opcion");
+            if (opcion.equals("crear")) {
+                int idCurso = Integer.parseInt(request.getParameter("curso"));
+                String idEstudiante = request.getParameter("estudiante");
+                String fecha = request.getParameter("fecha");
+                String[] fechaAux = fecha.split(" ");
+                EstudianteDAO dao = new EstudianteDAO();
+                if (dao.estGotCur(idEstudiante)) {
+                    CursoDAO daoC = new CursoDAO();
+                    daoC.updateNumeroEstudiantesCurso(idCurso);
+                    dao.updateCursoEstudiante(idEstudiante, idCurso);
+                    EstudianteCursoDAO e = new EstudianteCursoDAO();
+                    EstudianteCurso st = new EstudianteCurso(0, idEstudiante, idCurso, fechaAux[0], "");
+                    e.addEstCur(st);
+                }
+            } else {
+                String documento = request.getParameter("documento");
+                int curso = Integer.parseInt(request.getParameter("curso"));
+                EstudianteCursoDAO ec = new EstudianteCursoDAO();
+                EstudianteDAO e=new EstudianteDAO();
+                if (opcion.equals("editar")) {
+                    ec.updateEstCur(curso,documento);
+                    e.updateCursoEstudiante(documento,curso);
+                }
+                if (opcion.equals("eliminar")) {
+                    ec.deleteEstCur(documento);
+                    curso=3;
+                    e.updateCursoEstudiante(documento,curso);
+                }
             }
+
         } catch (SQLException ex) {
             Logger.getLogger(CursoEstudianteS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
@@ -89,7 +106,7 @@ public class CursoEstudianteS extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(CursoEstudianteS.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     /**
@@ -101,6 +118,5 @@ public class CursoEstudianteS extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 
 }

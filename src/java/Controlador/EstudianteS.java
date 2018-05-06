@@ -180,6 +180,7 @@ public class EstudianteS extends HttpServlet {
             e.setDireccion(request.getParameter("direccion"));
             e.setTipoSangre(request.getParameter("tiposangre"));
             EstudianteDAO o = new EstudianteDAO();
+            e.setIdCurso(3);
             o.addEstudiante(e);
             if (!request.getParameter("curso").equals("")) {
                 int idCurso = Integer.parseInt(request.getParameter("curso"));

@@ -40,76 +40,72 @@
         <%@include file="headerAdmin.jsp" %>
         <div class="container-fluid text-center">    
             <div class="row content">
-                <div class="col-sm-2 sidenav">
-
+                <div class="col-12">
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
                 </div>
-                <div class="col-sm-4 text-left"> 
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <div class="container">
-                       
-                    </div>
-                    <br>
-
-
-
-                 <%--   <div  class="form-group"  >
-                        <label  >Buscar Estudiante:</label>
-                        <select class="form-control" required name="documento" id="documento">
-                            <option value="" selected disabled>Seleccione el estudiante</option>
-                        </select> 
-                    </div>
-                 --%>
-
+                <div class="col-sm-6 text-left"> 
                     <form id="EditarE"  >
-
+                        <span class="label label-warning">Si se equivoco al ubicar al estudiante por favor ubiquelo de nuevo, escriba su documento y seleccion el curso</span>
+                        <br>
                         <br>
                         <div class="form-group">
-                            <label >Documento:</label>
-                            <input  class="form-control form-control-success" id="documento2" readonly="readonly" >
+                            <label  >Estudiante: </label>
+                            <input  class="form-control form-control-success" id="documento" >
                         </div>
                         <div class="form-group">
-                            <label >Nombre:</label>
-                            <input  class="form-control form-control-success" id="nombre" value="">
+                            <label >Curso: </label>
+                            <select class="form-control" required name="cursos" id="cursos">
+                                <option value="" selected disabled>Seleccione un curso</option>
+                            </select> 
                         </div>
-                        <div class="form-group">
-                            <label >Fecha de Nacimiento:</label>
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class='col-sm-6'>
-                                        <div class="form-group">
-                                            <div class='input-group date'  id='datetimepicker' >
-                                                <input  id="fechanacimiento" name="fecha" type='text' class="form-control datetimepicker" placeholder="MM/DD/AAAA" />
-                                                <span class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> 
-                        <div class="form-group">
-                            <label >Direccion:</label>
-                            <input  class="form-control form-control-success" id="direccion"  value="">
-                        </div> 
-                        <div class="form-group">
-                            <label >Celular de contacto:</label>
-                            <input  class="form-control form-control-success"  id="celularcontacto" value="">
-                        </div>
-                        <div class="form-group">
-                            <label >Tipo de sangre:</label>
-                            <input  class="form-control form-control-success" id="tiposangre"  value="">
-                        </div> 
-                        <button type="submit" class="btn btn-default" name="Enviar">Guardar Cambios</button>
+                        <button type="submit" class="btn btn-success btn-round" name="Editar">Editar</button>
                     </form>
-
-
-
-
-
+                </div>
+                <div class="col-sm-6 text-left"> 
+                    <form id="EliminarE"  >
+                        <span class="label label-danger">Si por el contrario quiere sacar al estudiante del curso para darle fin a su año escolar escoja primero el curso y luego el estudiante</span>
+                        <br>
+                        <br>
+                        <div class="form-group">
+                            <label >Curso: </label>
+                            <select class="form-control" required name="cursos2" id="cursos2">
+                                <option value="" selected disabled>Seleccione un curso</option>
+                            </select> 
+                        </div>
+                        <div class="form-group">
+                            <label >Estudiante: </label>
+                            <select class="form-control" required name="estudiante" id="estudiante">
+                                <option value="" selected disabled>Seleccione un estudiante</option>
+                            </select> 
+                        </div>
+                        <button type="submit" class="btn btn-danger btn-round" name="Eliminar">Eliminar</button>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </form>
+                </div>
+                <div class="col-sm-2 sidenav">
+                </div>
+                <div class="col-sm-8">
+                    <table class="table " id="tabla" style="" >
+                        <thead>
+                            <tr>
+                                <th>Documento Estudiante</th>
+                                <th>Nombre Estudiante</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td id="idEstudiante" ></td>
+                                <td id="nombreEstudiante"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
@@ -134,6 +130,6 @@
 
     <!--  Paper Kit Initialization and functons -->
     <script src="assets/js/paper-kit.js?v=2.1.0"></script>
-    <script src="js/app/gestionEstudiante.js"></script>
+    <script src="js/app/estudianteCurso.js"></script>
 </html>
 
