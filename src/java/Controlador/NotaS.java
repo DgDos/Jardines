@@ -124,14 +124,20 @@ public class NotaS extends HttpServlet {
             //lista estudiantes del curso
             if (opcion == 3){
                 int idCurso = Integer.parseInt(request.getParameter("curso"));
+                Profesor profe=(Profesor) request.getSession().getAttribute("profesor");
+                DirectorCursoDAO directorDao = new DirectorCursoDAO();
+                DirectorCurso director = directorDao.getDirector(profe.getIdProfesor());
+                
+                
                     EstudianteDAO dao = new EstudianteDAO();
-                    ArrayList<Estudiante> estudiantes = dao.getEstudiantesByIDCurso(idCurso);
+                    
+                    ArrayList<Estudiante> estudiantes = dao.getEstudiantesByIDCurso(director.getIdCurso());
 
                     Gson g = new Gson();
                     String pasareEsto = g.toJson(estudiantes);
                     out.print(pasareEsto);
             }
-            
+            //lista solo las notas
             if (opcion == 4){
                 NotaDAO n = new NotaDAO();
                 ArrayList<Nota> notas = n.getAllNotas();
@@ -139,9 +145,15 @@ public class NotaS extends HttpServlet {
                 String pasareEsto = g.toJson(notas);
                 out.print(pasareEsto);
             }
-            
+            //lista notas por actividad
             if (opcion==5){
-                
+                int idActividad = Integer.parseInt(request.getParameter("idActividad"));
+                System.out.println("idActividad");
+                NotaDAO n = new NotaDAO();
+                ArrayList<Nota> notas = n.getNotaByIdActividad(idActividad);
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(notas);
+                out.print(pasareEsto);
             }
             
         } catch (SQLException ex) {

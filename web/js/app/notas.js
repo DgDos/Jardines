@@ -101,7 +101,7 @@ $('#actividades').on('change', function () {
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
-                var opcion = "<tr><td class='idEstudiante' values="+ json[i].idEstudiante+ ">"+ json[i].nombre + " </td> <td>  <select class='nota'> <option value= '1' > 1 </option><option value= '2' > 2 </option><option value= '3' > 3 </option><option value= '4' > 4 </option><option value= '5' > 5 </option></select></td> <td> <input type='text' class='detalle'><br></td></tr>";
+                var opcion = "<tr><td class='idEstudiante' values="+ json[i].idEstudiante+ ">"+ json[i].nombre + " </td> <td>  <select class='nota'> <option value= '1' > 1 </option><option value= '2' > 2 </option><option value= '3' > 3 </option><option value= '4' > 4 </option><option value= '5' > 5 </option></select></td> <td>  <select class='detalle'> <option value= 'no retiene' > no retiene </option><option value= 'no cumple con las actividades' > no cumple con las actividades </option><option value= 'cumple con lo requerido' > cumple con lo requerido </option><option value= 'cumple las expectativas' > cumple las expectativas </option><option value= 'supera las expectativas' > supera las expectativas </option></select></td></tr>";
                 selectForm.append(opcion);
             }
         },
@@ -137,7 +137,7 @@ $('#botonsito').on('click', function () {
         
         nota[i]=$(this).children('td').eq(1).children("select").children("option:selected").val();
         
-        detalles[i]=$(this).children('td').eq(2).attr('values');
+        detalles[i]=$(this).children('td').eq(2).children("select").children("option:selected").val();
     });      
       
       console.log(idEstudiante);
