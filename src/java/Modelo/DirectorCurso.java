@@ -11,28 +11,64 @@ package Modelo;
  */
 public class DirectorCurso {
     private String idDirector;
+    private int id;
     private int idCurso;
-    private int cedula;
+    private String cedula;
     private String fechainicio;
     private String fechafinal;
-    
+    private String nombre;
+    private String nombreCurso;
+
+    public String getNombreCurso() {
+        return nombreCurso;
+    }
+
+    public void setNombreCurso(String nombreCurso) {
+        this.nombreCurso = nombreCurso;
+    }
 
     public DirectorCurso() {
     }
 
-    public DirectorCurso(String idProfesor, int idCurso, int cedula, String fechainicio, String fechafinal) {
+    public DirectorCurso(String idProfesor, int idCurso, String cedula, String fechainicio, String fechafinal) {
         this.idDirector = idProfesor;
         this.idCurso = idCurso;
         this.cedula = cedula;
         this.fechainicio = fechainicio;
         this.fechafinal = fechafinal;
     }
+    
+    public DirectorCurso(String nombre, int idCurso, String fechaInicio, String cedula ) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.idCurso = idCurso;
+        this.fechainicio= fechaInicio;
+        this.idDirector = idDirector;
+        
+    }
 
-    public int getCedula() {
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
+    public String getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 

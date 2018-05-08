@@ -4,7 +4,7 @@ $(document).ready(function () {
         url: "DirectorCursoS",
         //force to handle it as text
         data: {
-            'opcion': "1"
+            'opc': "1"
         },
         dataType: "text",
         success: function (data) {

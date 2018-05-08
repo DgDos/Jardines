@@ -35,6 +35,9 @@
                         <a class="dropdown-item" href="ubicarDirector.jsp">Asignar Profesor</a>
                     </ul>
                 </div> 
+                <li class="nav-item">
+                    <a href="directorCurso.jsp"  class="nav-link"><i class="nc-icon nc-bullet-list-67"></i>Director Curso</a>
+                </li>
                 <div class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle " data-toggle="dropdown" id="dropdownMenuButton" href="" role="button" aria-haspopup="true" aria-expanded="false"><i class="nc-icon nc-ruler-pencil"></i>Curso</a>
                     <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">

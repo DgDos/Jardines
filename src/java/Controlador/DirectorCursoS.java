@@ -9,6 +9,7 @@ import Dao.CursoDAO;
 import Dao.DirectorCursoDAO;
 import Dao.ProfesorDAO;
 import Modelo.Curso;
+import Modelo.DirectorCurso;
 import Modelo.Profesor;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -43,7 +44,7 @@ public class DirectorCursoS extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            int opc = Integer.parseInt(request.getParameter("opcion"));
+            int opc = Integer.parseInt(request.getParameter("opc"));
             if (opc == 0) {
                 ProfesorDAO p = new ProfesorDAO();
                 ArrayList<Profesor> profesores = p.getallProfesores();
@@ -72,6 +73,34 @@ public class DirectorCursoS extends HttpServlet {
                 String pasareEsto = g.toJson(cursosapasar);
                 out.print(pasareEsto);
             }
+            if (opc == 3) {
+                DirectorCursoDAO d = new DirectorCursoDAO();
+                ArrayList<DirectorCurso> directores = d.getAllDirectoresCur();
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(directores);
+                out.print(pasareEsto);
+
+            }
+            if (opc == 4) {
+                String cedula = request.getParameter("cedula");
+                System.out.println(cedula + "   sdfsdfsdfsdfsd   ");
+                DirectorCursoDAO dao = new DirectorCursoDAO();
+                DirectorCurso d = dao.getDirector(cedula);
+                System.out.println(d.getCedula() + " " + d.getNombre());
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(d);
+                out.print(pasareEsto);
+
+            }
+
+            if (opc == 5) {
+                CursoDAO dao = new CursoDAO();
+                ArrayList<Curso> cursos = dao.getAllCursos();
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(cursos);
+                out.print(pasareEsto);
+            }
+
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(DirectorCursoS.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -90,14 +119,32 @@ public class DirectorCursoS extends HttpServlet {
             throws ServletException, IOException {
 
         try {
-            String cedula = request.getParameter("cedula");
-            int idCurso = Integer.parseInt(request.getParameter("idCurso"));
-            String fechaInicio = request.getParameter("fechaInicio");
-            DirectorCursoDAO d = new DirectorCursoDAO();
-            String[] aux = fechaInicio.split(" ");
-            if (d.knowCedula(cedula) && d.knowCurso(idCurso)) {
-                d.addDirectorCurso(cedula, idCurso, aux[0], "");
+            Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+            int opc = Integer.parseInt(request.getParameter("opc"));
+            if (opc == 1) {
+                String cedula = request.getParameter("cedula");
+                int idCurso = Integer.parseInt(request.getParameter("idCurso"));
+                String fechaInicio = request.getParameter("fechaInicio");
+                DirectorCursoDAO d = new DirectorCursoDAO();
+                String[] aux = fechaInicio.split(" ");
+                if (d.knowCedula(cedula) && d.knowCurso(idCurso)) {
+                    d.addDirectorCurso(cedula, idCurso, aux[0], "");
+                }
             }
+            if(opc==2){
+                String cedula = request.getParameter("cedula");
+                int idCurso = Integer.parseInt(request.getParameter("idCurso"));
+                DirectorCursoDAO dao = new DirectorCursoDAO();
+                dao.updateCursoDelDirector(cedula, idCurso);
+                       
+            }
+            if(opc==3){
+                String cedula = request.getParameter("cedula");
+                DirectorCursoDAO dao = new DirectorCursoDAO();
+                DirectorCurso directorCurso = dao.getDirector(cedula);
+                dao.deleteDirectorCurso(directorCurso.getCedula());
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(DirectorCursoS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {

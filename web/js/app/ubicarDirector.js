@@ -4,7 +4,7 @@ $(document).ready(function () {
         url: "DirectorCursoS",
         //force to handle it as text
         data: {
-            'opcion': "1"
+            'opc': "1"
         },
         dataType: "text",
         success: function (data) {
@@ -27,7 +27,7 @@ $(document).ready(function () {
         url: "DirectorCursoS",
         //force to handle it as text
         data: {
-            'opcion': "0"
+            'opc': "0"
         },
         dataType: "text",
         success: function (data) {
@@ -52,6 +52,7 @@ $('#ubicarPro').on('submit', function () {
         type: 'POST',
         url: "DirectorCursoS",        
         data: {
+            'opc': "1",
             'cedula': $('#profesor').val(),
             'idCurso': $('#curso').val(),
             'fechaInicio': $('#fecha').val()
