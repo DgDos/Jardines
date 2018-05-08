@@ -18,7 +18,7 @@
         <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-        <title>Gestion Estudiante</title>
+        <title>Profesor/Materia</title>
 
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta name="viewport" content="width=device-width" />
@@ -48,7 +48,7 @@
                     <br>
                 </div>
                 <div class="col-sm-6 text-left"> 
-                    <form id="EditarE"  >
+                    <form id="EditarPM"  >
                         <span class="label label-warning">Si quiere cambiar al profesor que dicta la materia, escriba el documento y seleccion el curso con materia correspondiente</span>
                         <br>
                         <br>
@@ -62,11 +62,14 @@
                                 <option value="" selected disabled>Seleccione un curso</option>
                             </select> 
                         </div>
+                        <div id="profe" class="form-group">
+                            
+                        </div>
                         <button type="submit" class="btn btn-success btn-round" name="Editar">Editar</button>
                     </form>
                 </div>
                 <div class="col-sm-6 text-left"> 
-                    <form id="EliminarE"  >
+                    <form id="EliminarPM"  >
                         <span class="label label-danger">Si por el contrario quiere eliminar un registro por completo</span>
                         <br>
                         <br>
@@ -85,22 +88,6 @@
                     </form>
                 </div>
                 <div class="col-sm-2 sidenav">
-                </div>
-                <div class="col-sm-8">
-                    <table class="table " id="tabla" style="" >
-                        <thead>
-                            <tr>
-                                <th>Documento Estudiante</th>
-                                <th>Nombre Estudiante</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td id="idEstudiante" ></td>
-                                <td id="nombreEstudiante"></td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
 
@@ -125,6 +112,6 @@
 
     <!--  Paper Kit Initialization and functons -->
     <script src="assets/js/paper-kit.js?v=2.1.0"></script>
-    <script src="js/app/estudianteCurso.js"></script>
+    <script src="js/app/ProfesoresMateria.js"></script>
 </html>
 

@@ -77,15 +77,18 @@ public class CursoMateriaDAO {
         preparedStatement.executeUpdate();
     }
     
-     public void updateCursoMateria(CursoMateria e) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("update cursomateria set idcurso=?,idmateria=?,idprofesor=?,fechainicio=?,fechafinal=?" + " where id=?");
-        preparedStatement.setInt(1, e.getIdCurso());
-        preparedStatement.setInt(2, e.getIdMateria());
-        preparedStatement.setString(3, e.getIdProfesor());
-        preparedStatement.setString(4, e.getFechaInicio());
-        preparedStatement.setString(5, e.getFechaFinal());
-        preparedStatement.setInt(6, e.getIdCM());
+     public void updateCursoMateria(String idProfesor,int id) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update cursomateria set idprofesor=?" + " where id=?");
+        preparedStatement.setString(1, idProfesor);
+        preparedStatement.setInt(2, id);
         preparedStatement.executeUpdate();
+    }
+
+    public String getProfesorById(int idP) throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select profesor.nombre as nombre from cursomateria,profesor where cursomateria.delete=1 and cursomateria.idprofesor=profesor.cedula and cursomateria.id="+idP);
+        rs.next();
+        return rs.getString("nombre");
     }
 
 

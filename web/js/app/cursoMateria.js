@@ -77,31 +77,31 @@ $(document).ready(function () {
         async: false
     });
 
-   
-        $.ajax({
-            type: 'GET',
-            url: "CursoMateriaS",
-            //force to handle it as text
-            data: {
-                'opcion': "0"
-            },
-            dataType: "text",
-            success: function (data) {                           
-                var selectForm = $('#tablaCM');
-                selectForm.empty();
-                selectForm.append('<tr><th>Curso</th><th >Materia</th><th >Profesor</th> </tr>');
-                var json = $.parseJSON(data);
-                console.log(json);
-                for (var i = 0; i < json.length; ++i)
-                {
-                    var opcion = "<tr><td style=\"\" >" + json[i].curso + "</td><td style=\"\" >" + json[i].materia + "</td><td style=\"\" >" + json[i].profesor + "</td> </tr>";
-                    selectForm.append(opcion);
-                }
 
-            },
-            async: false
-        });
+    $.ajax({
+        type: 'GET',
+        url: "CursoMateriaS",
+        //force to handle it as text
+        data: {
+            'opcion': "0"
+        },
+        dataType: "text",
+        success: function (data) {
+            var selectForm = $('#tablaCM');
+            selectForm.empty();
+            selectForm.append('<tr><th>Curso</th><th >Materia</th><th >Profesor</th> </tr>');
+            var json = $.parseJSON(data);
+            console.log(json);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<tr><td style=\"\" >" + json[i].curso + "</td><td style=\"\" >" + json[i].materia + "</td><td style=\"\" >" + json[i].profesor + "</td> </tr>";
+                selectForm.append(opcion);
+            }
+
+        },
+        async: false
     });
+});
 
 
 $('#SelectCM').on('submit', function () {
@@ -109,6 +109,7 @@ $('#SelectCM').on('submit', function () {
         type: 'POST',
         url: "CursoMateriaS",
         data: {
+            'opcion':"crear",
             'curso': $('#curso').val(),
             'materia': $('#materia').val(),
             'profesor': $('#profesor').val(),
@@ -117,8 +118,8 @@ $('#SelectCM').on('submit', function () {
         },
         dataType: "text",
         success: function (data) {
-        alert('Se ha asignado la Materia exitosamente');
-        location.reload();
+            alert('Se ha asignado la Materia exitosamente');
+            location.reload();
         },
         async: false
     });

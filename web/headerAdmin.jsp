@@ -48,6 +48,7 @@
                     <ul class="dropdown-menu dropdown-info" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="cursoMateria.jsp">Crear Curso/Materia</a>
                         <a class="dropdown-item" href="vercursoMateria.jsp">Ver Curso/Materia</a>                             
+                        <a class="dropdown-item" href="profesoresMateria.jsp">Profesor/Materia</a>                             
                     </ul>
                 </div>
 
