@@ -5,15 +5,25 @@
  */
 package Controlador;
 
+import Dao.ActividadDAO;
 import Dao.CursoDAO;
 import Dao.NotaDAO;
 import Dao.DirectorCursoDAO;
 import Dao.EstudianteDAO;
+import Dao.CursoMateriaDAO;
+import Dao.EstudianteCursoDAO;
+import Dao.MateriaDAO;
+import Dao.TemaDAO;
+import Modelo.Actividad;
+import Modelo.CursoMateria;
 import Modelo.Curso;
 import Modelo.Estudiante;
 import Modelo.Nota;
 import Modelo.Profesor;
 import Modelo.DirectorCurso;
+import Modelo.Materia;
+import Modelo.Tema;
+import Util.ConsultaCMS;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -50,7 +60,7 @@ public class NotaS extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet NotaS</title>");            
+            out.println("<title>Servlet NotaS</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet NotaS at " + request.getContextPath() + "</h1>");
@@ -71,42 +81,81 @@ public class NotaS extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+       response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            int opc = Integer.parseInt(request.getParameter("opcion"));
-            //lista los cursos dado el profesor que esta en sesion
-            if (opc == 0) {
-                Profesor p=(Profesor)request.getSession().getAttribute("profesor");
-                DirectorCursoDAO pc = new DirectorCursoDAO();
-                ArrayList<DirectorCurso> pcm = pc.getAllProCur(p.getIdProfesor());
-                ArrayList<Curso> cursos=new ArrayList<>();
-                CursoDAO c=new CursoDAO();
-                for (DirectorCurso profesorcurso : pcm) {                  
-                    cursos.add(c.getCursoById(profesorcurso.getIdCurso()));
+            int opcion = Integer.parseInt(request.getParameter("opcion"));
+            //lista los cursos y materias del profesor en sesion
+            if (opcion == 0) {
+                CursoMateriaDAO t = new CursoMateriaDAO();
+                Profesor profe=(Profesor) request.getSession().getAttribute("profesor");
+                ArrayList<CursoMateria> cms = t.getAllCMProfesor(profe.getIdProfesor());
+                ArrayList<ConsultaCMS> cmsCompleto=new ArrayList<>();
+                for(CursoMateria cm:cms){
+                    CursoDAO c=new CursoDAO();
+                    Curso curso=c.getCursoById(cm.getIdCurso());
+                    MateriaDAO m=new MateriaDAO();
+                    Materia materia=m.getMateriaById(cm.getIdMateria());
+                    String curmat=curso.getNombre()+": "+materia.getNombre();
+                    ConsultaCMS c1=new ConsultaCMS(cm.getIdCM(), curmat);
+                    cmsCompleto.add(c1);
                 }
                 Gson g = new Gson();
-                String pasareEsto = g.toJson(cursos);
+                String pasareEsto = g.toJson(cmsCompleto);
                 out.print(pasareEsto);
             }
-             //lista los estudiantes dado el curso como director de curso
-            if (opc == 1) {
-                int a = Integer.parseInt(request.getParameter("curso"));
-                EstudianteDAO obs = new EstudianteDAO();
-                ArrayList<Estudiante> estudiantes = obs.getEstudiantesByIDCurso(a);
+            //lista los temas de las materias 
+            if (opcion == 1) {
+                int idCM=Integer.parseInt(request.getParameter("idcm"));
+                TemaDAO t = new TemaDAO();
+                ArrayList<Tema> temas = t.getAllTemas(idCM);
                 Gson g = new Gson();
-                String pasareEsto = g.toJson(estudiantes);
+                String pasareEsto = g.toJson(temas);
                 out.print(pasareEsto);
             }
-             //lista las notas de un estudiante dado
-            if (opc == 2) {
-                int estId = Integer.parseInt(request.getParameter("estudiante"));
-                NotaDAO notica = new NotaDAO();
-                ArrayList<Nota> notas = notica.getNotaByIdEstudiante(estId);
+            //lista las actividades de la materia
+            if (opcion == 2) {
+               int idT=Integer.parseInt(request.getParameter("tema"));
+                ActividadDAO a=new ActividadDAO();
+                ArrayList<Actividad> actividades=a.getAllActividades(idT);
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(actividades);
+                out.print(pasareEsto);
+            }
+            //lista estudiantes del curso
+            if (opcion == 3){
+                int idCurso = Integer.parseInt(request.getParameter("curso"));
+                Profesor profe=(Profesor) request.getSession().getAttribute("profesor");
+                DirectorCursoDAO directorDao = new DirectorCursoDAO();
+                DirectorCurso director = directorDao.getDirector(profe.getIdProfesor());
+                
+                
+                    EstudianteDAO dao = new EstudianteDAO();
+                    
+                    ArrayList<Estudiante> estudiantes = dao.getEstudiantesByIDCurso(director.getIdCurso());
+
+                    Gson g = new Gson();
+                    String pasareEsto = g.toJson(estudiantes);
+                    out.print(pasareEsto);
+            }
+            //lista solo las notas
+            if (opcion == 4){
+                NotaDAO n = new NotaDAO();
+                ArrayList<Nota> notas = n.getAllNotas();
                 Gson g = new Gson();
                 String pasareEsto = g.toJson(notas);
                 out.print(pasareEsto);
             }
+            //lista notas por actividad
+            if (opcion==5){
+                int idActividad = Integer.parseInt(request.getParameter("idActividad"));
+                System.out.println("idActividad");
+                NotaDAO n = new NotaDAO();
+                ArrayList<Nota> notas = n.getNotaByIdActividad(idActividad);
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(notas);
+                out.print(pasareEsto);
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
@@ -125,24 +174,48 @@ public class NotaS extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-   protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        try {
-            float nota=Float.parseFloat(request.getParameter("nota"));
-            int IdEstudiante=Integer.parseInt(request.getParameter("idEstudiante"));
-            int IdActividad=Integer.parseInt(request.getParameter("idActividad"));
-            String DetallesExtra=request.getParameter("DetallesExtra");
-            NotaDAO n=new NotaDAO();
-            n.addNota( nota,IdEstudiante,IdActividad, DetallesExtra);
+        processRequest(request, response);
+        response.setContentType("text/html;charset=UTF-8");
+         try { 
+         String[] nota = request.getParameterValues("nota[]");
+         String[] idEstudiante =  request.getParameterValues("idEstudiante[]");
+         int idActividad =  Integer.parseInt(request.getParameter("idActividad"));
+         String[] DetallesExtra = request.getParameterValues("detallesextra[]");
+        
+         //System.out.println("nota"+ idEstudiante[0]+ "LLEGUE");
+         
+         ArrayList<Integer> idEstudianteCurso = new ArrayList<>();
+         
+         for(int i=1; i < idEstudiante.length;i++){
+             EstudianteCursoDAO dao = new EstudianteCursoDAO();
+             int idEC = dao.getEstCur(idEstudiante[i]);
+             idEstudianteCurso.add(idEC);
+         }
+             
+        
+         for(int i=1; i<idEstudiante.length; i++){
+             
+             //Nota notita = new Nota(Integer.parseInt(nota[i]), , idActividad, "uyguggv");
             
-        } catch (SQLException ex) {
-            Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(NotaS.class.getName()).log(Level.SEVERE, null, ex);
+             NotaDAO dao = new NotaDAO();
+             System.out.println(idEstudianteCurso);
+             dao.addNota(Integer.parseInt(nota[i]), idEstudianteCurso.get(i-1), idActividad, DetallesExtra[i]);
+             
+         }
+         
+           } catch (SQLException ex) {
+                Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (URISyntaxException ex) {
+                Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(AsistenciaS.class.getName()).log(Level.SEVERE, null, ex);
+            }
+         
+            
         }
-    }
+    
 
     /**
      * Returns a short description of the servlet.

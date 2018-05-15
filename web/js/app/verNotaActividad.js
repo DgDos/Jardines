@@ -82,82 +82,33 @@ $('#tema').on('change', function () {
         async: false
     });
 });
-$('#actividades').on('change', function () {
-    $.ajax({
+
+$('#BuscarNotasActividad').on('click', function () {
+
+ $.ajax({
         type: 'GET',
         url: "NotaS",
         //force to handle it as te
         data: {
-            'opcion': "3",
-            'curso': $('#cm').val()
-        },
-        dataType: "text",
-        success: function (data) {
-            $('#tablaNota').removeAttr('style');
-            $('#AddNota').removeAttr('style');
-            var selectForm = $('#tablaNota');
-            selectForm.empty();
-            selectForm.append('<tr><td>Estudiante</td><td>Ingrese Nota</td> <td>Detalles</td></tr>');
-            var json = $.parseJSON(data);
-            for (var i = 0; i < json.length; ++i)
-            {
-                var opcion = "<tr><td class='idEstudiante' values="+ json[i].idEstudiante+ ">"+ json[i].nombre + " </td> <td>  <select class='nota'> <option value= '1' > 1 </option><option value= '2' > 2 </option><option value= '3' > 3 </option><option value= '4' > 4 </option><option value= '5' > 5 </option></select></td> <td>  <select class='detalle'> <option value= 'no retiene' > no retiene </option><option value= 'no cumple con las actividades' > no cumple con las actividades </option><option value= 'cumple con lo requerido' > cumple con lo requerido </option><option value= 'cumple las expectativas' > cumple las expectativas </option><option value= 'supera las expectativas' > supera las expectativas </option></select></td></tr>";
-                selectForm.append(opcion);
-            }
-        },
-        async: false
-    });
-});
-
-/*$('#AddNota').on('submit', function () {
-    $.ajax({
-        type: 'POST',
-        url: "NotaS",
-        data: {
-            'nota': $('#nota').val(),
-            'idEstudiante': $('#estudiante').val(),
-            'id':$('#actividad').val()
-        },
-        dataType: "text",
-        success: function (data) {
-        },
-        async: false
-    });
-});*/
-
-$('#botonsito').on('click', function () {
-    var idEstudiante = Array();
-    var nota = Array();
-    var detalles = Array();
-    var idActividad = $('#actividades').val();
-      $('#tablaNota tbody tr').each(function(i, x) {
-       
-        idEstudiante[i]=$(this).children('td').eq(0).attr('values');
-        
-        nota[i]=$(this).children('td').eq(1).children("select").children("option:selected").val();
-        
-        detalles[i]=$(this).children('td').eq(2).children("select").children("option:selected").val();
-    });      
-      
-      console.log(idEstudiante);
-      console.log(nota);
-      console.log(detalles);
-      
-      
-    $.ajax({
-        type: 'POST',
-        url: "NotaS",
-        data: { //envio de datos al servlet
-            'nota': nota,
-            'idEstudiante': idEstudiante,
-            'idActividad': idActividad,
-            'detallesextra': detalles
+            'opcion': "5",
+            'curso': $('#cm').val(),
+            'idActividad': $('#actividades').val()
             
         },
         dataType: "text",
         success: function (data) {
-            alert('Se ha guardado la Nota exitosamente');
-            location.reload();
+            $('#tabla').removeAttr('style');
+            
+            var selectForm = $('#tabla');
+            selectForm.empty();
+            selectForm.append('<tr><td style="color:white" >Nombre</td><td style="color:white" >Nota</td> </tr>');
+            var json = $.parseJSON(data);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<tr><td style=\"color:black\" >" + json[i].nombre + "</td><td style=\"color:black\" >" + json[i].nota + "</td> </tr>";
+                //var opcion = "<tr><td>" + json[i].nombre + " </td><td>" + json[i].nota + "</td> </tr>";
+                selectForm.append(opcion);
+            }
         },
         async: false
     });
