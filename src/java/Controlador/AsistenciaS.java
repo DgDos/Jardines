@@ -103,15 +103,48 @@ public class AsistenciaS extends HttpServlet {
                 String pasareEsto = g.toJson(estudiantes);
                 out.print(pasareEsto);
             }
-            if(op==3){
-                String idEst=request.getParameter("idEst");
-                EstudianteCursoDAO ec=new EstudianteCursoDAO();
-                int estCur= ec.getEstCur(idEst);
-                AsistenciaDAO a=new AsistenciaDAO();
-                ArrayList<Asistencia> asiste=a.getAsistenciaByEst(estCur);
+            if (op == 3) {
+                String idEst = request.getParameter("idEst");
+                EstudianteCursoDAO ec = new EstudianteCursoDAO();
+                int estCur = ec.getEstCur(idEst);
+                AsistenciaDAO a = new AsistenciaDAO();
+                ArrayList<Asistencia> asiste = a.getAsistenciaByEst(estCur);
                 Gson g = new Gson();
                 String pasareEsto = g.toJson(asiste);
                 out.print(pasareEsto);
+            }
+            if (op == 4) {
+                String idEst = request.getParameter("idEst");
+                EstudianteCursoDAO ec = new EstudianteCursoDAO();
+                int estCur = ec.getEstCur(idEst);
+                AsistenciaDAO a = new AsistenciaDAO();
+                ArrayList<Asistencia> asiste = a.getAsistenciaByEst(estCur);
+                float total = 0, vino = 0;
+                for (Asistencia asistencia : asiste) {
+                    total++;
+                    if (asistencia.getVino().equalsIgnoreCase("presente")) {
+                        vino++;
+                    }
+                }
+                String pasareEsto = "De " + total + " veces que se ha tomado asistencia el estudiante ha venido " + vino + ".<br>";
+                float valor = (vino / total) * 100;
+                valor = (float) (Math.floor(valor * 100) / 100);
+                pasareEsto += "Ha venido un " + valor + " del total de clases donde se ha tomado asistencia.<br> Dado este porcentaje el sistema recomienda: <br>";
+                if (valor > 90) {
+                    pasareEsto +="Felicitar al estudiante pues sus asistencias superan el 90% y así motivarlo para que continue con este desempeño.";
+                } else {
+                    if (valor > 70) {
+                        pasareEsto +="Recordarle al estudiante que es importante que venga a las clases para que pueda aprender mucho mas.";
+                    } else {
+                        if (valor >= 50) {
+                            pasareEsto +="El estudiante se encuentra en un punto critico en cuanto a las asistencias, su desempeño se puede ver afectado por haber faltado a tantas clases";
+                        } else {
+                            pasareEsto +="Hablar con los padres del estudiante para encontrar el problema de la falla a mas de la mitad de las clases";
+                        }
+                    }
+                }
+                Gson g = new Gson();
+                out.print(g.toJson(pasareEsto));
             }
 
         } catch (SQLException ex) {
@@ -150,7 +183,7 @@ public class AsistenciaS extends HttpServlet {
             AsistenciaDAO dao = new AsistenciaDAO();
 
             boolean aux = dao.comprobarAsistencia(idEstudianteCurso.get(0), fecha);
-            
+
             if (aux == false) {
                 for (int i = 0; i < idEstudiante.length; i++) {
                     Asistencia asistencia = new Asistencia(idEstudianteCurso.get(i), fecha, vino[i]);

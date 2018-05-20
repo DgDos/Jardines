@@ -58,7 +58,7 @@ $(document).ready(function () {
             //force to handle it as text
 
             data: {
-                'opcion': "2",
+                'opcion': "5",
                 'estudiante': $('#estudiante').val()
             },
             dataType: "text",
@@ -67,44 +67,42 @@ $(document).ready(function () {
                 selectForm.empty();
                 selectForm.append('Observador');
                 var json = $.parseJSON(data);
-                for (var i = 0; i < json.length; ++i)
-                {
-                    var opcion = "<p style=\"color:white\" >Detalle:" + json[i].curso + ", Calificacion: " + json[i].materia + ", Profesor: " + json[i].profesor + ".</p>";
-                    selectForm.append(opcion);
-                }
-            },
-            async: false
-        });
-        $.ajax({
-            type: 'GET',
-            url: "ObservadorS",
-            //force to handle it as text
+                var opcion = "<p style=\"color:black\" >" + json + ".</p>";
+                selectForm.append(opcion);
 
-            data: {
-                "opcion": '4',
-                "idEst": $('#estudiante').val()
-            },
-            dataType: "text",
-            success: function (data) {
-                var selectForm = $('#Nota');
-                selectForm.empty();
-                selectForm.append('Notas');
-                var json = $.parseJSON(data);
-                for (var i = 0; i < json.length; ++i)
-                {
-                    var opcion = "<p style=\"color:white\" >Actividad:" + json[i].curso + ", Detalles: " + json[i].materia + ", Nota: " + json[i].profesor + ".</p>";
-                    selectForm.append(opcion);
-                }
             },
             async: false
         });
+//        $.ajax({
+//            type: 'GET',
+//            url: "ObservadorS",
+//            //force to handle it as text
+//
+//            data: {
+//                "opcion": '4',
+//                "idEst": $('#estudiante').val()
+//            },
+//            dataType: "text",
+//            success: function (data) {
+//                var selectForm = $('#Nota');
+//                selectForm.empty();
+//                selectForm.append('Notas');
+//                var json = $.parseJSON(data);
+//                for (var i = 0; i < json.length; ++i)
+//                {
+//                    var opcion = "<p style=\"color:black\" >Actividad:" + json[i].curso + ", Detalles: " + json[i].materia + ", Nota: " + json[i].profesor + ".</p>";
+//                    selectForm.append(opcion);
+//                }
+//            },
+//            async: false
+//        });
         $.ajax({
             type: 'GET',
             url: "AsistenciaS",
             //force to handle it as text
 
             data: {
-                "op": '3',
+                "op": '4',
                 "idEst": $('#estudiante').val()
             },
             dataType: "text",
@@ -113,11 +111,8 @@ $(document).ready(function () {
                 selectForm.empty();
                 selectForm.append('Asistencias');
                 var json = $.parseJSON(data);
-                for (var i = 0; i < json.length; ++i)
-                {
-                    var opcion = "<p style=\"color:white\" >Fecha:" + json[i].Fecha + ", Estuvo: " + json[i].vino + ".</p>";
-                    selectForm.append(opcion);
-                }
+                var opcion = "<p style=\"color:black\" >" + json + "</p>";
+                selectForm.append(opcion);
             },
             async: false
         });
