@@ -80,10 +80,9 @@ public class Nota {
         int cont;
         ArrayList<RetroalimentacionNota> malas = new ArrayList<>();
         for (RetroalimentacionNota n : notas) {
-            if (n.getPromedio() < 3) {
-                malas.add(n);
-                notas.remove(n);
-            }
+                if (n.getPromedio() < 3) {
+                    malas.add(n);
+                }
         }
         if (!malas.isEmpty()) {
             cont=1;
@@ -91,6 +90,7 @@ public class Nota {
             for (RetroalimentacionNota m : malas) {
                 pasareEsto+=cont+". "+m.getTema()+"<br>";
                 cont++;
+                notas.remove(m);
             }
         }
         if(!notas.isEmpty()){
@@ -101,7 +101,7 @@ public class Nota {
                 cont++;
             }
         }
-        pasareEsto+="A continuación se encuentran las materias ordenadas por nota promedio<br>";
+        pasareEsto+="<br>A continuación se encuentran las materias ordenadas por nota promedio<br>";
         ArrayList<String> bajas=new ArrayList<>();
         cont=1;
         for (RetroalimentacionNota n : notaMateria) {
@@ -112,7 +112,7 @@ public class Nota {
             cont++;
         }
         if(!bajas.isEmpty()){
-            pasareEsto+="El sistema recomienda mirar estas materias ya que son las que se van perdiendo y hablar con el estudiante: <br>";
+            pasareEsto+="<br>El sistema recomienda mirar estas materias ya que son las que se van perdiendo y hablar con el estudiante: <br>";
             for(String s:bajas){
                 pasareEsto+=s+"<br>";
             }

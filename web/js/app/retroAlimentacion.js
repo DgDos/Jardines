@@ -65,7 +65,7 @@ $(document).ready(function () {
             success: function (data) {
                 var selectForm = $('#Observador');
                 selectForm.empty();
-                selectForm.append('Observador');
+                selectForm.append('<span class="label label-info">Observador</span>');
                 var json = $.parseJSON(data);
                 var opcion = "<p style=\"color:black\" >" + json + ".</p>";
                 selectForm.append(opcion);
@@ -86,7 +86,7 @@ $(document).ready(function () {
             success: function (data) {
                 var selectForm = $('#Nota');
                 selectForm.empty();
-                selectForm.append('Notas');
+                selectForm.append('<span class="label label-success">Notas</span>');
                 var json = $.parseJSON(data);
                 var opcion = "<p style=\"color:black\" >" + json + ".</p>";
                 selectForm.append(opcion);
@@ -107,7 +107,7 @@ $(document).ready(function () {
             success: function (data) {
                 var selectForm = $('#Asistencia');
                 selectForm.empty();
-                selectForm.append('Asistencias');
+                selectForm.append('<span class="label label-warning">Asistencias</span>');
                 var json = $.parseJSON(data);
                 var opcion = "<p style=\"color:black\" >" + json + "</p>";
                 selectForm.append(opcion);
