@@ -28,6 +28,7 @@
                                 <a class="dropdown-item" href="verNotaCurso.jsp">Ver Notas Curso</a>
                                 <a class="dropdown-item" href="verNotaMateria.jsp">Ver Notas Materia</a>
                                 <a class="dropdown-item" href="verNotaActividad.jsp">Ver Notas Actividad</a>
+                                <a class="dropdown-item" href="boletinEstudiante.jsp">Ver Boletin</a>
                                 
                             </ul>
                 </div>
