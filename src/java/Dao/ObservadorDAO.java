@@ -7,6 +7,7 @@ package Dao;
 
 import Modelo.Observador;
 import Util.DbUtil;
+import Util.RetroalimentacionNota;
 import Util.consultaCM;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -92,15 +93,37 @@ public class ObservadorDAO {
         return observadores;
     }
 
-    public ArrayList<consultaCM> getNotasById(int estCur) throws SQLException {
-       ArrayList<consultaCM> notas = new ArrayList<>();
+    public ArrayList<RetroalimentacionNota> getNotasById(String idEst) throws SQLException {
+       ArrayList<RetroalimentacionNota> notas = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select nota.nota,nota.detallesextra,actividad.nombre from actividad,nota where actividad.id=nota.idactividad and idestudiantecurso="+estCur); 
+        ResultSet rs = statement.executeQuery("Select materia.nombre as materia,tema.idcm,tema.nombre as tema,AVG(nota.nota) as notaPromedio"
+                + " from tema,nota,actividad,estudiantecurso,cursomateria,materia where tema.id=actividad.idtema and "
+                + "actividad.id=nota.idactividad and cursomateria.idmateria=materia.id and tema.idcm=cursomateria.id and "
+                + "estudiantecurso.id = nota.idestudiantecurso and estudiantecurso.idestudiante='"+idEst+"' "
+                + "GROUP BY tema.idcm,tema.nombre,materia.nombre"); 
         while(rs.next()){
-            consultaCM n=new consultaCM();
-            n.setCurso(rs.getString("nombre"));
-            n.setMateria(rs.getString("detallesextra"));
-            n.setProfesor(rs.getString("nota"));
+            RetroalimentacionNota n=new RetroalimentacionNota();
+            n.setIdcm(rs.getInt("idcm"));
+            n.setMateria(rs.getString("materia"));
+            n.setTema(rs.getString("tema"));
+            n.setPromedio(rs.getFloat("notapromedio"));
+            notas.add(n);
+        }
+        return notas;
+    }
+
+    public ArrayList<RetroalimentacionNota> getNotasMateriaById(String idEst) throws SQLException {
+        ArrayList<RetroalimentacionNota> notas = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("Select materia.nombre as materia,AVG(nota.nota) as notaPromedio "
+                + "from tema,nota,actividad,estudiantecurso,cursomateria,materia where tema.id=actividad.idtema and "
+                + "actividad.id=nota.idactividad and cursomateria.idmateria=materia.id and tema.idcm=cursomateria.id "
+                + "and estudiantecurso.id = nota.idestudiantecurso and estudiantecurso.idestudiante='"+idEst+"'"
+                + " GROUP BY materia.nombre ORDER BY notapromedio DESC"); 
+        while(rs.next()){
+            RetroalimentacionNota n=new RetroalimentacionNota();
+            n.setMateria(rs.getString("materia"));
+            n.setPromedio(rs.getFloat("notapromedio"));
             notas.add(n);
         }
         return notas;

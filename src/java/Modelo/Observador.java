@@ -171,16 +171,34 @@ public class Observador {
                 default:
                     break;
             }
-            System.out.println(tm.toString());
-            System.out.println(tmCalificacion.toString());
         }
         String mayorProfe=mayorProfe(tm, observadores);
         ProfesorDAO p=new ProfesorDAO();
         Profesor profe=p.getProfesorById(mayorProfe);
         int mayorCalificacion=mayorCalificaci(tmCalificacion, observadores);
         String pasareEsto="El profesor que mas observaciones ha hecho es "+ profe.getNombre()+"<br>";
-        pasareEsto+="La calificación mas recurrente es "+ mayorCalificacion+"<br>"
-                + "En promedio la calificacion que saca dada por los profesores es :"+acumulador/total+"<br>"
+        pasareEsto+="La calificación mas recurrente es "+ mayorCalificacion+"<br>";
+        if(mayorCalificacion==5){
+            pasareEsto+="El sistema recomienda felicitar al estudiante";
+        }
+        if(mayorCalificacion==4){
+            pasareEsto+="El estudiante presenta un buen promedio de calificación en las calificaciones";
+        }
+        if(mayorCalificacion==3){
+            pasareEsto+="Revisar las calificaciones de 1 y 5 dado que estas pueden ser clave para observar y calificar de "
+                    + "mejor manera el comportamiento del estudiante";
+        }
+        if(mayorCalificacion==2){
+            pasareEsto+="Hablar con el estudiante y sentarse a leer las observaciones puede ser una buena forma de realizar"
+                    + "una correción oportuna sobre algunos comportamientos que el estudiante tiene";
+        }
+        if(mayorCalificacion==1){
+            pasareEsto+="El sistema recomienda observar cual es el profesor que mas observaciones le hace al estudiante y "
+                    + "mirar si este tiene relación con la calificación recurrente de 1.";
+        }
+        
+                
+                pasareEsto+= "<br>En promedio la calificacion que saca dada por los profesores es :"+acumulador/total+"<br>"
                 + "Estos son los detalles de las observaciones hechas<br>";
         if(!d1.equals("")){
             pasareEsto+="De las calificaciones de 1 son:<br>"+d1;
@@ -197,7 +215,6 @@ public class Observador {
         if(!d5.equals("")){
             pasareEsto+="De las calificaciones de 5 son:<br>"+d5;
         }
-        System.out.println(pasareEsto);
         return pasareEsto;
     }
 
