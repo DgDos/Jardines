@@ -72,6 +72,16 @@
         <servlet-name>VerListaAsistenciaS</servlet-name>
         <url-pattern>/VerListaAsistenciaS</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>CambioS</servlet-name>
+        <servlet-class>Controlador.CambioS</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CambioS</servlet-name>
+        <url-pattern>/CambioS</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>EstudianteS</servlet-name>
         <servlet-class>Controlador.EstudianteS</servlet-class>

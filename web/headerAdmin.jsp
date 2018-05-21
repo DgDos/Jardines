@@ -62,12 +62,17 @@
                         <a class="dropdown-item" href="verMateria.jsp">Ver Materias</a>                             
                     </ul>
                 </div>
+                
                 <li class="nav-item">
                     <a href="tema.jsp"  class="nav-link"><i class="nc-icon nc-bullet-list-67"></i>Tema</a>
                 </li>
                 <li class="nav-item">
+                    <a href="cambio.jsp"  class="nav-link"><i class="nc-icon nc-bullet-list-67"></i>Cambio de periodo</a>
+                </li>
+                <li class="nav-item">
                     <a href="Login?action=salir" class="nav-link"><i class="nc-icon nc-button-power"></i> Logout</a>
                 </li>
+                
             </ul>
         </div>
     </div>
