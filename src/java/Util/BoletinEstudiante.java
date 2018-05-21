@@ -11,15 +11,17 @@ package Util;
  */
 public class BoletinEstudiante {
     private String actividad;
+    private String materia;
     private int idcm;
     private String tema;
     private float nota;
 
-    public BoletinEstudiante(String actividad, int idcm, String tema, float nota) {
+    public BoletinEstudiante(String actividad, int idcm, String tema, float nota, String materia) {
         this.actividad = actividad;
         this.idcm = idcm;
         this.tema = tema;
         this.nota = nota;
+        this.materia = materia;
     }
 
     public BoletinEstudiante() {
@@ -55,6 +57,14 @@ public class BoletinEstudiante {
 
     public void setNota(float nota) {
         this.nota = nota;
+    }
+
+    public String getMateria() {
+        return materia;
+    }
+
+    public void setMateria(String materia) {
+        this.materia = materia;
     }
 
     

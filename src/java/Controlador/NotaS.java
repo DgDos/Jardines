@@ -160,9 +160,9 @@ public class NotaS extends HttpServlet {
             
             //lista notas por estudiante para boletin
             if(opcion==6){
-                String idEst=request.getParameter("idEst");
+                String estBoletin=request.getParameter("estBoletin");
                 NotaDAO n = new NotaDAO();
-                ArrayList<BoletinEstudiante> notasBoletin= n.getNotasBoletin(idEst);
+                ArrayList<BoletinEstudiante> notasBoletin= n.getNotasBoletin(estBoletin);
                 Gson g = new Gson();
                 String pasareEsto = g.toJson(notasBoletin);
                 out.print(pasareEsto);

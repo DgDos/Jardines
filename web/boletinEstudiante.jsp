@@ -38,7 +38,7 @@
                         <br>
                         <br>
                         <div class="form-group">  
-                            <form id="idE" style="display: none">                                
+                            <form id="Boletin" style="display: none">                                
                             <div>
 
                                 <label style="color:black">Curso: </label>
@@ -49,8 +49,10 @@
                                 <select required name="estudiante" id="estudiante" class="form-control">
                                     <option value="" selected  disabled>Seleccione un estudiante</option>
                                 </select>   
-                                
-                                <table class="table table-striped" id="tabBoletin" style="color: black"  >
+                            </form>
+                            <input type="button" value="Ver Boletin" class="btn btn-default btn-round"  id="VerBoletin"><br> <br>
+                            <br>
+                            <table class="table table-striped" id="tabBoletin" style="color: black"  >
                             <thead>
                                 <tr>
                                     <th>Materia</th>
@@ -77,7 +79,7 @@
                                 
 
                             </div>  
-                        </form>                                                                
+                                                                                       
                             
                             
                     </div> 

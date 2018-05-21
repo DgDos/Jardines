@@ -77,11 +77,11 @@ public class NotaDAO {
     public ArrayList<BoletinEstudiante> getNotasBoletin(String idEst) throws SQLException {
         ArrayList<BoletinEstudiante> notas = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select actividad.nombre as nomAct,nota.nota as notita from tema,nota,actividad,estudiantecurso,cursomateria,materia where tema.id=actividad.idtema and actividad.id=nota.idactividad and cursomateria.idmateria=materia.id and tema.idcm=cursomateria.id and estudiantecurso.id = nota.idestudiantecurso and estudiantecurso.idestudiante='"+idEst+"' GROUP BY tema.idcm,tema.nombre,materia.nombre, nota.nota,actividad.nombre");
+        ResultSet rs = statement.executeQuery("select materia.nombre as materia,nota.nota as nota from tema,nota,actividad,estudiantecurso,cursomateria,materia,estudiante where tema.id=actividad.idtema and actividad.id=nota.idactividad and cursomateria.idmateria=materia.id and tema.idcm=cursomateria.id and estudiantecurso.id = nota.idestudiantecurso and estudiantecurso.idestudiante='"+idEst+"' GROUP BY tema.idcm,tema.nombre,materia.nombre, nota.nota,actividad.nombre");
         
         while(rs.next()){
             BoletinEstudiante n= new BoletinEstudiante();
-            n.setActividad(rs.getString("actividad"));
+            n.setMateria(rs.getString("materia"));
             n.setNota(rs.getFloat("nota"));
             notas.add(n);
         }
