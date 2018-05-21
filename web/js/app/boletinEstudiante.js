@@ -54,23 +54,28 @@ $(document).ready(function () {
     $('#estudiante').on('change', function () {
         $.ajax({
             type: 'GET',
-            url: "ObservadorS",
+            url: "NotaS",
             //force to handle it as text
 
             data: {
-                'opcion': "5",
+                'opcion': "6",
                 'estudiante': $('#estudiante').val()
             },
             dataType: "text",
             success: function (data) {
-                var selectForm = $('#Observador');
-                selectForm.empty();
-                selectForm.append('Observador');
-                var json = $.parseJSON(data);
-                var opcion = "<p style=\"color:black\" >" + json + ".</p>";
+            $('#tabBoletin').removeAttr('style');
+            
+            var selectForm = $('#tabBoletin');
+            selectForm.empty();
+            selectForm.append('<tr><td style="color:white" >Nombre materia</td><td style="color:white" >Nota</td> </tr>');
+            var json = $.parseJSON(data);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<tr><td style=\"color:black\" >" + json[i].nombre + "</td><td style=\"color:black\" >" + json[i].nota + "</td> </tr>";
+                //var opcion = "<tr><td>" + json[i].nombre + " </td><td>" + json[i].nota + "</td> </tr>";
                 selectForm.append(opcion);
-
-            },
+            }
+        },
             async: false
         });
 //        $.ajax({

@@ -23,6 +23,8 @@ import Modelo.Profesor;
 import Modelo.DirectorCurso;
 import Modelo.Materia;
 import Modelo.Tema;
+import Util.RetroalimentacionNota;
+import Util.BoletinEstudiante;
 import Util.ConsultaCMS;
 import com.google.gson.Gson;
 import java.io.IOException;
@@ -153,6 +155,16 @@ public class NotaS extends HttpServlet {
                 ArrayList<Nota> notas = n.getNotaByIdActividad(idActividad);
                 Gson g = new Gson();
                 String pasareEsto = g.toJson(notas);
+                out.print(pasareEsto);
+            }
+            
+            //lista notas por estudiante para boletin
+            if(opcion==6){
+                String idEst=request.getParameter("idEst");
+                NotaDAO n = new NotaDAO();
+                ArrayList<BoletinEstudiante> notasBoletin= n.getNotasBoletin(idEst);
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(notasBoletin);
                 out.print(pasareEsto);
             }
             

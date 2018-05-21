@@ -57,7 +57,7 @@
                                     <th>Nota</th>
                                 </tr>
                                 <tr>
-                                    <th>Matematicas</th>
+                                    
                                 </tr>
                             </thead>
 
