@@ -59,7 +59,7 @@ $(document).ready(function () {
 
             data: {
                 'opcion': "6",
-                'estudiante': $('#estudiante').val()
+                'idEst': $('#idEst').val()
             },
             dataType: "text",
             success: function (data) {

@@ -81,7 +81,6 @@ public class NotaDAO {
         
         while(rs.next()){
             BoletinEstudiante n= new BoletinEstudiante();
-            n.setIdcm(rs.getInt("idcm"));
             n.setActividad(rs.getString("actividad"));
             n.setNota(rs.getFloat("nota"));
             notas.add(n);
