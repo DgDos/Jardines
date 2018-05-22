@@ -5,6 +5,7 @@
  */
 package Modelo;
 
+import Util.BoletinEstudiante;
 import Util.RetroalimentacionNota;
 import java.util.ArrayList;
 

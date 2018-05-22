@@ -88,6 +88,20 @@ public class DirectorCursoDAO {
         preparedStatement.executeUpdate();
 
     }
+    
+//    public DirectorCurso getDirector(String idPro) throws SQLException, URISyntaxException {
+//        Statement statement = connection.createStatement();
+//        ResultSet rs = statement.executeQuery("select profesor.nombre,directorcurso.cedula,directorcurso.id,directorcurso.idcurso,directorcurso.fechainicio, curso.nombre as nombrecurso from profesor,directorcurso,curso where profesor.cedula = directorcurso.cedula and curso.id = directorcurso.idcurso and directorcurso.cedula = '" + idPro+"'");
+//        DirectorCurso c = new DirectorCurso();
+//        while (rs.next()) {      
+//            
+//            c.setIdCurso(rs.getInt("idcurso"));
+//            c.setFechainicio(rs.getString("fechainicio"));
+//            c.setIdDirector(rs.getString("id"));
+//            
+//        }
+//        return c;
+//    }
 
     public void deleteDirectorCurso(String idD) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("update directorcurso set delete=0 where id=" + idD);
