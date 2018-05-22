@@ -49,6 +49,31 @@ public class ActividadDAO {
         return actividad;
     }
     
+    public ArrayList<Actividad> getAllActividadesConNota(String id) throws SQLException {
+        ArrayList<Actividad> actividad = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select nota.idactividad from cursomateria,tema,actividad,nota where cursomateria.id = tema.idcm and tema.id = actividad.idtema and nota.idactividad = actividad.id and cursomateria.idprofesor = '"+id+"'");
+        while (rs.next()) {
+            Actividad c = new Actividad();
+            c.setId(rs.getInt("idactividad"));
+            actividad.add(c);
+        }
+        return actividad;
+    }
+    
+    public ArrayList<Actividad> getAllActividadesProfesor(String id) throws SQLException {
+        ArrayList<Actividad> actividad = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select actividad.id, actividad.nombre from cursomateria,tema,actividad where cursomateria.id = tema.idcm and tema.id = actividad.idtema and cursomateria.idprofesor = '"+id+"'");
+        while (rs.next()) {
+            Actividad c = new Actividad();
+            c.setId(rs.getInt("id"));
+            c.setNombre(rs.getString("nombre"));           
+            actividad.add(c);
+        }
+        return actividad;
+    }
+    
     public void deleteActividad(int idA) throws SQLException{
          PreparedStatement preparedStatement = connection.prepareStatement("update actividad set delete=0 where id="+idA);
         

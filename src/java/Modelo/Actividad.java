@@ -47,6 +47,11 @@ public class Actividad {
     public void setIdTema(int idTema) {
         this.idTema = idTema;
     }
+
+    @Override
+    public String toString() {
+        return "Actividad{" + "id=" + id + ", nombre=" + nombre + ", idTema=" + idTema + '}';
+    }
     
     
 }

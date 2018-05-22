@@ -7,6 +7,7 @@ package Dao;
 
 import Modelo.CursoMateria;
 import Util.DbUtil;
+import Util.ProfesorMateria;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.Connection;
@@ -69,6 +70,18 @@ public class CursoMateriaDAO {
             cursos.add(c);
         }
         return cursos; 
+    }
+    public ArrayList<ProfesorMateria> getAllDicto(String idP) throws SQLException {
+       ArrayList<ProfesorMateria> p = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select curso.nombre as curso, materia.nombre as materia from curso,materia,cursomateria where curso.id = cursomateria.idcurso and materia.id = cursomateria.idmateria and cursomateria.idprofesor = '"+idP+"' and cursomateria.\"delete\" = 1");
+        while (rs.next()) {
+            ProfesorMateria c = new ProfesorMateria();
+            c.setCurso(rs.getString("curso"));
+            c.setMateria(rs.getString("materia"));
+            p.add(c);
+        }
+        return p; 
     }
     
     public void eliminarCursoMateria(int idCM) throws SQLException{

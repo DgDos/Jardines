@@ -17,6 +17,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -77,7 +78,7 @@ public class ProfesorS extends HttpServlet {
             Profesor pcm = pc.getProfesorById(cedula);
             Gson g = new Gson();
             String pasareEsto = g.toJson(p);
-            out.print(pasareEsto);
+            out.print(pasareEsto); 
 
         } catch (SQLException ex) {
             Logger.getLogger(ProfesorS.class.getName()).log(Level.SEVERE, null, ex);

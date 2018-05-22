@@ -5,18 +5,28 @@
  */
 package Controlador;
 
+import Dao.ActividadDAO;
+import Dao.AsistenciaDAO;
 import Dao.CursoDAO;
+import Dao.CursoMateriaDAO;
 import Dao.EstudianteDAO;
 import Dao.DirectorCursoDAO;
+import Dao.ObservadorDAO;
 import Dao.ProfesorDAO;
+import Modelo.Actividad;
 import Modelo.Curso;
+import Modelo.CursoMateria;
 import Modelo.Estudiante;
 import Modelo.Profesor;
 import Modelo.DirectorCurso;
+import Modelo.Nota;
+import Util.ProfesorMateria;
+import Util.RetroalimentacionNota;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -74,7 +84,7 @@ public class ProfesorGestion extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
 
             int opc = Integer.parseInt(request.getParameter("opcion"));
-           
+
             if (opc == 0) {
                 String cedula = request.getParameter("cedula");
                 System.out.println(cedula + "cedula");
@@ -100,10 +110,69 @@ public class ProfesorGestion extends HttpServlet {
                 String tipoSangre = request.getParameter("tiposangre");
                 String usuario = request.getParameter("usuario");
                 ProfesorDAO p = new ProfesorDAO();
-                Profesor profe = new Profesor(cedula, nombre,correo, celular, direccion, experiencia, fechaNacimiento, tipoSangre, usuario);
+                Profesor profe = new Profesor(cedula, nombre, correo, celular, direccion, experiencia, fechaNacimiento, tipoSangre, usuario);
                 System.out.println(profe);
                 p.updateProfesor(profe);
             }
+            if (opc == 3) {
+                Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+                Date d = new Date(System.currentTimeMillis());
+                String je = d + "";
+                String[] aux3 = je.split("-");
+                String fecha = aux3[1] + "/" + aux3[2] + "/" + aux3[0];
+                AsistenciaDAO a = new AsistenciaDAO();
+                ArrayList<Estudiante> c = a.getAsistenciaTomada(p.getIdProfesor(),fecha);
+                 String pasareEsto=".";
+                if(c.isEmpty()){               
+                pasareEsto += "No ha realizado la asistencia hoy";               
+                }else{           
+                pasareEsto += "Ya realizo la asistencia";
+            }
+                Gson g = new Gson();
+                out.print(g.toJson(pasareEsto));
+            }
+            if (opc == 4) {
+                Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+                CursoMateriaDAO o = new CursoMateriaDAO();
+                ArrayList<ProfesorMateria> cursos = o.getAllDicto(p.getIdProfesor());
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(cursos);
+                out.print(pasareEsto);
+            }
+            if (opc == 5) {
+                Profesor p = (Profesor) request.getSession().getAttribute("profesor");
+                ActividadDAO o = new ActividadDAO();
+                ArrayList<Actividad> con = o.getAllActividadesConNota(p.getIdProfesor());
+                ArrayList<Actividad> todo = o.getAllActividadesProfesor(p.getIdProfesor());
+                ArrayList <Actividad> fin = new ArrayList();
+                if(con.isEmpty()){
+                    for(int i=0;i<todo.size();i++){
+                        fin.add(todo.get(i));
+                    }
+                }else{
+                for(int i=0;i<todo.size();i++){
+                    for(int j=0; j<con.size();j++){
+                        if(todo.get(i).getId()== con.get(j).getId()){
+                            todo.remove(i);
+                           
+                            
+                        }
+                    }
+                   
+                }
+                for(int i=0;i<todo.size();i++){
+                        fin.add(todo.get(i));
+                       
+                    }
+                
+            }
+                System.out.println(con.toString());
+                System.out.println(todo);
+                System.out.println(fin);
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(fin);
+                out.print(pasareEsto);
+        }
 
         } catch (SQLException ex) {
             Logger.getLogger(EstudianteS.class.getName()).log(Level.SEVERE, null, ex);

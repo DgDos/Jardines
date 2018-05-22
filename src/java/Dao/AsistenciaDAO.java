@@ -6,6 +6,7 @@
 package Dao;
 
 import Modelo.Asistencia;
+import Modelo.Estudiante;
 import Util.ConsultaAsistencia;
 import Util.DbUtil;
 import java.io.IOException;
@@ -89,6 +90,17 @@ public class AsistenciaDAO {
             Asistencia a=new Asistencia();
             a.setFecha(rs.getString("fecha"));
             a.setVino(rs.getString("vino"));
+            asistencias.add(a);
+        }
+        return asistencias;
+    }
+     public ArrayList<Estudiante> getAsistenciaTomada(String id, String fecha) throws SQLException {
+        ArrayList<Estudiante> asistencias=new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select estudiantecurso.idestudiante from estudiantecurso,asistencia,directorcurso where estudiantecurso.id = asistencia.idestudiantecurso and directorcurso.idcurso = estudiantecurso.idcurso and directorcurso.cedula = '"+id+"' and asistencia.fecha = '"+fecha+"'");
+        while (rs.next()){
+            Estudiante a=new Estudiante();
+            a.setIdEstudiante(rs.getString("idestudiante"));
             asistencias.add(a);
         }
         return asistencias;
