@@ -55,6 +55,36 @@ public class CursoMateriaDAO {
         return cursos; 
     }
     
+    public ArrayList<CursoMateria> getAllConTema() throws SQLException {
+       ArrayList<CursoMateria> cursos = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select cursomateria.id, materia.nombre as materia ,curso.nombre as curso from cursomateria,curso,materia,tema where tema.\"delete\"=1 and cursomateria.\"delete\" = 1 and curso.id = cursomateria.idcurso and materia.id = cursomateria.idmateria and tema.idcm = cursomateria.id group by cursomateria.id, curso,materia");
+        while (rs.next()) {
+            CursoMateria c = new CursoMateria();
+            c.setIdCM(rs.getInt("id"));
+            c.setIdProfesor(rs.getString("materia"));
+            c.setFechaInicial(rs.getString("curso"));
+            
+            cursos.add(c);
+        }
+        return cursos; 
+    }
+    public ArrayList<CursoMateria> getAllTodos() throws SQLException {
+       ArrayList<CursoMateria> cursos = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select cursomateria.id, materia.nombre as materia ,curso.nombre as curso from cursomateria,curso,materia where cursomateria.\"delete\" = 1 and curso.id = cursomateria.idcurso and materia.id = cursomateria.idmateria group by cursomateria.id, curso,materia");
+        while (rs.next()) {
+            CursoMateria c = new CursoMateria();
+            c.setIdCM(rs.getInt("id"));
+            c.setIdProfesor(rs.getString("materia"));
+            c.setFechaInicial(rs.getString("curso"));
+            
+            cursos.add(c);
+        }
+        return cursos; 
+    }
+    
+    
     public ArrayList<CursoMateria> getAllCMProfesor(String idP) throws SQLException {
        ArrayList<CursoMateria> cursos = new ArrayList<>();
         Statement statement = connection.createStatement();

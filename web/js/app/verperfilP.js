@@ -67,6 +67,49 @@ $(document).ready(function () {
     
     $.ajax({
         type: 'GET',
+        url: "ProfesorS",
+        //force to handle it as text
+        data: {
+
+        },
+        dataType: "text",
+        success: function (data) {
+            var selectForm = $('#b2');
+            var json = $.parseJSON(data);
+            selectForm.empty();
+            var opcion = "<h2>Bienvenido/a Administrador/a: " + json.nombre + "</h2>";
+            selectForm.append(opcion);
+            
+
+        },
+        async: false
+    });
+    
+    $.ajax({
+        type: 'GET',
+        url: "ObservadorS",
+        //force to handle it as text
+
+        data: {
+            'opcion': "0"
+        },
+        dataType: "text",
+        success: function (data) {
+          
+            var selectForm = $('#tabla');
+            selectForm.empty();
+            selectForm.append('<tr><td>Identificador</td><td>Curso</td></tr>');
+            var json = $.parseJSON(data);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<tr><td>" + json[i].idCurso + "</td><td>" + json[i].nombre + "</td> </tr>";
+                selectForm.append(opcion);
+            }
+        },
+        async: false
+    });
+    $.ajax({
+        type: 'GET',
         url: "ObservadorS",
         //force to handle it as text
 
@@ -94,18 +137,41 @@ $(document).ready(function () {
         //force to handle it as text
 
         data: {
-            'opcion': "4"
+            'opcion': "6"
         },
         dataType: "text",
         success: function (data) {
           
-            var selectForm = $('#tabla2');
+            var selectForm = $('#tabla4');
             selectForm.empty();
-            selectForm.append('<tr><td>Curso</td><td>Materia</td></tr>');
+            selectForm.append('<tr><td>Documento</td><td>Estudiante</td></tr>');
             var json = $.parseJSON(data);
             for (var i = 0; i < json.length; ++i)
             {
-                var opcion = "<tr><td>" + json[i].curso + "</td><td>" + json[i].Materia + "</td> </tr>";
+                var opcion = "<tr><td>" + json[i].idEstudiante + "</td><td>" + json[i].nombre + "</td> </tr>";
+                selectForm.append(opcion);
+            }
+        },
+        async: false
+    });
+    $.ajax({
+        type: 'GET',
+        url: "ProfesorGestion",
+        //force to handle it as text
+
+        data: {
+            'opcion': "7"
+        },
+        dataType: "text",
+        success: function (data) {
+          
+            var selectForm = $('#tabla5');
+            selectForm.empty();
+            selectForm.append('<tr><td>Profesores</td></tr>');
+            var json = $.parseJSON(data);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<tr><td>" + json[i].nombre + "</td></tr>";
                 selectForm.append(opcion);
             }
         },
@@ -149,6 +215,30 @@ $(document).ready(function () {
             for (var i = 0; i < json.length; ++i)
             {
                 var opcion = "<tr><td>" + json[i].nombre + "</td></tr>";
+                selectForm.append(opcion);
+            }
+            },
+            async: false
+        });
+        
+        $.ajax({
+            type: 'GET',
+            url: "ProfesorGestion",
+            //force to handle it as text
+
+            data: {
+                "opcion": '8'
+               
+            },
+            dataType: "text",
+            success: function (data) {
+                 var selectForm = $('#tabla6');
+            selectForm.empty();
+            selectForm.append('<tr><td>Curso</td><td>Materia</td></tr>');
+            var json = $.parseJSON(data);
+            for (var i = 0; i < json.length; ++i)
+            {
+                var opcion = "<tr><td>" + json[i].fechaInicio+ "</td><td>" + json[i].idProfesor + "</td></tr>";
                 selectForm.append(opcion);
             }
             },

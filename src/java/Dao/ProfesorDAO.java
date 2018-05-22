@@ -91,6 +91,31 @@ public class ProfesorDAO {
         }
         return profesores;
     }
+    
+    public ArrayList<Profesor> getallProfesoresConMateria() throws SQLException {
+        ArrayList<Profesor> profesores = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select profesor.nombre,profesor.cedula from profesor,cursomateria where profesor.cedula = cursomateria.idprofesor and cursomateria.\"delete\"=1 group by profesor.nombre,profesor.cedula");
+        while (rs.next()) {
+            Profesor pro = new Profesor();          
+            pro.setNombre(rs.getString("nombre"));    
+            pro.setIdProfesor(rs.getString("cedula"));
+            profesores.add(pro);
+        }
+        return profesores;
+    }
+     public ArrayList<Profesor> getallProfesoresTodos() throws SQLException {
+        ArrayList<Profesor> profesores = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select profesor.nombre, profesor.cedula from profesor where profesor.\"delete\"=1 and profesor.tipou = 1");
+        while (rs.next()) {
+            Profesor pro = new Profesor();          
+            pro.setNombre(rs.getString("nombre")); 
+            pro.setIdProfesor(rs.getString("cedula"));
+            profesores.add(pro);
+        }
+        return profesores;
+    }
 
     public void addProfesor(Profesor profe) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("insert into profesor values (?,?,?,?,?,?,?,?,?,?,?,1)");

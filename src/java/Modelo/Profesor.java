@@ -10,6 +10,7 @@ package Modelo;
  * @author FiJus
  */
 public class Profesor {
+
     private String idProfesor;
     private String nombre;
     private int tipoU;
@@ -50,11 +51,6 @@ public class Profesor {
         this.tipoSangre = tipoSangre;
         this.usuario = usuario;
     }
-
-
-    
-
-    
 
     public String getIdProfesor() {
         return idProfesor;
@@ -104,7 +100,6 @@ public class Profesor {
         this.direccion = direccion;
     }
 
-
     public String getExperiencia() {
         return experiencia;
     }
@@ -129,7 +124,6 @@ public class Profesor {
         this.tipoSangre = tipoSangre;
     }
 
-
     public String getUsuario() {
         return usuario;
     }
@@ -148,10 +142,7 @@ public class Profesor {
 
     @Override
     public String toString() {
-        return "Profesor{" + "idProfesor=" + idProfesor + ", nombre=" + nombre + ", tipoU=" + tipoU + ", correo=" + correo + ", celular=" + celular + ", direccion=" + direccion + ", experiencia=" + experiencia + ", fechaNacimiento=" + fechaNacimiento + ", tipoSangre=" + tipoSangre + ", usuario=" + usuario + ", password=" + password + '}';
+        return "Profesor{" + "idProfesor=" + idProfesor + ", nombre=" + nombre + '}';
+
     }
-    
-    
-    
-    
 }

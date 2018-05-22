@@ -40,6 +40,18 @@ public class EstudianteDAO {
         }
         return estudiantes;
     }
+    public ArrayList<Estudiante> getEstudiantesNoAsignados() throws SQLException, URISyntaxException {
+        ArrayList<Estudiante> estudiantes = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select documento,nombre from estudiante where idcurso = 3 and \"delete\"= 1");
+        while (rs.next()) {
+            Estudiante c = new Estudiante();
+            c.setIdEstudiante(rs.getString("documento"));
+            c.setNombre(rs.getString("nombre"));
+            estudiantes.add(c);
+        }
+        return estudiantes;
+    }
     
     public Estudiante getEstudianteByID(String idEst) throws SQLException, URISyntaxException {
         Estudiante estudiante= new Estudiante();

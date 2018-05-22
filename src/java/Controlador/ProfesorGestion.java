@@ -121,13 +121,13 @@ public class ProfesorGestion extends HttpServlet {
                 String[] aux3 = je.split("-");
                 String fecha = aux3[1] + "/" + aux3[2] + "/" + aux3[0];
                 AsistenciaDAO a = new AsistenciaDAO();
-                ArrayList<Estudiante> c = a.getAsistenciaTomada(p.getIdProfesor(),fecha);
-                 String pasareEsto=".";
-                if(c.isEmpty()){               
-                pasareEsto += "No ha realizado la asistencia hoy";               
-                }else{           
-                pasareEsto += "Ya realizo la asistencia";
-            }
+                ArrayList<Estudiante> c = a.getAsistenciaTomada(p.getIdProfesor(), fecha);
+                String pasareEsto = ".";
+                if (c.isEmpty()) {
+                    pasareEsto += "No ha realizado la asistencia hoy";
+                } else {
+                    pasareEsto += "Ya realizo la asistencia";
+                }
                 Gson g = new Gson();
                 out.print(g.toJson(pasareEsto));
             }
@@ -144,36 +144,99 @@ public class ProfesorGestion extends HttpServlet {
                 ActividadDAO o = new ActividadDAO();
                 ArrayList<Actividad> con = o.getAllActividadesConNota(p.getIdProfesor());
                 ArrayList<Actividad> todo = o.getAllActividadesProfesor(p.getIdProfesor());
-                ArrayList <Actividad> fin = new ArrayList();
-                if(con.isEmpty()){
-                    for(int i=0;i<todo.size();i++){
+                ArrayList<Actividad> fin = new ArrayList();
+                if (con.isEmpty()) {
+                    for (int i = 0; i < todo.size(); i++) {
                         fin.add(todo.get(i));
                     }
-                }else{
-                for(int i=0;i<todo.size();i++){
-                    for(int j=0; j<con.size();j++){
-                        if(todo.get(i).getId()== con.get(j).getId()){
-                            todo.remove(i);
-                           
-                            
+                } else {
+                    for (int i = 0; i < todo.size(); i++) {
+                        for (int j = 0; j < con.size(); j++) {
+                            if (todo.get(i).getId() == con.get(j).getId()) {
+                                todo.remove(i);
+
+                            }
                         }
+
                     }
-                   
-                }
-                for(int i=0;i<todo.size();i++){
+                    for (int i = 0; i < todo.size(); i++) {
                         fin.add(todo.get(i));
-                       
+
                     }
-                
-            }
-                System.out.println(con.toString());
-                System.out.println(todo);
-                System.out.println(fin);
+
+                }
                 Gson g = new Gson();
                 String pasareEsto = g.toJson(fin);
                 out.print(pasareEsto);
-        }
+            }
+            if (opc == 6) {
+                EstudianteDAO o = new EstudianteDAO();
+                ArrayList<Estudiante> e = o.getEstudiantesNoAsignados();
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(e);
+                out.print(pasareEsto);
+            }
+            if (opc == 7) {
+           
+                ProfesorDAO o = new ProfesorDAO();
+                ArrayList<Profesor> con = o.getallProfesoresConMateria();
+                ArrayList<Profesor> todo = o.getallProfesoresTodos();
+                ArrayList<Profesor> fin = new ArrayList();
+                if (con.isEmpty()) {
+                    for (int i = 0; i < todo.size(); i++) {
+                        fin.add(todo.get(i));
+                    }
+                } else {
+                    for (int i = 0; i < todo.size(); i++) {
+                        long aux = Long.parseLong(todo.get(i).getIdProfesor());
+                        int cont=0;
+                        for (int j = 0; j < con.size(); j++) {
+                            long aux2 = Long.parseLong(con.get(j).getIdProfesor());
+                            if (aux== aux2) {
+                                cont++;
 
+                            }
+                        }
+                        if(cont==0){
+                            fin.add(todo.get(i));
+                        }
+
+                    }
+
+                }
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(fin);
+                out.print(pasareEsto);
+            }
+            if (opc == 8) {                
+                CursoMateriaDAO o = new CursoMateriaDAO();
+                ArrayList<CursoMateria> con = o.getAllConTema();
+                ArrayList<CursoMateria> todo = o.getAllTodos();
+                ArrayList<CursoMateria> fin = new ArrayList();
+                if (con.isEmpty()) {
+                    for (int i = 0; i < todo.size(); i++) {
+                        fin.add(todo.get(i));
+                    }
+                } else {
+                    for (int i = 0; i < todo.size(); i++) {
+                        for (int j = 0; j < con.size(); j++) {
+                            if (todo.get(i).getIdCM()== con.get(j).getIdCM()) {
+                                todo.remove(i);
+
+                            }
+                        }
+
+                    }
+                    for (int i = 0; i < todo.size(); i++) {
+                        fin.add(todo.get(i));
+
+                    }
+
+                }
+                Gson g = new Gson();
+                String pasareEsto = g.toJson(fin);
+                out.print(pasareEsto);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(EstudianteS.class.getName()).log(Level.SEVERE, null, ex);
         } catch (URISyntaxException ex) {
