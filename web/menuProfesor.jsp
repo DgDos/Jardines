@@ -56,14 +56,14 @@
 
                         <br>
                         <br>
-                        <h6>Recuerde que es Director/a de curso de:</h6>
+                        <h6>Recuerde que es Director/a del curso:</h6>
 
                         <br>
                         <table id="tabla" class="table table-light">
 
                         </table>
                         <br>
-                        <h6>Recuerde que es profesor/a de los siguientes:</h6>
+                        <h6>Recuerde que es profesor/a de los siguientes cursos:</h6>
 
                         <br>
                         <table id="tabla2" class="table table-light">
