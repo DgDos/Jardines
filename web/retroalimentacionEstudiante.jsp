@@ -49,44 +49,57 @@
                     <br>
                     <br>
                     <br>
-                    
+
                     <div class="container">
                         <br>
                         <br>
                         <div class="form-group">  
                             <form id="idE" style="display: none">                                
-                            <div>
+                                <div>
 
-                                <label style="color:white">Curso: </label>
-                                <select required name="curso" id="curso" class="form-control">
-                                    <option value="" selected disabled>Seleccione un curso</option>
-                                </select> 
-                                <br>
-                                <label style="color:white" >Estudiante:</label>
-                                <select required name="estudiante" id="estudiante" class="form-control">
-                                    <option value="" selected  disabled>Seleccione un estudiante</option>
-                                </select>   
-                                
-                                <br>
-                                <br>
+                                    <label style="color:white">Curso: </label>
+                                    <select required name="curso" id="curso" class="form-control">
+                                        <option value="" selected disabled>Seleccione un curso</option>
+                                    </select> 
+                                    <br>
+                                    <label style="color:white" >Estudiante:</label>
+                                    <select required name="estudiante" id="estudiante" class="form-control">
+                                        <option value="" selected  disabled>Seleccione un estudiante</option>
+                                    </select>   
 
-                            </div>  
-                        </form>                                                                
+                                    <br>
+                                    <br>
 
-                            <p id="Observador">
-                                
-                            </p>
-                            <p id="Asistencia">
-                                
-                            </p>
-                            <p id="Nota">
-                                
-                            </p>
+                                </div>  
+                            </form>                                                                
+                            <div class="nav-tabs-navigation">
+                                <div class="nav-tabs-wrapper">
+                                    <ul id="tabs" class="nav nav-tabs" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="tab" href="#home" role="tab">Observador</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Asistencia</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#messages" role="tab">Notas</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div id="my-tab-content" class="tab-content text-center">
+                                <div class="tab-pane active" id="home" role="tabpanel"><p id="Observador"></p></div>
+                                <div class="tab-pane" id="profile" role="tabpanel"><p id="Asistencia"></p></div>
+                                <div class="tab-pane" id="messages" role="tabpanel"><p id="Nota"></p></div>
+                            </div>
+
+                            
+                            
+                        </div> 
                     </div> 
-                </div> 
 
+                </div> 
             </div> 
-        </div> 
 
     </body>
     <script src="assets/js/jquery-3.2.1.js" type="text/javascript"></script>

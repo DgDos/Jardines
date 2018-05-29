@@ -38,30 +38,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class AsistenciaS extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-
-    }
-
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -119,7 +95,7 @@ public class AsistenciaS extends HttpServlet {
                 int estCur = ec.getEstCur(idEst);
                 AsistenciaDAO a = new AsistenciaDAO();
                 ArrayList<Asistencia> asiste = a.getAsistenciaByEst(estCur);
-                float total = 0, vino = 0;
+                int total = 0, vino = 0;
                 for (Asistencia asistencia : asiste) {
                     total++;
                     if (asistencia.getVino().equalsIgnoreCase("presente")) {
@@ -127,7 +103,7 @@ public class AsistenciaS extends HttpServlet {
                     }
                 }
                 String pasareEsto = "De " + total + " veces que se ha tomado asistencia el estudiante ha venido " + vino + ".<br>";
-                float valor = (vino / total) * 100;
+                float valor = ((float)vino / (float)total) * 100;
                 valor = (float) (Math.floor(valor * 100) / 100);
                 pasareEsto += "Ha venido un " + valor + " del total de clases donde se ha tomado asistencia.<br> Dado este porcentaje el sistema recomienda: <br>";
                 if (valor > 90) {
@@ -160,7 +136,6 @@ public class AsistenciaS extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
         response.setContentType("text/html;charset=UTF-8");
         try {
             String[] idEstudiante = request.getParameterValues("idEstudiante[]");
