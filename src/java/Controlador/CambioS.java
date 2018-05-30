@@ -74,6 +74,7 @@ public class CambioS extends HttpServlet {
             //dao.updateDirector();
             //dao.updateEstudiante();
             //dao.updateNota();
+            //dao.updateEstudianteCurso();
             
         } catch (SQLException ex) {
             Logger.getLogger(CambioS.class.getName()).log(Level.SEVERE, null, ex);

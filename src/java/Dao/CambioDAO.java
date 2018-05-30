@@ -48,7 +48,10 @@ public class CambioDAO {
         PreparedStatement preparedStatement = connection.prepareStatement("update nota set delete = 0");
         preparedStatement.executeUpdate();
     }
-    
+    public void updateEstudianteCurso() throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update estudiante set idcurso = 3");
+        preparedStatement.executeUpdate();
+    }
     
     
     
