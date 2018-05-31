@@ -122,4 +122,18 @@ public class Nota {
         return pasareEsto;
     }
 
+    
+    public String getTemasBoletin(ArrayList<BoletinEstudiante> notas) {
+        String pasareEsto = "";
+        int cont;
+        cont=1;
+            pasareEsto+="<br> <br>";
+            for (BoletinEstudiante t : notas) {
+                pasareEsto+=cont+". "+t.getTema()+": "+t.getNota()+"<br>";
+                cont++;
+            }
+        
+       
+        return pasareEsto;
+    }
 }

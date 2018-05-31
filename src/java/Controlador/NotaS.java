@@ -13,6 +13,7 @@ import Dao.EstudianteDAO;
 import Dao.CursoMateriaDAO;
 import Dao.EstudianteCursoDAO;
 import Dao.MateriaDAO;
+import Dao.ObservadorDAO;
 import Dao.TemaDAO;
 import Modelo.Actividad;
 import Modelo.CursoMateria;
@@ -166,6 +167,15 @@ public class NotaS extends HttpServlet {
                 Gson g = new Gson();
                 String pasareEsto = g.toJson(notasBoletin);
                 out.print(pasareEsto);
+            }
+            //metodo para ver temas para boletin
+            if(opcion== 7){
+                String idEst=request.getParameter("idEst");
+                NotaDAO tema=new NotaDAO();
+                ArrayList<BoletinEstudiante> Notas=tema.getTemasBoletin(idEst);
+                Nota n=new Nota();
+                Gson g = new Gson();
+                out.print(g.toJson(n.getTemasBoletin(Notas)));        
             }
             
         } catch (SQLException ex) {

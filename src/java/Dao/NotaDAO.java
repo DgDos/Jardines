@@ -77,12 +77,31 @@ public class NotaDAO {
     public ArrayList<BoletinEstudiante> getNotasBoletin(String idEst) throws SQLException {
         ArrayList<BoletinEstudiante> notas = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select materia.nombre as materia,nota.nota as nota from tema,nota,actividad,estudiantecurso,cursomateria,materia,estudiante where tema.id=actividad.idtema and actividad.id=nota.idactividad and cursomateria.idmateria=materia.id and tema.idcm=cursomateria.id and estudiantecurso.id = nota.idestudiantecurso and estudiantecurso.idestudiante='"+idEst+"' GROUP BY tema.idcm,tema.nombre,materia.nombre, nota.nota,actividad.nombre");
+        ResultSet rs = statement.executeQuery("select materia.nombre as materia,AVG(nota.nota) as nota from tema,nota,actividad,estudiantecurso,cursomateria,materia,estudiante where tema.id=actividad.idtema and actividad.id=nota.idactividad and cursomateria.idmateria=materia.id and tema.idcm=cursomateria.id and estudiantecurso.id = nota.idestudiantecurso and estudiantecurso.idestudiante='"+idEst+"' GROUP BY materia.nombre");
         
         while(rs.next()){
             BoletinEstudiante n= new BoletinEstudiante();
             n.setMateria(rs.getString("materia"));
             n.setNota(rs.getFloat("nota"));
+            notas.add(n);
+        }
+        return notas;
+    }
+    
+    public ArrayList<BoletinEstudiante> getTemasBoletin(String idEst) throws SQLException {
+       ArrayList<BoletinEstudiante> notas = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("Select materia.nombre as materia,tema.idcm,tema.nombre as tema,AVG(nota.nota) as notaPromedio"
+                + " from tema,nota,actividad,estudiantecurso,cursomateria,materia where tema.id=actividad.idtema and "
+                + "actividad.id=nota.idactividad and cursomateria.idmateria=materia.id and tema.idcm=cursomateria.id and "
+                + "estudiantecurso.id = nota.idestudiantecurso and estudiantecurso.idestudiante='"+idEst+"' "
+                + "GROUP BY tema.idcm,tema.nombre,materia.nombre"); 
+        while(rs.next()){
+            BoletinEstudiante n=new BoletinEstudiante();
+            n.setIdcm(rs.getInt("idcm"));
+            n.setMateria(rs.getString("materia"));
+            n.setTema(rs.getString("tema"));
+            n.setNota(rs.getFloat("notapromedio"));
             notas.add(n);
         }
         return notas;
