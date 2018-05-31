@@ -87,6 +87,25 @@ public class NotaDAO {
         }
         return notas;
     }
+    
+    public ArrayList<BoletinEstudiante> getTemasBoletin(String idEst) throws SQLException {
+       ArrayList<BoletinEstudiante> notas = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("Select materia.nombre as materia,tema.idcm,tema.nombre as tema,AVG(nota.nota) as notaPromedio"
+                + " from tema,nota,actividad,estudiantecurso,cursomateria,materia where tema.id=actividad.idtema and "
+                + "actividad.id=nota.idactividad and cursomateria.idmateria=materia.id and tema.idcm=cursomateria.id and "
+                + "estudiantecurso.id = nota.idestudiantecurso and estudiantecurso.idestudiante='"+idEst+"' "
+                + "GROUP BY tema.idcm,tema.nombre,materia.nombre"); 
+        while(rs.next()){
+            BoletinEstudiante n=new BoletinEstudiante();
+            n.setIdcm(rs.getInt("idcm"));
+            n.setMateria(rs.getString("materia"));
+            n.setTema(rs.getString("tema"));
+            n.setNota(rs.getFloat("notapromedio"));
+            notas.add(n);
+        }
+        return notas;
+    }
 
     public void addNota(float nota, int IdEstudianteCurso, int IdActividad, String DetallesExtra) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("insert into nota (nota,idestudiantecurso,idactividad,detallesextra,delete) values (?,?,?,?,1)");

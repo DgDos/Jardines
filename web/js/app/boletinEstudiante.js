@@ -81,28 +81,27 @@ $(document).ready(function () {
             },
             async: false
         });
+        $.ajax({
+            type: 'GET',
+            url: "NotaS",
+            //force to handle it as text
+
+            data: {
+                "opcion": '7',
+                "idEst": $('#estudiante').val()
+            },
+            dataType: "text",
+            success: function (data) {
+                var selectForm = $('#Nota');
+                selectForm.empty();
+                selectForm.append('<span class="label label-success">Temas</span>');
+                var json = $.parseJSON(data);
+                var opcion = "<p style=\"color:black\" >" + json + ".</p>";
+                selectForm.append(opcion);
+                
+            },
+            async: false
+        });
     });
-//        $.ajax({
-//            type: 'GET',
-//            url: "ObservadorS",
-//            //force to handle it as text
-//
-//            data: {
-//                "opcion": '4',
-//                "idEst": $('#estudiante').val()
-//            },
-//            dataType: "text",
-//            success: function (data) {
-//                var selectForm = $('#Nota');
-//                selectForm.empty();
-//                selectForm.append('Notas');
-//                var json = $.parseJSON(data);
-//                for (var i = 0; i < json.length; ++i)
-//                {
-//                    var opcion = "<p style=\"color:black\" >Actividad:" + json[i].curso + ", Detalles: " + json[i].materia + ", Nota: " + json[i].profesor + ".</p>";
-//                    selectForm.append(opcion);
-//                }
-//            },
-//            async: false
-//        });
+
 });

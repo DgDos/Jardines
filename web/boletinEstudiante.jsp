@@ -20,7 +20,7 @@
         <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
     </head>
 
- <body style="background-color:#ccccff">
+    <body style="background-color:#ccccff">
         <%@include file="headerProfesor.jsp" %>
         <br>
         <div class="container-fluid text-center">    
@@ -33,22 +33,22 @@
                     <br>
                     <br>
                     <br>
-                    
+
                     <div class="container">
                         <br>
                         <br>
                         <div class="form-group">  
                             <form id="Boletin" style="display: none">                                
-                            <div>
+                                <div>
 
-                                <label style="color:black">Curso: </label>
-                                <select required name="curso" id="curso" class="form-control">
-                                    <option value="" selected disabled>Seleccione un curso</option>
-                                </select> 
-                                <label style="color:black" >Estudiante:</label>
-                                <select required name="estudiante" id="estudiante" class="form-control">
-                                    <option value="" selected  disabled>Seleccione un estudiante</option>
-                                </select>   
+                                    <label style="color:black">Curso: </label>
+                                    <select required name="curso" id="curso" class="form-control">
+                                        <option value="" selected disabled>Seleccione un curso</option>
+                                    </select> 
+                                    <label style="color:black" >Estudiante:</label>
+                                    <select required name="estudiante" id="estudiante" class="form-control">
+                                        <option value="" selected  disabled>Seleccione un estudiante</option>
+                                    </select>   
                             </form>
                             <input type="button" value="Ver Boletin" class="btn btn-default btn-round"  id="VerBoletin"><br> <br>
                             <br>
@@ -74,14 +74,19 @@
                                     </tr>
 
 
+                                    
+
+
                                 </tbody>
                             </table>
-                                
 
-                            </div>  
-                                                                                       
-                            
-                            
+                            <p id="Nota">
+
+                            </p>
+                        </div>  
+
+
+
                     </div> 
                 </div> 
 
@@ -89,25 +94,25 @@
         </div> 
 
     </body>
-     
 
-        <script src="assets/js/jquery-3.2.1.js" type="text/javascript"></script>
-        <script src="assets/js/jquery-ui-1.12.1.custom.min.js" type="text/javascript"></script>
-        <script src="assets/js/popper.js" type="text/javascript"></script>
-        <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-        <!-- Switches -->
-        <script src="assets/js/bootstrap-switch.min.js"></script>
+    <script src="assets/js/jquery-3.2.1.js" type="text/javascript"></script>
+    <script src="assets/js/jquery-ui-1.12.1.custom.min.js" type="text/javascript"></script>
+    <script src="assets/js/popper.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
 
-        <!--  Plugins for Slider -->
-        <script src="assets/js/nouislider.js"></script>
+    <!-- Switches -->
+    <script src="assets/js/bootstrap-switch.min.js"></script>
 
-        <!--  Plugins for DateTimePicker -->
-        <script src="assets/js/moment.min.js"></script>
-        <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+    <!--  Plugins for Slider -->
+    <script src="assets/js/nouislider.js"></script>
 
-        <!--  Paper Kit Initialization and functons -->
-        <script src="assets/js/paper-kit.js?v=2.1.0"></script>
-        <script src="js/app/boletinEstudiante.js"></script>
-    </body>
+    <!--  Plugins for DateTimePicker -->
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+
+    <!--  Paper Kit Initialization and functons -->
+    <script src="assets/js/paper-kit.js?v=2.1.0"></script>
+    <script src="js/app/boletinEstudiante.js"></script>
+</body>
 </html>
